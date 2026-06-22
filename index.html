@@ -789,7 +789,10 @@ r.criticAudience ? e('div', { style: { marginLeft: indent } }, e(CriticAudienceS
 const footer = e('div', { style: { padding: isMobile ? '12px 14px 18px' : '14px 30px 22px', fontSize: 10.5, color: C.textFaint, borderTop: '1px solid ' + C.border, lineHeight: 1.6 } },
 'Sources: The Numbers, Box Office Mojo, Box Office Pro, Deadline, Variety, Screen International, FanBolt'
 );
-return e('div', { style: wrap }, e(Ticker, { items: top10 }), header, body, footer);
+return e('div', { style: wrap },
+e(Ticker, { items: top10 }),
+e('div', { style: { maxWidth: 720, margin: '0 auto' } }, header, body, footer)
+);
 }
 const root = ReactDOM.createRoot(document.getElementById('boffo-root'));
 root.render(e(Dashboard));
