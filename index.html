@@ -9,6 +9,7 @@
 <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <style>
+html, body { margin: 0; padding: 0; background: #0A0E0C; }
 #boffo-root, #boffo-root * { box-sizing: border-box; }
 #boffo-root {
 font-family: 'JetBrains Mono', monospace;
@@ -792,6 +793,21 @@ return e('div', { style: wrap }, e(Ticker, { items: top10 }), header, body, foot
 }
 const root = ReactDOM.createRoot(document.getElementById('boffo-root'));
 root.render(e(Dashboard));
+(function () {
+function reportHeight() {
+const el = document.getElementById('boffo-root');
+if (!el) return;
+window.parent.postMessage({ type: 'boffo-resize', height: el.scrollHeight }, '*');
+}
+const observer = new MutationObserver(reportHeight);
+observer.observe(document.getElementById('boffo-root'), { childList: true, subtree: true, attributes: true });
+window.addEventListener('resize', reportHeight);
+window.addEventListener('load', reportHeight);
+reportHeight();
+setTimeout(reportHeight, 150);
+setTimeout(reportHeight, 600);
+setTimeout(reportHeight, 1500);
+})();
 </script>
 </body>
 </html>
