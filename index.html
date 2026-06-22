@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Boffo | Box Office Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Readex+Pro:wght@400;900&family=Poppins:wght@900&display=swap" rel="stylesheet">
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<style>
+#boffo-root, #boffo-root * { box-sizing: border-box; }
+#boffo-root {
+font-family: 'JetBrains Mono', monospace;
+background: #0A0E0C;
+margin: 0;
+padding: 0;
+display: block;
+width: 100%;
+}
+#boffo-root button { font-family: 'JetBrains Mono', monospace; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.w-embed, .w-embed-youtubevideo, .w-iframe { background: #0A0E0C !important; margin: 0 !important; }
+</style>
+<div id="boffo-root"></div>
+<script>
+const e = React.createElement;
+const useState = React.useState;
+const useMemo = React.useMemo;
+const useRef = React.useRef;
+const useEffect = React.useEffect;
+const EDIT_MODE = false;
+const C = {
+bg: '#0A0E0C',
+border: 'rgba(230,237,232,0.10)',
+borderStrong: 'rgba(230,237,232,0.18)',
+text: '#E6EDE8',
+textMute: '#8A968F',
+textFaint: '#5C6862',
+emerald: '#15C56B',
+emeraldDim: 'rgba(21,197,107,0.16)',
+emeraldBright: '#3FE08A',
+amber: '#F0A833',
+teal: '#1FB8B8',
+tealDim: 'rgba(31,184,184,0.16)',
+red: '#F0473D',
+redBright: '#FF8A80',
+redDim: 'rgba(240,71,61,0.16)',
+green: '#3FE08A',
+greenDim: 'rgba(63,224,138,0.16)',
+magenta: '#E0479E',
+magentaDim: 'rgba(224,71,158,0.16)'
+};
+const LAST_UPDATED = 'Jun 22, 2026 \u00B7 4:03 PM PT / 7:03 PM ET';
+const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jun 12-14', tag: 'FINAL', tab: null, externalUrl: 'https://www.boxofficemojo.com/weekend/2026W24/' };
+const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jun 19-21', tag: 'IN PROGRESS', tab: 'top10' };
+const NEXT_WEEKEND = { id: 'next', label: 'Next weekend', range: 'Jun 26-28', tag: 'UPCOMING', tab: 'tracking' };
+const WEEKENDS = [LAST_WEEKEND, THIS_WEEKEND, NEXT_WEEKEND];
+const DIST_OPTIONS = [
+'Universal', 'Focus Features', 'Paramount', 'A24', 'Amazon MGM', 'Disney', 'Walt Disney',
+'Lionsgate', 'Trafalgar', 'Bleecker Street', 'Neon', 'Warner Bros.', 'Fathom Entertainment',
+'Roadside Attractions', 'Searchlight Pictures', 'Angel Studios', 'Sony Pictures',
+'Magnolia Pictures', 'Ketchup Entertainment', '20th Century Studios', 'Vertical Entertainment',
+'IFC Films', 'Sony Pictures Classics', 'Strand Releasing', 'Film Movement'
+];
+const DIST_COLOR = {
+'Universal': '#1FB8B8', 'Focus Features': '#1FB8B8', 'Paramount': '#5C8FF0', 'A24': '#15C56B',
+'Amazon MGM': '#F0913D', 'Disney': '#5C8FF0', 'Walt Disney': '#5C8FF0', 'Lionsgate': '#B0A8D8',
+'Trafalgar': '#9AA3AC', 'Bleecker Street': '#9AA3AC', 'Neon': '#F0473D', 'Warner Bros.': '#F0A833',
+'Fathom Entertainment': '#9AA3AC', 'Roadside Attractions': '#D88FC9', 'Searchlight Pictures': '#5C8FF0',
+'Angel Studios': '#F0A833', 'Sony Pictures': '#9AA3AC', 'Magnolia Pictures': '#D88FC9',
+'Ketchup Entertainment': '#F0473D', '20th Century Studios': '#5C8FF0', 'Vertical Entertainment': '#9AA3AC',
+'IFC Films': '#9AA3AC', 'Sony Pictures Classics': '#B0A8D8', 'Strand Releasing': '#9AA3AC', 'Film Movement': '#9AA3AC'
+};
+const DIST_CODE = {
+'Universal': 'UNI', 'Focus Features': 'FOC', 'Paramount': 'PAR', 'A24': 'A24', 'Amazon MGM': 'MGM',
+'Disney': 'DIS', 'Walt Disney': 'DIS', 'Lionsgate': 'LGF', 'Trafalgar': 'TRF', 'Bleecker Street': 'BLK',
+'Neon': 'NEON', 'Warner Bros.': 'WB', 'Fathom Entertainment': 'FTH', 'Roadside Attractions': 'RSA',
+'Searchlight Pictures': 'SRL', 'Angel Studios': 'ANG', 'Sony Pictures': 'SNY', 'Magnolia Pictures': 'MAG',
+'Ketchup Entertainment': 'KET', '20th Century Studios': '20C', 'Vertical Entertainment': 'VERT',
+'IFC Films': 'IFC', 'Sony Pictures Classics': 'SPC', 'Strand Releasing': 'STRD', 'Film Movement': 'FLMT'
+};
+function DistBadge(props) {
+const name = props.name;
+const color = DIST_COLOR[name] || '#8A8E96';
+const code = DIST_CODE[name] || name.slice(0,3).toUpperCase();
+return e('span', {
+style: {
+display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+fontSize: 9.5, fontWeight: 800, letterSpacing: 0.5,
+padding: '2px 6px', borderRadius: 3,
+background: 'rgba(255,255,255,0.04)',
+border: '1px solid ' + color + '55',
+color: color, minWidth: 30
+}
+}, code);
+}
+const TOP10_INIT = [
+{ rank: 1, prev: null, weekendNum: 1, title: 'Toy Story 5', gross: 159677837, change: null, theaters: 4425, avg: 36085, total: 159677837, global: 312000000, distributor: 'Walt Disney' },
+{ rank: 2, prev: 1, weekendNum: 2, title: 'Disclosure Day', gross: 17704140, change: -60, theaters: 3824, avg: 4630, total: 78987640, global: 161400000, distributor: 'Universal' },
+{ rank: 3, prev: 2, weekendNum: 6, title: 'Obsession', gross: 13397205, change: -30, theaters: 3053, avg: 4388, total: 215031825, global: 328800000, distributor: 'Focus Features' },
+{ rank: 4, prev: 4, weekendNum: 4, title: 'Backrooms', gross: 7172988, change: -38, theaters: 2851, avg: 2516, total: 175053084, global: 286200000, distributor: 'A24' },
+{ rank: 5, prev: 3, weekendNum: 3, title: 'Scary Movie', gross: 6386488, change: -55, theaters: 2725, avg: 2344, total: 97249724, global: 201400000, distributor: 'Paramount' },
+{ rank: 6, prev: 5, weekendNum: 3, title: 'Masters of the Universe', gross: 6175230, change: -31, theaters: 2517, avg: 2453, total: 57489787, global: 102900000, distributor: 'Amazon MGM' },
+{ rank: 7, prev: 6, weekendNum: 5, title: 'Star Wars: The Mandalorian and Grogu', gross: 4174039, change: -13, theaters: 2000, avg: 2087, total: 172039029, global: 327500000, distributor: 'Disney' },
+{ rank: 8, prev: null, weekendNum: 1, title: 'The Death of Robin Hood', gross: 2867662, change: null, theaters: 1762, avg: 1628, total: 2867662, global: null, distributor: 'A24' },
+{ rank: 9, prev: null, weekendNum: 1, title: 'Leviticus', gross: 2610696, change: null, theaters: 1076, avg: 2426, total: 2610696, global: null, distributor: 'Neon' },
+{ rank: 10, prev: 7, weekendNum: 9, title: 'Michael', gross: 2156843, change: -49, theaters: 1434, avg: 1504, total: 367887098, global: 958900000, distributor: 'Lionsgate' }
+];
+const TOTAL_WEEKEND_GROSS = 229276961;
+const PREVIOUS_WEEKEND_CHAMP = { title: 'Disclosure Day', distributor: 'Universal', theaters: 3824, gross: 44530925, avg: 11645, range: 'Jun 12-14' };
+const YOY = { thisYear: 229276961, lastYear: 197650000, tenYearAvg: 165800000 };
+const DAILY = [
+{ title: 'Toy Story 5', daily: 40812703, dailyChange: -15, theaters: 4425, avg: 9223 },
+{ title: 'Disclosure Day', daily: 6536810, dailyChange: 6, theaters: 3824, avg: 1709 },
+{ title: 'Obsession', daily: 3467830, dailyChange: -33, theaters: 3053, avg: 1136 },
+{ title: 'Masters of the Universe', daily: 2688457, dailyChange: 33, theaters: 2517, avg: 1068 },
+{ title: 'Backrooms', daily: 1936509, dailyChange: -30, theaters: 2851, avg: 679 },
+{ title: 'Scary Movie', daily: 1803722, dailyChange: -26, theaters: 2725, avg: 662 },
+{ title: 'Star Wars: The Mandalorian and Grogu', daily: 1542001, dailyChange: 5, theaters: 2000, avg: 771 },
+{ title: 'The Death of Robin Hood', daily: 907608, dailyChange: 7, theaters: 1762, avg: 515 },
+{ title: 'Michael', daily: 742238, dailyChange: -7, theaters: 1434, avg: 518 },
+{ title: 'Leviticus', daily: 514517, dailyChange: -30, theaters: 1076, avg: 478 }
+];
+const DAILY_DATE = 'Sunday, June 21';
+const DAILY_DATE_SHORT = 'Jun 21';
+const TRACKING_INIT = [
+{ title: 'Supergirl', distributor: 'Warner Bros.', theaters: 4200, range: [45000000, 55000000], actual: null, confidence: 'medium', momentum: 'softening', note: 'Box Office Pro\'s latest long-range forecast has fallen again to $45-55M, the lowest yet and the second major outlet to land below earlier figures. The bigger problem: Toy Story 5\'s second weekend could outgross Supergirl\'s entire opening, putting the DC title at real risk of missing #1 in its own debut frame.' },
+{ title: 'Jackass: Best and Last', distributor: 'Paramount', theaters: 3000, range: [12000000, 18000000], actual: null, confidence: 'medium', momentum: 'stable', note: 'Billed as the franchise\'s final installment, leaning on existing fan goodwill from Johnny Knoxville and crew. Mostly clip-based with minimal new footage shot, which could cap upside against the high bar set by the COVID-era Jackass Forever.' }
+];
+const TRACKING_WEEKEND = 'Jun 26-28';
+const RELEASES = [
+{ date: 'Jun 26', title: 'Couture', distributor: 'Vertical Entertainment', type: 'Wide', criticAudience: { rtCritic: 59, rtAudience: null, metacritic: 51, cinemaScore: null } },
+{ date: 'Jun 26', title: 'The Get Out', distributor: 'Vertical Entertainment', type: 'Limited' },
+{ date: 'Jun 26', title: 'Lucky Strike', distributor: 'Roadside Attractions', type: 'Limited' },
+{ date: 'Jun 26', title: 'Bouchra', distributor: 'Film Movement', type: 'Limited' },
+{ date: 'Jun 26', title: 'Drunken Noodles', distributor: 'Strand Releasing', type: 'Limited' },
+{ date: 'Jul 1', title: 'Minions & Monsters', distributor: 'Universal', type: 'Wide' },
+{ date: 'Jul 3', title: 'Young Washington', distributor: 'Angel Studios', type: 'Wide' },
+{ date: 'Jul 10', title: 'Moana', distributor: 'Walt Disney', type: 'Wide' },
+{ date: 'Jul 10', title: 'Evil Dead Burn', distributor: 'Warner Bros.', type: 'Wide' },
+{ date: 'Jul 17', title: 'The Odyssey', distributor: 'Universal', type: 'Wide', momentum: 'softening', quorum: { interest: 46, interestPrev: 54, awareness: 40, awarenessPrev: 42, genreAvg: 'event-epic' } },
+{ date: 'Jul 24', title: 'Her Private Hell', distributor: 'Neon', type: 'Wide' },
+{ date: 'Jul 31', title: 'Spider-Man: Brand New Day', distributor: 'Sony Pictures', type: 'Wide' },
+{ date: 'Jul 31', title: 'I Want Your Sex', distributor: 'Magnolia Pictures', type: 'Wide' },
+{ date: 'Aug 7', title: 'Super Troopers 3', distributor: 'Searchlight Pictures', type: 'Wide' },
+{ date: 'Aug 14', title: 'PAW Patrol: The Dino Movie', distributor: 'Paramount', type: 'Wide' },
+{ date: 'Aug 14', title: 'The End of Oak Street', distributor: 'Warner Bros.', type: 'Wide' },
+{ date: 'Aug 14', title: 'Flowervale Street', distributor: 'Warner Bros.', type: 'Limited' },
+{ date: 'Aug 14', title: 'The Rivals of Amziah King', distributor: 'Sony Pictures Classics', type: 'Limited' },
+{ date: 'Aug 21', title: 'Insidious: Out of the Further', distributor: 'Sony Pictures', type: 'Wide' },
+{ date: 'Aug 21', title: 'Mutiny', distributor: 'Lionsgate', type: 'Wide' },
+{ date: 'Aug 28', title: 'Coyote vs. Acme', distributor: 'Ketchup Entertainment', type: 'Wide' },
+{ date: 'Aug 28', title: 'The Dog Stars', distributor: '20th Century Studios', type: 'Wide' }
+];
+function fmtMoney(n) {
+if (n === null || n === undefined) return String.fromCharCode(8212);
+if (n >= 1000000000) return '$' + (n / 1000000000).toFixed(2) + 'B';
+if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+if (n >= 1000) return '$' + Math.round(n / 1000) + 'K';
+return '$' + n;
+}
+function fmtFull(n) { return '$' + n.toLocaleString(); }
+function pct(n, d) { return Math.round((n / d) * 100); }
+function Ticker(props) {
+const items = props.items;
+const breakingTag = e('span', { key: 'breaking', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
+e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
+e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
+e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS')
+)
+);
+const renderItem = function (m, key) {
+return e('span', { key: key, style: { display: 'inline-flex', alignItems: 'center', gap: 6, padding: '0 18px' } },
+e('span', { style: { background: 'rgba(230,237,232,0.10)', color: C.textMute, fontSize: 9.5, fontWeight: 800, padding: '1px 6px', borderRadius: 3, fontVariantNumeric: 'tabular-nums' } }, '#' + m.rank),
+e('span', { style: { fontWeight: 400, fontFamily: "'Readex Pro', sans-serif", color: C.text } }, m.title),
+e('span', { style: { color: C.textFaint } }, '\u2022'),
+e('span', { style: { color: C.emeraldBright, fontVariantNumeric: 'tabular-nums' } }, fmtMoney(m.gross)),
+m.change === null
+? e('span', { style: { background: 'rgba(212,162,76,0.16)', color: C.amber, fontSize: 9, fontWeight: 800, padding: '1px 5px', borderRadius: 3 } }, 'NEW')
+: e(ChangeBadge, { change: m.change }),
+e('span', { style: { color: C.textFaint } }, '\u2022'),
+e('span', { style: { color: C.textMute, fontVariantNumeric: 'tabular-nums' } }, m.global ? fmtMoney(m.global) + ' WW' : 'US')
+);
+};
+return e('div', { style: { position: 'sticky', top: 0, zIndex: 100, boxShadow: '0 6px 16px rgba(0,0,0,0.45)' } },
+e('div', { style: { overflow: 'hidden', borderTop: '1px solid ' + C.border, borderBottom: '1px solid ' + C.border, background: '#0A0E0C', whiteSpace: 'nowrap' } },
+e('div', { style: { display: 'inline-flex', animation: 'ticker 38s linear infinite', fontSize: 11.5, padding: '7px 0' } },
+breakingTag,
+items.map(function (m, i) { return renderItem(m, 'a' + i); }),
+e('span', { key: 'breaking2', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
+e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
+e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
+e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS')
+)
+),
+items.map(function (m, i) { return renderItem(m, 'b' + i); })
+)
+)
+);
+}
+function WeekendFlag(props) {
+const w = props.weekend;
+const active = props.active;
+const onClick = props.onClick;
+const styles = {
+'FINAL': { bg: 'rgba(138,150,143,0.12)', border: 'rgba(138,150,143,0.4)', fg: '#A8B3AC' },
+'IN PROGRESS': { bg: C.emeraldDim, border: C.emerald, fg: C.emeraldBright },
+'UPCOMING': { bg: 'rgba(212,162,76,0.12)', border: 'rgba(212,162,76,0.45)', fg: C.amber }
+};
+const s = styles[w.tag];
+return e('div', {
+onClick: onClick,
+style: {
+display: 'inline-flex', alignItems: 'center', gap: 8, cursor: 'pointer',
+background: s.bg, border: '1px solid ' + (active ? s.fg : s.border),
+borderRadius: 5, padding: '6px 12px',
+boxShadow: active ? '0 0 0 1px ' + s.fg + '55' : 'none'
+}
+},
+e('span', { style: { fontSize: 10, fontWeight: 800, letterSpacing: 0.8, color: s.fg, textTransform: 'uppercase' } }, w.label),
+e('span', { style: { width: 1, height: 12, background: s.border } }),
+e('span', { style: { fontSize: 11.5, fontWeight: 600, color: C.text, fontVariantNumeric: 'tabular-nums' } }, w.range),
+w.tag === 'IN PROGRESS' ? e('span', { style: { width: 6, height: 6, borderRadius: '50%', background: C.green, animation: 'pulse 1.6s ease-in-out infinite' } }) : null
+);
+}
+function HeroRow(props) {
+const live = props.live;
+const kind = props.kind;
+const isMobile = props.isMobile;
+const isLive = kind === 'live';
+const accent = isLive ? C.emerald : C.textFaint;
+const accentBright = isLive ? C.emeraldBright : '#A8B3AC';
+return e('div', {
+style: {
+display: 'flex', alignItems: 'center', gap: isMobile ? 10 : 16, padding: '12px 0',
+borderTop: isLive ? 'none' : '1px solid ' + C.border
+}
+},
+e('div', { style: { display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: isMobile ? 38 : 56, flexShrink: 0 } },
+e('div', { style: { fontSize: isMobile ? (isLive ? 22 : 18) : (isLive ? 30 : 24), fontWeight: 900, fontFamily: "'Poppins', sans-serif", letterSpacing: 3, color: accent, lineHeight: 1 } }, '#1'),
+e('div', { style: { display: 'flex', alignItems: 'center', gap: 4, marginTop: 4 } },
+isLive ? e('span', { style: { width: 6, height: 6, borderRadius: '50%', background: C.green, animation: 'pulse 1.6s ease-in-out infinite' } }) : null,
+e('span', { style: { fontSize: 7.5, fontWeight: 800, letterSpacing: 0.4, color: isLive ? C.green : '#A8B3AC', textTransform: 'uppercase', textAlign: 'center', maxWidth: isMobile ? 44 : 60 } }, isLive ? live.tagLabel : 'Previous')
+)
+),
+e('div', { style: { flex: 1, minWidth: 0, overflow: 'hidden' } },
+e('div', { style: { fontSize: isMobile ? (isLive ? 13.5 : 12) : (isLive ? 16 : 14), fontWeight: 400, fontFamily: "'Readex Pro', sans-serif", color: isLive ? C.text : C.textMute, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: isMobile ? 'nowrap' : 'normal' } }, live.title),
+e('div', { style: { fontSize: isMobile ? 9.5 : 11, color: C.textFaint, marginTop: 3, display: 'flex', alignItems: 'center', gap: 5, flexWrap: 'wrap' } },
+e(DistBadge, { name: live.distributor, onChange: live.onDistChange || function () {} }),
+isMobile ? null : (' \u00B7 ' + live.theaters.toLocaleString() + ' theaters' + (live.extra ? ' \u00B7 ' + live.extra : ''))
+)
+),
+e('div', { style: { textAlign: 'right', flexShrink: 0 } },
+e('div', { style: { fontSize: isMobile ? (isLive ? 15 : 13) : (isLive ? 19 : 16), fontWeight: 700, fontVariantNumeric: 'tabular-nums', color: isLive ? accentBright : C.textMute } }, live.amountLabel),
+e('div', { style: { fontSize: isMobile ? 8 : 9.5, color: accentBright, letterSpacing: 0.2 } }, live.subLabel)
+)
+);
+}
+function RankDelta(props) {
+const rank = props.rank, prev = props.prev;
+if (prev === null) return e('span', { style: { color: C.amber, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.5, background: 'rgba(212,162,76,0.14)', padding: '1px 5px', borderRadius: 3 } }, 'NEW');
+const diff = prev - rank;
+if (diff === 0) return e('span', { style: { color: C.textFaint, fontSize: 12 } }, String.fromCharCode(8212));
+if (diff > 0) return e('span', { style: { color: C.green, fontSize: 12, fontWeight: 600 } }, '\u25B2 ' + diff);
+return e('span', { style: { color: C.red, fontSize: 12, fontWeight: 600 } }, '\u25BC ' + Math.abs(diff));
+}
+function ChangeBadge(props) {
+const change = props.change;
+if (change === null) return e('span', { style: { color: C.textFaint, fontSize: 12 } }, String.fromCharCode(8212));
+const positive = change >= 0;
+return e('span', { style: { color: positive ? C.green : C.red, fontSize: 12, fontWeight: 600, fontVariantNumeric: 'tabular-nums' } },
+e('span', { style: { marginRight: 1, position: 'relative', top: -1 } }, positive ? '\u25B2' : '\u25BC'),
+Math.abs(change) + '%'
+);
+}
+function ConfidenceTag(props) {
+const map = {
+high: { bg: C.greenDim || 'rgba(63,190,122,0.16)', fg: C.green, label: 'High confidence' },
+medium: { bg: 'rgba(212,162,76,0.16)', fg: C.amber, label: 'Developing' },
+low: { bg: C.redDim, fg: C.red, label: 'Low confidence' }
+};
+const s = map[props.level] || map.medium;
+return e('span', { style: { background: s.bg, color: s.fg, fontSize: 10, fontWeight: 800, letterSpacing: 0.5, padding: '3px 8px', borderRadius: 3, textTransform: 'uppercase' } }, s.label);
+}
+function MomentumBadge(props) {
+const map = {
+rising: { bg: C.greenDim, fg: C.green, label: 'Rising', arrow: '\u25B2' },
+stable: { bg: 'rgba(212,162,76,0.16)', fg: C.amber, label: 'Stable', arrow: '\u2014' },
+softening: { bg: C.redDim, fg: C.red, label: 'Softening', arrow: '\u25BC' }
+};
+const s = map[props.level];
+if (!s) return null;
+return e('span', { style: { display: 'inline-flex', alignItems: 'center', gap: 4, background: s.bg, color: s.fg, fontSize: 10, fontWeight: 800, letterSpacing: 0.4, padding: '3px 8px', borderRadius: 3, textTransform: 'uppercase' } },
+e('span', { style: { fontSize: 9 } }, s.arrow), s.label
+);
+}
+function QuorumStat(props) {
+const q = props.data;
+if (!q) return null;
+const interestDelta = q.interest - q.interestPrev;
+const awarenessDelta = q.awareness - q.awarenessPrev;
+return e('div', { style: { display: 'flex', alignItems: 'center', gap: 14, marginTop: 8, flexWrap: 'wrap' } },
+e('div', { style: { display: 'flex', alignItems: 'center', gap: 5 } },
+e('span', { style: { fontSize: 9.5, fontWeight: 800, letterSpacing: 0.4, color: C.textFaint, textTransform: 'uppercase' } }, 'Interest'),
+e('span', { style: { fontSize: 12, fontWeight: 700, color: C.text, fontVariantNumeric: 'tabular-nums' } }, q.interest),
+e('span', { style: { fontSize: 10.5, fontWeight: 600, color: interestDelta > 0 ? C.green : interestDelta < 0 ? C.red : C.textFaint } }, (interestDelta > 0 ? '+' : '') + interestDelta)
+),
+e('div', { style: { display: 'flex', alignItems: 'center', gap: 5 } },
+e('span', { style: { fontSize: 9.5, fontWeight: 800, letterSpacing: 0.4, color: C.textFaint, textTransform: 'uppercase' } }, 'Awareness'),
+e('span', { style: { fontSize: 12, fontWeight: 700, color: C.text, fontVariantNumeric: 'tabular-nums' } }, q.awareness),
+e('span', { style: { fontSize: 10.5, fontWeight: 600, color: awarenessDelta > 0 ? C.green : awarenessDelta < 0 ? C.red : C.textFaint } }, (awarenessDelta > 0 ? '+' : '') + awarenessDelta)
+),
+e('span', { style: { fontSize: 10, color: C.textFaint } }, 'vs ' + q.genreAvg + ' genre avg \u00B7 The Quorum')
+);
+}
+function scoreColor(val, scale) {
+const pct = scale === 100 ? val : val;
+if (pct >= 80) return C.green;
+if (pct >= 60) return C.amber;
+return C.red;
+}
+function CriticAudienceStat(props) {
+const d = props.data;
+if (!d) return null;
+const parts = [];
+if (d.rtCritic !== null && d.rtCritic !== undefined) {
+parts.push(e('div', { key: 'rtc', style: { display: 'flex', alignItems: 'center', gap: 4 } },
+e('span', { style: { fontSize: 9.5, fontWeight: 800, letterSpacing: 0.3, color: C.textFaint } }, 'RT-C'),
+e('span', { style: { fontSize: 12, fontWeight: 700, color: scoreColor(d.rtCritic, 100), fontVariantNumeric: 'tabular-nums' } }, d.rtCritic + '%')
+));
+}
+if (d.rtAudience !== null && d.rtAudience !== undefined) {
+parts.push(e('div', { key: 'rta', style: { display: 'flex', alignItems: 'center', gap: 4 } },
+e('span', { style: { fontSize: 9.5, fontWeight: 800, letterSpacing: 0.3, color: C.textFaint } }, 'RT-A'),
+e('span', { style: { fontSize: 12, fontWeight: 700, color: scoreColor(d.rtAudience, 100), fontVariantNumeric: 'tabular-nums' } }, d.rtAudience + '%')
+));
+}
+if (d.metacritic !== null && d.metacritic !== undefined) {
+parts.push(e('div', { key: 'mc', style: { display: 'flex', alignItems: 'center', gap: 4 } },
+e('span', { style: { fontSize: 9.5, fontWeight: 800, letterSpacing: 0.3, color: C.textFaint } }, 'META'),
+e('span', { style: { fontSize: 12, fontWeight: 700, color: scoreColor(d.metacritic, 100), fontVariantNumeric: 'tabular-nums' } }, d.metacritic)
+));
+}
+if (d.cinemaScore) {
+const goodGrades = ['A+', 'A', 'A-', 'B+'];
+const okGrades = ['B', 'B-', 'C+'];
+const csColor = goodGrades.indexOf(d.cinemaScore) > -1 ? C.green : okGrades.indexOf(d.cinemaScore) > -1 ? C.amber : C.red;
+parts.push(e('div', { key: 'cs', style: { display: 'flex', alignItems: 'center', gap: 4 } },
+e('span', { style: { fontSize: 9.5, fontWeight: 800, letterSpacing: 0.3, color: C.textFaint } }, 'CINEMASCORE'),
+e('span', { style: { fontSize: 12, fontWeight: 700, color: csColor, fontVariantNumeric: 'tabular-nums' } }, d.cinemaScore)
+));
+}
+if (parts.length === 0) return null;
+return e('div', { style: { display: 'flex', alignItems: 'center', gap: 12, marginTop: 8, flexWrap: 'wrap' } }, parts);
+}
+function SortHeader(props) {
+const active = props.sortKey === props.col;
+return e('div', {
+onClick: function () { props.onSort(props.col); },
+style: { textAlign: props.right ? 'right' : 'left', cursor: 'pointer', userSelect: 'none', color: active ? C.text : C.textMute, display: 'flex', justifyContent: props.right ? 'flex-end' : 'flex-start', alignItems: 'center', gap: 3 }
+},
+props.label,
+active ? e('span', { style: { fontSize: 9 } }, props.sortDir === 'desc' ? '\u25BC' : '\u25B2') : null
+);
+}
+function YoyBlock(props) {
+const yoyMode = props.yoyMode;
+const setYoyMode = props.setYoyMode;
+const compareVal = YOY[yoyMode];
+const diffPct = Math.round((YOY.thisYear - compareVal) / compareVal * 100);
+const maxScale = Math.max(YOY.thisYear, compareVal) * 1.08;
+return e('div', { style: { marginTop: 26, paddingTop: 20, borderTop: '1px solid ' + C.border } },
+e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12, flexWrap: 'wrap', gap: 8 } },
+e('div', { style: { fontSize: 11, color: C.textMute, letterSpacing: 0.3, textTransform: 'uppercase' } }, 'Year-over-year pace'),
+e('div', { style: { display: 'flex', gap: 4 } },
+e('button', { onClick: function () { setYoyMode('lastYear'); }, style: { background: yoyMode === 'lastYear' ? C.emeraldDim : 'transparent', border: '1px solid ' + (yoyMode === 'lastYear' ? C.emerald : C.border), color: yoyMode === 'lastYear' ? C.emeraldBright : C.textMute, fontSize: 10.5, fontWeight: 700, padding: '5px 10px', borderRadius: 4, cursor: 'pointer', letterSpacing: 0.3 } }, 'VS LAST YEAR'),
+e('button', { onClick: function () { setYoyMode('tenYearAvg'); }, style: { background: yoyMode === 'tenYearAvg' ? C.emeraldDim : 'transparent', border: '1px solid ' + (yoyMode === 'tenYearAvg' ? C.emerald : C.border), color: yoyMode === 'tenYearAvg' ? C.emeraldBright : C.textMute, fontSize: 10.5, fontWeight: 700, padding: '5px 10px', borderRadius: 4, cursor: 'pointer', letterSpacing: 0.3 } }, '10-YR AVG')
+)
+),
+e('div', { style: { display: 'flex', justifyContent: 'space-between', fontSize: 11.5, marginBottom: 5 } },
+e('span', { style: { color: C.text, fontWeight: 600 } }, '2026 \u00B7 ' + fmtMoney(YOY.thisYear)),
+e(ChangeBadge, { change: diffPct })
+),
+e('div', { style: { height: 10, background: 'rgba(255,255,255,0.05)', borderRadius: 4, overflow: 'hidden', marginBottom: 10 } },
+e('div', { style: { height: '100%', width: (YOY.thisYear / maxScale * 100) + '%', background: C.emerald, borderRadius: 4 } })
+),
+e('div', { style: { display: 'flex', justifyContent: 'space-between', fontSize: 11.5, marginBottom: 5 } },
+e('span', { style: { color: C.textMute } }, (yoyMode === 'lastYear' ? '2025' : '10-yr avg') + ' \u00B7 ' + fmtMoney(compareVal))
+),
+e('div', { style: { height: 10, background: 'rgba(255,255,255,0.05)', borderRadius: 4, overflow: 'hidden' } },
+e('div', { style: { height: '100%', width: (compareVal / maxScale * 100) + '%', background: C.textFaint, borderRadius: 4 } })
+),
+e('div', { style: { marginTop: 14, fontSize: 11.5, color: C.textMute, lineHeight: 1.6 } }, 'Summer 2026 is running 16% ahead of summer 2025 and just 1.1% behind 2019 through this point in the season, per Rentrak \u2014 the strongest pre-Labor Day pace since the pandemic.')
+);
+}
+function Dashboard() {
+const [tab, setTab] = useState('top10');
+const [sortKey, setSortKey] = useState('gross');
+const [sortDir, setSortDir] = useState('desc');
+const [yoyMode, setYoyMode] = useState('lastYear');
+const [top10, setTop10] = useState(TOP10_INIT);
+const [tracking] = useState(TRACKING_INIT);
+const [viewport, setViewport] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+const [drawerOpen, setDrawerOpen] = useState(false);
+useEffect(function () {
+function handleResize() { setViewport(window.innerWidth); }
+window.addEventListener('resize', handleResize);
+return function () { window.removeEventListener('resize', handleResize); };
+}, []);
+const isMobile = viewport < 640;
+const isTablet = viewport >= 640 && viewport < 900;
+function handleSort(key) {
+if (key === sortKey) { setSortDir(sortDir === 'desc' ? 'asc' : 'desc'); }
+else { setSortKey(key); setSortDir('desc'); }
+}
+function updateDistributor(rank, newDist) {
+setTop10(top10.map(function (m) { return m.rank === rank ? Object.assign({}, m, { distributor: newDist }) : m; }));
+}
+const sortedTop10 = useMemo(function () {
+const arr = top10.slice();
+arr.sort(function (a, b) {
+let av = a[sortKey], bv = b[sortKey];
+if (sortKey === 'change') { av = av === null ? -999 : av; bv = bv === null ? -999 : bv; }
+if (sortKey === 'global') { av = av === null ? -1 : av; bv = bv === null ? -1 : bv; }
+const dir = sortDir === 'desc' ? -1 : 1;
+if (av < bv) return -dir;
+if (av > bv) return dir;
+return 0;
+});
+return arr;
+}, [sortKey, sortDir, top10]);
+const sumGross = useMemo(function () { return top10.reduce(function (a, m) { return a + m.gross; }, 0); }, [top10]);
+const sumDaily = useMemo(function () { return DAILY.reduce(function (a, m) { return a + m.daily; }, 0); }, []);
+const leadingProjection = useMemo(function () {
+if (!tracking || tracking.length === 0) return null;
+let best = null;
+let bestVal = -1;
+tracking.forEach(function (t) {
+if (t.actual === null || t.actual === undefined) return;
+if (t.actual > bestVal) { bestVal = t.actual; best = t; }
+});
+if (!best) return null;
+return { item: best, value: bestVal };
+}, [tracking]);
+const wrap = { background: C.bg, color: C.text, fontFamily: "'JetBrains Mono', monospace", width: '100%', boxSizing: 'border-box' };
+const sectionPad = { padding: isMobile ? '18px 14px' : '26px 30px' };
+const tabs = [
+{ id: 'top10', label: 'Weekend' },
+{ id: 'daily', label: 'Daily' },
+{ id: 'tracking', label: 'Projections' },
+{ id: 'calendar', label: 'Release Calendar' }
+];
+const liveData = leadingProjection ? {
+title: leadingProjection.item.title,
+distributor: leadingProjection.item.distributor,
+theaters: leadingProjection.item.theaters,
+extra: null,
+amountLabel: '~' + fmtMoney(leadingProjection.value),
+subLabel: 'PROJECTED 3-DAY',
+tagLabel: 'LATEST'
+} : {
+title: top10[0].title,
+distributor: top10[0].distributor,
+theaters: top10[0].theaters,
+extra: fmtFull(top10[0].avg) + ' avg',
+amountLabel: fmtMoney(top10[0].gross),
+subLabel: 'FINAL 3-DAY',
+tagLabel: 'LATEST'
+};
+const finalData = {
+title: PREVIOUS_WEEKEND_CHAMP.title,
+distributor: PREVIOUS_WEEKEND_CHAMP.distributor,
+theaters: PREVIOUS_WEEKEND_CHAMP.theaters,
+extra: fmtFull(PREVIOUS_WEEKEND_CHAMP.avg) + ' avg',
+amountLabel: fmtMoney(PREVIOUS_WEEKEND_CHAMP.gross),
+subLabel: 'FINAL 3-DAY \u00B7 ' + PREVIOUS_WEEKEND_CHAMP.range
+};
+const header = e('div', { style: { borderBottom: '1px solid ' + C.border, padding: isMobile ? '16px 14px 0' : '22px 30px 0' } },
+e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' } },
+e('div', { style: { marginBottom: isMobile ? 12 : 16 } },
+e('div', { style: { fontSize: isMobile ? 32 : 42, fontWeight: 900, letterSpacing: 0.5, color: C.text, fontFamily: "'Poppins', sans-serif", lineHeight: 1 } }, 'BOFFO'),
+e('div', { style: { fontSize: isMobile ? 10 : 11.5, color: C.textFaint, letterSpacing: 1.2, textTransform: 'uppercase', marginTop: 2 } }, 'Box Office Brief'),
+e('div', { style: { fontSize: isMobile ? 9 : 10, color: C.textFaint, letterSpacing: 0.4, marginTop: 3, fontVariantNumeric: 'tabular-nums' } }, 'Updated ' + LAST_UPDATED)
+),
+e('button', {
+onClick: function () { setDrawerOpen(!drawerOpen); },
+style: {
+background: 'none', border: 'none', cursor: 'pointer',
+padding: '6px', marginTop: 2, display: 'flex', flexDirection: 'column', gap: 5, alignItems: 'center', justifyContent: 'center'
+}
+},
+[0, 1, 2].map(function (k) { return e('span', { key: k, style: { width: 26, height: 3, background: drawerOpen ? C.emerald : C.text } }); })
+)
+),
+drawerOpen ? e('div', {
+onClick: function () { setDrawerOpen(false); },
+style: { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.75)', zIndex: 200 }
+}) : null,
+e('div', {
+style: {
+position: 'fixed', top: 70, right: isMobile ? 14 : 30, zIndex: 201,
+display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-end',
+transform: drawerOpen ? 'translateX(0)' : 'translateX(120%)',
+opacity: drawerOpen ? 1 : 0,
+transition: 'transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease'
+}
+},
+WEEKENDS.map(function (w) {
+return e(WeekendFlag, {
+key: w.id, weekend: w, active: w.tab ? tab === w.tab : false,
+onClick: function () {
+if (w.tab) { setTab(w.tab); setDrawerOpen(false); }
+else if (w.externalUrl) { window.open(w.externalUrl, '_blank'); setDrawerOpen(false); }
+}
+});
+}),
+e('div', {
+onClick: function () { setTab('daily'); setDrawerOpen(false); },
+style: {
+display: 'inline-flex', alignItems: 'center', gap: 8, cursor: 'pointer',
+background: C.tealDim, border: '1px solid ' + (tab === 'daily' ? C.teal : 'rgba(31,184,184,0.4)'),
+borderRadius: 5, padding: '6px 12px'
+}
+},
+e('span', { style: { fontSize: 10, fontWeight: 800, letterSpacing: 0.8, color: C.teal, textTransform: 'uppercase' } }, 'Daily'),
+e('span', { style: { width: 1, height: 12, background: 'rgba(31,184,184,0.4)' } }),
+e('span', { style: { fontSize: 11.5, fontWeight: 600, color: C.text, fontVariantNumeric: 'tabular-nums' } }, DAILY_DATE_SHORT)
+)
+),
+e('div', { style: { marginTop: 12, border: '1px solid ' + C.borderStrong, borderRadius: 10, padding: isMobile ? '4px 10px' : '4px 16px' } },
+liveData ? e(HeroRow, { kind: 'live', live: liveData, isMobile: isMobile }) : null,
+e(HeroRow, { kind: 'final', live: finalData, isMobile: isMobile })
+),
+e('div', { style: { display: 'flex', gap: 2, marginTop: 4, overflowX: 'auto', WebkitOverflowScrolling: 'touch' } },
+tabs.map(function (t) {
+const tabColor = t.id === 'top10' ? C.emerald : t.id === 'daily' ? C.teal : t.id === 'tracking' ? C.amber : t.id === 'calendar' ? C.magenta : C.emerald;
+return e('button', {
+key: t.id,
+onClick: function () { setTab(t.id); },
+style: {
+background: 'none', border: 'none', flexShrink: 0,
+borderBottom: tab === t.id ? '2px solid ' + tabColor : '2px solid transparent',
+color: tab === t.id ? C.text : C.textMute,
+fontSize: isMobile ? 11.5 : 12.5, fontWeight: tab === t.id ? 700 : 500,
+padding: isMobile ? '10px 10px 10px' : '10px 13px 11px', cursor: 'pointer', letterSpacing: 0.2, whiteSpace: 'nowrap'
+}
+}, t.label);
+})
+)
+);
+let body = null;
+if (tab === 'top10') {
+if (isMobile) {
+body = e('div', { style: sectionPad },
+e('div', { style: { fontSize: 11, color: C.textMute, marginBottom: 14, letterSpacing: 0.2 } }, 'Weekend of ' + THIS_WEEKEND.range),
+e('div', { style: { display: 'flex', gap: 6, marginBottom: 14, overflowX: 'auto', paddingBottom: 4 } },
+[
+{ key: 'gross', label: 'Weekend' },
+{ key: 'change', label: 'Change' },
+{ key: 'avg', label: 'Per-theater' },
+{ key: 'total', label: 'Domestic' },
+{ key: 'global', label: 'Global' }
+].map(function (s) {
+const active = sortKey === s.key;
+return e('button', {
+key: s.key,
+onClick: function () { handleSort(s.key); },
+style: {
+flexShrink: 0, background: active ? 'rgba(230,237,232,0.10)' : 'transparent',
+border: '1px solid ' + (active ? C.borderStrong : C.border),
+color: active ? C.text : C.textMute,
+fontSize: 10.5, fontWeight: 700, padding: '5px 9px', borderRadius: 4, cursor: 'pointer', whiteSpace: 'nowrap'
+}
+}, 'Sort: ' + s.label + (active ? (sortDir === 'desc' ? ' \u25BC' : ' \u25B2') : ''));
+})
+),
+sortedTop10.map(function (m) {
+return e('div', { key: m.rank, style: { padding: '12px 0', borderBottom: '1px solid ' + C.border } },
+e('div', { style: { display: 'flex', alignItems: 'baseline', gap: 8 } },
+e('div', { style: { fontWeight: 800, fontSize: 15, color: C.emerald, minWidth: 20 } }, m.rank),
+e('div', { style: { flex: 1, fontWeight: 400, fontFamily: "'Readex Pro', sans-serif", fontSize: 13.5 } }, m.title),
+e('div', { style: { fontVariantNumeric: 'tabular-nums', fontWeight: 700, fontSize: 14 } }, fmtMoney(m.gross))
+),
+e('div', { style: { display: 'flex', alignItems: 'center', gap: 7, marginTop: 5, marginLeft: 28 } },
+e(DistBadge, { name: m.distributor, onChange: function (d) { updateDistributor(m.rank, d); } }),
+e('span', { style: { fontSize: 10, color: C.textFaint } }, 'WKND ' + m.weekendNum),
+e(RankDelta, { rank: m.rank, prev: m.prev })
+),
+e('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 6, marginTop: 8, marginLeft: 28, fontSize: 11 } },
+e('div', null,
+e('div', { style: { color: C.textFaint, fontSize: 9 } }, 'CHANGE'),
+e(ChangeBadge, { change: m.change })
+),
+e('div', null,
+e('div', { style: { color: C.textFaint, fontSize: 9 } }, 'THEATERS'),
+e('div', { style: { color: C.textMute, fontVariantNumeric: 'tabular-nums' } }, m.theaters.toLocaleString())
+),
+e('div', null,
+e('div', { style: { color: C.textFaint, fontSize: 9 } }, 'AVG'),
+e('div', { style: { color: C.textMute, fontVariantNumeric: 'tabular-nums' } }, fmtFull(m.avg))
+),
+e('div', null,
+e('div', { style: { color: C.textFaint, fontSize: 9 } }, 'GLOBAL'),
+e('div', { style: { color: m.global ? C.emerald : C.textFaint, fontVariantNumeric: 'tabular-nums' } }, fmtMoney(m.global))
+)
+),
+e('div', { style: { display: 'flex', alignItems: 'center', gap: 8, marginTop: 8, marginLeft: 28 } },
+e('div', { style: { height: 3, background: 'rgba(255,255,255,0.06)', borderRadius: 2, overflow: 'hidden', flex: 1 } },
+e('div', { style: { height: '100%', width: (m.gross / sumGross * 100) + '%', background: 'linear-gradient(90deg, ' + C.emerald + ', ' + C.emeraldBright + ')', borderRadius: 2 } })
+),
+e('span', { style: { fontSize: 9, color: C.textFaint, fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap' } }, Math.round(m.gross / sumGross * 100) + '%')
+)
+);
+}),
+e(YoyBlock, { yoyMode: yoyMode, setYoyMode: setYoyMode })
+);
+} else {
+const cols = isTablet
+? '24px 1fr 80px 64px 76px 70px'
+: '28px 1fr 88px 70px 75px 88px 80px 88px';
+const showTheaters = !isTablet;
+const showTotal = !isTablet;
+body = e('div', { style: sectionPad },
+e('div', { style: { fontSize: 11, color: C.textMute, marginBottom: 14, letterSpacing: 0.2 } }, 'Weekend of ' + THIS_WEEKEND.range + ' \u00B7 click a column to sort'),
+e('div', { style: { display: 'grid', gridTemplateColumns: cols, fontSize: 10.5, color: C.textFaint, paddingBottom: 8, borderBottom: '1px solid ' + C.borderStrong, textTransform: 'uppercase', letterSpacing: 0.4 } },
+e('div', null, '#'),
+e('div', null, 'Title'),
+e(SortHeader, { col: 'gross', label: 'Weekend', right: true, sortKey: sortKey, sortDir: sortDir, onSort: handleSort }),
+e(SortHeader, { col: 'change', label: 'Change', right: true, sortKey: sortKey, sortDir: sortDir, onSort: handleSort }),
+showTheaters ? e(SortHeader, { col: 'theaters', label: 'Theaters', right: true, sortKey: sortKey, sortDir: sortDir, onSort: handleSort }) : null,
+e(SortHeader, { col: 'avg', label: 'Per-theater', right: true, sortKey: sortKey, sortDir: sortDir, onSort: handleSort }),
+showTotal ? e(SortHeader, { col: 'total', label: 'Domestic', right: true, sortKey: sortKey, sortDir: sortDir, onSort: handleSort }) : null,
+e(SortHeader, { col: 'global', label: 'Global', right: true, sortKey: sortKey, sortDir: sortDir, onSort: handleSort })
+),
+sortedTop10.map(function (m) {
+return e('div', { key: m.rank, style: { display: 'grid', gridTemplateColumns: cols, alignItems: 'center', padding: '11px 0', borderBottom: '1px solid ' + C.border, fontSize: 13 } },
+e('div', { style: { fontWeight: 800, fontSize: 14, color: C.emerald } }, m.rank),
+e('div', null,
+e('div', { style: { fontWeight: 400, fontFamily: "'Readex Pro', sans-serif" } }, m.title),
+e('div', { style: { display: 'flex', alignItems: 'center', gap: 7, marginTop: 4, flexWrap: 'wrap' } },
+e(DistBadge, { name: m.distributor, onChange: function (d) { updateDistributor(m.rank, d); } }),
+e('span', { style: { fontSize: 10.5, color: C.textFaint } }, 'WKND ' + m.weekendNum),
+e(RankDelta, { rank: m.rank, prev: m.prev })
+),
+e('div', { style: { display: 'flex', alignItems: 'center', gap: 8, marginTop: 6 } },
+e('div', { style: { height: 3, background: 'rgba(255,255,255,0.06)', borderRadius: 2, overflow: 'hidden', maxWidth: 220, flex: 1 } },
+e('div', { style: { height: '100%', width: (m.gross / sumGross * 100) + '%', background: 'linear-gradient(90deg, ' + C.emerald + ', ' + C.emeraldBright + ')', borderRadius: 2 } })
+),
+e('span', { style: { fontSize: 9.5, color: C.textFaint, fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap' } }, Math.round(m.gross / sumGross * 100) + '% of top 10')
+)
+),
+e('div', { style: { textAlign: 'right', fontVariantNumeric: 'tabular-nums', fontWeight: 600 } }, fmtMoney(m.gross)),
+e('div', { style: { textAlign: 'right' } }, e(ChangeBadge, { change: m.change })),
+showTheaters ? e('div', { style: { textAlign: 'right', color: C.textMute, fontVariantNumeric: 'tabular-nums' } }, m.theaters.toLocaleString()) : null,
+e('div', { style: { textAlign: 'right', color: C.textMute, fontVariantNumeric: 'tabular-nums' } }, fmtFull(m.avg)),
+showTotal ? e('div', { style: { textAlign: 'right', color: C.textFaint, fontVariantNumeric: 'tabular-nums' } }, fmtMoney(m.total)) : null,
+e('div', { style: { textAlign: 'right', color: m.global ? C.emerald : C.textFaint, fontVariantNumeric: 'tabular-nums', fontWeight: m.global ? 600 : 400 } }, fmtMoney(m.global))
+);
+}),
+e(YoyBlock, { yoyMode: yoyMode, setYoyMode: setYoyMode })
+);
+}
+}
+else if (tab === 'daily') {
+body = e('div', { style: sectionPad },
+e('div', { style: { marginBottom: 16 } },
+e('div', {
+style: {
+display: 'inline-flex', alignItems: 'center', gap: 8,
+background: C.tealDim, border: '1px solid ' + C.teal,
+borderRadius: 5, padding: '6px 12px'
+}
+},
+e('span', { style: { fontSize: 11.5, fontWeight: 700, color: C.teal, fontVariantNumeric: 'tabular-nums' } }, DAILY_DATE)
+),
+e('div', { style: { fontSize: 11, color: C.textMute, marginTop: 8, letterSpacing: 0.2, textTransform: 'uppercase', fontWeight: 700 } }, 'Daily Domestic Totals')
+),
+DAILY.map(function (m, i) {
+return e('div', { key: i, style: { marginBottom: 13 } },
+e('div', {
+style: isMobile
+? { display: 'flex', flexDirection: 'column', gap: 4, fontSize: 12.5, marginBottom: 4 }
+: { display: 'flex', justifyContent: 'space-between', fontSize: 12.5, marginBottom: 4 }
+},
+e('span', { style: { fontWeight: 400, fontFamily: "'Readex Pro', sans-serif" } }, m.title),
+e('span', { style: { display: 'flex', gap: 9, alignItems: 'center', justifyContent: isMobile ? 'space-between' : 'flex-start' } },
+e('span', { style: { color: C.textFaint, fontVariantNumeric: 'tabular-nums' } }, fmtFull(m.avg) + ' avg'),
+e(ChangeBadge, { change: m.dailyChange }),
+e('span', { style: { fontVariantNumeric: 'tabular-nums', fontWeight: 700, minWidth: 66, textAlign: 'right' } }, fmtMoney(m.daily))
+)
+),
+e('div', { style: { display: 'flex', alignItems: 'center', gap: 8 } },
+e('div', { style: { height: 5, background: 'rgba(255,255,255,0.05)', borderRadius: 3, overflow: 'hidden', flex: 1 } },
+e('div', { style: { height: '100%', width: (m.daily / sumDaily * 100) + '%', background: C.teal, borderRadius: 3 } })
+),
+e('span', { style: { fontSize: 9, color: C.textFaint, fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap' } }, Math.round(m.daily / sumDaily * 100) + '% of day')
+)
+);
+})
+);
+}
+else if (tab === 'tracking') {
+body = e('div', { style: sectionPad },
+e('div', { style: { fontSize: 11, color: C.textFaint, marginBottom: 18 } }, 'Tracking for the upcoming weekend, ' + TRACKING_WEEKEND),
+tracking.map(function (t, i) {
+const lo = t.range[0], hi = t.range[1];
+const rangeSpan = hi - lo;
+const pad = Math.max(rangeSpan * 0.35, rangeSpan * 0.15 + 1);
+const windowLo = Math.max(0, lo - pad);
+const windowHi = hi + pad;
+const windowSpan = windowHi - windowLo;
+const loPct = pct(lo - windowLo, windowSpan);
+const hiPct = pct(hi - windowLo, windowSpan);
+const actualPct = t.actual !== null ? pct(t.actual - windowLo, windowSpan) : null;
+const actualAboveRange = t.actual !== null && (t.actual < lo || t.actual > hi);
+const actualScaleColor = t.actual === null ? C.amber : (t.actual < lo ? C.red : (t.actual > hi ? C.green : (t.actual < lo + rangeSpan * 0.4 ? C.red : (t.actual < lo + rangeSpan * 0.7 ? C.amber : C.green))));
+return e('div', { key: i, style: { marginBottom: 22, paddingBottom: 18, borderBottom: i < tracking.length - 1 ? '1px solid ' + C.border : 'none' } },
+e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8, flexWrap: 'wrap', gap: 8 } },
+e('div', { style: { display: 'flex', alignItems: 'center', gap: 8 } },
+e('span', { style: { fontSize: 14, fontWeight: 400, fontFamily: "'Readex Pro', sans-serif" } }, t.title),
+e(DistBadge, { name: t.distributor, onChange: function () {} }),
+e('span', { style: { fontSize: 11, color: C.textFaint } }, t.theaters.toLocaleString() + ' theaters')
+),
+e('div', { style: { display: 'flex', alignItems: 'center', gap: 6 } },
+e(ConfidenceTag, { level: t.confidence }),
+e(MomentumBadge, { level: t.momentum })
+)
+),
+e(QuorumStat, { data: t.quorum }),
+e(CriticAudienceStat, { data: t.criticAudience }),
+actualPct !== null ? e('div', { style: { display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, marginBottom: 2 } },
+e('span', { style: { fontSize: 9.5, fontWeight: 800, letterSpacing: 0.4, color: actualScaleColor, textTransform: 'uppercase' } }, 'Tracking now'),
+e('span', { style: { fontSize: 15, fontWeight: 700, color: actualScaleColor, fontVariantNumeric: 'tabular-nums' } }, (actualAboveRange ? '~' : '') + fmtMoney(t.actual))
+) : null,
+e('div', { style: { position: 'relative', height: 30, margin: '14px 0 16px' } },
+e('div', { style: { position: 'absolute', left: 0, right: 0, top: 13, height: 4, background: 'rgba(255,255,255,0.05)', borderRadius: 2 } }),
+e('div', { style: { position: 'absolute', left: loPct + '%', width: Math.max(hiPct - loPct, 1) + '%', top: 13, height: 4, background: 'linear-gradient(90deg, ' + C.red + ', ' + C.amber + ', ' + C.green + ')', borderRadius: 2 } }),
+e('div', { style: { position: 'absolute', left: loPct + '%', top: 6, width: 1, height: 18, background: C.textFaint } }),
+e('div', { style: { position: 'absolute', left: hiPct + '%', top: 6, width: 1, height: 18, background: C.textFaint } }),
+actualPct !== null ? e('div', { style: { position: 'absolute', left: Math.max(0, Math.min(100, actualPct)) + '%', top: 0, width: 2, height: 30, background: actualScaleColor } }) : null,
+e('div', { style: { position: 'absolute', left: loPct + '%', top: 24, fontSize: 10, color: C.textFaint, fontVariantNumeric: 'tabular-nums', transform: 'translateX(0%)' } }, fmtMoney(lo)),
+e('div', { style: { position: 'absolute', left: hiPct + '%', top: 24, fontSize: 10, color: C.textFaint, fontVariantNumeric: 'tabular-nums', transform: 'translateX(-100%)' } }, fmtMoney(hi))
+),
+e('div', { style: { fontSize: 12, color: C.textMute, lineHeight: 1.6, marginTop: 14 } }, t.note)
+);
+})
+);
+}
+else if (tab === 'calendar') {
+body = e('div', { style: sectionPad },
+RELEASES.map(function (r, i) {
+const indent = isMobile ? 0 : 70;
+return e('div', { key: i, style: { padding: '10px 0', borderBottom: '1px solid ' + C.border } },
+isMobile ? e('div', null,
+e('div', { style: { display: 'flex', alignItems: 'baseline', gap: 8 } },
+e('span', { style: { color: C.magenta, fontWeight: 700, fontVariantNumeric: 'tabular-nums', fontSize: 11 } }, r.date),
+e('span', { style: { fontWeight: 400, fontFamily: "'Readex Pro', sans-serif", fontSize: 13, flex: 1 } }, r.title),
+r.momentum ? e(MomentumBadge, { level: r.momentum }) : null
+),
+e('div', { style: { display: 'flex', alignItems: 'center', gap: 8, marginTop: 5, flexWrap: 'wrap' } },
+e(DistBadge, { name: r.distributor, onChange: function () {} }),
+e('span', { style: { fontSize: 9, fontWeight: 800, letterSpacing: 0.3, textTransform: 'uppercase', padding: '2px 6px', borderRadius: 3, background: r.type === 'Wide' ? C.emeraldDim : 'rgba(62,156,156,0.18)', color: r.type === 'Wide' ? C.emeraldBright : C.teal } }, r.type)
+)
+) : e('div', { style: { display: 'grid', gridTemplateColumns: '62px 1fr 80px 64px', columnGap: 10, alignItems: 'center', fontSize: 12.5 } },
+e('div', { style: { color: C.magenta, fontWeight: 700, fontVariantNumeric: 'tabular-nums', fontSize: 11.5 } }, r.date),
+e('div', { style: { display: 'flex', alignItems: 'center', gap: 8 } },
+e('span', { style: { fontWeight: 400, fontFamily: "'Readex Pro', sans-serif" } }, r.title),
+r.momentum ? e(MomentumBadge, { level: r.momentum }) : null
+),
+e(DistBadge, { name: r.distributor, onChange: function () {} }),
+e('div', null,
+e('span', { style: { fontSize: 9.5, fontWeight: 800, letterSpacing: 0.4, textTransform: 'uppercase', padding: '2px 7px', borderRadius: 3, background: r.type === 'Wide' ? C.emeraldDim : 'rgba(62,156,156,0.18)', color: r.type === 'Wide' ? C.emeraldBright : C.teal } }, r.type)
+)
+),
+r.tracking ? e('div', { style: { display: 'flex', alignItems: 'center', gap: 6, marginTop: 6, marginLeft: indent, flexWrap: 'wrap' } },
+e('span', { style: { fontSize: 9.5, fontWeight: 800, letterSpacing: 0.4, color: C.textFaint, textTransform: 'uppercase' } }, 'Tracking'),
+e('span', { style: { fontSize: 11.5, fontWeight: 700, color: C.magenta, fontVariantNumeric: 'tabular-nums' } }, fmtMoney(r.tracking[0]) + '\u2013' + fmtMoney(r.tracking[1])),
+e('span', { style: { fontSize: 10.5, color: C.textFaint } }, 'opening weekend')
+) : null,
+r.quorum ? e('div', { style: { marginLeft: indent } }, e(QuorumStat, { data: r.quorum })) : null,
+r.criticAudience ? e('div', { style: { marginLeft: indent } }, e(CriticAudienceStat, { data: r.criticAudience })) : null
+);
+})
+);
+}
+const footer = e('div', { style: { padding: isMobile ? '12px 14px 18px' : '14px 30px 22px', fontSize: 10.5, color: C.textFaint, borderTop: '1px solid ' + C.border, lineHeight: 1.6 } },
+'Sources: The Numbers, Box Office Mojo, Box Office Pro, Deadline, Variety, Screen International, FanBolt'
+);
+return e('div', { style: wrap }, e(Ticker, { items: top10 }), header, body, footer);
+}
+const root = ReactDOM.createRoot(document.getElementById('boffo-root'));
+root.render(e(Dashboard));
+</script>
+</body>
+</html>
