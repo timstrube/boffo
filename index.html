@@ -55,7 +55,7 @@ greenDim: 'rgba(63,224,138,0.16)',
 magenta: '#E0479E',
 magentaDim: 'rgba(224,71,158,0.16)'
 };
-const LAST_UPDATED = 'Jun 23, 2026 \u00B7 5:12 PM PT / 8:12 PM ET';
+const LAST_UPDATED = 'Jun 23, 2026 \u00B7 5:20 PM PT / 8:20 PM ET';
 const BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
 const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jun 12-14', tag: 'FINAL', tab: null, externalUrl: 'https://www.boxofficemojo.com/weekend/2026W24/' };
 const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jun 19-21', tag: 'IN PROGRESS', tab: 'top10' };
@@ -167,7 +167,7 @@ function pct(n, d) { return Math.round((n / d) * 100); }
 function stripTrailingNoise(text) {
 let result = text.trim();
 const readMorePattern = /[\.\s]*(read more[:\s]*$|read more at$|more (here|at)[:\s]*$)/i;
-const trailingTokenPattern = /(\s+((https?:\/\/)?(www\.)?[a-zA-Z0-9-]+\.(com|net|org|io|co|news|tv)(\/\S*)?|https?:\/\/\S+|#\S+|@\S+))+\s*$/i;
+const trailingTokenPattern = /(\s+((https?:\/\/)?(www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,6}(\/\S*)?|https?:\/\/\S+|#\S+|@\S+))+\s*$/i;
 let prevLength;
 do {
 prevLength = result.length;
