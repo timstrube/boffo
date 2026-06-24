@@ -56,7 +56,7 @@ greenDim: 'rgba(63,224,138,0.16)',
 magenta: '#E0479E',
 magentaDim: 'rgba(224,71,158,0.16)'
 };
-const LAST_UPDATED = 'Jun 23, 2026 \u00B7 5:36 PM PT / 8:36 PM ET';
+const LAST_UPDATED = 'Jun 23, 2026 \u00B7 5:44 PM PT / 8:44 PM ET';
 const BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
 const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jun 12-14', tag: 'FINAL', tab: null, externalUrl: 'https://www.boxofficemojo.com/weekend/2026W24/' };
 const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jun 19-21', tag: 'IN PROGRESS', tab: 'top10' };
@@ -230,7 +230,7 @@ return e('span', { key: key, style: { display: 'inline-flex', alignItems: 'cente
 butterfly,
 e('span', { style: { color: C.textFaint, fontWeight: 700, fontSize: isMobile ? 9.5 : 10.5, whiteSpace: 'nowrap' } }, author.displayName || author.handle),
 e('span', { style: { color: C.textFaint, fontSize: isMobile ? 9.5 : 11 } }, '\u2022'),
-e('span', { style: { color: C.textMute, fontFamily: "'JetBrains Mono', monospace", fontWeight: 400, fontSize: isMobile ? 8 : 10.5, whiteSpace: 'nowrap' } }, clean)
+e('span', { style: { color: C.textMute, fontFamily: "'Readex Pro', sans-serif", fontWeight: 400, fontSize: 11.5, whiteSpace: 'nowrap' } }, clean)
 );
 };
 const duration = Math.max(90, posts.length * 14) + 's';
