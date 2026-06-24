@@ -48,12 +48,15 @@ tealDim: 'rgba(31,184,184,0.16)',
 red: '#F0473D',
 redBright: '#FF8A80',
 redDim: 'rgba(240,71,61,0.16)',
+blue: '#5C8FF0',
+blueDim: 'rgba(92,143,240,0.16)',
 green: '#3FE08A',
 greenDim: 'rgba(63,224,138,0.16)',
 magenta: '#E0479E',
 magentaDim: 'rgba(224,71,158,0.16)'
 };
-const LAST_UPDATED = 'Jun 23, 2026 \u00B7 12:53 PM PT / 3:53 PM ET';
+const LAST_UPDATED = 'Jun 23, 2026 \u00B7 5:12 PM PT / 8:12 PM ET';
+const BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
 const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jun 12-14', tag: 'FINAL', tab: null, externalUrl: 'https://www.boxofficemojo.com/weekend/2026W24/' };
 const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jun 19-21', tag: 'IN PROGRESS', tab: 'top10' };
 const NEXT_WEEKEND = { id: 'next', label: 'Next weekend', range: 'Jun 26-28', tag: 'UPCOMING', tab: 'tracking' };
@@ -161,6 +164,18 @@ return '$' + n;
 }
 function fmtFull(n) { return '$' + n.toLocaleString(); }
 function pct(n, d) { return Math.round((n / d) * 100); }
+function stripTrailingNoise(text) {
+let result = text.trim();
+const readMorePattern = /[\.\s]*(read more[:\s]*$|read more at$|more (here|at)[:\s]*$)/i;
+const trailingTokenPattern = /(\s+((https?:\/\/)?(www\.)?[a-zA-Z0-9-]+\.(com|net|org|io|co|news|tv)(\/\S*)?|https?:\/\/\S+|#\S+|@\S+))+\s*$/i;
+let prevLength;
+do {
+prevLength = result.length;
+result = result.replace(trailingTokenPattern, '').trim();
+result = result.replace(readMorePattern, '').trim();
+} while (result.length !== prevLength && result.length > 0);
+return result;
+}
 function Ticker(props) {
 const items = props.items;
 const breakingTag = e('span', { key: 'breaking', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
@@ -195,6 +210,32 @@ e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letter
 ),
 items.map(function (m, i) { return renderItem(m, 'b' + i); })
 )
+)
+);
+}
+function ChatterTicker(props) {
+const posts = props.posts;
+if (!posts || posts.length === 0) return null;
+const butterfly = e('svg', { viewBox: '0 0 600 530', style: { width: 13, height: 12, flexShrink: 0 } },
+e('path', { fill: '#1185FE', d: 'M135 25C209 80 290 191 300 256c10-65 91-176 165-231 53-39 139-69 139 27 0 19-11 162-17 185-22 80-103 100-175 88 126 21 158 91 89 161-132 134-189-34-204-77-3-8-4-12-5-9-1-3-2 1-5 9-15 43-72 211-204 77-69-70-37-140 89-161-72 12-153-8-175-88C13 199 2 56 2 37 2-59 88-14 135 25z' })
+);
+const renderPost = function (p, key) {
+const author = p.author || {};
+const text = (p.record && p.record.text) || '';
+const stripped = stripTrailingNoise(text);
+const clean = stripped.length > 220 ? stripped.slice(0, 220) + '\u2026' : stripped;
+return e('span', { key: key, style: { display: 'inline-flex', alignItems: 'center', gap: 7, padding: '0 18px' } },
+butterfly,
+e('span', { style: { color: C.textFaint, fontWeight: 700, fontSize: 10.5 } }, author.displayName || author.handle),
+e('span', { style: { color: C.textFaint } }, '\u2022'),
+e('span', { style: { color: C.textMute, fontFamily: "'Readex Pro', sans-serif", fontWeight: 400 } }, clean)
+);
+};
+const duration = Math.max(90, posts.length * 14) + 's';
+return e('div', { style: { overflow: 'hidden', borderBottom: '1px solid ' + C.border, background: '#0A0E0C', whiteSpace: 'nowrap' } },
+e('div', { style: { display: 'inline-flex', animation: 'ticker ' + duration + ' linear infinite', fontSize: 11, padding: '6px 0' } },
+posts.map(function (p, i) { return renderPost(p, 'a' + i); }),
+posts.map(function (p, i) { return renderPost(p, 'b' + i); })
 )
 );
 }
@@ -402,11 +443,54 @@ const [top10, setTop10] = useState(TOP10_INIT);
 const [tracking] = useState(TRACKING_INIT);
 const [viewport, setViewport] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
 const [drawerOpen, setDrawerOpen] = useState(false);
+const [chatterPosts, setChatterPosts] = useState([]);
+const [chatterLoading, setChatterLoading] = useState(false);
+const [chatterError, setChatterError] = useState(false);
+const [chatterLoaded, setChatterLoaded] = useState(false);
 useEffect(function () {
 function handleResize() { setViewport(window.innerWidth); }
 window.addEventListener('resize', handleResize);
 return function () { window.removeEventListener('resize', handleResize); };
 }, []);
+useEffect(function () {
+if (chatterLoaded) return;
+setChatterLoading(true);
+setChatterError(false);
+const blockedWords = ['fuck', 'shit', 'nsfw'];
+function fetchAll(useFilter) {
+return Promise.all(BLUESKY_ACCOUNTS.map(function (handle) {
+const url = 'https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=' + handle + '&limit=6' + (useFilter ? '&filter=posts_no_replies' : '');
+return fetch(url)
+.then(function (res) {
+if (!res.ok) { console.warn('Boffo chatter: ' + handle + ' returned ' + res.status); return { feed: [] }; }
+return res.json();
+})
+.then(function (data) { return (data.feed || []).map(function (item) { return item.post; }).filter(Boolean); })
+.catch(function (err) { console.warn('Boffo chatter: ' + handle + ' fetch failed', err); return []; });
+}));
+}
+fetchAll(true).then(function (results) {
+let all = [];
+results.forEach(function (posts) { all = all.concat(posts); });
+if (all.length === 0) { return fetchAll(false).then(function (results2) { let all2 = []; results2.forEach(function (posts) { all2 = all2.concat(posts); }); return all2; }); }
+return all;
+}).then(function (all) {
+all = all.filter(function (p) {
+if (!p || !p.record || !p.record.text) return false;
+const lower = p.record.text.toLowerCase();
+return !blockedWords.some(function (w) { return lower.indexOf(w) > -1; });
+});
+all.sort(function (a, b) { return new Date(b.record.createdAt) - new Date(a.record.createdAt); });
+setChatterPosts(all.slice(0, 20));
+setChatterLoading(false);
+setChatterLoaded(true);
+}).catch(function (err) {
+console.warn('Boffo chatter: fetch pipeline failed', err);
+setChatterError(true);
+setChatterLoading(false);
+setChatterLoaded(true);
+});
+}, [chatterLoaded]);
 const isMobile = viewport < 640;
 const isTablet = viewport >= 640 && viewport < 900;
 function handleSort(key) {
@@ -788,6 +872,7 @@ const footer = e('div', { style: { padding: isMobile ? '12px 14px 18px' : '14px 
 );
 return e('div', { style: wrap },
 e(Ticker, { items: top10 }),
+e(ChatterTicker, { posts: chatterPosts }),
 e('div', { style: { maxWidth: 900, margin: '0 auto' } }, header, body, footer)
 );
 }
