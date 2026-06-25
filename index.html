@@ -57,7 +57,7 @@ greenDim: 'rgba(63,224,138,0.16)',
 magenta: '#E0479E',
 magentaDim: 'rgba(224,71,158,0.16)'
 };
-const LAST_UPDATED = 'Jun 24, 2026 \u00B7 2:37 PM PT / 5:37 PM ET';
+const LAST_UPDATED = 'Jun 24, 2026 \u00B7 6:46 PM PT / 9:46 PM ET';
 const BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
 const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jun 19-21', tag: 'FINAL', tab: 'top10' };
 const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jun 26-28', tag: 'IN PROGRESS', tab: 'tracking' };
@@ -481,7 +481,7 @@ return fetch(url)
 if (!res.ok) { console.warn('Boffo chatter: ' + handle + ' returned ' + res.status); return { feed: [] }; }
 return res.json();
 })
-.then(function (data) { return (data.feed || []).map(function (item) { return item.post; }).filter(Boolean); })
+.then(function (data) { return (data.feed || []).filter(function (item) { return !item.reason; }).map(function (item) { return item.post; }).filter(Boolean); })
 .catch(function (err) { console.warn('Boffo chatter: ' + handle + ' fetch failed', err); return []; });
 }));
 }
