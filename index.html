@@ -57,7 +57,7 @@ greenDim: 'rgba(63,224,138,0.16)',
 magenta: '#E0479E',
 magentaDim: 'rgba(224,71,158,0.16)'
 };
-const LAST_UPDATED = 'Jun 25, 2026 \u00B7 5:32 PM PT / 8:32 PM ET';
+const LAST_UPDATED = 'Jun 26, 2026 \u00B7 3:14 PM PT / 6:14 PM ET';
 const BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
 const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jun 19-21', tag: 'FINAL', tab: 'top10' };
 const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jun 26-28', tag: 'IN PROGRESS', tab: 'tracking' };
@@ -118,19 +118,22 @@ const TOTAL_WEEKEND_GROSS = 229276961;
 const PREVIOUS_WEEKEND_CHAMP = { title: 'Disclosure Day', distributor: 'Universal', theaters: 3824, gross: 44530925, avg: 11645, range: 'Jun 12-14' };
 const YOY = { thisYear: 229276961, lastYear: 197650000, tenYearAvg: 165800000 };
 const DAILY = [
-{ title: 'Toy Story 5', daily: 23692621, dailyChange: 37, theaters: 4425, avg: 5354 },
-{ title: 'Obsession', daily: 2695055, dailyChange: 14, theaters: 3053, avg: 883 },
-{ title: 'Disclosure Day', daily: 2451230, dailyChange: 29, theaters: 3824, avg: 641 },
-{ title: 'Scary Movie', daily: 1035591, dailyChange: 19, theaters: 2725, avg: 380 },
-{ title: 'Leviticus', daily: 602911, dailyChange: 26, theaters: 1076, avg: 560 },
-{ title: 'Star Wars: The Mandalorian and Grogu', daily: 519296, dailyChange: 24, theaters: 2000, avg: 260 },
-{ title: 'Michael', daily: 461425, dailyChange: 33, theaters: 1434, avg: 322 }
+{ title: 'Toy Story 5', daily: 12585438, dailyChange: -10, theaters: 4425, avg: 2844 },
+{ title: 'Supergirl', daily: 7800000, dailyChange: null, theaters: 3200, avg: 2438 },
+{ title: 'Obsession', daily: 1909870, dailyChange: -9, theaters: 3053, avg: 626 },
+{ title: 'Disclosure Day', daily: 1361195, dailyChange: -14, theaters: 3824, avg: 356 },
+{ title: 'Jackass: Best and Last', daily: 1200000, dailyChange: null, theaters: 2450, avg: 490 },
+{ title: 'Backrooms', daily: 960757, dailyChange: -15, theaters: 2851, avg: 337 },
+{ title: 'Scary Movie', daily: 623990, dailyChange: -16, theaters: 2725, avg: 229 },
+{ title: 'Masters of the Universe', daily: 351182, dailyChange: -30, theaters: 2517, avg: 140 },
+{ title: 'Leviticus', daily: 298923, dailyChange: -33, theaters: 1076, avg: 278 },
+{ title: 'Star Wars: The Mandalorian and Grogu', daily: 289282, dailyChange: -25, theaters: 2000, avg: 145 }
 ];
-const DAILY_DATE = 'Tuesday, June 23';
-const DAILY_DATE_SHORT = 'Jun 23';
+const DAILY_DATE = 'Thursday, June 25';
+const DAILY_DATE_SHORT = 'Jun 25';
 const TRACKING_INIT = [
-{ title: 'Supergirl', distributor: 'Warner Bros.', theaters: 3600, range: [34000000, 50000000], actual: null, confidence: 'medium', momentum: 'softening', criticAudience: { rtCritic: 57, rtAudience: null, metacritic: 49, cinemaScore: null }, trends: { latest: 100, last7avg: 56, prior7avg: 24, peakIsToday: true }, note: 'Settled "rotten" at 57% on Rotten Tomatoes, 49 on Metacritic \u2014 a tepid follow-up to Superman\'s 83%/median-70s scores. Milly Alcock\'s performance remains the consistent bright spot. Studio tracking holds at $47-50M, but Box Office Theory\'s independent model has diverged sharply lower to $34-43M \u2014 sub-$40M is now a real outcome, not just a downside scenario. A roughly $7M Thursday preview suggests a soft start. Toy Story 5\'s second weekend ($80-90M) remains a real threat to deny Supergirl #1 in its own debut frame.' },
-{ title: 'Jackass: Best and Last', distributor: 'Paramount', theaters: 2800, range: [8500000, 13500000], actual: null, confidence: 'medium', momentum: 'softening', trends: { latest: 74, last7avg: 46, prior7avg: 29, peakIsToday: false }, note: 'Tracking has converged lower: studio estimates sit at $10-12M, with Box Office Theory\'s independent model at $8.5-13.5M \u2014 down from the $14-19M range some outlets cited a month ago. Would be an all-time low for the franchise, well off Jackass Forever\'s $23.1M start in 2022. Billed as the series finale but leans heavily on archival clips with minimal new footage, capping upside. Cheap to produce, so profitability isn\'t really in question regardless of where it lands. Google Trends shows a clean, steady pre-release climb (+59% week over week) with no controversy spike \u2014 a normal anticipation curve heading into Friday.' }
+{ title: 'Supergirl', distributor: 'Warner Bros.', theaters: 3600, range: [39000000, 47000000], actual: null, confidence: 'high', momentum: 'softening', criticAudience: { rtCritic: 57, rtAudience: 77, metacritic: 49, cinemaScore: null }, trends: { latest: 100, last7avg: 56, prior7avg: 24, peakIsToday: true }, note: 'Opened Thursday to $7.8M in previews \u2014 between Black Adam ($7.6M) and The Flash ($9.7M) \u2014 and $13M globally on Day 1. Domestic forecasts have cooled further, from $47-50M studio guidance to an "upper-$40M" range as the weekend gets underway. RT settled at 57% critics / 77% audience, a real gap; Milly Alcock\'s performance is the consistent praise across both camps. Toy Story 5\'s $80-90M second weekend remains the bigger story \u2014 Supergirl is fighting for a clear #2, not #1.' },
+{ title: 'Jackass: Best and Last', distributor: 'Paramount', theaters: 2800, range: [10000000, 12000000], actual: null, confidence: 'high', momentum: 'stable', trends: { latest: 74, last7avg: 46, prior7avg: 29, peakIsToday: false }, note: 'Opened Thursday to $1.2M in previews, on pace for the $10-12M studio guidance \u2014 still projected as an all-time low for the franchise, well off Jackass Forever\'s $23.1M start in 2022. Third-place finish expected behind Toy Story 5 and Supergirl. Cheap to produce, so profitability isn\'t in question regardless of where it lands. Google Trends showed a clean, steady pre-release climb with no controversy spike \u2014 a normal anticipation curve into opening night.' }
 ];
 const TRACKING_WEEKEND = 'Jun 26-28';
 const RELEASES = [
