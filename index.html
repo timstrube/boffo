@@ -57,11 +57,11 @@ greenDim: 'rgba(63,224,138,0.16)',
 magenta: '#E0479E',
 magentaDim: 'rgba(224,71,158,0.16)'
 };
-const LAST_UPDATED = 'Jun 26, 2026 \u00B7 3:14 PM PT / 6:14 PM ET';
+const LAST_UPDATED = 'Jun 28, 2026 \u00B7 12:39 PM PT / 3:39 PM ET';
 const BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
-const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jun 19-21', tag: 'FINAL', tab: 'top10' };
-const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jun 26-28', tag: 'IN PROGRESS', tab: 'tracking' };
-const NEXT_WEEKEND = { id: 'next', label: 'Next weekend', range: 'Jul 1-3', tag: 'UPCOMING', tab: 'calendar' };
+const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jun 26-28', tag: 'FINAL', tab: 'top10' };
+const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jul 1-3', tag: 'IN PROGRESS', tab: 'tracking' };
+const NEXT_WEEKEND = { id: 'next', label: 'Next weekend', range: 'Jul 4+', tag: 'UPCOMING', tab: 'calendar' };
 const WEEKENDS = [LAST_WEEKEND, THIS_WEEKEND, NEXT_WEEKEND];
 const DIST_OPTIONS = [
 'Universal', 'Focus Features', 'Paramount', 'A24', 'Amazon MGM', 'Disney', 'Walt Disney',
@@ -103,20 +103,20 @@ color: color, minWidth: 30
 }, code);
 }
 const TOP10_INIT = [
-{ rank: 1, prev: null, weekendNum: 1, title: 'Toy Story 5', gross: 159677837, change: null, theaters: 4425, avg: 36085, total: 159677837, global: 312000000, distributor: 'Walt Disney' },
-{ rank: 2, prev: 1, weekendNum: 2, title: 'Disclosure Day', gross: 17704140, change: -60, theaters: 3824, avg: 4630, total: 78987640, global: 161400000, distributor: 'Universal' },
-{ rank: 3, prev: 2, weekendNum: 6, title: 'Obsession', gross: 13397205, change: -30, theaters: 3053, avg: 4388, total: 215031825, global: 328800000, distributor: 'Focus Features' },
-{ rank: 4, prev: 4, weekendNum: 4, title: 'Backrooms', gross: 7172988, change: -38, theaters: 2851, avg: 2516, total: 175053084, global: 286200000, distributor: 'A24' },
-{ rank: 5, prev: 3, weekendNum: 3, title: 'Scary Movie', gross: 6386488, change: -55, theaters: 2725, avg: 2344, total: 97249724, global: 201400000, distributor: 'Paramount' },
-{ rank: 6, prev: 5, weekendNum: 3, title: 'Masters of the Universe', gross: 6175230, change: -31, theaters: 2517, avg: 2453, total: 57489787, global: 102900000, distributor: 'Amazon MGM' },
-{ rank: 7, prev: 6, weekendNum: 5, title: 'Star Wars: The Mandalorian and Grogu', gross: 4174039, change: -13, theaters: 2000, avg: 2087, total: 172039029, global: 327500000, distributor: 'Disney' },
-{ rank: 8, prev: null, weekendNum: 1, title: 'The Death of Robin Hood', gross: 2867662, change: null, theaters: 1762, avg: 1628, total: 2867662, global: null, distributor: 'A24' },
-{ rank: 9, prev: null, weekendNum: 1, title: 'Leviticus', gross: 2610696, change: null, theaters: 1076, avg: 2426, total: 2610696, global: null, distributor: 'Neon' },
-{ rank: 10, prev: 7, weekendNum: 9, title: 'Michael', gross: 2156843, change: -49, theaters: 1434, avg: 1504, total: 367887098, global: 958900000, distributor: 'Lionsgate' }
+{ rank: 1, prev: 1, weekendNum: 2, title: 'Toy Story 5', gross: 70000000, change: -56, theaters: 4425, avg: 15819, total: 297241642, global: 585000000, distributor: 'Walt Disney' },
+{ rank: 2, prev: null, weekendNum: 1, title: 'Supergirl', gross: 38000000, change: null, theaters: 3602, avg: 10550, total: 38000000, global: 68000000, distributor: 'Warner Bros.' },
+{ rank: 3, prev: 3, weekendNum: 6, title: 'Obsession', gross: 9800000, change: -27, theaters: 2965, avg: 3305, total: 233903000, global: 370000000, distributor: 'Focus Features' },
+{ rank: 4, prev: null, weekendNum: 1, title: 'Jackass: Best and Last', gross: 8400000, change: null, theaters: 2855, avg: 2942, total: 8400000, global: 10300000, distributor: 'Paramount' },
+{ rank: 5, prev: 2, weekendNum: 2, title: 'Disclosure Day', gross: 8100000, change: -54, theaters: 3357, avg: 2413, total: 94384000, global: 180000000, distributor: 'Universal' },
+{ rank: 6, prev: 4, weekendNum: 5, title: 'Backrooms', gross: 4315190, change: -40, theaters: 2396, avg: 1801, total: 184185938, global: 295000000, distributor: 'A24' },
+{ rank: 7, prev: 5, weekendNum: 4, title: 'Scary Movie', gross: 3000000, change: -53, theaters: 2004, avg: 1497, total: 103524000, global: 205000000, distributor: 'Paramount' },
+{ rank: 8, prev: null, weekendNum: 1, title: 'BLEACH: Thousand-Year Blood War \u2014 The Calamity', gross: 1954000, change: null, theaters: 943, avg: 2072, total: 2954000, global: null, distributor: 'Fathom Entertainment' },
+{ rank: 9, prev: 7, weekendNum: 6, title: 'Star Wars: The Mandalorian and Grogu', gross: 1600000, change: -62, theaters: 1250, avg: 1280, total: 175253370, global: 330000000, distributor: 'Disney' },
+{ rank: 10, prev: 9, weekendNum: 2, title: 'Leviticus', gross: 929280, change: -64, theaters: 965, avg: 963, total: 5366463, global: null, distributor: 'Neon' }
 ];
-const TOTAL_WEEKEND_GROSS = 229276961;
-const PREVIOUS_WEEKEND_CHAMP = { title: 'Disclosure Day', distributor: 'Universal', theaters: 3824, gross: 44530925, avg: 11645, range: 'Jun 12-14' };
-const YOY = { thisYear: 229276961, lastYear: 197650000, tenYearAvg: 165800000 };
+const TOTAL_WEEKEND_GROSS = 149903108;
+const PREVIOUS_WEEKEND_CHAMP = { title: 'Toy Story 5', distributor: 'Walt Disney', theaters: 4425, gross: 159677837, avg: 36085, range: 'Jun 19-21' };
+const YOY = { thisYear: 149903108, lastYear: 130350000, tenYearAvg: 110000000 };
 const DAILY = [
 { title: 'Toy Story 5', daily: 12585438, dailyChange: -10, theaters: 4425, avg: 2844 },
 { title: 'Supergirl', daily: 7800000, dailyChange: null, theaters: 3200, avg: 2438 },
@@ -132,18 +132,11 @@ const DAILY = [
 const DAILY_DATE = 'Thursday, June 25';
 const DAILY_DATE_SHORT = 'Jun 25';
 const TRACKING_INIT = [
-{ title: 'Supergirl', distributor: 'Warner Bros.', theaters: 3600, range: [39000000, 47000000], actual: null, confidence: 'high', momentum: 'softening', criticAudience: { rtCritic: 57, rtAudience: 77, metacritic: 49, cinemaScore: null }, trends: { latest: 100, last7avg: 56, prior7avg: 24, peakIsToday: true }, note: 'Opened Thursday to $7.8M in previews \u2014 between Black Adam ($7.6M) and The Flash ($9.7M) \u2014 and $13M globally on Day 1. Domestic forecasts have cooled further, from $47-50M studio guidance to an "upper-$40M" range as the weekend gets underway. RT settled at 57% critics / 77% audience, a real gap; Milly Alcock\'s performance is the consistent praise across both camps. Toy Story 5\'s $80-90M second weekend remains the bigger story \u2014 Supergirl is fighting for a clear #2, not #1.' },
-{ title: 'Jackass: Best and Last', distributor: 'Paramount', theaters: 2800, range: [10000000, 12000000], actual: null, confidence: 'high', momentum: 'stable', trends: { latest: 74, last7avg: 46, prior7avg: 29, peakIsToday: false }, note: 'Opened Thursday to $1.2M in previews, on pace for the $10-12M studio guidance \u2014 still projected as an all-time low for the franchise, well off Jackass Forever\'s $23.1M start in 2022. Third-place finish expected behind Toy Story 5 and Supergirl. Cheap to produce, so profitability isn\'t in question regardless of where it lands. Google Trends showed a clean, steady pre-release climb with no controversy spike \u2014 a normal anticipation curve into opening night.' }
+{ title: 'Minions & Monsters', distributor: 'Universal', theaters: 4100, range: [75000000, 85000000], actual: null, confidence: 'medium', momentum: 'rising', note: 'Box Office Pro\'s latest forecast has climbed to $75-85M over 3 days ($95-115M over the 5-day July 4th corridor), a real recovery from Box Office Theory\'s earlier, more conservative $53-62M read. The third Minions spinoff opens two weeks after Toy Story 5, which could cut either way \u2014 shared family-audience marketing momentum, or moviegoers feeling like they already had their animated-sequel outing this month. Would be the only Minions-franchise film to open below $100M domestic if it lands at the low end.' },
+{ title: 'Young Washington', distributor: 'Angel Studios', theaters: 2600, range: [23000000, 35000000], actual: null, confidence: 'medium', momentum: 'rising', note: 'Box Office Theory centers this around $28M for the 3-day, leaning on Angel\'s guild network and the explicit Independence Day 250th-anniversary marketing push (\\"Make this the No. 1 movie in America on its 250th\\"). Internal guild score of 90 is strong for a war drama, per Angel CEO Neal Harmon, who notes guild scores correlate closely with eventual RT scores. William Franklyn-Miller stars as a young George Washington, with Ben Kingsley and Andy Serkis in support.' }
 ];
-const TRACKING_WEEKEND = 'Jun 26-28';
+const TRACKING_WEEKEND = 'Jul 1-3';
 const RELEASES = [
-{ date: 'Jun 26', title: 'Couture', distributor: 'Vertical Entertainment', type: 'Wide', criticAudience: { rtCritic: 59, rtAudience: null, metacritic: 51, cinemaScore: null } },
-{ date: 'Jun 26', title: 'The Get Out', distributor: 'Vertical Entertainment', type: 'Limited' },
-{ date: 'Jun 26', title: 'Lucky Strike', distributor: 'Roadside Attractions', type: 'Limited' },
-{ date: 'Jun 26', title: 'Bouchra', distributor: 'Film Movement', type: 'Limited' },
-{ date: 'Jun 26', title: 'Drunken Noodles', distributor: 'Strand Releasing', type: 'Limited' },
-{ date: 'Jul 1', title: 'Minions & Monsters', distributor: 'Universal', type: 'Wide' },
-{ date: 'Jul 3', title: 'Young Washington', distributor: 'Angel Studios', type: 'Wide' },
 { date: 'Jul 10', title: 'Moana', distributor: 'Walt Disney', type: 'Wide' },
 { date: 'Jul 10', title: 'Evil Dead Burn', distributor: 'Warner Bros.', type: 'Wide' },
 { date: 'Jul 17', title: 'The Odyssey', distributor: 'Universal', type: 'Wide', momentum: 'softening', quorum: { interest: 46, interestPrev: 54, awareness: 40, awarenessPrev: 42, genreAvg: 'event-epic' } },
@@ -184,9 +177,9 @@ return result;
 function Ticker(props) {
 const items = props.items;
 const breakingTag = e('span', { key: 'breaking', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
-e('span', { style: { background: C.green, padding: '3px 9px', borderRadius: 3 } },
-e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS '),
-e('span', { style: { color: 'rgba(255,255,255,0.65)', fontSize: 10.5, fontWeight: 700, letterSpacing: 0.4 } }, '6/19-6/21')
+e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
+e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
+e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKD ESTIMATES 6/26-6/28')
 )
 );
 const renderItem = function (m, key) {
@@ -207,9 +200,9 @@ e('div', { style: { display: 'inline-flex', animation: 'ticker 38s linear infini
 breakingTag,
 items.map(function (m, i) { return renderItem(m, 'a' + i); }),
 e('span', { key: 'breaking2', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
-e('span', { style: { background: C.green, padding: '3px 9px', borderRadius: 3 } },
-e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS '),
-e('span', { style: { color: 'rgba(255,255,255,0.65)', fontSize: 10.5, fontWeight: 700, letterSpacing: 0.4 } }, '6/19-6/21')
+e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
+e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
+e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKD ESTIMATES 6/26-6/28')
 )
 ),
 items.map(function (m, i) { return renderItem(m, 'b' + i); })
@@ -450,7 +443,7 @@ e('span', { style: { color: C.textMute } }, (yoyMode === 'lastYear' ? '2025' : '
 e('div', { style: { height: 10, background: 'rgba(255,255,255,0.05)', borderRadius: 4, overflow: 'hidden' } },
 e('div', { style: { height: '100%', width: (compareVal / maxScale * 100) + '%', background: C.textFaint, borderRadius: 4 } })
 ),
-e('div', { style: { marginTop: 14, fontSize: 11.5, color: C.textMute, lineHeight: 1.6 } }, 'Summer 2026 is running 16% ahead of summer 2025 and just 1.1% behind 2019 through this point in the season, per Rentrak \u2014 the strongest pre-Labor Day pace since the pandemic.')
+e('div', { style: { marginTop: 14, fontSize: 11.5, color: C.textMute, lineHeight: 1.6 } }, 'Year-to-date 2026 box office is running 15% ahead of 2025, with summer alone up 17% over last year and now past $2.1B \u2014 the strongest pre-Labor Day pace since the pandemic, even as this particular weekend dropped 32% from Toy Story 5\'s record-setting debut.')
 );
 }
 function Dashboard() {
