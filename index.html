@@ -57,7 +57,7 @@ greenDim: 'rgba(63,224,138,0.16)',
 magenta: '#E0479E',
 magentaDim: 'rgba(224,71,158,0.16)'
 };
-const LAST_UPDATED = 'Jun 28, 2026 \u00B7 5:32 PM PT / 8:32 PM ET';
+const LAST_UPDATED = 'Jun 28, 2026 \u00B7 5:51 PM PT / 8:51 PM ET';
 const BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
 const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jun 19-21', tag: 'FINAL', tab: null, externalUrl: 'https://www.boxofficemojo.com/weekend/2026W25/' };
 const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jun 26-28', tag: 'IN PROGRESS', tab: 'top10' };
@@ -290,10 +290,55 @@ isMobile ? null : (' \u00B7 ' + live.theaters.toLocaleString() + ' theaters' + (
 )
 ),
 e('div', { style: { textAlign: 'right', flexShrink: 0 } },
-e('div', { style: { fontSize: isMobile ? (isLive ? 15 : 13) : (isLive ? 19 : 16), fontWeight: 700, fontVariantNumeric: 'tabular-nums', color: isLive ? accentBright : C.textMute } }, live.amountLabel),
+isLive
+? e(SlotAmount, { label: live.amountLabel, color: accentBright, fontSize: isMobile ? 15 : 19 })
+: e('div', { style: { fontSize: isMobile ? 13 : 16, fontWeight: 700, fontVariantNumeric: 'tabular-nums', color: C.textMute } }, live.amountLabel),
 e('div', { style: { fontSize: isMobile ? 8 : 9.5, color: accentBright, letterSpacing: 0.2 } }, live.subLabel)
 )
 );
+}
+function SlotAmount(props) {
+const finalLabel = props.label;
+const color = props.color;
+const fontSize = props.fontSize;
+const [phase, setPhase] = useState(0);
+const spinSteps = 10;
+const parsed = useMemo(function () {
+const match = finalLabel.match(/^(~?\$)([0-9.]+)([MBK]?)$/);
+if (!match) return null;
+return { prefix: match[1], value: parseFloat(match[2]), suffix: match[3] };
+}, [finalLabel]);
+useEffect(function () {
+setPhase(0);
+const spinDuration = 1500;
+const timers = [];
+for (let i = 1; i <= spinSteps; i++) {
+const eased = i / spinSteps;
+const delay = (spinDuration / spinSteps) * i + eased * eased * 150;
+timers.push(setTimeout(function () { setPhase(i); }, delay));
+}
+timers.push(setTimeout(function () { setPhase(spinSteps + 1); }, spinDuration + 150));
+return function () { timers.forEach(clearTimeout); };
+}, [finalLabel]);
+const settled = phase > spinSteps;
+const displayLabel = useMemo(function () {
+if (settled || !parsed) return finalLabel;
+if (phase === 0) return finalLabel.replace(/[0-9.]+/, function (m) { return (parseFloat(m) * 0.3).toFixed(m.indexOf('.') > -1 ? 1 : 0); });
+const start = parsed.value * 0.3;
+const t = phase / spinSteps;
+const eased = 1 - Math.pow(1 - t, 3);
+const current = start + (parsed.value - start) * eased;
+const decimals = parsed.suffix === 'M' || parsed.suffix === 'B' ? 1 : 0;
+return parsed.prefix + current.toFixed(decimals) + parsed.suffix;
+}, [phase, finalLabel, settled, parsed]);
+return e('span', {
+style: {
+display: 'inline-block',
+transform: settled ? 'scale(1)' : 'scale(0.94)',
+transition: settled ? 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)' : 'none',
+color: color, fontSize: fontSize, fontWeight: 700, fontVariantNumeric: 'tabular-nums'
+}
+}, displayLabel);
 }
 function RankDelta(props) {
 const rank = props.rank, prev = props.prev;
@@ -561,7 +606,7 @@ distributor: top10[0].distributor,
 theaters: top10[0].theaters,
 extra: fmtFull(top10[0].avg) + ' avg',
 amountLabel: fmtMoney(top10[0].gross),
-subLabel: (TOP10_IS_FINAL ? 'FINAL 3-DAY' : 'WKD ESTIMATE') + ' \u00B7 ' + LAST_WEEKEND.range,
+subLabel: (TOP10_IS_FINAL ? 'FINAL 3-DAY' : 'WKD ESTIMATE') + ' \u00B7 ' + THIS_WEEKEND.range,
 tagLabel: 'LATEST'
 };
 const finalData = {
