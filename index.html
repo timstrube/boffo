@@ -57,11 +57,11 @@ greenDim: 'rgba(63,224,138,0.16)',
 magenta: '#E0479E',
 magentaDim: 'rgba(224,71,158,0.16)'
 };
-const LAST_UPDATED = 'Jun 28, 2026 \u00B7 12:45 PM PT / 3:45 PM ET';
+const LAST_UPDATED = 'Jun 28, 2026 \u00B7 5:32 PM PT / 8:32 PM ET';
 const BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
-const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jun 26-28', tag: 'FINAL', tab: 'top10' };
-const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jul 1-3', tag: 'IN PROGRESS', tab: 'tracking' };
-const NEXT_WEEKEND = { id: 'next', label: 'Next weekend', range: 'Jul 4+', tag: 'UPCOMING', tab: 'calendar' };
+const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jun 19-21', tag: 'FINAL', tab: null, externalUrl: 'https://www.boxofficemojo.com/weekend/2026W25/' };
+const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jun 26-28', tag: 'IN PROGRESS', tab: 'top10' };
+const NEXT_WEEKEND = { id: 'next', label: 'Next weekend', range: 'Jul 1-3', tag: 'UPCOMING', tab: 'tracking' };
 const WEEKENDS = [LAST_WEEKEND, THIS_WEEKEND, NEXT_WEEKEND];
 const DIST_OPTIONS = [
 'Universal', 'Focus Features', 'Paramount', 'A24', 'Amazon MGM', 'Disney', 'Walt Disney',
@@ -244,7 +244,7 @@ const onClick = props.onClick;
 const styles = {
 'FINAL': { bg: 'rgba(138,150,143,0.12)', border: 'rgba(138,150,143,0.4)', fg: '#A8B3AC' },
 'IN PROGRESS': { bg: C.greenDim, border: C.green, fg: C.green },
-'UPCOMING': { bg: C.magentaDim, border: C.magenta, fg: C.magenta }
+'UPCOMING': { bg: 'rgba(212,162,76,0.12)', border: 'rgba(212,162,76,0.45)', fg: C.amber }
 };
 const s = styles[w.tag];
 return e('div', {
@@ -630,7 +630,7 @@ e(HeroRow, { kind: 'final', live: finalData, isMobile: isMobile })
 ),
 e('div', { style: { display: 'flex', gap: 2, marginTop: 4, overflowX: 'auto', WebkitOverflowScrolling: 'touch' } },
 tabs.map(function (t) {
-const tabColor = t.id === 'top10' ? '#A8B3AC' : t.id === 'daily' ? C.teal : t.id === 'tracking' ? C.green : t.id === 'calendar' ? C.magenta : C.emerald;
+const tabColor = t.id === 'top10' ? C.green : t.id === 'daily' ? C.teal : t.id === 'tracking' ? C.amber : t.id === 'calendar' ? C.magenta : C.emerald;
 return e('button', {
 key: t.id,
 onClick: function () { setTab(t.id); },
@@ -649,7 +649,7 @@ let body = null;
 if (tab === 'top10') {
 if (isMobile) {
 body = e('div', { style: sectionPad },
-e('div', { style: { fontSize: 11, color: C.textMute, marginBottom: 14, letterSpacing: 0.2 } }, 'Weekend of ' + LAST_WEEKEND.range),
+e('div', { style: { fontSize: 11, color: C.textMute, marginBottom: 14, letterSpacing: 0.2 } }, 'Weekend of ' + THIS_WEEKEND.range),
 e('div', { style: { display: 'flex', gap: 6, marginBottom: 14, overflowX: 'auto', paddingBottom: 4 } },
 [
 { key: 'gross', label: 'Weekend' },
@@ -674,7 +674,7 @@ fontSize: 10.5, fontWeight: 700, padding: '5px 9px', borderRadius: 4, cursor: 'p
 sortedTop10.map(function (m) {
 return e('div', { key: m.rank, style: { padding: '12px 0', borderBottom: '1px solid ' + C.border } },
 e('div', { style: { display: 'flex', alignItems: 'baseline', gap: 8 } },
-e('div', { style: { fontWeight: 800, fontSize: 15, color: '#A8B3AC', minWidth: 20 } }, m.rank),
+e('div', { style: { fontWeight: 800, fontSize: 15, color: C.green, minWidth: 20 } }, m.rank),
 e('div', { style: { flex: 1, fontWeight: 400, fontFamily: "'Readex Pro', sans-serif", fontSize: 13.5 } }, m.title),
 e('div', { style: { fontVariantNumeric: 'tabular-nums', fontWeight: 700, fontSize: 14 } }, fmtMoney(m.gross))
 ),
@@ -718,7 +718,7 @@ const cols = isTablet
 const showTheaters = !isTablet;
 const showTotal = !isTablet;
 body = e('div', { style: sectionPad },
-e('div', { style: { fontSize: 11, color: C.textMute, marginBottom: 14, letterSpacing: 0.2 } }, 'Weekend of ' + LAST_WEEKEND.range + ' \u00B7 click a column to sort'),
+e('div', { style: { fontSize: 11, color: C.textMute, marginBottom: 14, letterSpacing: 0.2 } }, 'Weekend of ' + THIS_WEEKEND.range + ' \u00B7 click a column to sort'),
 e('div', { style: { display: 'grid', gridTemplateColumns: cols, fontSize: 10.5, color: C.textFaint, paddingBottom: 8, borderBottom: '1px solid ' + C.borderStrong, textTransform: 'uppercase', letterSpacing: 0.4 } },
 e('div', null, '#'),
 e('div', null, 'Title'),
@@ -731,7 +731,7 @@ e(SortHeader, { col: 'global', label: 'Global', right: true, sortKey: sortKey, s
 ),
 sortedTop10.map(function (m) {
 return e('div', { key: m.rank, style: { display: 'grid', gridTemplateColumns: cols, alignItems: 'center', padding: '11px 0', borderBottom: '1px solid ' + C.border, fontSize: 13 } },
-e('div', { style: { fontWeight: 800, fontSize: 14, color: '#A8B3AC' } }, m.rank),
+e('div', { style: { fontWeight: 800, fontSize: 14, color: C.green } }, m.rank),
 e('div', null,
 e('div', { style: { fontWeight: 400, fontFamily: "'Readex Pro', sans-serif" } }, m.title),
 e('div', { style: { display: 'flex', alignItems: 'center', gap: 7, marginTop: 4, flexWrap: 'wrap' } },
