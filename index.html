@@ -57,11 +57,11 @@ greenDim: 'rgba(63,224,138,0.16)',
 magenta: '#E0479E',
 magentaDim: 'rgba(224,71,158,0.16)'
 };
-const LAST_UPDATED = 'Jun 30, 2026 \u00B7 5:12 PM PT / 8:12 PM ET';
+const LAST_UPDATED = 'Jul 1, 2026 \u00B7 2:24 PM PT / 5:24 PM ET';
 const BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
-const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jun 19-21', tag: 'FINAL', tab: null, externalUrl: 'https://www.boxofficemojo.com/weekend/2026W25/' };
-const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jun 26-28', tag: 'IN PROGRESS', tab: 'top10' };
-const NEXT_WEEKEND = { id: 'next', label: 'Next weekend', range: 'Jul 1-3', tag: 'UPCOMING', tab: 'tracking' };
+const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jun 26-28', tag: 'FINAL', tab: 'top10' };
+const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jul 3-5', tag: 'IN PROGRESS', tab: 'tracking' };
+const NEXT_WEEKEND = { id: 'next', label: 'Next weekend', range: 'Jul 10+', tag: 'UPCOMING', tab: 'calendar' };
 const WEEKENDS = [LAST_WEEKEND, THIS_WEEKEND, NEXT_WEEKEND];
 const DIST_OPTIONS = [
 'Universal', 'Focus Features', 'Paramount', 'A24', 'Amazon MGM', 'Disney', 'Walt Disney',
@@ -118,25 +118,11 @@ const TOTAL_WEEKEND_GROSS = 154167750;
 const TOP10_IS_FINAL = true;
 const PREVIOUS_WEEKEND_CHAMP = { title: 'Toy Story 5', distributor: 'Walt Disney', theaters: 4425, gross: 159677837, avg: 36085, range: 'Jun 19-21' };
 const YOY = { thisYear: 149903108, lastYear: 130350000, tenYearAvg: 110000000 };
-const DAILY = [
-{ title: 'Toy Story 5', daily: 12585438, dailyChange: -10, theaters: 4425, avg: 2844 },
-{ title: 'Supergirl', daily: 7800000, dailyChange: null, theaters: 3200, avg: 2438 },
-{ title: 'Obsession', daily: 1909870, dailyChange: -9, theaters: 3053, avg: 626 },
-{ title: 'Disclosure Day', daily: 1361195, dailyChange: -14, theaters: 3824, avg: 356 },
-{ title: 'Jackass: Best and Last', daily: 1200000, dailyChange: null, theaters: 2450, avg: 490 },
-{ title: 'Backrooms', daily: 960757, dailyChange: -15, theaters: 2851, avg: 337 },
-{ title: 'Scary Movie', daily: 623990, dailyChange: -16, theaters: 2725, avg: 229 },
-{ title: 'Masters of the Universe', daily: 351182, dailyChange: -30, theaters: 2517, avg: 140 },
-{ title: 'Leviticus', daily: 298923, dailyChange: -33, theaters: 1076, avg: 278 },
-{ title: 'Star Wars: The Mandalorian and Grogu', daily: 289282, dailyChange: -25, theaters: 2000, avg: 145 }
-];
-const DAILY_DATE = 'Thursday, June 25';
-const DAILY_DATE_SHORT = 'Jun 25';
 const TRACKING_INIT = [
-{ title: 'Minions & Monsters', distributor: 'Universal', theaters: 4000, range: [60000000, 90000000], actual: null, confidence: 'medium', momentum: 'rising', note: 'Tracking has converged meaningfully in the last 24 hours. Deadline puts the 5-day North American forecast at $80M with exhibitors projecting a $60-90M Wednesday-through-Sunday range \u2014 and a $170M global opening if it holds. Opens Wednesday July 1, so the 3-day will be lower than the extended corridor number; Deadline notes Independence Day falling on Saturday shifts the biggest grossing days to Wednesday, Friday, and Sunday. Reviews are positive. No Tuesday previews. Tracking stronger with moms than dads, first choice among families behind Minions: Rise of Gru by 40%.' },
-{ title: 'Young Washington', distributor: 'Angel Studios', theaters: 2600, range: [15000000, 20000000], actual: null, confidence: 'medium', momentum: 'stable', note: 'Projections have settled and narrowed: Deadline puts it at $15M, Variety at $15-20M \u2014 a real tightening from the $10-30M scatter we had earlier. Opens Friday July 3 alongside the 250th anniversary of American independence, leaning on Angel Studios\' guild network and patriotic framing. Sound of Freedom ($19.6M 3-day, $40M+ 6-day in 2021) is the aspirational comparison, though that year July 4 fell on a Tuesday; with July 4 on a Saturday this year the extended-weekend dynamic shifts. Jon Erwin directs; William Franklyn-Miller stars as young Washington, with Ben Kingsley, Andy Serkis, Mary-Louise Parker, and Kelsey Grammer.' }
+{ title: 'Minions & Monsters', distributor: 'Universal', theaters: 4000, range: [65000000, 80000000], actual: null, confidence: 'high', momentum: 'rising', criticAudience: { rtCritic: 90, rtAudience: null, metacritic: 68, cinemaScore: null }, note: 'Now open — in theaters as of today (Wed July 1). 5-day North American tracking at $80M, with exhibitors ranging $60-90M for the full Wed-Sun frame; Box Office Pro tightened its 3-day range to $65-75M. Best-reviewed film in the franchise at 90% RT / 68 Metacritic \u2014 Variety called it "smarter, wilder and funnier than the seventh entry in any animated franchise has a right to be." Already $16.5M internationally from 10 markets before expanding to 59 more this weekend. Key July 4th on Saturday context: biggest grossing days expected to be Wed (opening day), Friday, and Sunday.' },
+{ title: 'Young Washington', distributor: 'Angel Studios', theaters: 2600, range: [15000000, 20000000], actual: null, confidence: 'medium', momentum: 'stable', note: 'Box Office Pro puts it at $15-20M for the 4-day debut; Deadline\'s point estimate is $15M. 71% RT critics score (6 of 7 early reviews positive from Tribeca). Box Office Pro notes it may have enough strength to beat Supergirl\'s third-weekend gross in the 3-day. Angel Studios is pushing hard for the #1 spot on Saturday July 4th with guild mobilization, and pre-sale metrics are described as encouraging. Sound of Freedom ($19.6M 3-day, July 4 fell on Tuesday) is the comp \u2014 with July 4 on a Saturday this year, the dynamic shifts in Washington\'s favor since family films typically decline on the holiday itself, giving the patriotic drama a leg up. William Franklyn-Miller stars; Jon Erwin directs.' }
 ];
-const TRACKING_WEEKEND = 'Jul 1-3';
+const TRACKING_WEEKEND = 'Jul 3-5';
 const RELEASES = [
 { date: 'Jul 10', title: 'Moana', distributor: 'Walt Disney', type: 'Wide' },
 { date: 'Jul 10', title: 'Evil Dead Burn', distributor: 'Warner Bros.', type: 'Wide' },
@@ -178,9 +164,9 @@ return result;
 function Ticker(props) {
 const items = props.items;
 const breakingTag = e('span', { key: 'breaking', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
-e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
-e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
-e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS 6/26-6/28')
+e('span', { style: { background: C.green, padding: '3px 9px', borderRadius: 3 } },
+e('span', { style: { color: '#0A0E0C', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS '),
+e('span', { style: { color: 'rgba(10,14,12,0.6)', fontSize: 10.5, fontWeight: 700, letterSpacing: 0.4 } }, '6/26-6/28')
 )
 );
 const renderItem = function (m, key) {
@@ -201,9 +187,9 @@ e('div', { style: { display: 'inline-flex', animation: 'ticker 38s linear infini
 breakingTag,
 items.map(function (m, i) { return renderItem(m, 'a' + i); }),
 e('span', { key: 'breaking2', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
-e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
-e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
-e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS 6/26-6/28')
+e('span', { style: { background: C.green, padding: '3px 9px', borderRadius: 3 } },
+e('span', { style: { color: '#0A0E0C', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS '),
+e('span', { style: { color: 'rgba(10,14,12,0.6)', fontSize: 10.5, fontWeight: 700, letterSpacing: 0.4 } }, '6/26-6/28')
 )
 ),
 items.map(function (m, i) { return renderItem(m, 'b' + i); })
@@ -244,7 +230,7 @@ const onClick = props.onClick;
 const styles = {
 'FINAL': { bg: 'rgba(138,150,143,0.12)', border: 'rgba(138,150,143,0.4)', fg: '#A8B3AC' },
 'IN PROGRESS': { bg: C.greenDim, border: C.green, fg: C.green },
-'UPCOMING': { bg: 'rgba(212,162,76,0.12)', border: 'rgba(212,162,76,0.45)', fg: C.amber }
+'UPCOMING': { bg: C.magentaDim, border: C.magenta, fg: C.magenta }
 };
 const s = styles[w.tag];
 return e('div', {
@@ -572,7 +558,7 @@ return 0;
 return arr;
 }, [sortKey, sortDir, top10]);
 const sumGross = useMemo(function () { return top10.reduce(function (a, m) { return a + m.gross; }, 0); }, [top10]);
-const sumDaily = useMemo(function () { return DAILY.reduce(function (a, m) { return a + m.daily; }, 0); }, []);
+
 const leadingProjection = useMemo(function () {
 if (!tracking || tracking.length === 0) return null;
 let best = null;
@@ -588,7 +574,6 @@ const wrap = { background: C.bg, color: C.text, fontFamily: "'JetBrains Mono', m
 const sectionPad = { padding: isMobile ? '18px 14px' : '26px 30px' };
 const tabs = [
 { id: 'top10', label: 'Weekend' },
-{ id: 'daily', label: 'Daily' },
 { id: 'tracking', label: 'Projections' },
 { id: 'calendar', label: 'Release Calendar' }
 ];
@@ -606,7 +591,7 @@ distributor: top10[0].distributor,
 theaters: top10[0].theaters,
 extra: fmtFull(top10[0].avg) + ' avg',
 amountLabel: fmtMoney(top10[0].gross),
-subLabel: (TOP10_IS_FINAL ? 'FINAL 3-DAY' : 'WKD ESTIMATE') + ' \u00B7 ' + THIS_WEEKEND.range,
+subLabel: (TOP10_IS_FINAL ? 'FINAL 3-DAY' : 'WKD ESTIMATE') + ' \u00B7 ' + LAST_WEEKEND.range,
 tagLabel: 'LATEST'
 };
 const finalData = {
@@ -655,19 +640,7 @@ if (w.tab) { setTab(w.tab); setDrawerOpen(false); }
 else if (w.externalUrl) { window.open(w.externalUrl, '_blank'); setDrawerOpen(false); }
 }
 });
-}),
-e('div', {
-onClick: function () { setTab('daily'); setDrawerOpen(false); },
-style: {
-display: 'inline-flex', alignItems: 'center', gap: 8, cursor: 'pointer',
-background: C.tealDim, border: '1px solid ' + (tab === 'daily' ? C.teal : 'rgba(31,184,184,0.4)'),
-borderRadius: 5, padding: '6px 12px'
-}
-},
-e('span', { style: { fontSize: 10, fontWeight: 800, letterSpacing: 0.8, color: C.teal, textTransform: 'uppercase' } }, 'Daily'),
-e('span', { style: { width: 1, height: 12, background: 'rgba(31,184,184,0.4)' } }),
-e('span', { style: { fontSize: 11.5, fontWeight: 600, color: C.text, fontVariantNumeric: 'tabular-nums' } }, DAILY_DATE_SHORT)
-)
+})
 ),
 e('div', { style: { marginTop: 12, border: '1px solid ' + C.borderStrong, borderRadius: 10, padding: isMobile ? '4px 10px' : '4px 16px' } },
 liveData ? e(HeroRow, { kind: 'live', live: liveData, isMobile: isMobile }) : null,
@@ -675,7 +648,7 @@ e(HeroRow, { kind: 'final', live: finalData, isMobile: isMobile })
 ),
 e('div', { style: { display: 'flex', gap: 2, marginTop: 4, overflowX: 'auto', WebkitOverflowScrolling: 'touch' } },
 tabs.map(function (t) {
-const tabColor = t.id === 'top10' ? C.green : t.id === 'daily' ? C.teal : t.id === 'tracking' ? C.amber : t.id === 'calendar' ? C.magenta : C.emerald;
+const tabColor = t.id === 'top10' ? '#A8B3AC' : t.id === 'tracking' ? C.green : t.id === 'calendar' ? C.magenta : C.emerald;
 return e('button', {
 key: t.id,
 onClick: function () { setTab(t.id); },
@@ -694,7 +667,7 @@ let body = null;
 if (tab === 'top10') {
 if (isMobile) {
 body = e('div', { style: sectionPad },
-e('div', { style: { fontSize: 11, color: C.textMute, marginBottom: 14, letterSpacing: 0.2 } }, 'Weekend of ' + THIS_WEEKEND.range),
+e('div', { style: { fontSize: 11, color: C.textMute, marginBottom: 14, letterSpacing: 0.2 } }, 'Weekend of ' + LAST_WEEKEND.range),
 e('div', { style: { display: 'flex', gap: 6, marginBottom: 14, overflowX: 'auto', paddingBottom: 4 } },
 [
 { key: 'gross', label: 'Weekend' },
@@ -719,7 +692,7 @@ fontSize: 10.5, fontWeight: 700, padding: '5px 9px', borderRadius: 4, cursor: 'p
 sortedTop10.map(function (m) {
 return e('div', { key: m.rank, style: { padding: '12px 0', borderBottom: '1px solid ' + C.border } },
 e('div', { style: { display: 'flex', alignItems: 'baseline', gap: 8 } },
-e('div', { style: { fontWeight: 800, fontSize: 15, color: C.green, minWidth: 20 } }, m.rank),
+e('div', { style: { fontWeight: 800, fontSize: 15, color: '#A8B3AC', minWidth: 20 } }, m.rank),
 e('div', { style: { flex: 1, fontWeight: 400, fontFamily: "'Readex Pro', sans-serif", fontSize: 13.5 } }, m.title),
 e('div', { style: { fontVariantNumeric: 'tabular-nums', fontWeight: 700, fontSize: 14 } }, fmtMoney(m.gross))
 ),
@@ -763,7 +736,7 @@ const cols = isTablet
 const showTheaters = !isTablet;
 const showTotal = !isTablet;
 body = e('div', { style: sectionPad },
-e('div', { style: { fontSize: 11, color: C.textMute, marginBottom: 14, letterSpacing: 0.2 } }, 'Weekend of ' + THIS_WEEKEND.range + ' \u00B7 click a column to sort'),
+e('div', { style: { fontSize: 11, color: C.textMute, marginBottom: 14, letterSpacing: 0.2 } }, 'Weekend of ' + LAST_WEEKEND.range + ' \u00B7 click a column to sort'),
 e('div', { style: { display: 'grid', gridTemplateColumns: cols, fontSize: 10.5, color: C.textFaint, paddingBottom: 8, borderBottom: '1px solid ' + C.borderStrong, textTransform: 'uppercase', letterSpacing: 0.4 } },
 e('div', null, '#'),
 e('div', null, 'Title'),
@@ -776,7 +749,7 @@ e(SortHeader, { col: 'global', label: 'Global', right: true, sortKey: sortKey, s
 ),
 sortedTop10.map(function (m) {
 return e('div', { key: m.rank, style: { display: 'grid', gridTemplateColumns: cols, alignItems: 'center', padding: '11px 0', borderBottom: '1px solid ' + C.border, fontSize: 13 } },
-e('div', { style: { fontWeight: 800, fontSize: 14, color: C.green } }, m.rank),
+e('div', { style: { fontWeight: 800, fontSize: 14, color: '#A8B3AC' } }, m.rank),
 e('div', null,
 e('div', { style: { fontWeight: 400, fontFamily: "'Readex Pro', sans-serif" } }, m.title),
 e('div', { style: { display: 'flex', alignItems: 'center', gap: 7, marginTop: 4, flexWrap: 'wrap' } },
@@ -802,44 +775,6 @@ e('div', { style: { textAlign: 'right', color: m.global ? C.emerald : C.textFain
 e(YoyBlock, { yoyMode: yoyMode, setYoyMode: setYoyMode })
 );
 }
-}
-else if (tab === 'daily') {
-body = e('div', { style: sectionPad },
-e('div', { style: { marginBottom: 16 } },
-e('div', {
-style: {
-display: 'inline-flex', alignItems: 'center', gap: 8,
-background: C.tealDim, border: '1px solid ' + C.teal,
-borderRadius: 5, padding: '6px 12px'
-}
-},
-e('span', { style: { fontSize: 11.5, fontWeight: 700, color: C.teal, fontVariantNumeric: 'tabular-nums' } }, DAILY_DATE)
-),
-e('div', { style: { fontSize: 11, color: C.textMute, marginTop: 8, letterSpacing: 0.2, textTransform: 'uppercase', fontWeight: 700 } }, 'Daily Domestic Totals')
-),
-DAILY.map(function (m, i) {
-return e('div', { key: i, style: { marginBottom: 13 } },
-e('div', {
-style: isMobile
-? { display: 'flex', flexDirection: 'column', gap: 4, fontSize: 12.5, marginBottom: 4 }
-: { display: 'flex', justifyContent: 'space-between', fontSize: 12.5, marginBottom: 4 }
-},
-e('span', { style: { fontWeight: 400, fontFamily: "'Readex Pro', sans-serif" } }, m.title),
-e('span', { style: { display: 'flex', gap: 9, alignItems: 'center', justifyContent: isMobile ? 'space-between' : 'flex-start' } },
-e('span', { style: { color: C.textFaint, fontVariantNumeric: 'tabular-nums' } }, fmtFull(m.avg) + ' avg'),
-e(ChangeBadge, { change: m.dailyChange }),
-e('span', { style: { fontVariantNumeric: 'tabular-nums', fontWeight: 700, minWidth: 66, textAlign: 'right' } }, fmtMoney(m.daily))
-)
-),
-e('div', { style: { display: 'flex', alignItems: 'center', gap: 8 } },
-e('div', { style: { height: 5, background: 'rgba(255,255,255,0.05)', borderRadius: 3, overflow: 'hidden', flex: 1 } },
-e('div', { style: { height: '100%', width: (m.daily / sumDaily * 100) + '%', background: C.teal, borderRadius: 3 } })
-),
-e('span', { style: { fontSize: 9, color: C.textFaint, fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap' } }, Math.round(m.daily / sumDaily * 100) + '% of day')
-)
-);
-})
-);
 }
 else if (tab === 'tracking') {
 body = e('div', { style: sectionPad },
