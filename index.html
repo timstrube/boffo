@@ -57,7 +57,7 @@ greenDim: 'rgba(63,224,138,0.16)',
 magenta: '#E0479E',
 magentaDim: 'rgba(224,71,158,0.16)'
 };
-const LAST_UPDATED = 'Jun 29, 2026 \u00B7 5:32 PM PT / 8:32 PM ET';
+const LAST_UPDATED = 'Jun 30, 2026 \u00B7 5:12 PM PT / 8:12 PM ET';
 const BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
 const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jun 19-21', tag: 'FINAL', tab: null, externalUrl: 'https://www.boxofficemojo.com/weekend/2026W25/' };
 const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jun 26-28', tag: 'IN PROGRESS', tab: 'top10' };
@@ -133,8 +133,8 @@ const DAILY = [
 const DAILY_DATE = 'Thursday, June 25';
 const DAILY_DATE_SHORT = 'Jun 25';
 const TRACKING_INIT = [
-{ title: 'Minions & Monsters', distributor: 'Universal', theaters: 4100, range: [53000000, 85000000], actual: null, confidence: 'medium', momentum: 'rising', note: 'Wide source divergence heading into the July 4th corridor. Box Office Theory\'s model holds at $53-62M for the 3-day open (unchanged since June 1), while Box Office Pro\'s more recent read is significantly higher, implying a $75-85M+ opening with a full domestic run of $225-280M. One analyst forecasts $66.4M Friday-Sunday and $106.5M Wednesday-to-Sunday for the extended holiday run. Opens on Wednesday July 1, spreading grosses across 5 days, which depresses the traditional 3-day number. Competition with Toy Story 5 (third weekend) in the family lane is the key variable.' },
-{ title: 'Young Washington', distributor: 'Angel Studios', theaters: 2600, range: [10000000, 30000000], actual: null, confidence: 'low', momentum: 'rising', note: 'Projections are genuinely all over the map \u2014 as low as $10M from some forecasters, most optimistic above $30M. Angel Studios\' guild mobilization and the Independence Day 250th-anniversary marketing push are the upside case; the Sound of Freedom ($40M+ 6-day, but July 4 fell on a Tuesday that year) comp is the aspirational target. With July 4 on a Saturday this year, the extended-weekend dynamic changes meaningfully. William Franklyn-Miller stars as young Washington, with Andy Serkis and Ben Kingsley in support. Directed by Jon Erwin (I Can Only Imagine).' }
+{ title: 'Minions & Monsters', distributor: 'Universal', theaters: 4000, range: [60000000, 90000000], actual: null, confidence: 'medium', momentum: 'rising', note: 'Tracking has converged meaningfully in the last 24 hours. Deadline puts the 5-day North American forecast at $80M with exhibitors projecting a $60-90M Wednesday-through-Sunday range \u2014 and a $170M global opening if it holds. Opens Wednesday July 1, so the 3-day will be lower than the extended corridor number; Deadline notes Independence Day falling on Saturday shifts the biggest grossing days to Wednesday, Friday, and Sunday. Reviews are positive. No Tuesday previews. Tracking stronger with moms than dads, first choice among families behind Minions: Rise of Gru by 40%.' },
+{ title: 'Young Washington', distributor: 'Angel Studios', theaters: 2600, range: [15000000, 20000000], actual: null, confidence: 'medium', momentum: 'stable', note: 'Projections have settled and narrowed: Deadline puts it at $15M, Variety at $15-20M \u2014 a real tightening from the $10-30M scatter we had earlier. Opens Friday July 3 alongside the 250th anniversary of American independence, leaning on Angel Studios\' guild network and patriotic framing. Sound of Freedom ($19.6M 3-day, $40M+ 6-day in 2021) is the aspirational comparison, though that year July 4 fell on a Tuesday; with July 4 on a Saturday this year the extended-weekend dynamic shifts. Jon Erwin directs; William Franklyn-Miller stars as young Washington, with Ben Kingsley, Andy Serkis, Mary-Louise Parker, and Kelsey Grammer.' }
 ];
 const TRACKING_WEEKEND = 'Jul 1-3';
 const RELEASES = [
@@ -178,9 +178,9 @@ return result;
 function Ticker(props) {
 const items = props.items;
 const breakingTag = e('span', { key: 'breaking', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
-e('span', { style: { background: C.green, padding: '3px 9px', borderRadius: 3 } },
-e('span', { style: { color: '#0A0E0C', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS '),
-e('span', { style: { color: 'rgba(10,14,12,0.65)', fontSize: 10.5, fontWeight: 700, letterSpacing: 0.4 } }, '6/26-6/28')
+e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
+e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
+e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS 6/26-6/28')
 )
 );
 const renderItem = function (m, key) {
@@ -201,9 +201,9 @@ e('div', { style: { display: 'inline-flex', animation: 'ticker 38s linear infini
 breakingTag,
 items.map(function (m, i) { return renderItem(m, 'a' + i); }),
 e('span', { key: 'breaking2', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
-e('span', { style: { background: C.green, padding: '3px 9px', borderRadius: 3 } },
-e('span', { style: { color: '#0A0E0C', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS '),
-e('span', { style: { color: 'rgba(10,14,12,0.65)', fontSize: 10.5, fontWeight: 700, letterSpacing: 0.4 } }, '6/26-6/28')
+e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
+e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
+e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS 6/26-6/28')
 )
 ),
 items.map(function (m, i) { return renderItem(m, 'b' + i); })
