@@ -57,7 +57,7 @@ greenDim: 'rgba(63,224,138,0.16)',
 magenta: '#E0479E',
 magentaDim: 'rgba(224,71,158,0.16)'
 };
-const LAST_UPDATED = 'Jul 2, 2026 \u00B7 4:58 PM PT / 7:58 PM ET';
+const LAST_UPDATED = 'Jul 6, 2026 \u00B7 6:37 AM PT / 9:37 AM ET';
 const BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
 const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jun 26-28', tag: 'FINAL', tab: 'top10' };
 const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jul 3-5', tag: 'IN PROGRESS', tab: 'tracking' };
@@ -103,29 +103,29 @@ color: color, minWidth: 30
 }, code);
 }
 const TOP10_INIT = [
-{ rank: 1, prev: 1, weekendNum: 2, title: 'Toy Story 5', gross: 70829028, change: -56, theaters: 4425, avg: 16007, total: 298070670, global: 585000000, distributor: 'Walt Disney' },
-{ rank: 2, prev: null, weekendNum: 1, title: 'Supergirl', gross: 37102018, change: null, theaters: 3602, avg: 10300, total: 37102018, global: 68000000, distributor: 'Warner Bros.' },
-{ rank: 3, prev: 3, weekendNum: 6, title: 'Obsession', gross: 9701165, change: -28, theaters: 2965, avg: 3272, total: 233804250, global: 370000000, distributor: 'Focus Features' },
-{ rank: 4, prev: null, weekendNum: 1, title: 'Jackass: Best and Last', gross: 8464977, change: null, theaters: 2855, avg: 2965, total: 8464977, global: 10300000, distributor: 'Paramount' },
-{ rank: 5, prev: 2, weekendNum: 2, title: 'Disclosure Day', gross: 8253095, change: -53, theaters: 3357, avg: 2458, total: 94537235, global: 180000000, distributor: 'Universal' },
-{ rank: 6, prev: 4, weekendNum: 5, title: 'Backrooms', gross: 4315190, change: -40, theaters: 2396, avg: 1801, total: 184185938, global: 295000000, distributor: 'A24' },
-{ rank: 7, prev: 5, weekendNum: 4, title: 'Scary Movie', gross: 3064859, change: -52, theaters: 2004, avg: 1529, total: 103588615, global: 205000000, distributor: 'Paramount' },
-{ rank: 8, prev: 6, weekendNum: 4, title: 'Masters of the Universe', gross: 2315297, change: -63, theaters: 2090, avg: 1108, total: 62026510, global: 102900000, distributor: 'Amazon MGM' },
-{ rank: 9, prev: null, weekendNum: 1, title: 'BLEACH: Thousand-Year Blood War \u2014 The Calamity', gross: 1954000, change: null, theaters: 943, avg: 2072, total: 2954000, global: null, distributor: 'Fathom Entertainment' },
-{ rank: 10, prev: 7, weekendNum: 6, title: 'Star Wars: The Mandalorian and Grogu', gross: 1753907, change: -58, theaters: 1250, avg: 1403, total: 175407277, global: 330000000, distributor: 'Disney' }
+{ rank: 1, prev: null, weekendNum: 1, title: 'Minions & Monsters', gross: 36400000, change: null, theaters: 4243, avg: 8579, total: 61441000, global: 159870000, distributor: 'Universal' },
+{ rank: 2, prev: 1, weekendNum: 3, title: 'Toy Story 5', gross: 31000000, change: -56, theaters: 3975, avg: 7799, total: 366348690, global: 764300000, distributor: 'Walt Disney' },
+{ rank: 3, prev: null, weekendNum: 1, title: 'Young Washington', gross: 20847688, change: null, theaters: 2700, avg: 7721, total: 20847688, global: null, distributor: 'Angel Studios' },
+{ rank: 4, prev: 2, weekendNum: 2, title: 'Supergirl', gross: 9600000, change: -74, theaters: 3602, avg: 2665, total: 58470000, global: 100500000, distributor: 'Warner Bros.' },
+{ rank: 5, prev: 5, weekendNum: 4, title: 'Disclosure Day', gross: 6000000, change: -27, theaters: 2702, avg: 2221, total: 105312000, global: 195000000, distributor: 'Universal' },
+{ rank: 6, prev: 3, weekendNum: 7, title: 'Obsession', gross: 5300000, change: -45, theaters: 2640, avg: 2008, total: 245318000, global: 403000000, distributor: 'Focus Features' },
+{ rank: 7, prev: 6, weekendNum: 6, title: 'Backrooms', gross: 3308387, change: -25, theaters: 2396, avg: 1381, total: 190480127, global: 305000000, distributor: 'A24' },
+{ rank: 8, prev: 4, weekendNum: 2, title: 'Jackass: Best and Last', gross: 2700000, change: -68, theaters: 2855, avg: 946, total: 14690000, global: 17000000, distributor: 'Paramount' },
+{ rank: 9, prev: 7, weekendNum: 5, title: 'Scary Movie', gross: 1130000, change: -63, theaters: 1158, avg: 976, total: 106252000, global: 210000000, distributor: 'Paramount' },
+{ rank: 10, prev: 17, weekendNum: 2, title: 'The Invite', gross: 800708, change: 111, theaters: 28, avg: 28597, total: 1369500, global: null, distributor: 'Focus Features' }
 ];
-const TOTAL_WEEKEND_GROSS = 154167750;
-const TOP10_IS_FINAL = true;
-const PREVIOUS_WEEKEND_CHAMP = { title: 'Toy Story 5', distributor: 'Walt Disney', theaters: 4425, gross: 159677837, avg: 36085, range: 'Jun 19-21' };
-const YOY = { thisYear: 149903108, lastYear: 130350000, tenYearAvg: 110000000 };
+const TOTAL_WEEKEND_GROSS = 119230548;
+const TOP10_IS_FINAL = false;
+const PREVIOUS_WEEKEND_CHAMP = { title: 'Toy Story 5', distributor: 'Walt Disney', theaters: 4425, gross: 70829028, avg: 16007, range: 'Jun 26-28' };
+const YOY = { thisYear: 119230548, lastYear: 103500000, tenYearAvg: 95000000 };
 const TRACKING_INIT = [
-{ title: 'Minions & Monsters', distributor: 'Universal', theaters: 4000, range: [60000000, 80000000], actual: null, confidence: 'high', momentum: 'rising', criticAudience: { rtCritic: 90, rtAudience: null, metacritic: 68, cinemaScore: 'A-' }, note: 'Now open. Opened Wednesday to $14.23M \u2014 fourth-best animated July opening Wednesday ever, behind Despicable Me 2 ($35M), Despicable Me 4 ($27.2M), and Ice Age: Dawn of the Dinosaurs ($13.79M). No previews. A- CinemaScore. 5-day tracking holds at $80M with exhibitors ranging $60-90M; Gold Derby projects $68M for the Fri-Sun 3-day. Best-reviewed entry in the franchise at 90% RT. July 4 on Saturday means biggest days will be Wednesday (done), Friday, and Sunday \u2014 the typical July 4th Saturday falloff should actually benefit the film against Young Washington.' },
-{ title: 'Young Washington', distributor: 'Angel Studios', theaters: 2600, range: [15000000, 28000000], actual: null, confidence: 'medium', momentum: 'rising', criticAudience: { rtCritic: 72, rtAudience: null, metacritic: null, cinemaScore: null }, note: 'Opens Friday July 3. 72% RT from 18 reviews \u2014 generally mixed but enough to play. Box Office Theory notes cautious optimism from pre-sale metrics and guild mobilization; Angel is pushing hard for #1 on July 4th Saturday specifically, where family films typically decline. Fandango running a $5 ticket promo for July 4th showings (code AMERICA250). Range: $15M (Deadline) to $18.5M (independent analyst) to $23-35M (Box Office Pro/Wikipedia). Sound of Freedom ($19.6M 3-day when July 4 fell on a Tuesday) is the comp \u2014 Saturday July 4 shifts the dynamic in Washington\'s favor. William Franklyn-Miller stars; Jon Erwin directs.' }
+{ title: 'Moana', distributor: 'Walt Disney', theaters: 4000, range: [40000000, 60000000], actual: null, confidence: 'medium', momentum: 'rising', note: 'The live-action/animated hybrid Moana opens July 10 against Minions & Monsters in only its second weekend. Disney is banking on strong brand recognition and the Dwayne Johnson/Zendaya casting. No tracking figures have been publicly reported yet; range is extrapolated from comparable Disney live-action remakes (The Little Mermaid $95M opening, Aladdin $116M) discounted for current market conditions and the Minions competition. RT score and CinemaScore will be decisive.' },
+{ title: 'The Invite', distributor: 'Focus Features', theaters: 2800, range: [15000000, 25000000], actual: null, confidence: 'medium', momentum: 'rising', criticAudience: { rtCritic: 92, rtAudience: null, metacritic: null, cinemaScore: null }, note: 'The Invite is the weekend\'s real sleeper story. Olivia Wilde\'s R-rated comedy earned $800K from just 28 theaters this weekend (+111%), with 90%+ RT from both critics and audiences \u2014 Cinemablend called it a "2026 highlight." Stars Wilde, Seth Rogen, Edward Norton, and Penélope Cruz. Going wide July 10. The per-screen average of $28,597 this weekend is exceptional and suggests strong word-of-mouth that should convert well into a wide release.' }
 ];
-const TRACKING_WEEKEND = 'Jul 3-5';
+const TRACKING_WEEKEND = 'Jul 10-12';
 const RELEASES = [
-{ date: 'Jul 10', title: 'Moana', distributor: 'Walt Disney', type: 'Wide' },
 { date: 'Jul 10', title: 'Evil Dead Burn', distributor: 'Warner Bros.', type: 'Wide' },
+{ date: 'Jul 10', title: 'The Invite', distributor: 'Focus Features', type: 'Wide', criticAudience: { rtCritic: 92, rtAudience: null, metacritic: null, cinemaScore: null } },
 { date: 'Jul 17', title: 'The Odyssey', distributor: 'Universal', type: 'Wide', momentum: 'softening', quorum: { interest: 46, interestPrev: 54, awareness: 40, awarenessPrev: 42, genreAvg: 'event-epic' } },
 { date: 'Jul 24', title: 'Her Private Hell', distributor: 'Neon', type: 'Wide' },
 { date: 'Jul 31', title: 'Spider-Man: Brand New Day', distributor: 'Sony Pictures', type: 'Wide' },
@@ -164,9 +164,9 @@ return result;
 function Ticker(props) {
 const items = props.items;
 const breakingTag = e('span', { key: 'breaking', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
-e('span', { style: { background: C.green, padding: '3px 9px', borderRadius: 3 } },
-e('span', { style: { color: '#0A0E0C', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS '),
-e('span', { style: { color: 'rgba(10,14,12,0.6)', fontSize: 10.5, fontWeight: 700, letterSpacing: 0.4 } }, '6/26-6/28')
+e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
+e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
+e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKD ESTIMATES 7/3-7/5')
 )
 );
 const renderItem = function (m, key) {
@@ -187,9 +187,9 @@ e('div', { style: { display: 'inline-flex', animation: 'ticker 38s linear infini
 breakingTag,
 items.map(function (m, i) { return renderItem(m, 'a' + i); }),
 e('span', { key: 'breaking2', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
-e('span', { style: { background: C.green, padding: '3px 9px', borderRadius: 3 } },
-e('span', { style: { color: '#0A0E0C', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS '),
-e('span', { style: { color: 'rgba(10,14,12,0.6)', fontSize: 10.5, fontWeight: 700, letterSpacing: 0.4 } }, '6/26-6/28')
+e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
+e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
+e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKD ESTIMATES 7/3-7/5')
 )
 ),
 items.map(function (m, i) { return renderItem(m, 'b' + i); })
@@ -475,7 +475,7 @@ e('span', { style: { color: C.textMute } }, (yoyMode === 'lastYear' ? '2025' : '
 e('div', { style: { height: 10, background: 'rgba(255,255,255,0.05)', borderRadius: 4, overflow: 'hidden' } },
 e('div', { style: { height: '100%', width: (compareVal / maxScale * 100) + '%', background: C.textFaint, borderRadius: 4 } })
 ),
-e('div', { style: { marginTop: 14, fontSize: 11.5, color: C.textMute, lineHeight: 1.6 } }, 'Year-to-date 2026 box office is running 15% ahead of 2025, with summer alone up 17% over last year and now past $2.1B \u2014 the strongest pre-Labor Day pace since the pandemic, even as this particular weekend dropped 32% from Toy Story 5\'s record-setting debut.')
+e('div', { style: { marginTop: 14, fontSize: 11.5, color: C.textMute, lineHeight: 1.6 } }, 'A quieter-than-expected July 4th holiday weekend \u2014 North America topped out at roughly $121M Friday-Saturday, well below the typical $150-200M for Independence Day, per Rentrack. July 4th falling on a Saturday pulled crowds toward barbecues and fireworks rather than theaters. Summer 2026 remains 15% ahead of 2025 YTD despite the softer frame.')
 );
 }
 function Dashboard() {
