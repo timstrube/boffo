@@ -57,7 +57,7 @@ greenDim: 'rgba(63,224,138,0.16)',
 magenta: '#E0479E',
 magentaDim: 'rgba(224,71,158,0.16)'
 };
-const LAST_UPDATED = 'Jul 7, 2026 \u00B7 2:19 PM PT / 5:19 PM ET';
+const LAST_UPDATED = 'Jul 9, 2026 \u00B7 1:43 PM PT / 4:43 PM ET';
 const BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
 const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jul 3-5', tag: 'FINAL', tab: 'top10' };
 const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jul 3-5', tag: 'IN PROGRESS', tab: 'tracking' };
@@ -119,8 +119,8 @@ const TOP10_IS_FINAL = true;
 const PREVIOUS_WEEKEND_CHAMP = { title: 'Toy Story 5', distributor: 'Walt Disney', theaters: 3975, gross: 70829028, avg: 16007, range: 'Jun 26-28' };
 const YOY = { thisYear: 119230548, lastYear: 103500000, tenYearAvg: 95000000 };
 const TRACKING_INIT = [
-{ title: 'Moana', distributor: 'Walt Disney', theaters: 4000, range: [57000000, 72000000], actual: null, confidence: 'medium', momentum: 'softening', note: 'Tracking has slid hard since the initial $85M three-week estimate. Box Office Theory\'s latest read is $57-72M with a $62M pinpoint; Global Box Office puts it at $45-60M citing pre-sales "bombing harder than expected." Budget reportedly $200M+ before marketing, making even a $62M opening a potential write-down. Key concerns: only 10 years removed from the 2016 original (Moana 2 was just 2024), poor trailer reception, and family market saturated by Toy Story 5 (wk 4) and Minions & Monsters (wk 2). Best case: strong reviews and Dwayne Johnson\'s star power convert family audiences who skipped Minions. Evil Dead Burn is the only competition of note.' },
-{ title: 'The Invite', distributor: 'A24', theaters: 2800, range: [18000000, 30000000], actual: null, confidence: 'medium', momentum: 'rising', criticAudience: { rtCritic: 95, rtAudience: null, metacritic: 82, cinemaScore: null }, note: 'The summer\'s breakout adult comedy. 95% RT from 151 critics ("universal acclaim"), 82 Metacritic — Variety says it "reaffirms Olivia Wilde as one of the most exciting filmmakers working today." $28,597 PSA from 28 theaters this weekend is exceptional; Deadline called it one of the top limited openings of the year. A24 bought it out of Sundance in a bidding war. Stars Seth Rogen, Wilde, Penélope Cruz, and Edward Norton. R-rated, so a hard ceiling on family crossover — but the per-screen number and critical consensus suggest this could be the rare mid-budget adult comedy hit this summer needs. No formal tracking range yet; our range extrapolated from A24\'s limited-to-wide expansion track record.' }
+{ title: 'Moana', distributor: 'Walt Disney', theaters: 3900, range: [55000000, 70000000], actual: null, confidence: 'high', momentum: 'softening', criticAudience: { rtCritic: 35, rtAudience: null, metacritic: null, cinemaScore: null }, note: 'Opens tomorrow. Reviews landed Wednesday and they\'re brutal: 35% RT from 55 reviews — the lowest score in Disney\'s live-action remake era, below Snow White\'s 39% and Dumbo\'s 45%. Rolling Stone called it "generic spectacle" and "peak Disney déjà vu"; TheWrap wrote it\'s "the same film, Disney just wants you to pay for it again." Catherine Laga\'aaia\'s performance is the universal bright spot. Tracking consensus sits at $60-65M (Variety, Deadline) from 3,875 theaters, though some rival studios project as low as $40M. Quorum data reveals the real problem: awareness climbed to 80 but want-to-see has been frozen at 49 for a month — everyone knows this movie exists, far fewer want to see it. Budget $200M+. Evil Dead Burn is the only same-day competition.' },
+{ title: 'The Invite', distributor: 'A24', theaters: 2800, range: [18000000, 30000000], actual: null, confidence: 'medium', momentum: 'rising', criticAudience: { rtCritic: 95, rtAudience: null, metacritic: 82, cinemaScore: null }, note: 'The summer\'s breakout adult comedy. 95% RT from 151 critics ("universal acclaim"), 82 Metacritic \u2014 Variety says it "reaffirms Olivia Wilde as one of the most exciting filmmakers working today." $28,597 PSA from 28 theaters two weekends ago is exceptional; Deadline called it one of the top limited openings of the year. A24 bought it out of Sundance in a bidding war. Stars Seth Rogen, Wilde, Pen\u00e9lope Cruz, and Edward Norton. R-rated, hard ceiling on family crossover \u2014 but the per-screen number and critical consensus suggest this could be the rare mid-budget adult comedy hit of the summer.' }
 ];
 const TRACKING_WEEKEND = 'Jul 10-12';
 const RELEASES = [
@@ -164,9 +164,9 @@ return result;
 function Ticker(props) {
 const items = props.items;
 const breakingTag = e('span', { key: 'breaking', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
-e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
-e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
-e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS 7/3-7/5')
+e('span', { style: { background: C.green, padding: '3px 9px', borderRadius: 3 } },
+e('span', { style: { color: '#0A0E0C', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS '),
+e('span', { style: { color: 'rgba(10,14,12,0.6)', fontSize: 10.5, fontWeight: 700, letterSpacing: 0.4 } }, '7/3-7/5')
 )
 );
 const renderItem = function (m, key) {
@@ -187,9 +187,9 @@ e('div', { style: { display: 'inline-flex', animation: 'ticker 38s linear infini
 breakingTag,
 items.map(function (m, i) { return renderItem(m, 'a' + i); }),
 e('span', { key: 'breaking2', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
-e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
-e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
-e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS 7/3-7/5')
+e('span', { style: { background: C.green, padding: '3px 9px', borderRadius: 3 } },
+e('span', { style: { color: '#0A0E0C', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS '),
+e('span', { style: { color: 'rgba(10,14,12,0.6)', fontSize: 10.5, fontWeight: 700, letterSpacing: 0.4 } }, '7/3-7/5')
 )
 ),
 items.map(function (m, i) { return renderItem(m, 'b' + i); })
