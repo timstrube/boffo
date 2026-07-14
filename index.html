@@ -57,7 +57,7 @@ greenDim: 'rgba(63,224,138,0.16)',
 magenta: '#E0479E',
 magentaDim: 'rgba(224,71,158,0.16)'
 };
-const LAST_UPDATED = 'Jul 13, 2026 \u00B7 7:11 AM PT / 10:11 AM ET';
+const LAST_UPDATED = 'Jul 14, 2026 \u00B7 7:10 AM PT / 10:10 AM ET';
 const BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
 const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jul 3-5', tag: 'FINAL', tab: null, externalUrl: 'https://www.boxofficemojo.com/weekend/2026W27/' };
 const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jul 10-12', tag: 'IN PROGRESS', tab: 'top10' };
@@ -103,24 +103,24 @@ color: color, minWidth: 30
 }, code);
 }
 const TOP10_INIT = [
-{ rank: 1, prev: null, weekendNum: 1, title: 'Moana', gross: 43000000, change: null, theaters: 3875, avg: 11097, total: 43000000, global: 95000000, distributor: 'Walt Disney' },
-{ rank: 2, prev: 1, weekendNum: 2, title: 'Minions & Monsters', gross: 20500000, change: -45, theaters: 4244, avg: 4830, total: 108273000, global: 280000000, distributor: 'Universal' },
-{ rank: 3, prev: 2, weekendNum: 4, title: 'Toy Story 5', gross: 18500000, change: -39, theaters: 3575, avg: 5175, total: 403772720, global: 879000000, distributor: 'Walt Disney' },
-{ rank: 4, prev: null, weekendNum: 1, title: 'Evil Dead Burn', gross: 13700000, change: null, theaters: 3004, avg: 4561, total: 13700000, global: 27000000, distributor: 'Warner Bros.' },
-{ rank: 5, prev: 3, weekendNum: 2, title: 'Young Washington', gross: 6447757, change: -67, theaters: 2771, avg: 2327, total: 33105849, global: null, distributor: 'Angel Studios' },
+{ rank: 1, prev: null, weekendNum: 1, title: 'Moana', gross: 43142824, change: null, theaters: 3875, avg: 11134, total: 43142824, global: 95000000, distributor: 'Walt Disney' },
+{ rank: 2, prev: 1, weekendNum: 2, title: 'Minions & Monsters', gross: 21150030, change: -43, theaters: 4244, avg: 4984, total: 108923365, global: 280000000, distributor: 'Universal' },
+{ rank: 3, prev: 2, weekendNum: 4, title: 'Toy Story 5', gross: 19007761, change: -37, theaters: 3575, avg: 5317, total: 404280481, global: 879000000, distributor: 'Walt Disney' },
+{ rank: 4, prev: null, weekendNum: 1, title: 'Evil Dead Burn', gross: 13701012, change: null, theaters: 3004, avg: 4561, total: 13701012, global: 27000000, distributor: 'Warner Bros.' },
+{ rank: 5, prev: 3, weekendNum: 2, title: 'Young Washington', gross: 6902288, change: -64, theaters: 2771, avg: 2491, total: 33560379, global: null, distributor: 'Angel Studios' },
 { rank: 6, prev: 11, weekendNum: 3, title: 'The Invite', gross: 5721061, change: 712, theaters: 1610, avg: 3553, total: 7384507, global: null, distributor: 'A24' },
-{ rank: 7, prev: 6, weekendNum: 8, title: 'Obsession', gross: 3800000, change: -27, theaters: 2069, avg: 1837, total: 253322000, global: 403000000, distributor: 'Focus Features' },
-{ rank: 8, prev: 4, weekendNum: 3, title: 'Supergirl', gross: 3560000, change: -59, theaters: 2584, avg: 1378, total: 66001000, global: 100500000, distributor: 'Warner Bros.' },
-{ rank: 9, prev: 5, weekendNum: 5, title: 'Disclosure Day', gross: 3200000, change: -44, theaters: 2204, avg: 1452, total: 111314000, global: 195000000, distributor: 'Universal' },
+{ rank: 7, prev: 6, weekendNum: 8, title: 'Obsession', gross: 3849365, change: -26, theaters: 2069, avg: 1860, total: 253371765, global: 403000000, distributor: 'Focus Features' },
+{ rank: 8, prev: 4, weekendNum: 3, title: 'Supergirl', gross: 3760829, change: -56, theaters: 2584, avg: 1455, total: 66201943, global: 100500000, distributor: 'Warner Bros.' },
+{ rank: 9, prev: 5, weekendNum: 5, title: 'Disclosure Day', gross: 3351500, change: -42, theaters: 2204, avg: 1521, total: 111465415, global: 195000000, distributor: 'Universal' },
 { rank: 10, prev: 7, weekendNum: 7, title: 'Backrooms', gross: 1485500, change: -54, theaters: 1262, avg: 1177, total: 194197303, global: 305000000, distributor: 'A24' }
 ];
-const TOTAL_WEEKEND_GROSS = 122942891;
-const TOP10_IS_FINAL = false;
-const PREVIOUS_WEEKEND_CHAMP = { title: 'Minions & Monsters', distributor: 'Universal', theaters: 4243, gross: 37003505, avg: 8721, range: 'Jul 3-5' };
+const TOTAL_WEEKEND_GROSS = 125775247;
+const TOP10_IS_FINAL = true;
+const PREVIOUS_WEEKEND_CHAMP = { title: 'Moana', distributor: 'Walt Disney', theaters: 3875, gross: 43142824, avg: 11134, range: 'Jul 10-12' };
 const YOY = { thisYear: 122942891, lastYear: 106000000, tenYearAvg: 92000000 };
 const TRACKING_INIT = [
-{ title: 'The Odyssey', distributor: 'Universal', theaters: 4200, range: [80000000, 120000000], actual: null, confidence: 'medium', momentum: 'rising', note: 'The most anticipated film of 2026. Christopher Nolan follows Oppenheimer ($330M domestic, 7 Oscars including Best Picture) with an adaptation of Homer\'s epic. Box Office Pro forecasts $100-120M; Deadline puts it at $80-100M. Either end would be Nolan\'s biggest opening since The Dark Knight Rises ($160.9M). IMAX and 70mm screenings sold out in major cities nearly a year in advance. Three-week IMAX exclusive run. Tracking has it slightly ahead of Oppenheimer as "first choice" for males 25+ and tied with Project Hail Mary ($80.5M) overall. Cast: Matt Damon (Odysseus), Tom Holland, Anne Hathaway, Zendaya (Athena), Robert Pattinson, Lupita Nyong\'o (Helen of Troy), Charlize Theron, Jon Bernthal. Nolan\'s non-franchise R-rated films are notoriously hard to forecast — Oppenheimer was projected at $40-50M before mushrooming to $82.4M opening night.' },
-{ title: 'The Invite', distributor: 'A24', theaters: 3500, range: [12000000, 22000000], actual: null, confidence: 'medium', momentum: 'rising', criticAudience: { rtCritic: 95, rtAudience: null, metacritic: 82, cinemaScore: null }, note: 'Still expanding. Earned $5.7M from 1,610 theaters this weekend (+712%), a $3,553 PSA that continues the exceptional per-screen performance from its limited run. Critics and audiences both love it (95% RT, 82 Metacritic). A24 is rolling it out carefully, expanding further into the Jul 17-19 frame against The Odyssey — a smart counter-programming play since this is an R-rated adult comedy, not competing for the same audience. The film\'s strong legs suggest it could outperform our projected range if word-of-mouth continues accelerating.' }
+{ title: 'The Odyssey', distributor: 'Universal', theaters: 4200, range: [80000000, 120000000], actual: null, confidence: 'high', momentum: 'rising', note: 'Opens Thursday. Social media embargo lifted July 7 and reactions are uniformly glowing \u2014 Variety: "an astonishing achievement, a triumphant spectacular epic"; Time Out: "believe the hype(rbole)"; Den of Geek: "more heart than any Nolan film since Interstellar." Samantha Morton as Circe is the performance everyone is singling out. Kalshi prediction market has RT score landing at 92%, which would make it Nolan\u2019s second-best after Oppenheimer. Full review embargo lifts July 16-17. Tracking range: Box Office Pro $100-120M, Deadline $80-100M, Polymarket clustering around $95M+. Oppenheimer precedent looms: it was tracking $40-50M and opened to $82.4M \u2014 without Barbenheimer this time, but also without competition. Three-week IMAX exclusive. Cast: Matt Damon, Tom Holland, Anne Hathaway, Zendaya, Robert Pattinson, Lupita Nyong\u2019o, Samantha Morton, Charlize Theron, Jon Bernthal. Budget $250M.' },
+{ title: 'The Invite', distributor: 'A24', theaters: 3500, range: [12000000, 22000000], actual: null, confidence: 'medium', momentum: 'rising', criticAudience: { rtCritic: 95, rtAudience: null, metacritic: 82, cinemaScore: null }, note: 'Still expanding. Earned $5.7M from 1,610 theaters last weekend (+712%), a $3,553 PSA that continues the exceptional per-screen performance from its limited run. Critics and audiences both love it (95% RT, 82 Metacritic). A24 is rolling it out carefully, expanding further into the Jul 17-19 frame against The Odyssey \u2014 a smart counter-programming play since this is an R-rated adult comedy, not competing for the same audience. Strong legs suggest it could outperform our range if word-of-mouth continues accelerating.' }
 ];
 const TRACKING_WEEKEND = 'Jul 17-19';
 const RELEASES = [
@@ -163,7 +163,7 @@ const items = props.items;
 const breakingTag = e('span', { key: 'breaking', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
 e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
 e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
-e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKD ESTIMATES 7/10-7/12')
+e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS 7/10-7/12')
 )
 );
 const renderItem = function (m, key) {
@@ -186,7 +186,7 @@ items.map(function (m, i) { return renderItem(m, 'a' + i); }),
 e('span', { key: 'breaking2', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
 e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
 e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
-e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKD ESTIMATES 7/10-7/12')
+e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS 7/10-7/12')
 )
 ),
 items.map(function (m, i) { return renderItem(m, 'b' + i); })
