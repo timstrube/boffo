@@ -57,7 +57,7 @@ greenDim: 'rgba(63,224,138,0.16)',
 magenta: '#E0479E',
 magentaDim: 'rgba(224,71,158,0.16)'
 };
-const LAST_UPDATED = 'Jul 14, 2026 \u00B7 7:10 AM PT / 10:10 AM ET';
+const LAST_UPDATED = 'Jul 16, 2026 \u00B7 5:15 PM PT / 8:15 PM ET';
 const BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
 const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jul 3-5', tag: 'FINAL', tab: null, externalUrl: 'https://www.boxofficemojo.com/weekend/2026W27/' };
 const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jul 10-12', tag: 'IN PROGRESS', tab: 'top10' };
@@ -116,10 +116,10 @@ const TOP10_INIT = [
 ];
 const TOTAL_WEEKEND_GROSS = 125775247;
 const TOP10_IS_FINAL = true;
-const PREVIOUS_WEEKEND_CHAMP = { title: 'Moana', distributor: 'Walt Disney', theaters: 3875, gross: 43142824, avg: 11134, range: 'Jul 10-12' };
+const PREVIOUS_WEEKEND_CHAMP = { title: 'Minions & Monsters', distributor: 'Universal', theaters: 4243, gross: 37003505, avg: 8721, range: 'Jul 3-5' };
 const YOY = { thisYear: 122942891, lastYear: 106000000, tenYearAvg: 92000000 };
 const TRACKING_INIT = [
-{ title: 'The Odyssey', distributor: 'Universal', theaters: 4200, range: [80000000, 120000000], actual: null, confidence: 'high', momentum: 'rising', note: 'Opens Thursday. Social media embargo lifted July 7 and reactions are uniformly glowing \u2014 Variety: "an astonishing achievement, a triumphant spectacular epic"; Time Out: "believe the hype(rbole)"; Den of Geek: "more heart than any Nolan film since Interstellar." Samantha Morton as Circe is the performance everyone is singling out. Kalshi prediction market has RT score landing at 92%, which would make it Nolan\u2019s second-best after Oppenheimer. Full review embargo lifts July 16-17. Tracking range: Box Office Pro $100-120M, Deadline $80-100M, Polymarket clustering around $95M+. Oppenheimer precedent looms: it was tracking $40-50M and opened to $82.4M \u2014 without Barbenheimer this time, but also without competition. Three-week IMAX exclusive. Cast: Matt Damon, Tom Holland, Anne Hathaway, Zendaya, Robert Pattinson, Lupita Nyong\u2019o, Samantha Morton, Charlize Theron, Jon Bernthal. Budget $250M.' },
+{ title: 'The Odyssey', distributor: 'Universal', theaters: 3900, range: [85000000, 105000000], actual: null, confidence: 'high', momentum: 'rising', criticAudience: { rtCritic: 98, rtAudience: null, metacritic: null, cinemaScore: null }, note: 'Opens tonight. Reviews dropped today to a career-best 98% Certified Fresh from 112 RT critics — the best score of Nolan\'s career, ahead of Oppenheimer (93%) and Dunkirk (92%). Time Out: "believe the hype(rbole) — dense but accessible, a dizzying mix of craft and spectacle built to last." Variety: "an astonishing achievement." Samantha Morton as Circe is the unanimous standout. Domestic tracking has settled at $85-105M, with Gold Derby\'s pinpoint at $100M — his biggest debut since The Dark Knight Rises ($160.9M). Box Office Theory projects $15M+ in Thursday previews (vs. Oppenheimer\'s $10.5M). Global: $85-100M domestic + $110M international for a $200M+ worldwide opening across 73 territories. France early numbers running ~140% ahead of Oppenheimer\'s pace. Budget $250M.' },
 { title: 'The Invite', distributor: 'A24', theaters: 3500, range: [12000000, 22000000], actual: null, confidence: 'medium', momentum: 'rising', criticAudience: { rtCritic: 95, rtAudience: null, metacritic: 82, cinemaScore: null }, note: 'Still expanding. Earned $5.7M from 1,610 theaters last weekend (+712%), a $3,553 PSA that continues the exceptional per-screen performance from its limited run. Critics and audiences both love it (95% RT, 82 Metacritic). A24 is rolling it out carefully, expanding further into the Jul 17-19 frame against The Odyssey \u2014 a smart counter-programming play since this is an R-rated adult comedy, not competing for the same audience. Strong legs suggest it could outperform our range if word-of-mouth continues accelerating.' }
 ];
 const TRACKING_WEEKEND = 'Jul 17-19';
@@ -161,9 +161,9 @@ return result;
 function Ticker(props) {
 const items = props.items;
 const breakingTag = e('span', { key: 'breaking', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
-e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
-e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
-e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS 7/10-7/12')
+e('span', { style: { background: C.green, padding: '3px 9px', borderRadius: 3 } },
+e('span', { style: { color: '#0A0E0C', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS '),
+e('span', { style: { color: 'rgba(10,14,12,0.6)', fontSize: 10.5, fontWeight: 700, letterSpacing: 0.4 } }, '7/10-7/12')
 )
 );
 const renderItem = function (m, key) {
@@ -184,9 +184,9 @@ e('div', { style: { display: 'inline-flex', animation: 'ticker 38s linear infini
 breakingTag,
 items.map(function (m, i) { return renderItem(m, 'a' + i); }),
 e('span', { key: 'breaking2', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
-e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
-e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
-e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS 7/10-7/12')
+e('span', { style: { background: C.green, padding: '3px 9px', borderRadius: 3 } },
+e('span', { style: { color: '#0A0E0C', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS '),
+e('span', { style: { color: 'rgba(10,14,12,0.6)', fontSize: 10.5, fontWeight: 700, letterSpacing: 0.4 } }, '7/10-7/12')
 )
 ),
 items.map(function (m, i) { return renderItem(m, 'b' + i); })
