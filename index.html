@@ -57,7 +57,7 @@ greenDim: 'rgba(63,224,138,0.16)',
 magenta: '#E0479E',
 magentaDim: 'rgba(224,71,158,0.16)'
 };
-const LAST_UPDATED = 'Jul 20, 2026 \u00B7 6:38 AM PT / 9:38 AM ET';
+const LAST_UPDATED = 'Jul 21, 2026 \u00B7 7:02 AM PT / 10:02 AM ET';
 const BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
 const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jul 10-12', tag: 'FINAL', tab: null, externalUrl: 'https://www.boxofficemojo.com/weekend/2026W28/' };
 const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jul 17-19', tag: 'IN PROGRESS', tab: 'top10' };
@@ -103,21 +103,21 @@ color: color, minWidth: 30
 }, code);
 }
 const TOP10_INIT = [
-{ rank: 1, prev: null, weekendNum: 1, title: 'The Odyssey', gross: 124500000, change: null, theaters: 3919, avg: 31768, total: 124500000, global: 264000000, distributor: 'Universal' },
-{ rank: 2, prev: 1, weekendNum: 2, title: 'Moana', gross: 19000000, change: -56, theaters: 4200, avg: 4524, total: 82081410, global: 145000000, distributor: 'Walt Disney' },
-{ rank: 3, prev: 2, weekendNum: 3, title: 'Minions & Monsters', gross: 14800000, change: -30, theaters: 3510, avg: 4217, total: 137584000, global: 340000000, distributor: 'Universal' },
-{ rank: 3, prev: 3, weekendNum: 5, title: 'Toy Story 5', gross: 14800000, change: -22, theaters: 3400, avg: 4353, total: 430918566, global: 940000000, distributor: 'Walt Disney' },
-{ rank: 5, prev: 4, weekendNum: 2, title: 'Evil Dead Burn', gross: 5000000, change: -64, theaters: 3004, avg: 1664, total: 24151000, global: 45000000, distributor: 'Warner Bros.' },
+{ rank: 1, prev: null, weekendNum: 1, title: 'The Odyssey', gross: 123502900, change: null, theaters: 3919, avg: 31514, total: 123502900, global: 264000000, distributor: 'Universal' },
+{ rank: 2, prev: 1, weekendNum: 2, title: 'Moana', gross: 17937618, change: -58, theaters: 4200, avg: 4271, total: 81019028, global: 145000000, distributor: 'Walt Disney' },
+{ rank: 3, prev: 3, weekendNum: 5, title: 'Toy Story 5', gross: 13760078, change: -28, theaters: 3400, avg: 4047, total: 429878644, global: 940000000, distributor: 'Walt Disney' },
+{ rank: 4, prev: 2, weekendNum: 3, title: 'Minions & Monsters', gross: 13601235, change: -36, theaters: 3510, avg: 3875, total: 136385700, global: 340000000, distributor: 'Universal' },
+{ rank: 5, prev: 4, weekendNum: 2, title: 'Evil Dead Burn', gross: 4733933, change: -65, theaters: 3004, avg: 1576, total: 23884445, global: 45000000, distributor: 'Warner Bros.' },
 { rank: 6, prev: 6, weekendNum: 4, title: 'The Invite', gross: 3905908, change: -34, theaters: 2110, avg: 1851, total: 15017888, global: null, distributor: 'A24' },
-{ rank: 7, prev: 5, weekendNum: 3, title: 'Young Washington', gross: 3678487, change: -47, theaters: 2275, avg: 1617, total: 41018236, global: null, distributor: 'Angel Studios' },
-{ rank: 8, prev: 7, weekendNum: 9, title: 'Obsession', gross: 2500000, change: -35, theaters: 1524, avg: 1640, total: 258491000, global: 403000000, distributor: 'Focus Features' },
-{ rank: 9, prev: 8, weekendNum: 4, title: 'Supergirl', gross: 1525000, change: -59, theaters: 1572, avg: 970, total: 69957000, global: 100500000, distributor: 'Warner Bros.' },
-{ rank: 10, prev: 9, weekendNum: 6, title: 'Disclosure Day', gross: 1450000, change: -57, theaters: 1299, avg: 1116, total: 114704000, global: 195000000, distributor: 'Universal' }
+{ rank: 7, prev: 5, weekendNum: 3, title: 'Young Washington', gross: 3577571, change: -48, theaters: 2275, avg: 1573, total: 40917320, global: null, distributor: 'Angel Studios' },
+{ rank: 8, prev: 7, weekendNum: 9, title: 'Obsession', gross: 2395880, change: -38, theaters: 1524, avg: 1572, total: 258387140, global: 403000000, distributor: 'Focus Features' },
+{ rank: 9, prev: 8, weekendNum: 4, title: 'Supergirl', gross: 1475678, change: -61, theaters: 1572, avg: 939, total: 69907906, global: 100500000, distributor: 'Warner Bros.' },
+{ rank: 10, prev: 9, weekendNum: 6, title: 'Disclosure Day', gross: 1346610, change: -60, theaters: 1299, avg: 1037, total: 114600170, global: 195000000, distributor: 'Universal' }
 ];
-const TOTAL_WEEKEND_GROSS = 193010684;
-const TOP10_IS_FINAL = false;
+const TOTAL_WEEKEND_GROSS = 188225475;
+const TOP10_IS_FINAL = true;
 const PREVIOUS_WEEKEND_CHAMP = { title: 'Moana', distributor: 'Walt Disney', theaters: 3875, gross: 43142824, avg: 11134, range: 'Jul 10-12' };
-const YOY = { thisYear: 193010684, lastYear: 158000000, tenYearAvg: 130000000 };
+const YOY = { thisYear: 188225475, lastYear: 158000000, tenYearAvg: 130000000 };
 const TRACKING_INIT = [
 { title: 'The Odyssey', distributor: 'Universal', theaters: 3919, range: [65000000, 80000000], actual: null, confidence: 'high', momentum: 'rising', criticAudience: { rtCritic: 98, rtAudience: null, metacritic: null, cinemaScore: null }, note: 'Second weekend for Nolan\'s record-breaker. Opened to $124.5M domestic ($264M globally) \u2014 his biggest non-Batman opening ever, and the biggest live-action domestic opening of 2026. With 98% RT and exceptional audience word-of-mouth, holds will be closely watched: Oppenheimer dropped just 44% in its second weekend, one of the best holds for a film of this scale. IMAX exclusivity continues through week three, keeping premium-format attendance elevated. The Odyssey already surpassed Oppenheimer\'s entire domestic run ($330M) on a global basis in its first weekend.' },
 { title: 'Her Private Hell', distributor: 'Neon', theaters: 2000, range: [8000000, 15000000], actual: null, confidence: 'low', momentum: 'stable', note: 'The only new wide release opening against The Odyssey\'s massive second weekend. Directed by Nia DaCosta (Captain Marvel), starring Lupita Nyong\'o and Paul Mescal. No public tracking data yet; range extrapolated from comparable Neon adult dramas and DaCosta\'s prior wide-release performance. Counter-programming upside is real \u2014 a prestige adult drama has a distinct audience from Nolan\'s epic \u2014 but competing for screens against a $264M global opener will suppress theater count. Reviews will be critical.' }
@@ -162,7 +162,7 @@ const items = props.items;
 const breakingTag = e('span', { key: 'breaking', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
 e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
 e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
-e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKD ESTIMATES 7/17-7/19')
+e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS 7/17-7/19')
 )
 );
 const renderItem = function (m, key) {
@@ -185,7 +185,7 @@ items.map(function (m, i) { return renderItem(m, 'a' + i); }),
 e('span', { key: 'breaking2', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
 e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
 e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
-e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKD ESTIMATES 7/17-7/19')
+e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS 7/17-7/19')
 )
 ),
 items.map(function (m, i) { return renderItem(m, 'b' + i); })
@@ -471,7 +471,7 @@ e('span', { style: { color: C.textMute } }, (yoyMode === 'lastYear' ? '2025' : '
 e('div', { style: { height: 10, background: 'rgba(255,255,255,0.05)', borderRadius: 4, overflow: 'hidden' } },
 e('div', { style: { height: '100%', width: (compareVal / maxScale * 100) + '%', background: C.textFaint, borderRadius: 4 } })
 ),
-e('div', { style: { marginTop: 14, fontSize: 11.5, color: C.textMute, lineHeight: 1.6 } }, 'The Odyssey\'s $124.5M domestic opening is the biggest live-action debut of 2026 and Christopher Nolan\'s largest non-Batman opening ever. Globally, $264M is Nolan\'s best-ever opening weekend, surpassing The Dark Knight Rises\' global debut. Toy Story 5 crossed $430M domestic and is approaching $1B globally. Summer 2026 is running well ahead of prior years, with Spider-Man: Brand New Day tracking for a possible $230-250M opening on July 31.')
+e('div', { style: { marginTop: 14, fontSize: 11.5, color: C.textMute, lineHeight: 1.6 } }, 'The Odyssey\'s confirmed $123.5M domestic opening is the biggest live-action debut of 2026 and Nolan\'s largest non-Batman opening, with $264M globally. Monday alone added $17M+ stateside \u2014 the best Monday of 2026. Toy Story 5 crossed $430M domestic and is approaching $1B globally. Spider-Man: Brand New Day is tracking for a $180-250M opening July 31, which would be 2026\'s biggest single-weekend gross.')
 );
 }
 function Dashboard() {
