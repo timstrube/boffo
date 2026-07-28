@@ -57,7 +57,7 @@ greenDim: 'rgba(63,224,138,0.16)',
 magenta: '#E0479E',
 magentaDim: 'rgba(224,71,158,0.16)'
 };
-const LAST_UPDATED = 'Jul 27, 2026 \u00B7 7:04 AM PT / 10:04 AM ET';
+const LAST_UPDATED = 'Jul 28, 2026 \u00B7 6:57 AM PT / 9:57 AM ET';
 const BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
 const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jul 17-19', tag: 'FINAL', tab: null, externalUrl: 'https://www.boxofficemojo.com/weekend/2026W29/' };
 const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jul 24-26', tag: 'IN PROGRESS', tab: 'top10' };
@@ -103,24 +103,24 @@ color: color, minWidth: 30
 }, code);
 }
 const TOP10_INIT = [
-{ rank: 1, prev: 1, weekendNum: 2, title: 'The Odyssey', gross: 87000000, change: -30, theaters: 3942, avg: 22070, total: 286372000, global: 490000000, distributor: 'Universal' },
-{ rank: 2, prev: 1, weekendNum: 3, title: 'Moana', gross: 10500000, change: -41, theaters: 4015, avg: 2615, total: 102469653, global: 190000000, distributor: 'Walt Disney' },
-{ rank: 3, prev: 3, weekendNum: 6, title: 'Toy Story 5', gross: 10000000, change: -27, theaters: 3375, avg: 2963, total: 448555658, global: 1000000000, distributor: 'Walt Disney' },
-{ rank: 4, prev: null, weekendNum: 1, title: 'Hadestown: The Musical', gross: 9692712, change: null, theaters: 1949, avg: 4973, total: 9692712, global: null, distributor: 'Bleecker Street' },
-{ rank: 5, prev: 4, weekendNum: 4, title: 'Minions & Monsters', gross: 9600000, change: -29, theaters: 3386, avg: 2835, total: 155388000, global: 400000000, distributor: 'Universal' },
-{ rank: 6, prev: 7, weekendNum: 5, title: 'The Invite', gross: 2636269, change: -32, theaters: 2032, avg: 1297, total: 19815154, global: null, distributor: 'A24' },
-{ rank: 7, prev: 6, weekendNum: 3, title: 'Evil Dead Burn', gross: 2610000, change: -45, theaters: 3004, avg: 869, total: 29184000, global: 55000000, distributor: 'Warner Bros.' },
-{ rank: 8, prev: 5, weekendNum: 4, title: 'Young Washington', gross: 1991286, change: -44, theaters: 2029, avg: 981, total: 44962544, global: null, distributor: 'Angel Studios' },
-{ rank: 9, prev: null, weekendNum: 1, title: 'Motor City', gross: 1625000, change: null, theaters: 1600, avg: 1016, total: 1625000, global: null, distributor: 'Roadside Attractions' },
-{ rank: 10, prev: 9, weekendNum: 10, title: 'Obsession', gross: 1500000, change: -37, theaters: 1203, avg: 1247, total: 261364000, global: 403000000, distributor: 'Focus Features' }
+{ rank: 1, prev: 1, weekendNum: 2, title: 'The Odyssey', gross: 90022510, change: -27, theaters: 3942, avg: 22837, total: 289394310, global: 490000000, distributor: 'Universal' },
+{ rank: 2, prev: 2, weekendNum: 3, title: 'Moana', gross: 10640247, change: -41, theaters: 4015, avg: 2650, total: 102609900, global: 190000000, distributor: 'Walt Disney' },
+{ rank: 3, prev: null, weekendNum: 1, title: 'Hadestown: The Musical', gross: 10243319, change: null, theaters: 1949, avg: 5256, total: 10243319, global: null, distributor: 'Bleecker Street' },
+{ rank: 4, prev: 3, weekendNum: 6, title: 'Toy Story 5', gross: 10161251, change: -26, theaters: 3375, avg: 3011, total: 448716909, global: 1000000000, distributor: 'Walt Disney' },
+{ rank: 5, prev: 4, weekendNum: 4, title: 'Minions & Monsters', gross: 9754525, change: -28, theaters: 3386, avg: 2881, total: 155542875, global: 400000000, distributor: 'Universal' },
+{ rank: 6, prev: 5, weekendNum: 3, title: 'Evil Dead Burn', gross: 2802188, change: -41, theaters: 2385, avg: 1175, total: 29376642, global: 55000000, distributor: 'Warner Bros.' },
+{ rank: 7, prev: 7, weekendNum: 5, title: 'The Invite', gross: 2636269, change: -25, theaters: 2032, avg: 1297, total: 19815154, global: null, distributor: 'A24' },
+{ rank: 8, prev: 6, weekendNum: 4, title: 'Young Washington', gross: 1904706, change: -47, theaters: 2029, avg: 939, total: 44875964, global: null, distributor: 'Angel Studios' },
+{ rank: 9, prev: null, weekendNum: 1, title: 'Motor City', gross: 1693905, change: null, theaters: 1600, avg: 1059, total: 1693905, global: null, distributor: 'Roadside Attractions' },
+{ rank: 10, prev: 8, weekendNum: 10, title: 'Obsession', gross: 1547465, change: -35, theaters: 1203, avg: 1286, total: 261411700, global: 403000000, distributor: 'Focus Features' }
 ];
-const TOTAL_WEEKEND_GROSS = 140489520;
-const TOP10_IS_FINAL = false;
+const TOTAL_WEEKEND_GROSS = 145957596;
+const TOP10_IS_FINAL = true;
 const PREVIOUS_WEEKEND_CHAMP = { title: 'The Odyssey', distributor: 'Universal', theaters: 3919, gross: 123502900, avg: 31514, range: 'Jul 17-19' };
-const YOY = { thisYear: 140489520, lastYear: 122000000, tenYearAvg: 105000000 };
+const YOY = { thisYear: 145957596, lastYear: 122000000, tenYearAvg: 105000000 };
 const TRACKING_INIT = [
-{ title: 'Spider-Man: Brand New Day', distributor: 'Sony Pictures', theaters: 4500, range: [180000000, 250000000], actual: null, confidence: 'high', momentum: 'rising', note: 'Opens Friday July 31 — the final major blockbuster of summer 2026. Box Office Pro forecasts $230-250M; Deadline\'s three-week tracking is $180-190M; Box Office Theory (July 24) notes "signals of potential to reach or exceed previous high-end forecast ranges" but cautions tracking is "incredibly volatile" north of $200M. Pre-sales are the best of any film since No Way Home (2021), though still behind that film overall. Key handicap: IMAX auditoriums are committed to The Odyssey\'s three-week exclusive run, leaving Brand New Day with ScreenX and other PLFs only. Key upside: males under 25 are tracking ahead of every Marvel film since No Way Home, including Deadpool & Wolverine. Directed by Destin Daniel Cretton. Stars Tom Holland, Zendaya, Jacob Batalon, Mark Ruffalo, Jon Bernthal, Sadie Sink. Opens against I Want Your Sex (Magnolia, limited).' },
-{ title: 'The Odyssey', distributor: 'Universal', theaters: 3942, range: [50000000, 65000000], actual: null, confidence: 'high', momentum: 'stable', criticAudience: { rtCritic: 98, rtAudience: null, metacritic: null, cinemaScore: null }, note: 'Third weekend. Held a remarkable -30% in week two ($87M) — better than Oppenheimer\'s own -44% second-weekend drop. Now at $286M domestic and ~$490M global after 10 days. IMAX exclusivity continues through week three, which ends this weekend as Spider-Man takes over those auditoriums. Expect a steeper drop in week three as IMAX screens hand off, though strong word-of-mouth and the Nolan prestige factor should keep it competitive.' }
+{ title: 'Spider-Man: Brand New Day', distributor: 'Sony Pictures', theaters: 4000, range: [212000000, 249000000], actual: null, confidence: 'high', momentum: 'rising', note: 'Opens Thursday July 30 previews / Friday July 31. Tracking has surged dramatically: Box Office Theory now projects $212-228M (with a $249M pinpoint), up sharply from $180-190M three weeks ago. A social media report yesterday cited a $345M projection — which would be the second-highest domestic opening ever behind Endgame\'s $357M — but this is unverified and treated as an outlier; $212-249M is the credible consensus range. The needle keeps moving up. The most remarkable context: achieving all of this WITHOUT any domestic IMAX access, which is committed to The Odyssey through Aug 14. Under-25 male demo is tracking ahead of every Marvel film since No Way Home. Directed by Destin Daniel Cretton. Stars Tom Holland, Zendaya, Jacob Batalon, Mark Ruffalo, Jon Bernthal, Sadie Sink.' },
+{ title: 'The Odyssey', distributor: 'Universal', theaters: 3800, range: [40000000, 55000000], actual: null, confidence: 'high', momentum: 'stable', criticAudience: { rtCritic: 98, rtAudience: null, metacritic: null, cinemaScore: null }, note: 'Third and final IMAX-exclusive weekend before Spider-Man takes over those auditoriums on Friday. Confirmed $87.5M second weekend (-30%) bested Oppenheimer\'s own second-weekend hold. Now at $286.9M domestic / $490M global after 10 days. IMAX handoff to Spider-Man will compress week three grosses — expect a steeper drop than weeks one and two, though prestige word-of-mouth keeps general auditorium attendance strong.' }
 ];
 const TRACKING_WEEKEND = 'Jul 31+';
 const RELEASES = [
@@ -161,7 +161,7 @@ const items = props.items;
 const breakingTag = e('span', { key: 'breaking', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
 e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
 e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
-e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKD ESTIMATES 7/24-7/26')
+e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS 7/24-7/26')
 )
 );
 const renderItem = function (m, key) {
@@ -184,7 +184,7 @@ items.map(function (m, i) { return renderItem(m, 'a' + i); }),
 e('span', { key: 'breaking2', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
 e('span', { style: { background: C.red, padding: '3px 9px', borderRadius: 3 } },
 e('span', { style: { color: '#FFFFFF', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'BREAKING: '),
-e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKD ESTIMATES 7/24-7/26')
+e('span', { style: { color: C.redBright, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS 7/24-7/26')
 )
 ),
 items.map(function (m, i) { return renderItem(m, 'b' + i); })
@@ -470,7 +470,7 @@ e('span', { style: { color: C.textMute } }, (yoyMode === 'lastYear' ? '2025' : '
 e('div', { style: { height: 10, background: 'rgba(255,255,255,0.05)', borderRadius: 4, overflow: 'hidden' } },
 e('div', { style: { height: '100%', width: (compareVal / maxScale * 100) + '%', background: C.textFaint, borderRadius: 4 } })
 ),
-e('div', { style: { marginTop: 14, fontSize: 11.5, color: C.textMute, lineHeight: 1.6 } }, 'The Odyssey held -30% in its second weekend \u2014 better than Oppenheimer\'s own -44% second-weekend drop, one of the best holds in modern blockbuster history. Now at $286M domestic and ~$490M global after 10 days. Toy Story 5 crossed $1B globally this weekend. Spider-Man: Brand New Day opens July 31, tracking for a $180-250M domestic debut that would be summer 2026\'s biggest single weekend.')
+e('div', { style: { marginTop: 14, fontSize: 11.5, color: C.textMute, lineHeight: 1.6 } }, 'The Odyssey confirmed $87.5M in week two (-30%) \u2014 better than Oppenheimer\'s own -44% second-weekend drop, now $286.9M domestic after 10 days. Toy Story 5 crossed $1B globally and $448M domestic. Spider-Man: Brand New Day opens Thursday July 30 previews, with Box Office Theory now projecting $212-249M \u2014 potentially 2026\'s biggest single-weekend domestic gross, achieved without any IMAX access.')
 );
 }
 function Dashboard() {
