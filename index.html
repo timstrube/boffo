@@ -22,6 +22,13 @@ display: block;
 width: 100%;
 }
 #boffo-root button { font-family: 'JetBrains Mono', monospace; }
+html { scrollbar-color: #15C56B #111713; scrollbar-width: thin; }
+#boffo-root, #boffo-root * { scrollbar-color: #15C56B #111713; scrollbar-width: thin; }
+html::-webkit-scrollbar, body::-webkit-scrollbar, #boffo-root::-webkit-scrollbar, #boffo-root *::-webkit-scrollbar { width: 10px; height: 10px; }
+html::-webkit-scrollbar-track, body::-webkit-scrollbar-track, #boffo-root::-webkit-scrollbar-track, #boffo-root *::-webkit-scrollbar-track { background: #111713; }
+html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb, #boffo-root::-webkit-scrollbar-thumb, #boffo-root *::-webkit-scrollbar-thumb { background: #15C56B; border: 2px solid #111713; border-radius: 999px; }
+html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover, #boffo-root::-webkit-scrollbar-thumb:hover, #boffo-root *::-webkit-scrollbar-thumb:hover { background: #3FE08A; }
+html::-webkit-scrollbar-corner, body::-webkit-scrollbar-corner, #boffo-root::-webkit-scrollbar-corner, #boffo-root *::-webkit-scrollbar-corner { background: #111713; }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .w-embed, .w-embed-youtubevideo, .w-iframe { background: #0A0E0C !important; margin: 0 !important; }
@@ -68,7 +75,8 @@ const DIST_OPTIONS = [
 'Lionsgate', 'Trafalgar', 'Bleecker Street', 'Neon', 'Warner Bros.', 'Fathom Entertainment',
 'Roadside Attractions', 'Searchlight Pictures', 'Angel Studios', 'Sony Pictures',
 'Magnolia Pictures', 'Ketchup Entertainment', '20th Century Studios', 'Vertical Entertainment',
-'IFC Films', 'Sony Pictures Classics', 'Strand Releasing', 'Film Movement'
+'IFC Films', 'Sony Pictures Classics', 'Strand Releasing', 'Film Movement',
+'Shudder', 'Mubi', 'Oscilloscope', 'Black Bear', 'Row K', 'Well Go USA', 'Sumerian', 'Apple'
 ];
 const DIST_COLOR = {
 'Universal': '#1FB8B8', 'Focus Features': '#1FB8B8', 'Paramount': '#5C8FF0', 'A24': '#15C56B',
@@ -77,7 +85,9 @@ const DIST_COLOR = {
 'Fathom Entertainment': '#9AA3AC', 'Roadside Attractions': '#D88FC9', 'Searchlight Pictures': '#5C8FF0',
 'Angel Studios': '#F0A833', 'Sony Pictures': '#9AA3AC', 'Magnolia Pictures': '#D88FC9',
 'Ketchup Entertainment': '#F0473D', '20th Century Studios': '#5C8FF0', 'Vertical Entertainment': '#9AA3AC',
-'IFC Films': '#9AA3AC', 'Sony Pictures Classics': '#B0A8D8', 'Strand Releasing': '#9AA3AC', 'Film Movement': '#9AA3AC'
+'IFC Films': '#9AA3AC', 'Sony Pictures Classics': '#B0A8D8', 'Strand Releasing': '#9AA3AC', 'Film Movement': '#9AA3AC',
+'Shudder': '#F0473D', 'Mubi': '#E6EDE8', 'Oscilloscope': '#9AA3AC', 'Black Bear': '#D88FC9',
+'Row K': '#9AA3AC', 'Well Go USA': '#F0A833', 'Sumerian': '#B0A8D8', 'Apple': '#E6EDE8'
 };
 const DIST_CODE = {
 'Universal': 'UNI', 'Focus Features': 'FOC', 'Paramount': 'PAR', 'A24': 'A24', 'Amazon MGM': 'MGM',
@@ -85,7 +95,9 @@ const DIST_CODE = {
 'Neon': 'NEON', 'Warner Bros.': 'WB', 'Fathom Entertainment': 'FTH', 'Roadside Attractions': 'RSA',
 'Searchlight Pictures': 'SRL', 'Angel Studios': 'ANG', 'Sony Pictures': 'SNY', 'Magnolia Pictures': 'MAG',
 'Ketchup Entertainment': 'KET', '20th Century Studios': '20C', 'Vertical Entertainment': 'VERT',
-'IFC Films': 'IFC', 'Sony Pictures Classics': 'SPC', 'Strand Releasing': 'STRD', 'Film Movement': 'FLMT'
+'IFC Films': 'IFC', 'Sony Pictures Classics': 'SPC', 'Strand Releasing': 'STRD', 'Film Movement': 'FLMT',
+'Shudder': 'SHUD', 'Mubi': 'MUBI', 'Oscilloscope': 'OSC', 'Black Bear': 'BBR',
+'Row K': 'ROW K', 'Well Go USA': 'WGU', 'Sumerian': 'SUM', 'Apple': 'APL'
 };
 function DistBadge(props) {
 const name = props.name;
@@ -156,30 +168,90 @@ const TRACKING_INIT = [
 const TRACKING_WEEKEND = 'Jul 31+';
 const RELEASES = [
 { date: 'Jul 31', title: 'I Want Your Sex', distributor: 'Magnolia Pictures', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=kjkTmTmC1iA' },
+{ date: 'Jul 31', title: 'Nightborn', distributor: 'Shudder', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=pvx1TCbiRLQ' },
 { date: 'Aug 7', title: 'One Night Only', distributor: 'Universal', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=JRG244IfrRE' },
-{ date: 'Aug 7', title: 'Super Troopers 3', distributor: 'Searchlight Pictures', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=cYFevn5frf0' },
+{ date: 'Aug 7', title: 'Super Troopers 3', distributor: 'Searchlight Pictures', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=cYFevn5frf0' },
+{ date: 'Aug 7', title: 'Teenage Sex and Death at Camp Miasma', distributor: 'Mubi', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=MA5NqUMEdbI' },
+{ date: 'Aug 7', title: 'Tony', distributor: 'A24', type: 'Limited' },
+{ date: 'Aug 7', title: 'Cookie Queens', distributor: 'Roadside Attractions', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=i8VyUZLNoXE' },
 { date: 'Aug 14', title: 'PAW Patrol: The Dino Movie', distributor: 'Paramount', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=aHw4PuLCUIc' },
-{ date: 'Aug 14', title: 'The End of Oak Street', distributor: 'Warner Bros.', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=3oB9AxspVow' },
+{ date: 'Aug 14', title: 'The End of Oak Street', distributor: 'Warner Bros.', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=3oB9AxspVow' },
 { date: 'Aug 14', title: 'The Rivals of Amziah King', distributor: 'Bleecker Street', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=GwSvAyaMGMo' },
+{ date: 'Aug 14', title: 'Union County', distributor: 'Oscilloscope', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=uA6Fnr2VXkw' },
+{ date: 'Aug 14', title: 'The Wrong Girls', distributor: 'Neon', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=zrcg8YHSys8' },
+{ date: 'Aug 14', title: 'SIX The Musical Live!', distributor: 'Focus Features', type: 'Limited' },
+{ date: 'Aug 21', title: 'The Rivals of Amziah King', distributor: 'Bleecker Street', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=GwSvAyaMGMo' },
 { date: 'Aug 21', title: 'Insidious: Out of the Further', distributor: 'Sony Pictures', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=3PqqwEyV_Lw' },
 { date: 'Aug 21', title: 'Mutiny', distributor: 'Lionsgate', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=FKSdXH89jbo' },
+{ date: 'Aug 21', title: 'The Magic Faraway Tree', distributor: 'Vertical Entertainment', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=npJuXZVbctw' },
+{ date: 'Aug 21', title: 'Spa Weekend', distributor: 'Black Bear', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=CJ7rxgmtlaM' },
+{ date: 'Aug 21', title: 'It Ends', distributor: 'Neon', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=zFszhQLMNXU' },
+{ date: 'Aug 21', title: 'Hot Spot', distributor: 'Focus Features', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=x54MPGBWXA8' },
 { date: 'Aug 28', title: 'Coyote vs. Acme', distributor: 'Ketchup Entertainment', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=H-43VeYGiPM' },
-{ date: 'Aug 28', title: 'The Dog Stars', distributor: 'Walt Disney', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=cmzVY1goqwQ' },
-{ date: 'Sep 4', title: 'By Any Means', distributor: 'Amazon MGM', type: 'Wide' },
-{ date: 'Sep 11', title: 'Clayface', distributor: 'Warner Bros.', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=mo7-mJ6wKho' },
+{ date: 'Aug 28', title: 'The Dog Stars', distributor: 'Walt Disney', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=cmzVY1goqwQ' },
+{ date: 'Aug 28', title: 'Cliffhanger', distributor: 'Row K', type: 'Limited' },
+{ date: 'Aug 28', title: 'Buddy', distributor: 'Roadside Attractions', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=FYC0CaEloVw' },
+{ date: 'Aug 28', title: 'Colony', distributor: 'Well Go USA', type: 'Limited' },
+{ date: 'Aug 28', title: 'Finding Emily', distributor: 'Focus Features', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=wc2UjmPzN8c' },
+{ date: 'Aug 28', title: 'The Sun Never Sets', distributor: 'IFC Films', type: 'Limited' },
+{ date: 'Aug 28', title: 'Idiots', distributor: 'IFC Films', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=UoAf0LNAn30' },
+{ date: 'Aug 28', title: 'Legend of the White Dragon', distributor: 'Well Go USA', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=xUBjSmjHnXY' },
+{ date: 'Sep 4', title: 'By Any Means', distributor: 'Paramount', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=ej8pjisr0Pc' },
+{ date: 'Sep 4', title: 'Onslaught', distributor: 'A24', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=L24CYVpQ-LI' },
+{ date: 'Sep 4', title: 'Dear You', distributor: 'Well Go USA', type: 'Limited' },
 { date: 'Sep 11', title: 'Practical Magic 2', distributor: 'Warner Bros.', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=Ho10_4IX1jE' },
+{ date: 'Sep 11', title: 'The Uprising', distributor: 'Focus Features', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=ZVkrhHebz1Q' },
+{ date: 'Sep 11', title: 'Primetime', distributor: 'A24', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=Yrfrf53ttYY' },
 { date: 'Sep 18', title: 'Resident Evil', distributor: 'Sony Pictures', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=mNd1gb19A-c' },
+{ date: 'Sep 18', title: 'The Weight', distributor: 'Vertical Entertainment', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=wze2FuC8GgM' },
 { date: 'Sep 25', title: 'Forgotten Island', distributor: 'Universal', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=a8RHqN93qfo' },
-{ date: 'Oct 2', title: 'Remain', distributor: 'Warner Bros.', type: 'Wide' },
-{ date: 'Oct 16', title: 'Street Fighter', distributor: 'Paramount', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=gX0Btbbddxk' },
-{ date: 'Oct 23', title: 'Other Mommy', distributor: 'Universal', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=bEpTgowZ1dI' },
+{ date: 'Sep 25', title: 'Heart of the Beast', distributor: 'Paramount', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=JFQcDFhNh4o' },
+{ date: 'Sep 25', title: 'Victorian Psycho', distributor: 'Bleecker Street', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=nIRsEH9OAUk' },
+{ date: 'Sep 25', title: 'Crawlers', distributor: 'Roadside Attractions', type: 'Limited' },
+{ date: 'Sep 25', title: 'The Incomer', distributor: 'Sumerian', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=0gXMYWbppNM' },
+{ date: 'Oct 2', title: 'Verity', distributor: 'Amazon MGM', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=wbMNy_djxGk' },
+{ date: 'Oct 2', title: 'Digger', distributor: 'Warner Bros.', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=qORTe1wW3Wg' },
+{ date: 'Oct 9', title: 'Other Mommy', distributor: 'Universal', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=bEpTgowZ1dI' },
+{ date: 'Oct 9', title: 'Tenzing', distributor: 'Apple', type: 'Wide' },
+{ date: 'Oct 9', title: 'The Social Reckoning', distributor: 'Sony Pictures', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=gM4LkaXwGuY' },
+{ date: 'Oct 9', title: 'The Legend of Aang: The Last Airbender', distributor: 'Paramount', type: 'Wide' },
+{ date: 'Oct 9', title: 'Fjord', distributor: 'Neon', type: 'Limited' },
+{ date: 'Oct 9', title: 'Misty Green', distributor: 'A24', type: 'Limited' },
+{ date: 'Oct 16', title: 'Street Fighter', distributor: 'Paramount', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=Xt4X4FvXk2A' },
+{ date: 'Oct 16', title: 'Musk', distributor: 'Bleecker Street', type: 'Limited' },
+{ date: 'Oct 16', title: 'Once Upon a Time in Harlem', distributor: 'Neon', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=zIjmgj5rbOY' },
+{ date: 'Oct 16', title: 'Sense and Sensibility', distributor: 'Focus Features', type: 'Wide' },
+{ date: 'Oct 16', title: 'Whalefall', distributor: 'Walt Disney', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=67ho3OxCmmM' },
+{ date: 'Oct 23', title: 'Clayface', distributor: 'Warner Bros.', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=mo7-mJ6wKho' },
+{ date: 'Oct 23', title: 'A Talent for Murder', distributor: 'Bleecker Street', type: 'Limited' },
+{ date: 'Oct 23', title: 'Klara and the Sun', distributor: 'Sony Pictures', type: 'Wide' },
+{ date: 'Oct 30', title: 'Wicker', distributor: 'Black Bear', type: 'Limited' },
 { date: 'Nov 6', title: 'The Cat in the Hat', distributor: 'Warner Bros.', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=HT5JAp5z0-o' },
+{ date: 'Nov 6', title: 'Wild Horse Nine', distributor: 'Searchlight Pictures', type: 'Limited' },
+{ date: 'Nov 6', title: 'Club Kid', distributor: 'A24', type: 'Limited' },
+{ date: 'Nov 13', title: 'Ebenezer: A Christmas Carol', distributor: 'Paramount', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=A7lyvgnDuDE' },
+{ date: 'Nov 13', title: 'How to Rob a Bank', distributor: 'Amazon MGM', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=ORxw68y3lyw' },
+{ date: 'Nov 13', title: 'Paper Tiger', distributor: 'Neon', type: 'Limited' },
 { date: 'Nov 20', title: 'The Hunger Games: Sunrise on the Reaping', distributor: 'Lionsgate', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=CINFIAohu4U' },
+{ date: 'Nov 20', title: 'I Play Rocky', distributor: 'Amazon MGM', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=V_g_Ut0jO-0' },
+{ date: 'Nov 20', title: 'Minotaur', distributor: 'Mubi', type: 'Limited' },
+{ date: 'Nov 20', title: 'Josephine', distributor: 'Sumerian', type: 'Limited' },
+{ date: 'Nov 20', title: 'Elsinore', distributor: 'Focus Features', type: 'Limited' },
 { date: 'Nov 25', title: 'Focker In-Law', distributor: 'Universal', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=vyISuWUWcFs' },
+{ date: 'Nov 25', title: 'Hexed', distributor: 'Walt Disney', type: 'Wide' },
 { date: 'Dec 4', title: 'Violent Night 2', distributor: 'Universal', type: 'Wide' },
+{ date: 'Dec 4', title: 'Above the Below', distributor: 'Lionsgate', type: 'Wide' },
+{ date: 'Dec 4', title: 'Behemoth', distributor: 'Searchlight Pictures', type: 'Limited' },
+{ date: 'Dec 4', title: 'Tender Loving Care', distributor: 'Bleecker Street', type: 'Limited' },
+{ date: 'Dec 11', title: 'Clarissa', distributor: 'Neon', type: 'Limited' },
 { date: 'Dec 18', title: 'Avengers: Doomsday', distributor: 'Walt Disney', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=irVNGjRFZGk' },
 { date: 'Dec 18', title: 'Dune: Part Three', distributor: 'Warner Bros.', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=NdvqHc56lE0' },
-{ date: 'Dec 25', title: 'Jumanji: Open World', distributor: 'Sony Pictures', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=zhApeaHMvfs' }
+{ date: 'Dec 23', title: 'The Angry Birds Movie 3', distributor: 'Paramount', type: 'Wide' },
+{ date: 'Dec 25', title: 'Jumanji: Open World', distributor: 'Sony Pictures', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=zhApeaHMvfs' },
+{ date: 'Dec 25', title: 'Werwulf', distributor: 'Focus Features', type: 'Wide' },
+{ date: 'Dec 25', title: 'Mr. Irrelevant: The John Tuggle Story', distributor: 'Paramount', type: 'Wide' },
+{ date: 'Dec 25', title: 'The Debut', distributor: 'A24', type: 'Limited' },
+{ date: 'Dec 25', title: 'Coward', distributor: 'Mubi', type: 'Limited' },
 ];
 function fmtMoney(n) {
 if (n === null || n === undefined) return String.fromCharCode(8212);
@@ -524,6 +596,7 @@ const [tab, setTab] = useState('top10');
 const [sortKey, setSortKey] = useState('gross');
 const [sortDir, setSortDir] = useState('desc');
 const [yoyMode, setYoyMode] = useState('lastYear');
+const [releaseFilter, setReleaseFilter] = useState('All');
 const [top10, setTop10] = useState(TOP10_INIT);
 const [tracking] = useState(TRACKING_INIT);
 const [viewport, setViewport] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
@@ -599,6 +672,10 @@ return 0;
 return arr;
 }, [sortKey, sortDir, top10]);
 const sumGross = useMemo(function () { return top10.reduce(function (a, m) { return a + m.gross; }, 0); }, [top10]);
+const filteredReleases = useMemo(function () {
+if (releaseFilter === 'All') return RELEASES;
+return RELEASES.filter(function (r) { return r.type === releaseFilter; });
+}, [releaseFilter]);
 
 const leadingProjection = useMemo(function () {
 if (!tracking || tracking.length === 0) return null;
@@ -866,8 +943,30 @@ e('div', { style: { fontSize: 12, color: C.textMute, lineHeight: 1.6, marginTop:
 );
 }
 else if (tab === 'calendar') {
+const releaseFilters = [
+{ id: 'All', label: 'All Releases' },
+{ id: 'Limited', label: 'Limited' },
+{ id: 'Wide', label: 'Wide' }
+];
 body = e('div', { style: sectionPad },
-RELEASES.map(function (r, i) {
+e('div', { style: { display: 'flex', alignItems: 'center', gap: 5, marginBottom: 14, overflowX: 'auto', paddingBottom: 2 } },
+releaseFilters.map(function (f) {
+const active = releaseFilter === f.id;
+return e('button', {
+key: f.id,
+onClick: function () { setReleaseFilter(f.id); },
+style: {
+flexShrink: 0, cursor: 'pointer', borderRadius: 4,
+padding: isMobile ? '6px 9px' : '6px 11px',
+fontSize: isMobile ? 10 : 10.5, fontWeight: 800, letterSpacing: 0.3,
+background: active ? C.magentaDim : 'transparent',
+border: '1px solid ' + (active ? C.magenta : C.borderStrong),
+color: active ? C.magenta : C.textMute
+}
+}, f.label);
+})
+),
+filteredReleases.map(function (r, i) {
 const indent = isMobile ? 0 : 70;
 return e('div', { key: i, style: { padding: '10px 0', borderBottom: '1px solid ' + C.border } },
 isMobile ? e('div', null,
