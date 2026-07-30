@@ -71,12 +71,21 @@ greenDim: 'rgba(63,224,138,0.16)',
 magenta: '#E0479E',
 magentaDim: 'rgba(224,71,158,0.16)'
 };
-const LAST_UPDATED = 'Jul 29, 2026 \u00B7 3:28 PM PT / 6:28 PM ET';
-const BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
-const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jul 24-26', tag: 'FINAL', tab: null, externalUrl: 'https://www.boxofficemojo.com/weekend/2026W30/' };
-const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jul 31+', tag: 'IN PROGRESS', tab: 'tracking' };
-const NEXT_WEEKEND = { id: 'next', label: 'Next weekend', range: 'Aug 7+', tag: 'UPCOMING', tab: 'calendar' };
-const WEEKENDS = [LAST_WEEKEND, THIS_WEEKEND, NEXT_WEEKEND];
+let LAST_UPDATED = 'Jul 30, 2026 \u00B7 7:16 AM PT / 10:16 AM ET';
+let BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
+let BOFFO_SETTINGS = {
+  lastWeekendRange: 'Jul 24-26', weekendHeadingPrefix: 'Weekend of', trackingIntro: 'Tracking for the upcoming weekend',
+  footerSourceNote: 'The Numbers, Box Office Mojo, Box Office Pro, Deadline, Variety, Screen International, FanBolt',
+  footerVersion: 'Boffo v0.4 · JSON Phase 1'
+};
+let HERO_CONFIG = {
+  latest: { mode: 'auto' },
+  previous: { mode: 'manual', title: 'The Odyssey', distributor: 'Universal', theaters: 3919, extra: '$31,514 avg', amountLabel: '$123.5M', subLabel: 'FINAL 3-DAY · Jul 17-19', tagLabel: 'PREVIOUS' }
+};
+let TICKER_CONFIG = {
+  top10: { enabled: true, breakingMode: false, pillText: 'WKND ACTUALS', pillSubtext: '7/24-7/26', pillColor: '#3FE08A', breakingColor: '#F0473D', durationSeconds: 38 },
+  bluesky: { enabled: true, accounts: BLUESKY_ACCOUNTS, perAccountLimit: 6, maxPosts: 20, postsNoReplies: true, preserveLinks: true, blockedWords: ['fuck','shit','nsfw'] }
+};
 const DIST_OPTIONS = [
 "Universal",
 "Focus Features",
@@ -287,7 +296,8 @@ function ChatterModal(props) {
 const post = props.post;
 if (!post) return null;
 const author = post.author || {};
-const text = stripTrailingNoise((post.record && post.record.text) || '');
+const rawText = (post.record && post.record.text) || '';
+const text = TICKER_CONFIG.bluesky && TICKER_CONFIG.bluesky.preserveLinks ? rawText.trim() : stripTrailingNoise(rawText);
 const uri = post.uri || '';
 const rkey = uri.split('/').pop();
 const postUrl = author.handle && rkey ? 'https://bsky.app/profile/' + author.handle + '/post/' + rkey : null;
@@ -297,7 +307,7 @@ postUrl ? e('div', { style: { padding: '0 14px 14px', textAlign: 'right' } }, e(
 );
 }
 
-const TOP10_INIT = [
+let TOP10_INIT = [
 { rank: 1, prev: 1, weekendNum: 2, title: 'The Odyssey', gross: 90022510, change: -27, theaters: 3942, avg: 22837, total: 289394310, global: 490000000, distributor: 'Universal' },
 { rank: 2, prev: 2, weekendNum: 3, title: 'Moana', gross: 10640247, change: -41, theaters: 4015, avg: 2650, total: 102609900, global: 190000000, distributor: 'Walt Disney' },
 { rank: 3, prev: null, weekendNum: 1, title: 'Hadestown: The Musical', gross: 10243319, change: null, theaters: 1949, avg: 5256, total: 10243319, global: null, distributor: 'Bleecker Street' },
@@ -309,17 +319,17 @@ const TOP10_INIT = [
 { rank: 9, prev: null, weekendNum: 1, title: 'Motor City', gross: 1693905, change: null, theaters: 1600, avg: 1059, total: 1693905, global: null, distributor: 'IFC Films' },
 { rank: 10, prev: 8, weekendNum: 10, title: 'Obsession', gross: 1547465, change: -35, theaters: 1203, avg: 1286, total: 261411700, global: 403000000, distributor: 'Focus Features' }
 ];
-const TOTAL_WEEKEND_GROSS = 145957596;
-const TOP10_IS_FINAL = true;
-const PREVIOUS_WEEKEND_CHAMP = { title: 'The Odyssey', distributor: 'Universal', theaters: 3919, gross: 123502900, avg: 31514, range: 'Jul 17-19' };
-const YOY = { thisYear: 145957596, lastYear: 122000000, tenYearAvg: 105000000 };
-const MARKET_COMPARISON = { current: 146570303, previous: 188271704, lastYear: 185393168, tenYearAvg: 151296400, asOf: 'Jul 29, 2026', source: 'Box Office Mojo' };
-const TRACKING_INIT = [
+let TOTAL_WEEKEND_GROSS = 145957596;
+let TOP10_IS_FINAL = true;
+let PREVIOUS_WEEKEND_CHAMP = { title: 'The Odyssey', distributor: 'Universal', theaters: 3919, gross: 123502900, avg: 31514, range: 'Jul 17-19' };
+let YOY = {"title":"Year-over-year pace","thisYearLabel":"2026","lastYearLabel":"2025","tenYearLabel":"10-yr avg","thisYear":145957596,"lastYear":122000000,"tenYearAvg":105000000,"note":"The Odyssey confirmed $87.5M in week two (-30%) — better than Oppenheimer's own -44% second-weekend drop, now $286.9M domestic after 10 days. Toy Story 5 crossed $1B globally and $448M domestic. Spider-Man: Brand New Day opens Thursday July 30 previews, with Box Office Theory now projecting $212-249M — potentially 2026's biggest single-weekend domestic gross, achieved without any IMAX access."};
+let MARKET_COMPARISON = {"title":"Weekend market pulse","subtitle":"Overall domestic gross","source":"Box Office Mojo","asOf":"Jul 29, 2026","rows":[{"key":"current","label":"Current weekend","sub":"Jul 24-26, 2026","value":146570303,"color":"#3FE08A"},{"key":"previous","label":"Previous weekend","sub":"Jul 17-19, 2026","value":188271704,"color":"#8A968F"},{"key":"lastYear","label":"Same weekend last year","sub":"Weekend 30, 2025","value":185393168,"color":"#E0479E"},{"key":"tenYearAvg","label":"10-year average","sub":"Weekend 30, 2016-2025","value":151296400,"color":"#F0A833"}]};
+let TRACKING_INIT = [
 { title: 'Spider-Man: Brand New Day', distributor: 'Sony Pictures', theaters: 4300, range: [195000000, 249000000], scale: [150000000, 300000000], currentEstimate: null, actual: null, confidence: 'high', momentum: 'rising', criticAudience: { rtCritic: 92, rtAudience: null, metacritic: 70, cinemaScore: null }, note: 'Opens Thursday previews tonight (7/30) with Wednesday Prime member preview already underway. Reviews dropped July 28: 92% RT / 70 Metacritic \u2014 Marvel\'s best RT score in five years. The Wrap: "a highlight of the whole franchise." Variety: "arduous, overly episodic and half an hour too long" (the lone major dissent). Tracking: NRG/Deadline at $195M from 4,300 theaters; Box Office Theory at $228-274M (pinpoint $249M); North American presales at $80M, matching No Way Home\'s $78M pre-sales pace. Key detail: Spider-Man gets IMAX in China, Japan, and Korea \u2014 where The Odyssey\'s exclusive doesn\'t apply \u2014 positioning it for a massive global opening. Production budget: $225M. Stars Tom Holland, Zendaya, Jacob Batalon, Jon Bernthal, Sadie Sink, Mark Ruffalo. Directed by Destin Daniel Cretton.' },
 { title: 'The Odyssey', distributor: 'Universal', theaters: 3800, range: [40000000, 55000000], scale: [20000000, 80000000], currentEstimate: null, actual: null, confidence: 'high', momentum: 'stable', criticAudience: { rtCritic: 98, rtAudience: null, metacritic: null, cinemaScore: null }, note: 'Third and final IMAX-exclusive weekend before Spider-Man takes over those auditoriums. Confirmed $90M second weekend (-27%) bested Oppenheimer\'s own second-weekend hold. Now at $289.4M domestic / $490M global. IMAX handoff to Spider-Man will compress week-three grosses \u2014 expect the steepest drop of its run \u2014 but prestige word-of-mouth keeps general auditorium attendance strong.' }
 ];
-const TRACKING_WEEKEND = 'Jul 31+';
-const RELEASES = [
+let TRACKING_WEEKEND = 'Jul 31+';
+let RELEASES = [
 { date: "Jul 31", title: "I Want Your Sex", distributor: "Magnolia Pictures", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=kjkTmTmC1iA" },
 { date: "Jul 31", title: "Nightborn", distributor: "Shudder", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=pvx1TCbiRLQ" },
 { date: "Aug 7", title: "One Night Only", distributor: "Universal", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=JRG244IfrRE" },
@@ -428,38 +438,29 @@ return result;
 }
 function Ticker(props) {
 const items = props.items;
-const breakingTag = e('span', { key: 'breaking', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
-e('span', { style: { background: C.green, padding: '3px 9px', borderRadius: 3 } },
-e('span', { style: { color: '#0A0E0C', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS '),
-e('span', { style: { color: 'rgba(10,14,12,0.6)', fontSize: 10.5, fontWeight: 700, letterSpacing: 0.4 } }, '7/24-7/26')
-)
-);
+const cfg = TICKER_CONFIG.top10 || {};
+if (cfg.enabled === false || !items || !items.length) return null;
+const pillColor = cfg.breakingMode ? (cfg.breakingColor || C.red) : (cfg.pillColor || C.green);
+const pillTextColor = '#0A0E0C';
+const breakingTag = function (key) { return e('span', { key: key, style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
+e('span', { style: { background: pillColor, padding: '3px 9px', borderRadius: 3 } },
+e('span', { style: { color: pillTextColor, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, (cfg.pillText || 'WKND ACTUALS') + ' '),
+e('span', { style: { color: 'rgba(10,14,12,0.62)', fontSize: 10.5, fontWeight: 700, letterSpacing: 0.4 } }, cfg.pillSubtext || '')
+)); };
 const renderItem = function (m, key) {
 return e('span', { key: key, style: { display: 'inline-flex', alignItems: 'center', gap: 6, padding: '0 18px' } },
 e('span', { style: { background: 'rgba(230,237,232,0.10)', color: C.textMute, fontSize: 9.5, fontWeight: 800, padding: '1px 6px', borderRadius: 3, fontVariantNumeric: 'tabular-nums' } }, '#' + m.rank),
 e('span', { style: { fontWeight: 400, fontFamily: "'Readex Pro', sans-serif", color: C.text } }, m.title),
 e('span', { style: { color: C.textFaint } }, '\u2022'),
 e('span', { style: { color: C.emeraldBright, fontVariantNumeric: 'tabular-nums' } }, fmtMoney(m.gross)),
-m.change === null
-? e('span', { style: { background: 'rgba(212,162,76,0.16)', color: C.amber, fontSize: 9, fontWeight: 800, padding: '1px 5px', borderRadius: 3 } }, 'NEW')
-: e(ChangeBadge, { change: m.change }),
+m.change === null ? e('span', { style: { background: 'rgba(212,162,76,0.16)', color: C.amber, fontSize: 9, fontWeight: 800, padding: '1px 5px', borderRadius: 3 } }, 'NEW') : e(ChangeBadge, { change: m.change }),
 e('span', { style: { color: C.textFaint } }, '\u2022'),
 e('span', { style: { color: C.textMute, fontVariantNumeric: 'tabular-nums' } }, m.global ? fmtMoney(m.global) + ' WW' : 'US')
-);
-};
+); };
 return e('div', { style: { overflow: 'hidden', borderTop: '1px solid ' + C.border, borderBottom: '1px solid ' + C.border, background: '#0A0E0C', whiteSpace: 'nowrap' } },
-e('div', { style: { display: 'inline-flex', animation: 'ticker 38s linear infinite', fontSize: 11.5, padding: '7px 0' } },
-breakingTag,
-items.map(function (m, i) { return renderItem(m, 'a' + i); }),
-e('span', { key: 'breaking2', style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
-e('span', { style: { background: C.green, padding: '3px 9px', borderRadius: 3 } },
-e('span', { style: { color: '#0A0E0C', fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, 'WKND ACTUALS '),
-e('span', { style: { color: 'rgba(10,14,12,0.6)', fontSize: 10.5, fontWeight: 700, letterSpacing: 0.4 } }, '7/24-7/26')
-)
-),
-items.map(function (m, i) { return renderItem(m, 'b' + i); })
-)
-);
+e('div', { className: 'boffo-motion', style: { display: 'inline-flex', animation: 'ticker ' + (cfg.durationSeconds || 38) + 's linear infinite', fontSize: 11.5, padding: '7px 0' } },
+breakingTag('breaking'), items.map(function (m, i) { return renderItem(m, 'a' + i); }), breakingTag('breaking2'), items.map(function (m, i) { return renderItem(m, 'b' + i); })
+));
 }
 function ChatterTicker(props) {
 const posts = props.posts;
@@ -478,7 +479,8 @@ if (!posts || posts.length === 0) return null;
 const butterfly = e('svg', { viewBox: '0 0 600 530', style: { width: isMobile ? 11 : 13, height: isMobile ? 10 : 12, flexShrink: 0 } }, e('path', { fill: '#1185FE', d: 'M135 25C209 80 290 191 300 256c10-65 91-176 165-231 53-39 139-69 139 27 0 19-11 162-17 185-22 80-103 100-175 88 126 21 158 91 89 161-132 134-189-34-204-77-3-8-4-12-5-9-1-3-2 1-5 9-15 43-72 211-204 77-69-70-37-140 89-161-72 12-153-8-175-88C13 199 2 56 2 37 2-59 88-14 135 25z' }));
 const renderPost = function (p, key) {
 const author = p.author || {};
-const stripped = stripTrailingNoise((p.record && p.record.text) || '');
+const rawText = (p.record && p.record.text) || '';
+const stripped = TICKER_CONFIG.bluesky && TICKER_CONFIG.bluesky.preserveLinks ? rawText.trim() : stripTrailingNoise(rawText);
 const clean = stripped.length > 220 ? stripped.slice(0, 220) + '\u2026' : stripped;
 return e('button', { key: key, onClick: function () { props.onExpand(p); }, style: { display: 'inline-flex', alignItems: 'center', gap: isMobile ? 5 : 7, padding: isMobile ? '0 12px' : '0 18px', background: 'transparent', border: 0, cursor: 'pointer', color: 'inherit', textAlign: 'left' }, title: 'Expand post' }, butterfly, e('span', { style: { color: C.textFaint, fontWeight: 700, fontSize: isMobile ? 9.5 : 10.5, whiteSpace: 'nowrap' } }, author.displayName || author.handle), e('span', { style: { color: C.textFaint, fontSize: isMobile ? 9.5 : 11 } }, '\u2022'), e('span', { style: { color: C.textMute, fontFamily: "'Readex Pro', sans-serif", fontWeight: 400, fontSize: 11.5, whiteSpace: 'nowrap' } }, clean));
 };
@@ -489,31 +491,6 @@ e('div', { className: 'boffo-motion', style: { display: 'inline-flex', minWidth:
 );
 }
 
-function WeekendFlag(props) {
-const w = props.weekend;
-const active = props.active;
-const onClick = props.onClick;
-const styles = {
-'FINAL': { bg: 'rgba(138,150,143,0.12)', border: 'rgba(138,150,143,0.4)', fg: '#A8B3AC' },
-'IN PROGRESS': { bg: C.greenDim, border: C.green, fg: C.green },
-'UPCOMING': { bg: C.magentaDim, border: C.magenta, fg: C.magenta }
-};
-const s = styles[w.tag];
-return e('div', {
-onClick: onClick,
-style: {
-display: 'inline-flex', alignItems: 'center', gap: 8, cursor: 'pointer',
-background: s.bg, border: '1px solid ' + (active ? s.fg : s.border),
-borderRadius: 5, padding: '6px 12px',
-boxShadow: active ? '0 0 0 1px ' + s.fg + '55' : 'none'
-}
-},
-e('span', { style: { fontSize: 10, fontWeight: 800, letterSpacing: 0.8, color: s.fg, textTransform: 'uppercase' } }, w.label),
-e('span', { style: { width: 1, height: 12, background: s.border } }),
-e('span', { style: { fontSize: 11.5, fontWeight: 600, color: C.text, fontVariantNumeric: 'tabular-nums' } }, w.range),
-w.tag === 'IN PROGRESS' ? e('span', { style: { width: 6, height: 6, borderRadius: '50%', background: C.green, animation: 'pulse 1.6s ease-in-out infinite' } }) : null
-);
-}
 function HeroRow(props) {
 const live = props.live;
 const kind = props.kind;
@@ -722,47 +699,45 @@ const diffPct = Math.round((YOY.thisYear - compareVal) / compareVal * 100);
 const maxScale = Math.max(YOY.thisYear, compareVal) * 1.08;
 return e('div', { style: { marginTop: 26, paddingTop: 20, borderTop: '1px solid ' + C.border } },
 e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12, flexWrap: 'wrap', gap: 8 } },
-e('div', { style: { fontSize: 11, color: C.textMute, letterSpacing: 0.3, textTransform: 'uppercase' } }, 'Year-over-year pace'),
+e('div', { style: { fontSize: 11, color: C.textMute, letterSpacing: 0.3, textTransform: 'uppercase' } }, YOY.title || 'Year-over-year pace'),
 e('div', { style: { display: 'flex', gap: 4 } },
 e('button', { onClick: function () { setYoyMode('lastYear'); }, style: { background: yoyMode === 'lastYear' ? C.emeraldDim : 'transparent', border: '1px solid ' + (yoyMode === 'lastYear' ? C.emerald : C.border), color: yoyMode === 'lastYear' ? C.emeraldBright : C.textMute, fontSize: 10.5, fontWeight: 700, padding: '5px 10px', borderRadius: 4, cursor: 'pointer', letterSpacing: 0.3 } }, 'VS LAST YEAR'),
 e('button', { onClick: function () { setYoyMode('tenYearAvg'); }, style: { background: yoyMode === 'tenYearAvg' ? C.emeraldDim : 'transparent', border: '1px solid ' + (yoyMode === 'tenYearAvg' ? C.emerald : C.border), color: yoyMode === 'tenYearAvg' ? C.emeraldBright : C.textMute, fontSize: 10.5, fontWeight: 700, padding: '5px 10px', borderRadius: 4, cursor: 'pointer', letterSpacing: 0.3 } }, 'VS 10-YR AVG')
 )
 ),
 e('div', { style: { display: 'flex', justifyContent: 'space-between', fontSize: 11.5, marginBottom: 5 } },
-e('span', { style: { color: C.text, fontWeight: 600 } }, '2026 \u00B7 ' + fmtMoney(YOY.thisYear)),
+e('span', { style: { color: C.text, fontWeight: 600 } }, (YOY.thisYearLabel || 'Current') + ' \u00B7 ' + fmtMoney(YOY.thisYear)),
 e(ChangeBadge, { change: diffPct })
 ),
 e('div', { style: { height: 10, background: 'rgba(255,255,255,0.05)', borderRadius: 4, overflow: 'hidden', marginBottom: 10 } },
 e('div', { style: { height: '100%', width: (YOY.thisYear / maxScale * 100) + '%', background: C.emerald, borderRadius: 4 } })
 ),
 e('div', { style: { display: 'flex', justifyContent: 'space-between', fontSize: 11.5, marginBottom: 5 } },
-e('span', { style: { color: C.textMute } }, (yoyMode === 'lastYear' ? '2025' : '10-yr avg') + ' \u00B7 ' + fmtMoney(compareVal))
+e('span', { style: { color: C.textMute } }, (yoyMode === 'lastYear' ? (YOY.lastYearLabel || 'Last year') : (YOY.tenYearLabel || '10-yr avg')) + ' \u00B7 ' + fmtMoney(compareVal))
 ),
 e('div', { style: { height: 10, background: 'rgba(255,255,255,0.05)', borderRadius: 4, overflow: 'hidden' } },
 e('div', { style: { height: '100%', width: (compareVal / maxScale * 100) + '%', background: C.textFaint, borderRadius: 4 } })
 ),
-e('div', { style: { marginTop: 14, fontSize: 11.5, color: C.textMute, lineHeight: 1.6 } }, 'The Odyssey confirmed $87.5M in week two (-30%) \u2014 better than Oppenheimer\'s own -44% second-weekend drop, now $286.9M domestic after 10 days. Toy Story 5 crossed $1B globally and $448M domestic. Spider-Man: Brand New Day opens Thursday July 30 previews, with Box Office Theory now projecting $212-249M \u2014 potentially 2026\'s biggest single-weekend domestic gross, achieved without any IMAX access.')
+e('div', { style: { marginTop: 14, fontSize: 11.5, color: C.textMute, lineHeight: 1.6 } }, YOY.note || '')
 );
 }
 function MarketComparisonBlock() {
-const rows = [
-{ label: 'Current weekend', sub: 'Jul 24-26, 2026', value: MARKET_COMPARISON.current, color: C.emeraldBright },
-{ label: 'Previous weekend', sub: 'Jul 17-19, 2026', value: MARKET_COMPARISON.previous, color: C.textMute },
-{ label: 'Same weekend last year', sub: 'Weekend 30, 2025', value: MARKET_COMPARISON.lastYear, color: C.magenta },
-{ label: '10-year average', sub: 'Weekend 30, 2016-2025', value: MARKET_COMPARISON.tenYearAvg, color: C.amber }
-];
-const max = Math.max.apply(null, rows.map(function (r) { return r.value; })) * 1.05;
+const cfg = MARKET_COMPARISON || {};
+const rows = Array.isArray(cfg.rows) && cfg.rows.length ? cfg.rows : [];
+if (!rows.length) return null;
+const currentRow = rows.find(function (r) { return r.key === 'current'; }) || rows[0];
+const max = Math.max.apply(null, rows.map(function (r) { return Number(r.value) || 0; })) * 1.05 || 1;
 return e('div', { style: { marginTop: 26, paddingTop: 20, borderTop: '1px solid ' + C.border } },
 e('div', { style: { display: 'flex', justifyContent: 'space-between', gap: 10, alignItems: 'baseline', marginBottom: 14, flexWrap: 'wrap' } },
-e('div', null, e('div', { style: { fontSize: 11, color: C.textMute, letterSpacing: 0.3, textTransform: 'uppercase' } }, 'Weekend market pulse'), e('div', { style: { fontSize: 9.5, color: C.textFaint, marginTop: 3 } }, 'Overall domestic gross')),
-e('div', { style: { fontSize: 9, color: C.textFaint } }, MARKET_COMPARISON.source + ' \u00B7 as of ' + MARKET_COMPARISON.asOf)
+e('div', null, e('div', { style: { fontSize: 11, color: C.textMute, letterSpacing: 0.3, textTransform: 'uppercase' } }, cfg.title || 'Weekend market pulse'), e('div', { style: { fontSize: 9.5, color: C.textFaint, marginTop: 3 } }, cfg.subtitle || 'Overall domestic gross')),
+e('div', { style: { fontSize: 9, color: C.textFaint } }, (cfg.source || '') + (cfg.asOf ? ' \u00B7 as of ' + cfg.asOf : ''))
 ),
-rows.map(function (r) { const delta = Math.round((MARKET_COMPARISON.current - r.value) / r.value * 100); return e('div', { key: r.label, style: { marginBottom: 11 } },
+rows.map(function (r) { const delta = r.key === currentRow.key ? null : Math.round(((Number(currentRow.value)||0) - (Number(r.value)||0)) / (Number(r.value)||1) * 100); return e('div', { key: r.key || r.label, style: { marginBottom: 11 } },
 e('div', { style: { display: 'flex', justifyContent: 'space-between', gap: 10, alignItems: 'baseline', marginBottom: 4 } },
-e('div', null, e('span', { style: { color: r.label === 'Current weekend' ? C.text : C.textMute, fontSize: 11.5, fontWeight: r.label === 'Current weekend' ? 700 : 500 } }, r.label), e('span', { style: { color: C.textFaint, fontSize: 9.5, marginLeft: 7 } }, r.sub)),
-e('div', { style: { display: 'flex', gap: 7, alignItems: 'center' } }, e('span', { style: { color: r.color, fontWeight: 700, fontVariantNumeric: 'tabular-nums', fontSize: 11.5 } }, fmtMoney(r.value)), r.label !== 'Current weekend' ? e(ChangeBadge, { change: delta }) : null)
+e('div', null, e('span', { style: { color: r.key === currentRow.key ? C.text : C.textMute, fontSize: 11.5, fontWeight: r.key === currentRow.key ? 700 : 500 } }, r.label), e('span', { style: { color: C.textFaint, fontSize: 9.5, marginLeft: 7 } }, r.sub || '')),
+e('div', { style: { display: 'flex', gap: 7, alignItems: 'center' } }, e('span', { style: { color: r.color || C.textMute, fontWeight: 700, fontVariantNumeric: 'tabular-nums', fontSize: 11.5 } }, fmtMoney(Number(r.value)||0)), delta === null ? null : e(ChangeBadge, { change: delta }))
 ),
-e('div', { style: { height: 10, borderRadius: 4, background: 'rgba(255,255,255,0.05)', overflow: 'hidden' } }, e('div', { style: { height: '100%', width: (r.value / max * 100) + '%', background: r.color, borderRadius: 4 } }))
+e('div', { style: { height: 10, borderRadius: 4, background: 'rgba(255,255,255,0.05)', overflow: 'hidden' } }, e('div', { style: { height: '100%', width: ((Number(r.value)||0) / max * 100) + '%', background: r.color || C.textMute, borderRadius: 4 } }))
 ); })
 );
 }
@@ -800,10 +775,12 @@ useEffect(function () {
 if (chatterLoaded) return;
 setChatterLoading(true);
 setChatterError(false);
-const blockedWords = ['fuck', 'shit', 'nsfw'];
+const blueskyCfg = TICKER_CONFIG.bluesky || {};
+if (blueskyCfg.enabled === false) { setChatterLoaded(true); setChatterLoading(false); return; }
+const blockedWords = Array.isArray(blueskyCfg.blockedWords) ? blueskyCfg.blockedWords : ['fuck','shit','nsfw'];
 function fetchAll(useFilter) {
-return Promise.all(BLUESKY_ACCOUNTS.map(function (handle) {
-const url = 'https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=' + handle + '&limit=6' + (useFilter ? '&filter=posts_no_replies' : '');
+return Promise.all((blueskyCfg.accounts || BLUESKY_ACCOUNTS).map(function (handle) {
+const url = 'https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=' + handle + '&limit=' + (blueskyCfg.perAccountLimit || 6) + (useFilter && blueskyCfg.postsNoReplies !== false ? '&filter=posts_no_replies' : '');
 return fetch(url)
 .then(function (res) {
 if (!res.ok) { console.warn('Boffo chatter: ' + handle + ' returned ' + res.status); return { feed: [] }; }
@@ -813,7 +790,7 @@ return res.json();
 .catch(function (err) { console.warn('Boffo chatter: ' + handle + ' fetch failed', err); return []; });
 }));
 }
-fetchAll(true).then(function (results) {
+fetchAll(blueskyCfg.postsNoReplies !== false).then(function (results) {
 let all = [];
 results.forEach(function (posts) { all = all.concat(posts); });
 if (all.length === 0) { return fetchAll(false).then(function (results2) { let all2 = []; results2.forEach(function (posts) { all2 = all2.concat(posts); }); return all2; }); }
@@ -825,7 +802,7 @@ const lower = p.record.text.toLowerCase();
 return !blockedWords.some(function (w) { return lower.indexOf(w) > -1; });
 });
 all.sort(function (a, b) { return new Date(b.record.createdAt) - new Date(a.record.createdAt); });
-setChatterPosts(all.slice(0, 20));
+setChatterPosts(all.slice(0, blueskyCfg.maxPosts || 20));
 setChatterLoading(false);
 setChatterLoaded(true);
 }).catch(function (err) {
@@ -877,31 +854,20 @@ const tabs = [
 { id: 'tracking', label: 'Projections', icon: 'radar' },
 { id: 'calendar', label: 'Release Calendar', icon: 'calendar_today' }
 ];
-const liveData = leadingProjection ? {
-title: leadingProjection.item.title,
-distributor: leadingProjection.item.distributor,
-theaters: leadingProjection.item.theaters,
-extra: null,
-amountLabel: '~' + fmtMoney(leadingProjection.value),
-subLabel: 'PROJECTED 3-DAY \u00B7 ' + TRACKING_WEEKEND,
-tagLabel: 'LATEST'
-} : {
-title: top10[0].title,
-distributor: top10[0].distributor,
-theaters: top10[0].theaters,
-extra: fmtFull(top10[0].avg) + ' avg',
-amountLabel: fmtMoney(top10[0].gross),
-subLabel: (TOP10_IS_FINAL ? 'FINAL 3-DAY' : 'WKD ESTIMATE') + ' \u00B7 ' + LAST_WEEKEND.range,
-tagLabel: 'LATEST'
-};
-const finalData = {
-title: PREVIOUS_WEEKEND_CHAMP.title,
-distributor: PREVIOUS_WEEKEND_CHAMP.distributor,
-theaters: PREVIOUS_WEEKEND_CHAMP.theaters,
-extra: fmtFull(PREVIOUS_WEEKEND_CHAMP.avg) + ' avg',
-amountLabel: fmtMoney(PREVIOUS_WEEKEND_CHAMP.gross),
-subLabel: 'FINAL 3-DAY \u00B7 ' + PREVIOUS_WEEKEND_CHAMP.range
-};
+function resolveLatestHero() {
+const cfg = HERO_CONFIG.latest || {};
+if (cfg.mode === 'manual') return cfg;
+if (leadingProjection) return { title: leadingProjection.item.title, distributor: leadingProjection.item.distributor, theaters: leadingProjection.item.theaters, extra: null, amountLabel: '~' + fmtMoney(leadingProjection.value), subLabel: 'PROJECTED 3-DAY \u00B7 ' + TRACKING_WEEKEND, tagLabel: cfg.tagLabel || 'LATEST' };
+const leader = top10[0] || {};
+return { title: leader.title || cfg.title, distributor: leader.distributor || cfg.distributor, theaters: leader.theaters || cfg.theaters || 0, extra: leader.avg ? fmtFull(leader.avg) + ' avg' : cfg.extra, amountLabel: leader.gross ? fmtMoney(leader.gross) : cfg.amountLabel, subLabel: (TOP10_IS_FINAL ? 'FINAL 3-DAY' : 'WKD ESTIMATE') + ' \u00B7 ' + BOFFO_SETTINGS.lastWeekendRange, tagLabel: cfg.tagLabel || 'LATEST' };
+}
+function resolvePreviousHero() {
+const cfg = HERO_CONFIG.previous || {};
+if (cfg.mode === 'autoTop10' || cfg.mode === 'auto') { const leader = top10[0] || {}; return { title: leader.title, distributor: leader.distributor, theaters: leader.theaters, extra: leader.avg ? fmtFull(leader.avg) + ' avg' : null, amountLabel: leader.gross ? fmtMoney(leader.gross) : null, subLabel: 'FINAL 3-DAY \u00B7 ' + BOFFO_SETTINGS.lastWeekendRange, tagLabel: cfg.tagLabel || 'PREVIOUS' }; }
+return cfg;
+}
+const liveData = resolveLatestHero();
+const finalData = resolvePreviousHero();
 const header = e('div', { style: { borderBottom: '1px solid ' + C.border, padding: isMobile ? '16px 14px 0' : '22px 30px 0' } },
 e('div', { style: { marginBottom: isMobile ? 12 : 16 } },
 e('div', { style: { fontSize: isMobile ? 32 : 42, fontWeight: 900, letterSpacing: 0.5, color: C.text, fontFamily: "'Poppins', sans-serif", lineHeight: 1 } }, 'BOFFO'),
@@ -934,7 +900,7 @@ let body = null;
 if (tab === 'top10') {
 if (isMobile) {
 body = e('div', { style: sectionPad },
-e('div', { style: { fontSize: 11, color: C.textMute, marginBottom: 14, letterSpacing: 0.2 } }, 'Weekend of ' + LAST_WEEKEND.range),
+e('div', { style: { fontSize: 11, color: C.textMute, marginBottom: 14, letterSpacing: 0.2 } }, (BOFFO_SETTINGS.weekendHeadingPrefix || 'Weekend of') + ' ' + BOFFO_SETTINGS.lastWeekendRange),
 e('div', { style: { display: 'flex', gap: 6, marginBottom: 14, overflowX: 'auto', paddingBottom: 4 } },
 [
 { key: 'gross', label: 'Weekend' },
@@ -1004,7 +970,7 @@ const cols = isTablet
 const showTheaters = !isTablet;
 const showTotal = !isTablet;
 body = e('div', { style: sectionPad },
-e('div', { style: { fontSize: 11, color: C.textMute, marginBottom: 14, letterSpacing: 0.2 } }, 'Weekend of ' + LAST_WEEKEND.range + ' \u00B7 click a column to sort'),
+e('div', { style: { fontSize: 11, color: C.textMute, marginBottom: 14, letterSpacing: 0.2 } }, (BOFFO_SETTINGS.weekendHeadingPrefix || 'Weekend of') + ' ' + BOFFO_SETTINGS.lastWeekendRange + ' \u00B7 click a column to sort'),
 e('div', { style: { display: 'grid', gridTemplateColumns: cols, fontSize: 10.5, color: C.textFaint, paddingBottom: 8, borderBottom: '1px solid ' + C.borderStrong, textTransform: 'uppercase', letterSpacing: 0.4 } },
 e('div', null, '#'),
 e('div', null, 'Title'),
@@ -1047,7 +1013,7 @@ e(MarketComparisonBlock)
 }
 else if (tab === 'tracking') {
 body = e('div', { style: sectionPad },
-e('div', { style: { fontSize: 11, color: C.textFaint, marginBottom: 18 } }, 'Tracking for the upcoming weekend, ' + TRACKING_WEEKEND),
+e('div', { style: { fontSize: 11, color: C.textFaint, marginBottom: 18 } }, (BOFFO_SETTINGS.trackingIntro || 'Tracking for the upcoming weekend') + ', ' + TRACKING_WEEKEND),
 tracking.map(function (t, i) {
 const lo = t.range[0], hi = t.range[1];
 const rangeSpan = Math.max(1, hi - lo);
@@ -1162,7 +1128,7 @@ isCollapsed ? null : group.items.map(renderRelease)
 );
 }
 const footer = e('div', { style: { padding: isMobile ? '12px 14px 18px' : '14px 30px 22px', fontSize: 10.5, color: C.textFaint, borderTop: '1px solid ' + C.border, lineHeight: 1.6 } },
-'Sources: The Numbers, Box Office Mojo, Box Office Pro, Deadline, Variety, Screen International, FanBolt · Boffo v0.3.1 prototype'
+'Sources: ' + (BOFFO_SETTINGS.footerSourceNote || '') + (BOFFO_SETTINGS.footerVersion ? ' · ' + BOFFO_SETTINGS.footerVersion : '')
 );
 return e('div', { style: wrap },
 e('div', { style: { position: 'sticky', top: 0, zIndex: 100, boxShadow: '0 6px 16px rgba(0,0,0,0.45)' } },
@@ -1174,8 +1140,43 @@ e(TrailerModal, { item: playingRelease, onClose: function () { setPlayingRelease
 e(ChatterModal, { post: expandedPost, onClose: function () { setExpandedPost(null); }, isMobile: isMobile })
 );
 }
+function normalizeProjectionRecord(p) {
+return { title: p.title || '', distributor: p.distributor || '', theaters: Number(p.theaters)||0, range: [Number(p.rangeLow ?? (p.range && p.range[0]))||0, Number(p.rangeHigh ?? (p.range && p.range[1]))||0], scale: [Number(p.rulerLow ?? (p.scale && p.scale[0]))||0, Number(p.rulerHigh ?? (p.scale && p.scale[1]))||0], currentEstimate: p.currentEstimate ?? p.actual ?? null, actual: p.currentEstimate ?? p.actual ?? null, confidence: p.confidence || 'medium', momentum: p.momentum || 'stable', criticAudience: { rtCritic: p.rtCritic ?? (p.criticAudience && p.criticAudience.rtCritic) ?? null, rtAudience: null, metacritic: p.metacritic ?? (p.criticAudience && p.criticAudience.metacritic) ?? null, cinemaScore: null }, note: p.analysis ?? p.note ?? '' };
+}
+function applyBoffoData(data) {
+if (!data || typeof data !== 'object') return;
+const settings = data.settings || {};
+BOFFO_SETTINGS = Object.assign({}, BOFFO_SETTINGS, settings);
+LAST_UPDATED = settings.lastUpdatedLabel || LAST_UPDATED;
+TOP10_IS_FINAL = settings.top10IsFinal !== false;
+TRACKING_WEEKEND = settings.trackingWeekend || TRACKING_WEEKEND;
+HERO_CONFIG = Object.assign({}, HERO_CONFIG, data.hero || {});
+YOY = Object.assign({}, YOY, data.yoy || {});
+MARKET_COMPARISON = data.marketPulse || data.marketComparison || MARKET_COMPARISON;
+TICKER_CONFIG = Object.assign({}, TICKER_CONFIG, data.tickers || {});
+TICKER_CONFIG.top10 = Object.assign({}, (TICKER_CONFIG.top10 || {}), (data.tickers && data.tickers.top10) || {});
+TICKER_CONFIG.bluesky = Object.assign({}, (TICKER_CONFIG.bluesky || {}), (data.tickers && data.tickers.bluesky) || {});
+BLUESKY_ACCOUNTS = TICKER_CONFIG.bluesky.accounts || BLUESKY_ACCOUNTS;
+if (Array.isArray(data.top10) && data.top10.length) TOP10_INIT = data.top10;
+if (Array.isArray(data.projections)) TRACKING_INIT = data.projections.map(normalizeProjectionRecord);
+if (Array.isArray(data.releases)) RELEASES = data.releases;
+}
+async function loadCanonicalBoffoData() {
+try {
+const url = new URL('boffo-data.json', window.location.href);
+url.searchParams.set('v', String(Date.now()));
+const response = await fetch(url.toString(), { cache: 'no-store', credentials: 'same-origin' });
+if (!response.ok) throw new Error('HTTP ' + response.status);
+const data = await response.json();
+applyBoffoData(data);
+window.__BOFFO_DATA_SOURCE__ = 'boffo-data.json';
+} catch (error) {
+console.warn('Boffo: canonical JSON could not be loaded; using the embedded emergency fallback.', error);
+window.__BOFFO_DATA_SOURCE__ = 'embedded-fallback';
+}
+}
 const root = ReactDOM.createRoot(document.getElementById('boffo-root'));
-root.render(e(Dashboard));
+loadCanonicalBoffoData().then(function () { root.render(e(Dashboard)); });
 (function () {
 function reportHeight() {
 const el = document.getElementById('boffo-root');
