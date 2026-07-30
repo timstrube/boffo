@@ -1,14 +1,14 @@
 {
   "version": "4.1",
-  "updatedAt": "2026-07-30T07:16:00-07:00",
+  "updatedAt": "2026-07-30T17:15:56.962Z",
   "settings": {
-    "lastUpdatedLabel": "Jul 30, 2026 · 7:16 AM PT / 10:16 AM ET",
+    "lastUpdatedLabel": "Jul 30, 2026 · 10:15 AM PT / 1:15 PM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
-    "trackingWeekend": "Jul 31+",
+    "trackingWeekend": "Jul 31-Aug 2",
     "top10IsFinal": true,
     "footerSourceNote": "The Numbers, Box Office Mojo, Box Office Pro, Deadline, Variety, Screen International, FanBolt",
-    "footerVersion": "Boffo v0.4 · JSON Phase 1",
+    "footerVersion": "Boffo Tracker v0.4",
     "editorialNote": "",
     "lastWeekendRange": "Jul 24-26"
   },
@@ -24,7 +24,7 @@
       "tagLabel": "LATEST"
     },
     "previous": {
-      "mode": "manual",
+      "mode": "auto",
       "title": "The Odyssey",
       "distributor": "Universal",
       "theaters": 3919,
@@ -45,35 +45,35 @@
     "note": "The Odyssey confirmed $87.5M in week two (-30%) — better than Oppenheimer's own -44% second-weekend drop, now $286.9M domestic after 10 days. Toy Story 5 crossed $1B globally and $448M domestic. Spider-Man: Brand New Day opens Thursday July 30 previews, with Box Office Theory now projecting $212-249M — potentially 2026's biggest single-weekend domestic gross, achieved without any IMAX access."
   },
   "marketPulse": {
-    "title": "Weekend market pulse",
+    "title": "Weekend Market Pulse",
     "subtitle": "Overall domestic gross",
     "source": "Box Office Mojo",
     "asOf": "Jul 29, 2026",
     "rows": [
       {
         "key": "current",
-        "label": "Current weekend",
+        "label": "Latest Weekend",
         "sub": "Jul 24-26, 2026",
         "value": 146570303,
         "color": "#3FE08A"
       },
       {
         "key": "previous",
-        "label": "Previous weekend",
+        "label": "Previous Weekend",
         "sub": "Jul 17-19, 2026",
         "value": 188271704,
         "color": "#8A968F"
       },
       {
         "key": "lastYear",
-        "label": "Same weekend last year",
+        "label": "Same Weekend Last Year",
         "sub": "Weekend 30, 2025",
         "value": 185393168,
         "color": "#E0479E"
       },
       {
         "key": "tenYearAvg",
-        "label": "10-year average",
+        "label": "10-Year Average",
         "sub": "Weekend 30, 2016-2025",
         "value": 151296400,
         "color": "#F0A833"
@@ -281,7 +281,8 @@
       "distributor": "Magnolia Pictures",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=kjkTmTmC1iA"
+      "trailerUrl": "https://www.youtube.com/watch?v=kjkTmTmC1iA",
+      "assetPublished": null
     },
     {
       "date": "Jul 31",
@@ -289,7 +290,8 @@
       "distributor": "Shudder",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=pvx1TCbiRLQ"
+      "trailerUrl": "https://www.youtube.com/watch?v=pvx1TCbiRLQ",
+      "assetPublished": null
     },
     {
       "date": "Aug 7",
@@ -297,7 +299,8 @@
       "distributor": "Universal",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=JRG244IfrRE"
+      "trailerUrl": "https://www.youtube.com/watch?v=JRG244IfrRE",
+      "assetPublished": null
     },
     {
       "date": "Aug 7",
@@ -305,7 +308,8 @@
       "distributor": "Searchlight Pictures",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=cYFevn5frf0"
+      "trailerUrl": "https://www.youtube.com/watch?v=cYFevn5frf0",
+      "assetPublished": null
     },
     {
       "date": "Aug 7",
@@ -313,7 +317,8 @@
       "distributor": "Mubi",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=MA5NqUMEdbI"
+      "trailerUrl": "https://www.youtube.com/watch?v=MA5NqUMEdbI",
+      "assetPublished": null
     },
     {
       "date": "Aug 7",
@@ -321,7 +326,7 @@
       "distributor": "A24",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://youtu.be/k1MVnzd2aVc",
+      "trailerUrl": "https://www.youtube.com/watch?v=k1MVnzd2aVc",
       "assetPublished": "2026-05-06"
     },
     {
@@ -330,7 +335,8 @@
       "distributor": "Roadside Attractions",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=i8VyUZLNoXE"
+      "trailerUrl": "https://www.youtube.com/watch?v=i8VyUZLNoXE",
+      "assetPublished": null
     },
     {
       "date": "Aug 14",
@@ -338,7 +344,8 @@
       "distributor": "Paramount",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=aHw4PuLCUIc"
+      "trailerUrl": "https://www.youtube.com/watch?v=aHw4PuLCUIc",
+      "assetPublished": null
     },
     {
       "date": "Aug 14",
@@ -346,7 +353,8 @@
       "distributor": "Warner Bros.",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=3oB9AxspVow"
+      "trailerUrl": "https://www.youtube.com/watch?v=3oB9AxspVow",
+      "assetPublished": null
     },
     {
       "date": "Aug 14",
@@ -354,7 +362,8 @@
       "distributor": "Bleecker Street",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=GwSvAyaMGMo"
+      "trailerUrl": "https://www.youtube.com/watch?v=GwSvAyaMGMo",
+      "assetPublished": null
     },
     {
       "date": "Aug 14",
@@ -362,7 +371,8 @@
       "distributor": "Oscilloscope",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=uA6Fnr2VXkw"
+      "trailerUrl": "https://www.youtube.com/watch?v=uA6Fnr2VXkw",
+      "assetPublished": null
     },
     {
       "date": "Aug 14",
@@ -370,7 +380,8 @@
       "distributor": "Neon",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=zrcg8YHSys8"
+      "trailerUrl": "https://www.youtube.com/watch?v=zrcg8YHSys8",
+      "assetPublished": null
     },
     {
       "date": "Aug 14",
@@ -378,7 +389,8 @@
       "distributor": "Focus Features",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://youtu.be/phU3eSBFOXA"
+      "trailerUrl": "https://youtu.be/phU3eSBFOXA",
+      "assetPublished": null
     },
     {
       "date": "Aug 21",
@@ -386,7 +398,8 @@
       "distributor": "Bleecker Street",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=GwSvAyaMGMo"
+      "trailerUrl": "https://www.youtube.com/watch?v=GwSvAyaMGMo",
+      "assetPublished": null
     },
     {
       "date": "Aug 21",
@@ -394,7 +407,8 @@
       "distributor": "Sony Pictures",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=3PqqwEyV_Lw"
+      "trailerUrl": "https://www.youtube.com/watch?v=3PqqwEyV_Lw",
+      "assetPublished": null
     },
     {
       "date": "Aug 21",
@@ -402,7 +416,8 @@
       "distributor": "Lionsgate",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=FKSdXH89jbo"
+      "trailerUrl": "https://www.youtube.com/watch?v=FKSdXH89jbo",
+      "assetPublished": null
     },
     {
       "date": "Aug 21",
@@ -410,7 +425,8 @@
       "distributor": "Vertical Entertainment",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=npJuXZVbctw"
+      "trailerUrl": "https://www.youtube.com/watch?v=npJuXZVbctw",
+      "assetPublished": null
     },
     {
       "date": "Aug 21",
@@ -418,7 +434,8 @@
       "distributor": "Black Bear",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=CJ7rxgmtlaM"
+      "trailerUrl": "https://www.youtube.com/watch?v=CJ7rxgmtlaM",
+      "assetPublished": null
     },
     {
       "date": "Aug 21",
@@ -426,7 +443,8 @@
       "distributor": "Neon",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=zFszhQLMNXU"
+      "trailerUrl": "https://www.youtube.com/watch?v=zFszhQLMNXU",
+      "assetPublished": null
     },
     {
       "date": "Aug 21",
@@ -434,7 +452,8 @@
       "distributor": "Focus Features",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=x54MPGBWXA8"
+      "trailerUrl": "https://www.youtube.com/watch?v=x54MPGBWXA8",
+      "assetPublished": null
     },
     {
       "date": "Aug 28",
@@ -442,7 +461,8 @@
       "distributor": "Ketchup Entertainment",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=H-43VeYGiPM"
+      "trailerUrl": "https://www.youtube.com/watch?v=H-43VeYGiPM",
+      "assetPublished": null
     },
     {
       "date": "Aug 28",
@@ -450,14 +470,17 @@
       "distributor": "Walt Disney",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=cmzVY1goqwQ"
+      "trailerUrl": "https://www.youtube.com/watch?v=cmzVY1goqwQ",
+      "assetPublished": null
     },
     {
       "date": "Aug 28",
       "title": "Cliffhanger",
       "distributor": "Row K",
       "type": "Limited",
-      "assetType": "TBD"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Aug 28",
@@ -465,7 +488,8 @@
       "distributor": "Roadside Attractions",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=FYC0CaEloVw"
+      "trailerUrl": "https://www.youtube.com/watch?v=FYC0CaEloVw",
+      "assetPublished": null
     },
     {
       "date": "Aug 28",
@@ -473,7 +497,8 @@
       "distributor": "Well Go USA",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=Je122ZNo6uw"
+      "trailerUrl": "https://www.youtube.com/watch?v=Je122ZNo6uw",
+      "assetPublished": null
     },
     {
       "date": "Aug 28",
@@ -481,7 +506,8 @@
       "distributor": "Focus Features",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=wc2UjmPzN8c"
+      "trailerUrl": "https://www.youtube.com/watch?v=wc2UjmPzN8c",
+      "assetPublished": null
     },
     {
       "date": "Aug 28",
@@ -489,7 +515,8 @@
       "distributor": "IFC Films",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=nTIfzXx8nJY"
+      "trailerUrl": "https://www.youtube.com/watch?v=nTIfzXx8nJY",
+      "assetPublished": null
     },
     {
       "date": "Aug 28",
@@ -497,7 +524,8 @@
       "distributor": "IFC Films",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=UoAf0LNAn30"
+      "trailerUrl": "https://www.youtube.com/watch?v=UoAf0LNAn30",
+      "assetPublished": null
     },
     {
       "date": "Aug 28",
@@ -505,7 +533,8 @@
       "distributor": "Well Go USA",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=xUBjSmjHnXY"
+      "trailerUrl": "https://www.youtube.com/watch?v=xUBjSmjHnXY",
+      "assetPublished": null
     },
     {
       "date": "Sep 4",
@@ -513,7 +542,8 @@
       "distributor": "Paramount",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=ej8pjisr0Pc"
+      "trailerUrl": "https://www.youtube.com/watch?v=ej8pjisr0Pc",
+      "assetPublished": null
     },
     {
       "date": "Sep 4",
@@ -521,14 +551,17 @@
       "distributor": "A24",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=L24CYVpQ-LI"
+      "trailerUrl": "https://www.youtube.com/watch?v=L24CYVpQ-LI",
+      "assetPublished": null
     },
     {
       "date": "Sep 4",
       "title": "Dear You",
       "distributor": "Well Go USA",
       "type": "Limited",
-      "assetType": "TBD"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Sep 11",
@@ -536,7 +569,8 @@
       "distributor": "Warner Bros.",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=Ho10_4IX1jE"
+      "trailerUrl": "https://www.youtube.com/watch?v=Ho10_4IX1jE",
+      "assetPublished": null
     },
     {
       "date": "Sep 11",
@@ -544,7 +578,8 @@
       "distributor": "Focus Features",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=ZVkrhHebz1Q"
+      "trailerUrl": "https://www.youtube.com/watch?v=ZVkrhHebz1Q",
+      "assetPublished": null
     },
     {
       "date": "Sep 11",
@@ -552,7 +587,8 @@
       "distributor": "A24",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=Yrfrf53ttYY"
+      "trailerUrl": "https://www.youtube.com/watch?v=Yrfrf53ttYY",
+      "assetPublished": null
     },
     {
       "date": "Sep 18",
@@ -560,7 +596,8 @@
       "distributor": "Sony Pictures",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=mNd1gb19A-c"
+      "trailerUrl": "https://www.youtube.com/watch?v=mNd1gb19A-c",
+      "assetPublished": null
     },
     {
       "date": "Sep 18",
@@ -568,7 +605,8 @@
       "distributor": "Vertical Entertainment",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=wze2FuC8GgM"
+      "trailerUrl": "https://www.youtube.com/watch?v=wze2FuC8GgM",
+      "assetPublished": null
     },
     {
       "date": "Sep 25",
@@ -576,7 +614,8 @@
       "distributor": "Universal",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=a8RHqN93qfo"
+      "trailerUrl": "https://www.youtube.com/watch?v=a8RHqN93qfo",
+      "assetPublished": null
     },
     {
       "date": "Sep 25",
@@ -584,7 +623,8 @@
       "distributor": "Paramount",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=JFQcDFhNh4o"
+      "trailerUrl": "https://www.youtube.com/watch?v=JFQcDFhNh4o",
+      "assetPublished": null
     },
     {
       "date": "Sep 25",
@@ -592,14 +632,17 @@
       "distributor": "Bleecker Street",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=nIRsEH9OAUk"
+      "trailerUrl": "https://www.youtube.com/watch?v=nIRsEH9OAUk",
+      "assetPublished": null
     },
     {
       "date": "Sep 25",
       "title": "Crawlers",
       "distributor": "Roadside Attractions",
       "type": "Limited",
-      "assetType": "TBD"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Sep 25",
@@ -607,7 +650,8 @@
       "distributor": "Sumerian",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=0gXMYWbppNM"
+      "trailerUrl": "https://www.youtube.com/watch?v=0gXMYWbppNM",
+      "assetPublished": null
     },
     {
       "date": "Oct 2",
@@ -615,7 +659,8 @@
       "distributor": "Amazon MGM",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=wbMNy_djxGk"
+      "trailerUrl": "https://www.youtube.com/watch?v=wbMNy_djxGk",
+      "assetPublished": null
     },
     {
       "date": "Oct 2",
@@ -623,7 +668,8 @@
       "distributor": "Warner Bros.",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=qORTe1wW3Wg"
+      "trailerUrl": "https://www.youtube.com/watch?v=qORTe1wW3Wg",
+      "assetPublished": null
     },
     {
       "date": "Oct 9",
@@ -631,14 +677,17 @@
       "distributor": "Universal",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=bEpTgowZ1dI"
+      "trailerUrl": "https://www.youtube.com/watch?v=bEpTgowZ1dI",
+      "assetPublished": null
     },
     {
       "date": "Oct 9",
       "title": "Tenzing",
       "distributor": "Apple",
       "type": "Wide",
-      "assetType": "TBD"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Oct 9",
@@ -646,14 +695,17 @@
       "distributor": "Sony Pictures",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=gM4LkaXwGuY"
+      "trailerUrl": "https://www.youtube.com/watch?v=gM4LkaXwGuY",
+      "assetPublished": null
     },
     {
       "date": "Oct 9",
       "title": "Fjord",
       "distributor": "Neon",
       "type": "Limited",
-      "assetType": "TBD"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Oct 9",
@@ -661,7 +713,8 @@
       "distributor": "A24",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=ACaWuqeLpSk"
+      "trailerUrl": "https://www.youtube.com/watch?v=ACaWuqeLpSk",
+      "assetPublished": null
     },
     {
       "date": "Oct 16",
@@ -669,14 +722,17 @@
       "distributor": "Paramount",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=Xt4X4FvXk2A"
+      "trailerUrl": "https://www.youtube.com/watch?v=Xt4X4FvXk2A",
+      "assetPublished": null
     },
     {
       "date": "Oct 16",
       "title": "Musk",
       "distributor": "Bleecker Street",
       "type": "Limited",
-      "assetType": "TBD"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Oct 16",
@@ -684,7 +740,8 @@
       "distributor": "Neon",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=zIjmgj5rbOY"
+      "trailerUrl": "https://www.youtube.com/watch?v=zIjmgj5rbOY",
+      "assetPublished": null
     },
     {
       "date": "Oct 16",
@@ -692,7 +749,8 @@
       "distributor": "Focus Features",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://youtu.be/mcrwcvad84U"
+      "trailerUrl": "https://youtu.be/mcrwcvad84U",
+      "assetPublished": null
     },
     {
       "date": "Oct 16",
@@ -700,7 +758,8 @@
       "distributor": "Walt Disney",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=67ho3OxCmmM"
+      "trailerUrl": "https://www.youtube.com/watch?v=67ho3OxCmmM",
+      "assetPublished": null
     },
     {
       "date": "Oct 23",
@@ -708,14 +767,17 @@
       "distributor": "Warner Bros.",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=mo7-mJ6wKho"
+      "trailerUrl": "https://www.youtube.com/watch?v=mo7-mJ6wKho",
+      "assetPublished": null
     },
     {
       "date": "Oct 23",
       "title": "A Talent for Murder",
       "distributor": "Bleecker Street",
       "type": "Limited",
-      "assetType": "TBD"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Oct 23",
@@ -731,7 +793,9 @@
       "title": "Wicker",
       "distributor": "Black Bear",
       "type": "Limited",
-      "assetType": "TBD"
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=HP0BWBWn14I",
+      "assetPublished": "2026-07-30"
     },
     {
       "date": "Nov 6",
@@ -739,7 +803,8 @@
       "distributor": "Warner Bros.",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=HT5JAp5z0-o"
+      "trailerUrl": "https://www.youtube.com/watch?v=HT5JAp5z0-o",
+      "assetPublished": null
     },
     {
       "date": "Nov 6",
@@ -747,14 +812,17 @@
       "distributor": "Searchlight Pictures",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://youtu.be/Haw_sznA5aQ"
+      "trailerUrl": "https://youtu.be/Haw_sznA5aQ",
+      "assetPublished": null
     },
     {
       "date": "Nov 6",
       "title": "Club Kid",
       "distributor": "A24",
       "type": "Limited",
-      "assetType": "TBD"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Nov 13",
@@ -762,7 +830,8 @@
       "distributor": "Paramount",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=A7lyvgnDuDE"
+      "trailerUrl": "https://www.youtube.com/watch?v=A7lyvgnDuDE",
+      "assetPublished": null
     },
     {
       "date": "Nov 13",
@@ -770,14 +839,17 @@
       "distributor": "Amazon MGM",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=ORxw68y3lyw"
+      "trailerUrl": "https://www.youtube.com/watch?v=ORxw68y3lyw",
+      "assetPublished": null
     },
     {
       "date": "Nov 13",
       "title": "Paper Tiger",
       "distributor": "Neon",
       "type": "Limited",
-      "assetType": "TBD"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Nov 20",
@@ -785,7 +857,8 @@
       "distributor": "Lionsgate",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=CINFIAohu4U"
+      "trailerUrl": "https://www.youtube.com/watch?v=CINFIAohu4U",
+      "assetPublished": null
     },
     {
       "date": "Nov 20",
@@ -793,28 +866,35 @@
       "distributor": "Amazon MGM",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=V_g_Ut0jO-0"
+      "trailerUrl": "https://www.youtube.com/watch?v=V_g_Ut0jO-0",
+      "assetPublished": null
     },
     {
       "date": "Nov 20",
       "title": "Minotaur",
       "distributor": "Mubi",
       "type": "Limited",
-      "assetType": "TBD"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Nov 20",
       "title": "Josephine",
       "distributor": "Sumerian",
       "type": "Limited",
-      "assetType": "TBD"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Nov 20",
       "title": "Elsinore",
       "distributor": "Focus Features",
       "type": "Limited",
-      "assetType": "TBD"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Nov 25",
@@ -822,7 +902,8 @@
       "distributor": "Universal",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=vyISuWUWcFs"
+      "trailerUrl": "https://www.youtube.com/watch?v=vyISuWUWcFs",
+      "assetPublished": null
     },
     {
       "date": "Nov 25",
@@ -838,14 +919,18 @@
       "title": "Violent Night 2",
       "distributor": "Universal",
       "type": "Wide",
-      "assetType": "TBD"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Dec 4",
       "title": "Above the Below",
       "distributor": "Lionsgate",
       "type": "Wide",
-      "assetType": "TBD"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Dec 4",
@@ -853,21 +938,26 @@
       "distributor": "Searchlight Pictures",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=TrMGdrCJ5Ck"
+      "trailerUrl": "https://www.youtube.com/watch?v=TrMGdrCJ5Ck",
+      "assetPublished": null
     },
     {
       "date": "Dec 4",
       "title": "Tender Loving Care",
       "distributor": "Bleecker Street",
       "type": "Limited",
-      "assetType": "TBD"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Dec 11",
       "title": "Clarissa",
       "distributor": "Neon",
       "type": "Limited",
-      "assetType": "TBD"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Dec 18",
@@ -875,7 +965,8 @@
       "distributor": "Walt Disney",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=irVNGjRFZGk"
+      "trailerUrl": "https://www.youtube.com/watch?v=irVNGjRFZGk",
+      "assetPublished": null
     },
     {
       "date": "Dec 18",
@@ -883,7 +974,8 @@
       "distributor": "Warner Bros.",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=NdvqHc56lE0"
+      "trailerUrl": "https://www.youtube.com/watch?v=NdvqHc56lE0",
+      "assetPublished": null
     },
     {
       "date": "Dec 23",
@@ -900,7 +992,8 @@
       "distributor": "Sony Pictures",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=zhApeaHMvfs"
+      "trailerUrl": "https://www.youtube.com/watch?v=zhApeaHMvfs",
+      "assetPublished": null
     },
     {
       "date": "Dec 25",
@@ -908,14 +1001,17 @@
       "distributor": "Focus Features",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://youtu.be/cmjpadVj-Vk"
+      "trailerUrl": "https://youtu.be/cmjpadVj-Vk",
+      "assetPublished": null
     },
     {
       "date": "Dec 25",
       "title": "Mr. Irrelevant: The John Tuggle Story",
       "distributor": "Paramount",
       "type": "Wide",
-      "assetType": "TBD"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Dec 25",
@@ -931,7 +1027,9 @@
       "title": "Coward",
       "distributor": "Mubi",
       "type": "Limited",
-      "assetType": "TBD"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     }
   ]
 }
