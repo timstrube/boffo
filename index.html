@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>Boffo | Box Office Brief</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%8D%BF</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Readex+Pro:wght@400;900&family=Poppins:wght@900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Readex+Pro:wght@400;900&family=Poppins:wght@900&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0..1,0&display=swap" rel="stylesheet">
 <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <style>
@@ -22,6 +23,8 @@ display: block;
 width: 100%;
 }
 #boffo-root button { font-family: 'JetBrains Mono', monospace; }
+.material-symbols-rounded { font-family: 'Material Symbols Rounded'; font-weight: normal; font-style: normal; line-height: 1; letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased; font-feature-settings: 'liga'; }
+
 html { scrollbar-color: #15C56B #111713; scrollbar-width: thin; }
 #boffo-root, #boffo-root * { scrollbar-color: #15C56B #111713; scrollbar-width: thin; }
 html::-webkit-scrollbar, body::-webkit-scrollbar, #boffo-root::-webkit-scrollbar, #boffo-root *::-webkit-scrollbar { width: 10px; height: 10px; }
@@ -29,8 +32,12 @@ html::-webkit-scrollbar-track, body::-webkit-scrollbar-track, #boffo-root::-webk
 html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb, #boffo-root::-webkit-scrollbar-thumb, #boffo-root *::-webkit-scrollbar-thumb { background: #15C56B; border: 2px solid #111713; border-radius: 999px; }
 html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover, #boffo-root::-webkit-scrollbar-thumb:hover, #boffo-root *::-webkit-scrollbar-thumb:hover { background: #3FE08A; }
 html::-webkit-scrollbar-corner, body::-webkit-scrollbar-corner, #boffo-root::-webkit-scrollbar-corner, #boffo-root *::-webkit-scrollbar-corner { background: #111713; }
+#boffo-root input, #boffo-root select { font-family: 'JetBrains Mono', monospace; }
+#boffo-root button:focus-visible, #boffo-root a:focus-visible, #boffo-root input:focus-visible, #boffo-root select:focus-visible { outline: 2px solid #3FE08A; outline-offset: 2px; }
+
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } .boffo-motion { animation: none !important; transition: none !important; } }
 .w-embed, .w-embed-youtubevideo, .w-iframe { background: #0A0E0C !important; margin: 0 !important; }
 </style>
 <div id="boffo-root"></div>
@@ -64,40 +71,128 @@ greenDim: 'rgba(63,224,138,0.16)',
 magenta: '#E0479E',
 magentaDim: 'rgba(224,71,158,0.16)'
 };
-const LAST_UPDATED = 'Jul 29, 2026 \u00B7 6:46 AM PT / 9:46 AM ET';
+const LAST_UPDATED = 'Jul 29, 2026 \u00B7 3:28 PM PT / 6:28 PM ET';
 const BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 'giteshpandya.bsky.social', 'boxofficepro.bsky.social', 'boxofficereport.bsky.social'];
 const LAST_WEEKEND = { id: 'last', label: 'Last weekend', range: 'Jul 24-26', tag: 'FINAL', tab: null, externalUrl: 'https://www.boxofficemojo.com/weekend/2026W30/' };
 const THIS_WEEKEND = { id: 'this', label: 'This weekend', range: 'Jul 31+', tag: 'IN PROGRESS', tab: 'tracking' };
 const NEXT_WEEKEND = { id: 'next', label: 'Next weekend', range: 'Aug 7+', tag: 'UPCOMING', tab: 'calendar' };
 const WEEKENDS = [LAST_WEEKEND, THIS_WEEKEND, NEXT_WEEKEND];
 const DIST_OPTIONS = [
-'Universal', 'Focus Features', 'Paramount', 'A24', 'Amazon MGM', 'Disney', 'Walt Disney',
-'Lionsgate', 'Trafalgar', 'Bleecker Street', 'Neon', 'Warner Bros.', 'Fathom Entertainment',
-'Roadside Attractions', 'Searchlight Pictures', 'Angel Studios', 'Sony Pictures',
-'Magnolia Pictures', 'Ketchup Entertainment', '20th Century Studios', 'Vertical Entertainment',
-'IFC Films', 'Sony Pictures Classics', 'Strand Releasing', 'Film Movement',
-'Shudder', 'Mubi', 'Oscilloscope', 'Black Bear', 'Row K', 'Well Go USA', 'Sumerian', 'Apple'
+"Universal",
+"Focus Features",
+"Paramount",
+"A24",
+"Amazon MGM",
+"Disney",
+"Walt Disney",
+"Lionsgate",
+"Trafalgar",
+"Bleecker Street",
+"Neon",
+"Warner Bros.",
+"Fathom Entertainment",
+"Roadside Attractions",
+"Searchlight Pictures",
+"Angel Studios",
+"Sony Pictures",
+"Magnolia Pictures",
+"Ketchup Entertainment",
+"20th Century Studios",
+"Vertical Entertainment",
+"IFC Films",
+"Sony Pictures Classics",
+"Strand Releasing",
+"Film Movement",
+"Shudder",
+"Mubi",
+"Oscilloscope",
+"Black Bear",
+"Row K",
+"Well Go USA",
+"Sumerian",
+"Apple"
 ];
 const DIST_COLOR = {
-'Universal': '#1FB8B8', 'Focus Features': '#1FB8B8', 'Paramount': '#5C8FF0', 'A24': '#15C56B',
-'Amazon MGM': '#F0913D', 'Disney': '#5C8FF0', 'Walt Disney': '#5C8FF0', 'Lionsgate': '#B0A8D8',
-'Trafalgar': '#9AA3AC', 'Bleecker Street': '#9AA3AC', 'Neon': '#F0473D', 'Warner Bros.': '#F0A833',
-'Fathom Entertainment': '#9AA3AC', 'Roadside Attractions': '#D88FC9', 'Searchlight Pictures': '#5C8FF0',
-'Angel Studios': '#F0A833', 'Sony Pictures': '#9AA3AC', 'Magnolia Pictures': '#D88FC9',
-'Ketchup Entertainment': '#F0473D', '20th Century Studios': '#5C8FF0', 'Vertical Entertainment': '#9AA3AC',
-'IFC Films': '#9AA3AC', 'Sony Pictures Classics': '#B0A8D8', 'Strand Releasing': '#9AA3AC', 'Film Movement': '#9AA3AC',
-'Shudder': '#F0473D', 'Mubi': '#E6EDE8', 'Oscilloscope': '#9AA3AC', 'Black Bear': '#D88FC9',
-'Row K': '#9AA3AC', 'Well Go USA': '#F0A833', 'Sumerian': '#B0A8D8', 'Apple': '#E6EDE8'
+"Universal": "#1FB8B8",
+"Focus Features": "#1FB8B8",
+"Paramount": "#5C8FF0",
+"A24": "#15C56B",
+"Amazon MGM": "#F0913D",
+"Disney": "#5C8FF0",
+"Walt Disney": "#5C8FF0",
+"Lionsgate": "#B0A8D8",
+"Trafalgar": "#9AA3AC",
+"Bleecker Street": "#9AA3AC",
+"Neon": "#F0473D",
+"Warner Bros.": "#F0A833",
+"Fathom Entertainment": "#9AA3AC",
+"Roadside Attractions": "#D88FC9",
+"Searchlight Pictures": "#5C8FF0",
+"Angel Studios": "#F0A833",
+"Sony Pictures": "#9AA3AC",
+"Magnolia Pictures": "#D88FC9",
+"Ketchup Entertainment": "#F0473D",
+"20th Century Studios": "#5C8FF0",
+"Vertical Entertainment": "#9AA3AC",
+"IFC Films": "#9AA3AC",
+"Sony Pictures Classics": "#B0A8D8",
+"Strand Releasing": "#9AA3AC",
+"Film Movement": "#9AA3AC",
+"Shudder": "#F0473D",
+"Mubi": "#E6EDE8",
+"Oscilloscope": "#9AA3AC",
+"Black Bear": "#D88FC9",
+"Row K": "#9AA3AC",
+"Well Go USA": "#F0A833",
+"Sumerian": "#B0A8D8",
+"Apple": "#E6EDE8"
 };
+function MaterialIcon(props) {
+return e('span', {
+className: 'material-symbols-rounded',
+title: props.title || undefined,
+'aria-hidden': props.decorative === false ? undefined : 'true',
+style: Object.assign({
+fontSize: props.size || 17,
+fontVariationSettings: "'FILL' " + (props.filled ? 1 : 0) + ", 'wght' 400, 'GRAD' 0, 'opsz' 24",
+verticalAlign: 'middle', flexShrink: 0
+}, props.style || {})
+}, props.name);
+}
 const DIST_CODE = {
-'Universal': 'UNI', 'Focus Features': 'FOC', 'Paramount': 'PAR', 'A24': 'A24', 'Amazon MGM': 'MGM',
-'Disney': 'DIS', 'Walt Disney': 'DIS', 'Lionsgate': 'LGF', 'Trafalgar': 'TRF', 'Bleecker Street': 'BLK',
-'Neon': 'NEON', 'Warner Bros.': 'WB', 'Fathom Entertainment': 'FTH', 'Roadside Attractions': 'RSA',
-'Searchlight Pictures': 'SRL', 'Angel Studios': 'ANG', 'Sony Pictures': 'SNY', 'Magnolia Pictures': 'MAG',
-'Ketchup Entertainment': 'KET', '20th Century Studios': '20C', 'Vertical Entertainment': 'VERT',
-'IFC Films': 'IFC', 'Sony Pictures Classics': 'SPC', 'Strand Releasing': 'STRD', 'Film Movement': 'FLMT',
-'Shudder': 'SHUD', 'Mubi': 'MUBI', 'Oscilloscope': 'OSC', 'Black Bear': 'BBR',
-'Row K': 'ROW K', 'Well Go USA': 'WGU', 'Sumerian': 'SUM', 'Apple': 'APL'
+"Universal": "UNI",
+"Focus Features": "FOC",
+"Paramount": "PAR",
+"A24": "A24",
+"Amazon MGM": "MGM",
+"Disney": "DIS",
+"Walt Disney": "DIS",
+"Lionsgate": "LGF",
+"Trafalgar": "TRF",
+"Bleecker Street": "BLK",
+"Neon": "NEON",
+"Warner Bros.": "WB",
+"Fathom Entertainment": "FTH",
+"Roadside Attractions": "RSA",
+"Searchlight Pictures": "SRL",
+"Angel Studios": "ANG",
+"Sony Pictures": "SNY",
+"Magnolia Pictures": "MAG",
+"Ketchup Entertainment": "KET",
+"20th Century Studios": "20C",
+"Vertical Entertainment": "VERT",
+"IFC Films": "IFC",
+"Sony Pictures Classics": "SPC",
+"Strand Releasing": "STRD",
+"Film Movement": "FLMT",
+"Shudder": "SHUD",
+"Mubi": "MUBI",
+"Oscilloscope": "OSC",
+"Black Bear": "BBR",
+"Row K": "ROW K",
+"Well Go USA": "WGU",
+"Sumerian": "SUM",
+"Apple": "APL"
 };
 function DistBadge(props) {
 const name = props.name;
@@ -107,44 +202,101 @@ return e('span', {
 style: {
 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
 fontSize: 9.5, fontWeight: 800, letterSpacing: 0.5,
-padding: '2px 6px', borderRadius: 3,
+padding: props.uniform ? '0 8px' : '2px 6px', borderRadius: 3,
 background: 'rgba(255,255,255,0.04)',
 border: '1px solid ' + color + '55',
-color: color, minWidth: 30
+color: color, minWidth: props.uniform ? 76 : 30,
+height: props.uniform ? 24 : 'auto'
 }
 }, code);
 }
-function TrailerButton(props) {
-const url = props.url;
+function getYouTubeId(url) {
+if (!url) return null;
+const match = String(url).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([A-Za-z0-9_-]{6,})/);
+return match ? match[1] : null;
+}
+function isRecentAsset(dateString) {
+if (!dateString) return false;
+const published = new Date(dateString + 'T12:00:00');
+if (Number.isNaN(published.getTime())) return false;
+const now = new Date();
+const age = now.getTime() - published.getTime();
+return age >= 0 && age <= 3 * 24 * 60 * 60 * 1000;
+}
+function buildYouTubeEmbedUrl(url) {
+const id = getYouTubeId(url);
+if (!id) return '';
+const params = new URLSearchParams({ autoplay: '1', rel: '0', playsinline: '1', enablejsapi: '1' });
+if (typeof window !== 'undefined' && /^https?:$/.test(window.location.protocol)) {
+params.set('origin', window.location.origin);
+params.set('widget_referrer', document.referrer || window.location.href);
+}
+return 'https://www.youtube.com/embed/' + id + '?' + params.toString();
+}
+function AssetButton(props) {
+const item = props.item;
 const isMobile = props.isMobile;
+const assetType = item.assetType || (item.trailerUrl ? 'Trailer' : 'TBD');
+const available = assetType !== 'TBD' && !!item.trailerUrl;
+const recent = available && isRecentAsset(item.assetPublished);
+const color = assetType === 'Teaser' ? C.amber : C.magenta;
+const bg = assetType === 'Teaser' ? 'rgba(240,168,51,0.14)' : C.magentaDim;
 const baseStyle = {
 display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 5,
-minWidth: isMobile ? 70 : 74,
-padding: isMobile ? '4px 7px' : '4px 8px', borderRadius: 4,
+width: 86, minWidth: 86, height: 26, minHeight: 26, padding: 0, borderRadius: 4,
+boxSizing: 'border-box', lineHeight: 1, appearance: 'none', WebkitAppearance: 'none',
 fontFamily: "'JetBrains Mono', monospace", fontSize: isMobile ? 9 : 9.5,
-fontWeight: 800, letterSpacing: 0.35, textTransform: 'uppercase',
-textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0
+fontWeight: 800, letterSpacing: 0.35, textTransform: 'uppercase', whiteSpace: 'nowrap', flexShrink: 0
 };
-if (!url) {
-return e('span', {
-style: Object.assign({}, baseStyle, {
-background: 'rgba(255,255,255,0.025)', border: '1px solid ' + C.border,
-color: C.textFaint, cursor: 'default'
-}),
-title: 'No official trailer has been posted yet',
-'aria-disabled': 'true'
-}, 'Trailer TBD');
+if (!available) return e('span', { style: Object.assign({}, baseStyle, { background: 'rgba(255,255,255,0.025)', border: '1px solid ' + C.border, color: C.textFaint }), title: 'No official teaser or trailer has been posted yet', 'aria-disabled': 'true' }, 'TBD');
+return e('span', { style: { display: 'inline-flex', alignItems: 'center', gap: 5, flexShrink: 0 } },
+e('button', { onClick: function () { props.onPlay(item); }, style: Object.assign({}, baseStyle, { background: bg, border: '1px solid ' + color + '88', color: color, cursor: 'pointer' }), title: 'Play inside Boffo', 'aria-label': 'Play ' + assetType + ' for ' + item.title },
+e('span', { style: { fontSize: 8, position: 'relative', top: -0.25 } }, '\u25B6'), assetType
+),
+recent ? e(MaterialIcon, { name: 'stars_2', filled: true, size: 18, title: 'New in the last 3 days', style: { color: C.amber, filter: 'drop-shadow(0 0 4px rgba(240,168,51,0.28))' } }) : null
+);
 }
-return e('a', {
-href: url, target: '_blank', rel: 'noopener noreferrer',
-style: Object.assign({}, baseStyle, {
-background: C.magentaDim, border: '1px solid ' + C.magenta + '88',
-color: C.magenta
-}),
-title: 'Watch the official trailer on YouTube',
-'aria-label': 'Watch official trailer'
-}, e('span', { style: { fontSize: 8, position: 'relative', top: -0.25 } }, '\u25B6'), 'Trailer');
+function ModalShell(props) {
+if (!props.open) return null;
+return e('div', { onMouseDown: function (ev) { if (ev.target === ev.currentTarget) props.onClose(); }, style: { position: 'fixed', inset: 0, zIndex: 500, background: 'rgba(0,0,0,0.82)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: props.isMobile ? 12 : 24, backdropFilter: 'blur(6px)' }, role: 'dialog', 'aria-modal': 'true' },
+e('div', { style: { width: '100%', maxWidth: props.maxWidth || 880, maxHeight: '92vh', overflow: 'auto', background: '#101612', border: '1px solid ' + C.borderStrong, borderRadius: 10, boxShadow: '0 24px 80px rgba(0,0,0,0.65)' } },
+e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, padding: '12px 14px', borderBottom: '1px solid ' + C.border } },
+e('div', { style: { minWidth: 0 } },
+e('div', { style: { fontSize: 10, color: props.accent || C.magenta, fontWeight: 900, letterSpacing: 0.8, textTransform: 'uppercase' } }, props.kicker || ''),
+e('div', { style: { fontFamily: "'Readex Pro', sans-serif", fontSize: props.isMobile ? 14 : 17, color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' } }, props.title || '')
+),
+e('button', { onClick: props.onClose, style: { background: 'transparent', border: '1px solid ' + C.border, color: C.textMute, borderRadius: 5, width: 30, height: 30, cursor: 'pointer', fontSize: 17 } }, '\u00D7')
+), props.children)
+);
 }
+function TrailerModal(props) {
+const item = props.item;
+if (!item) return null;
+const id = getYouTubeId(item.trailerUrl);
+return e(ModalShell, { open: true, onClose: props.onClose, isMobile: props.isMobile, title: item.title, kicker: (item.assetType || 'Trailer') + ' \u00B7 ' + item.distributor, accent: item.assetType === 'Teaser' ? C.amber : C.magenta },
+id ? e('div', { style: { position: 'relative', paddingTop: '56.25%', background: '#000' } },
+e('iframe', { src: buildYouTubeEmbedUrl(item.trailerUrl), title: (item.assetType || 'Trailer') + ' for ' + item.title, allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share', allowFullScreen: true, referrerPolicy: 'strict-origin-when-cross-origin', loading: 'eager', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0 } })
+) : e('div', { style: { padding: 24, color: C.textMute } }, 'This YouTube URL could not be embedded.'),
+e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, padding: '11px 14px', flexWrap: 'wrap' } },
+e('div', { style: { display: 'flex', gap: 7, alignItems: 'center' } }, e(DistBadge, { name: item.distributor }), e('span', { style: { fontSize: 9, color: C.textFaint, fontWeight: 800, textTransform: 'uppercase' } }, item.type + ' \u00B7 ' + item.date)),
+e('a', { href: item.trailerUrl, target: '_blank', rel: 'noopener noreferrer', style: { color: C.text, border: '1px solid ' + C.borderStrong, borderRadius: 4, padding: '5px 8px', textDecoration: 'none', fontSize: 9.5, fontWeight: 800, textTransform: 'uppercase' } }, 'Open on YouTube \u2197')
+)
+);
+}
+function ChatterModal(props) {
+const post = props.post;
+if (!post) return null;
+const author = post.author || {};
+const text = stripTrailingNoise((post.record && post.record.text) || '');
+const uri = post.uri || '';
+const rkey = uri.split('/').pop();
+const postUrl = author.handle && rkey ? 'https://bsky.app/profile/' + author.handle + '/post/' + rkey : null;
+return e(ModalShell, { open: true, onClose: props.onClose, isMobile: props.isMobile, title: author.displayName || author.handle || 'Box Office Chatter', kicker: author.handle ? '@' + author.handle : 'Bluesky', accent: '#1185FE', maxWidth: 620 },
+e('div', { style: { padding: props.isMobile ? 16 : 22, fontFamily: "'Readex Pro', sans-serif", fontSize: props.isMobile ? 14 : 16, color: C.text, lineHeight: 1.65, whiteSpace: 'pre-wrap' } }, text),
+postUrl ? e('div', { style: { padding: '0 14px 14px', textAlign: 'right' } }, e('a', { href: postUrl, target: '_blank', rel: 'noopener noreferrer', style: { color: '#59A9FF', fontSize: 10, fontWeight: 800, textDecoration: 'none' } }, 'Open post \u2197')) : null
+);
+}
+
 const TOP10_INIT = [
 { rank: 1, prev: 1, weekendNum: 2, title: 'The Odyssey', gross: 90022510, change: -27, theaters: 3942, avg: 22837, total: 289394310, global: 490000000, distributor: 'Universal' },
 { rank: 2, prev: 2, weekendNum: 3, title: 'Moana', gross: 10640247, change: -41, theaters: 4015, avg: 2650, total: 102609900, global: 190000000, distributor: 'Walt Disney' },
@@ -161,96 +313,97 @@ const TOTAL_WEEKEND_GROSS = 145957596;
 const TOP10_IS_FINAL = true;
 const PREVIOUS_WEEKEND_CHAMP = { title: 'The Odyssey', distributor: 'Universal', theaters: 3919, gross: 123502900, avg: 31514, range: 'Jul 17-19' };
 const YOY = { thisYear: 145957596, lastYear: 122000000, tenYearAvg: 105000000 };
+const MARKET_COMPARISON = { current: 146570303, previous: 188271704, lastYear: 185393168, tenYearAvg: 151296400, asOf: 'Jul 29, 2026', source: 'Box Office Mojo' };
 const TRACKING_INIT = [
-{ title: 'Spider-Man: Brand New Day', distributor: 'Sony Pictures', theaters: 4300, range: [195000000, 249000000], actual: null, confidence: 'high', momentum: 'rising', criticAudience: { rtCritic: 92, rtAudience: null, metacritic: 70, cinemaScore: null }, note: 'Opens Thursday previews tonight (7/30) with Wednesday Prime member preview already underway. Reviews dropped July 28: 92% RT / 70 Metacritic \u2014 Marvel\'s best RT score in five years. The Wrap: "a highlight of the whole franchise." Variety: "arduous, overly episodic and half an hour too long" (the lone major dissent). Tracking: NRG/Deadline at $195M from 4,300 theaters; Box Office Theory at $228-274M (pinpoint $249M); North American presales at $80M, matching No Way Home\'s $78M pre-sales pace. Key detail: Spider-Man gets IMAX in China, Japan, and Korea \u2014 where The Odyssey\'s exclusive doesn\'t apply \u2014 positioning it for a massive global opening. Production budget: $225M. Stars Tom Holland, Zendaya, Jacob Batalon, Jon Bernthal, Sadie Sink, Mark Ruffalo. Directed by Destin Daniel Cretton.' },
-{ title: 'The Odyssey', distributor: 'Universal', theaters: 3800, range: [40000000, 55000000], actual: null, confidence: 'high', momentum: 'stable', criticAudience: { rtCritic: 98, rtAudience: null, metacritic: null, cinemaScore: null }, note: 'Third and final IMAX-exclusive weekend before Spider-Man takes over those auditoriums. Confirmed $90M second weekend (-27%) bested Oppenheimer\'s own second-weekend hold. Now at $289.4M domestic / $490M global. IMAX handoff to Spider-Man will compress week-three grosses \u2014 expect the steepest drop of its run \u2014 but prestige word-of-mouth keeps general auditorium attendance strong.' }
+{ title: 'Spider-Man: Brand New Day', distributor: 'Sony Pictures', theaters: 4300, range: [195000000, 249000000], scale: [150000000, 300000000], currentEstimate: null, actual: null, confidence: 'high', momentum: 'rising', criticAudience: { rtCritic: 92, rtAudience: null, metacritic: 70, cinemaScore: null }, note: 'Opens Thursday previews tonight (7/30) with Wednesday Prime member preview already underway. Reviews dropped July 28: 92% RT / 70 Metacritic \u2014 Marvel\'s best RT score in five years. The Wrap: "a highlight of the whole franchise." Variety: "arduous, overly episodic and half an hour too long" (the lone major dissent). Tracking: NRG/Deadline at $195M from 4,300 theaters; Box Office Theory at $228-274M (pinpoint $249M); North American presales at $80M, matching No Way Home\'s $78M pre-sales pace. Key detail: Spider-Man gets IMAX in China, Japan, and Korea \u2014 where The Odyssey\'s exclusive doesn\'t apply \u2014 positioning it for a massive global opening. Production budget: $225M. Stars Tom Holland, Zendaya, Jacob Batalon, Jon Bernthal, Sadie Sink, Mark Ruffalo. Directed by Destin Daniel Cretton.' },
+{ title: 'The Odyssey', distributor: 'Universal', theaters: 3800, range: [40000000, 55000000], scale: [20000000, 80000000], currentEstimate: null, actual: null, confidence: 'high', momentum: 'stable', criticAudience: { rtCritic: 98, rtAudience: null, metacritic: null, cinemaScore: null }, note: 'Third and final IMAX-exclusive weekend before Spider-Man takes over those auditoriums. Confirmed $90M second weekend (-27%) bested Oppenheimer\'s own second-weekend hold. Now at $289.4M domestic / $490M global. IMAX handoff to Spider-Man will compress week-three grosses \u2014 expect the steepest drop of its run \u2014 but prestige word-of-mouth keeps general auditorium attendance strong.' }
 ];
 const TRACKING_WEEKEND = 'Jul 31+';
 const RELEASES = [
-{ date: 'Jul 31', title: 'I Want Your Sex', distributor: 'Magnolia Pictures', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=kjkTmTmC1iA' },
-{ date: 'Jul 31', title: 'Nightborn', distributor: 'Shudder', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=pvx1TCbiRLQ' },
-{ date: 'Aug 7', title: 'One Night Only', distributor: 'Universal', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=JRG244IfrRE' },
-{ date: 'Aug 7', title: 'Super Troopers 3', distributor: 'Searchlight Pictures', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=cYFevn5frf0' },
-{ date: 'Aug 7', title: 'Teenage Sex and Death at Camp Miasma', distributor: 'Mubi', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=MA5NqUMEdbI' },
-{ date: 'Aug 7', title: 'Tony', distributor: 'A24', type: 'Limited', trailerUrl: 'https://youtu.be/k1MVnzd2aVc' },
-{ date: 'Aug 7', title: 'Cookie Queens', distributor: 'Roadside Attractions', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=i8VyUZLNoXE' },
-{ date: 'Aug 14', title: 'PAW Patrol: The Dino Movie', distributor: 'Paramount', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=aHw4PuLCUIc' },
-{ date: 'Aug 14', title: 'The End of Oak Street', distributor: 'Warner Bros.', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=3oB9AxspVow' },
-{ date: 'Aug 14', title: 'The Rivals of Amziah King', distributor: 'Bleecker Street', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=GwSvAyaMGMo' },
-{ date: 'Aug 14', title: 'Union County', distributor: 'Oscilloscope', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=uA6Fnr2VXkw' },
-{ date: 'Aug 14', title: 'The Wrong Girls', distributor: 'Neon', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=zrcg8YHSys8' },
-{ date: 'Aug 14', title: 'SIX The Musical Live!', distributor: 'Focus Features', type: 'Limited', trailerUrl: 'https://youtu.be/phU3eSBFOXA' },
-{ date: 'Aug 21', title: 'The Rivals of Amziah King', distributor: 'Bleecker Street', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=GwSvAyaMGMo' },
-{ date: 'Aug 21', title: 'Insidious: Out of the Further', distributor: 'Sony Pictures', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=3PqqwEyV_Lw' },
-{ date: 'Aug 21', title: 'Mutiny', distributor: 'Lionsgate', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=FKSdXH89jbo' },
-{ date: 'Aug 21', title: 'The Magic Faraway Tree', distributor: 'Vertical Entertainment', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=npJuXZVbctw' },
-{ date: 'Aug 21', title: 'Spa Weekend', distributor: 'Black Bear', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=CJ7rxgmtlaM' },
-{ date: 'Aug 21', title: 'It Ends', distributor: 'Neon', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=zFszhQLMNXU' },
-{ date: 'Aug 21', title: 'Hot Spot', distributor: 'Focus Features', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=x54MPGBWXA8' },
-{ date: 'Aug 28', title: 'Coyote vs. Acme', distributor: 'Ketchup Entertainment', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=H-43VeYGiPM' },
-{ date: 'Aug 28', title: 'The Dog Stars', distributor: 'Walt Disney', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=cmzVY1goqwQ' },
-{ date: 'Aug 28', title: 'Cliffhanger', distributor: 'Row K', type: 'Limited' },
-{ date: 'Aug 28', title: 'Buddy', distributor: 'Roadside Attractions', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=FYC0CaEloVw' },
-{ date: 'Aug 28', title: 'Colony', distributor: 'Well Go USA', type: 'Limited', trailerUrl: 'https://youtu.be/Je122ZNo6uw' },
-{ date: 'Aug 28', title: 'Finding Emily', distributor: 'Focus Features', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=wc2UjmPzN8c' },
-{ date: 'Aug 28', title: 'The Sun Never Sets', distributor: 'IFC Films', type: 'Limited' },
-{ date: 'Aug 28', title: 'Idiots', distributor: 'IFC Films', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=UoAf0LNAn30' },
-{ date: 'Aug 28', title: 'Legend of the White Dragon', distributor: 'Well Go USA', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=xUBjSmjHnXY' },
-{ date: 'Sep 4', title: 'By Any Means', distributor: 'Paramount', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=ej8pjisr0Pc' },
-{ date: 'Sep 4', title: 'Onslaught', distributor: 'A24', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=L24CYVpQ-LI' },
-{ date: 'Sep 4', title: 'Dear You', distributor: 'Well Go USA', type: 'Limited' },
-{ date: 'Sep 11', title: 'Practical Magic 2', distributor: 'Warner Bros.', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=Ho10_4IX1jE' },
-{ date: 'Sep 11', title: 'The Uprising', distributor: 'Focus Features', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=ZVkrhHebz1Q' },
-{ date: 'Sep 11', title: 'Primetime', distributor: 'A24', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=Yrfrf53ttYY' },
-{ date: 'Sep 18', title: 'Resident Evil', distributor: 'Sony Pictures', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=mNd1gb19A-c' },
-{ date: 'Sep 18', title: 'The Weight', distributor: 'Vertical Entertainment', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=wze2FuC8GgM' },
-{ date: 'Sep 25', title: 'Forgotten Island', distributor: 'Universal', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=a8RHqN93qfo' },
-{ date: 'Sep 25', title: 'Heart of the Beast', distributor: 'Paramount', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=JFQcDFhNh4o' },
-{ date: 'Sep 25', title: 'Victorian Psycho', distributor: 'Bleecker Street', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=nIRsEH9OAUk' },
-{ date: 'Sep 25', title: 'Crawlers', distributor: 'Roadside Attractions', type: 'Limited' },
-{ date: 'Sep 25', title: 'The Incomer', distributor: 'Sumerian', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=0gXMYWbppNM' },
-{ date: 'Oct 2', title: 'Verity', distributor: 'Amazon MGM', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=wbMNy_djxGk' },
-{ date: 'Oct 2', title: 'Digger', distributor: 'Warner Bros.', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=qORTe1wW3Wg' },
-{ date: 'Oct 9', title: 'Other Mommy', distributor: 'Universal', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=bEpTgowZ1dI' },
-{ date: 'Oct 9', title: 'Tenzing', distributor: 'Apple', type: 'Wide' },
-{ date: 'Oct 9', title: 'The Social Reckoning', distributor: 'Sony Pictures', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=gM4LkaXwGuY' },
-{ date: 'Oct 9', title: 'Fjord', distributor: 'Neon', type: 'Limited' },
-{ date: 'Oct 9', title: 'Misty Green', distributor: 'A24', type: 'Limited', trailerUrl: 'https://youtu.be/Je122ZNo6uw' },
-{ date: 'Oct 16', title: 'Street Fighter', distributor: 'Paramount', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=Xt4X4FvXk2A' },
-{ date: 'Oct 16', title: 'Musk', distributor: 'Bleecker Street', type: 'Limited' },
-{ date: 'Oct 16', title: 'Once Upon a Time in Harlem', distributor: 'Neon', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=zIjmgj5rbOY' },
-{ date: 'Oct 16', title: 'Sense and Sensibility', distributor: 'Focus Features', type: 'Wide', trailerUrl: 'https://youtu.be/mcrwcvad84U' },
-{ date: 'Oct 16', title: 'Whalefall', distributor: 'Walt Disney', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=67ho3OxCmmM' },
-{ date: 'Oct 23', title: 'Clayface', distributor: 'Warner Bros.', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=mo7-mJ6wKho' },
-{ date: 'Oct 23', title: 'A Talent for Murder', distributor: 'Bleecker Street', type: 'Limited' },
-{ date: 'Oct 23', title: 'Klara and the Sun', distributor: 'Sony Pictures', type: 'Wide', trailerUrl: 'https://youtu.be/wixzainceAE' },
-{ date: 'Oct 30', title: 'Wicker', distributor: 'Black Bear', type: 'Limited' },
-{ date: 'Nov 6', title: 'The Cat in the Hat', distributor: 'Warner Bros.', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=HT5JAp5z0-o' },
-{ date: 'Nov 6', title: 'Wild Horse Nine', distributor: 'Searchlight Pictures', type: 'Limited', trailerUrl: 'https://youtu.be/Haw_sznA5aQ' },
-{ date: 'Nov 6', title: 'Club Kid', distributor: 'A24', type: 'Limited' },
-{ date: 'Nov 13', title: 'Ebenezer: A Christmas Carol', distributor: 'Paramount', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=A7lyvgnDuDE' },
-{ date: 'Nov 13', title: 'How to Rob a Bank', distributor: 'Amazon MGM', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=ORxw68y3lyw' },
-{ date: 'Nov 13', title: 'Paper Tiger', distributor: 'Neon', type: 'Limited' },
-{ date: 'Nov 20', title: 'The Hunger Games: Sunrise on the Reaping', distributor: 'Lionsgate', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=CINFIAohu4U' },
-{ date: 'Nov 20', title: 'I Play Rocky', distributor: 'Amazon MGM', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=V_g_Ut0jO-0' },
-{ date: 'Nov 20', title: 'Minotaur', distributor: 'Mubi', type: 'Limited' },
-{ date: 'Nov 20', title: 'Josephine', distributor: 'Sumerian', type: 'Limited' },
-{ date: 'Nov 20', title: 'Elsinore', distributor: 'Focus Features', type: 'Limited' },
-{ date: 'Nov 25', title: 'Focker In-Law', distributor: 'Universal', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=vyISuWUWcFs' },
-{ date: 'Nov 25', title: 'Hexed', distributor: 'Walt Disney', type: 'Wide', trailerUrl: 'https://youtu.be/mtC4sjABZNw' },
-{ date: 'Dec 4', title: 'Violent Night 2', distributor: 'Universal', type: 'Wide' },
-{ date: 'Dec 4', title: 'Above the Below', distributor: 'Lionsgate', type: 'Wide' },
-{ date: 'Dec 4', title: 'Behemoth', distributor: 'Searchlight Pictures', type: 'Limited', trailerUrl: 'https://www.youtube.com/watch?v=TrMGdrCJ5Ck' },
-{ date: 'Dec 4', title: 'Tender Loving Care', distributor: 'Bleecker Street', type: 'Limited' },
-{ date: 'Dec 11', title: 'Clarissa', distributor: 'Neon', type: 'Limited' },
-{ date: 'Dec 18', title: 'Avengers: Doomsday', distributor: 'Walt Disney', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=irVNGjRFZGk' },
-{ date: 'Dec 18', title: 'Dune: Part Three', distributor: 'Warner Bros.', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=NdvqHc56lE0' },
-{ date: 'Dec 23', title: 'The Angry Birds Movie 3', distributor: 'Paramount', type: 'Wide', trailerUrl: 'https://youtu.be/a9DB_aUMzME' },
-{ date: 'Dec 25', title: 'Jumanji: Open World', distributor: 'Sony Pictures', type: 'Wide', trailerUrl: 'https://www.youtube.com/watch?v=zhApeaHMvfs' },
-{ date: 'Dec 25', title: 'Werwulf', distributor: 'Focus Features', type: 'Wide', trailerUrl: 'https://youtu.be/cmjpadVj-Vk' },
-{ date: 'Dec 25', title: 'Mr. Irrelevant: The John Tuggle Story', distributor: 'Paramount', type: 'Wide' },
-{ date: 'Dec 25', title: 'The Debut', distributor: 'A24', type: 'Limited', trailerUrl: 'https://youtu.be/clyzHmBx43E' },
-{ date: 'Dec 25', title: 'Coward', distributor: 'Mubi', type: 'Limited' },
+{ date: "Jul 31", title: "I Want Your Sex", distributor: "Magnolia Pictures", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=kjkTmTmC1iA" },
+{ date: "Jul 31", title: "Nightborn", distributor: "Shudder", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=pvx1TCbiRLQ" },
+{ date: "Aug 7", title: "One Night Only", distributor: "Universal", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=JRG244IfrRE" },
+{ date: "Aug 7", title: "Super Troopers 3", distributor: "Searchlight Pictures", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=cYFevn5frf0" },
+{ date: "Aug 7", title: "Teenage Sex and Death at Camp Miasma", distributor: "Mubi", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=MA5NqUMEdbI" },
+{ date: "Aug 7", title: "Tony", distributor: "A24", type: "Limited", assetType: "Trailer", trailerUrl: "https://youtu.be/k1MVnzd2aVc", assetPublished: "2026-05-06" },
+{ date: "Aug 7", title: "Cookie Queens", distributor: "Roadside Attractions", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=i8VyUZLNoXE" },
+{ date: "Aug 14", title: "PAW Patrol: The Dino Movie", distributor: "Paramount", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=aHw4PuLCUIc" },
+{ date: "Aug 14", title: "The End of Oak Street", distributor: "Warner Bros.", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=3oB9AxspVow" },
+{ date: "Aug 14", title: "The Rivals of Amziah King", distributor: "Bleecker Street", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=GwSvAyaMGMo" },
+{ date: "Aug 14", title: "Union County", distributor: "Oscilloscope", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=uA6Fnr2VXkw" },
+{ date: "Aug 14", title: "The Wrong Girls", distributor: "Neon", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=zrcg8YHSys8" },
+{ date: "Aug 14", title: "SIX The Musical Live!", distributor: "Focus Features", type: "Limited", assetType: "Trailer", trailerUrl: "https://youtu.be/phU3eSBFOXA" },
+{ date: "Aug 21", title: "The Rivals of Amziah King", distributor: "Bleecker Street", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=GwSvAyaMGMo" },
+{ date: "Aug 21", title: "Insidious: Out of the Further", distributor: "Sony Pictures", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=3PqqwEyV_Lw" },
+{ date: "Aug 21", title: "Mutiny", distributor: "Lionsgate", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=FKSdXH89jbo" },
+{ date: "Aug 21", title: "The Magic Faraway Tree", distributor: "Vertical Entertainment", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=npJuXZVbctw" },
+{ date: "Aug 21", title: "Spa Weekend", distributor: "Black Bear", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=CJ7rxgmtlaM" },
+{ date: "Aug 21", title: "It Ends", distributor: "Neon", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=zFszhQLMNXU" },
+{ date: "Aug 21", title: "Hot Spot", distributor: "Focus Features", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=x54MPGBWXA8" },
+{ date: "Aug 28", title: "Coyote vs. Acme", distributor: "Ketchup Entertainment", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=H-43VeYGiPM" },
+{ date: "Aug 28", title: "The Dog Stars", distributor: "Walt Disney", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=cmzVY1goqwQ" },
+{ date: "Aug 28", title: "Cliffhanger", distributor: "Row K", type: "Limited", assetType: "TBD" },
+{ date: "Aug 28", title: "Buddy", distributor: "Roadside Attractions", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=FYC0CaEloVw" },
+{ date: "Aug 28", title: "Colony", distributor: "Well Go USA", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=Je122ZNo6uw" },
+{ date: "Aug 28", title: "Finding Emily", distributor: "Focus Features", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=wc2UjmPzN8c" },
+{ date: "Aug 28", title: "The Sun Never Sets", distributor: "IFC Films", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=nTIfzXx8nJY" },
+{ date: "Aug 28", title: "Idiots", distributor: "IFC Films", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=UoAf0LNAn30" },
+{ date: "Aug 28", title: "Legend of the White Dragon", distributor: "Well Go USA", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=xUBjSmjHnXY" },
+{ date: "Sep 4", title: "By Any Means", distributor: "Paramount", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=ej8pjisr0Pc" },
+{ date: "Sep 4", title: "Onslaught", distributor: "A24", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=L24CYVpQ-LI" },
+{ date: "Sep 4", title: "Dear You", distributor: "Well Go USA", type: "Limited", assetType: "TBD" },
+{ date: "Sep 11", title: "Practical Magic 2", distributor: "Warner Bros.", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=Ho10_4IX1jE" },
+{ date: "Sep 11", title: "The Uprising", distributor: "Focus Features", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=ZVkrhHebz1Q" },
+{ date: "Sep 11", title: "Primetime", distributor: "A24", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=Yrfrf53ttYY" },
+{ date: "Sep 18", title: "Resident Evil", distributor: "Sony Pictures", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=mNd1gb19A-c" },
+{ date: "Sep 18", title: "The Weight", distributor: "Vertical Entertainment", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=wze2FuC8GgM" },
+{ date: "Sep 25", title: "Forgotten Island", distributor: "Universal", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=a8RHqN93qfo" },
+{ date: "Sep 25", title: "Heart of the Beast", distributor: "Paramount", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=JFQcDFhNh4o" },
+{ date: "Sep 25", title: "Victorian Psycho", distributor: "Bleecker Street", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=nIRsEH9OAUk" },
+{ date: "Sep 25", title: "Crawlers", distributor: "Roadside Attractions", type: "Limited", assetType: "TBD" },
+{ date: "Sep 25", title: "The Incomer", distributor: "Sumerian", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=0gXMYWbppNM" },
+{ date: "Oct 2", title: "Verity", distributor: "Amazon MGM", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=wbMNy_djxGk" },
+{ date: "Oct 2", title: "Digger", distributor: "Warner Bros.", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=qORTe1wW3Wg" },
+{ date: "Oct 9", title: "Other Mommy", distributor: "Universal", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=bEpTgowZ1dI" },
+{ date: "Oct 9", title: "Tenzing", distributor: "Apple", type: "Wide", assetType: "TBD" },
+{ date: "Oct 9", title: "The Social Reckoning", distributor: "Sony Pictures", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=gM4LkaXwGuY" },
+{ date: "Oct 9", title: "Fjord", distributor: "Neon", type: "Limited", assetType: "TBD" },
+{ date: "Oct 9", title: "Misty Green", distributor: "A24", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=ACaWuqeLpSk" },
+{ date: "Oct 16", title: "Street Fighter", distributor: "Paramount", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=Xt4X4FvXk2A" },
+{ date: "Oct 16", title: "Musk", distributor: "Bleecker Street", type: "Limited", assetType: "TBD" },
+{ date: "Oct 16", title: "Once Upon a Time in Harlem", distributor: "Neon", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=zIjmgj5rbOY" },
+{ date: "Oct 16", title: "Sense and Sensibility", distributor: "Focus Features", type: "Wide", assetType: "Trailer", trailerUrl: "https://youtu.be/mcrwcvad84U" },
+{ date: "Oct 16", title: "Whalefall", distributor: "Walt Disney", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=67ho3OxCmmM" },
+{ date: "Oct 23", title: "Clayface", distributor: "Warner Bros.", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=mo7-mJ6wKho" },
+{ date: "Oct 23", title: "A Talent for Murder", distributor: "Bleecker Street", type: "Limited", assetType: "TBD" },
+{ date: "Oct 23", title: "Klara and the Sun", distributor: "Sony Pictures", type: "Wide", assetType: "Trailer", trailerUrl: "https://youtu.be/wixzainceAE", assetPublished: "2026-06-23" },
+{ date: "Oct 30", title: "Wicker", distributor: "Black Bear", type: "Limited", assetType: "TBD" },
+{ date: "Nov 6", title: "The Cat in the Hat", distributor: "Warner Bros.", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=HT5JAp5z0-o" },
+{ date: "Nov 6", title: "Wild Horse Nine", distributor: "Searchlight Pictures", type: "Limited", assetType: "Trailer", trailerUrl: "https://youtu.be/Haw_sznA5aQ" },
+{ date: "Nov 6", title: "Club Kid", distributor: "A24", type: "Limited", assetType: "TBD" },
+{ date: "Nov 13", title: "Ebenezer: A Christmas Carol", distributor: "Paramount", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=A7lyvgnDuDE" },
+{ date: "Nov 13", title: "How to Rob a Bank", distributor: "Amazon MGM", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=ORxw68y3lyw" },
+{ date: "Nov 13", title: "Paper Tiger", distributor: "Neon", type: "Limited", assetType: "TBD" },
+{ date: "Nov 20", title: "The Hunger Games: Sunrise on the Reaping", distributor: "Lionsgate", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=CINFIAohu4U" },
+{ date: "Nov 20", title: "I Play Rocky", distributor: "Amazon MGM", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=V_g_Ut0jO-0" },
+{ date: "Nov 20", title: "Minotaur", distributor: "Mubi", type: "Limited", assetType: "TBD" },
+{ date: "Nov 20", title: "Josephine", distributor: "Sumerian", type: "Limited", assetType: "TBD" },
+{ date: "Nov 20", title: "Elsinore", distributor: "Focus Features", type: "Limited", assetType: "TBD" },
+{ date: "Nov 25", title: "Focker In-Law", distributor: "Universal", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=vyISuWUWcFs" },
+{ date: "Nov 25", title: "Hexed", distributor: "Walt Disney", type: "Wide", assetType: "Teaser", trailerUrl: "https://youtu.be/mtC4sjABZNw", assetPublished: "2026-06-16" },
+{ date: "Dec 4", title: "Violent Night 2", distributor: "Universal", type: "Wide", assetType: "TBD" },
+{ date: "Dec 4", title: "Above the Below", distributor: "Lionsgate", type: "Wide", assetType: "TBD" },
+{ date: "Dec 4", title: "Behemoth", distributor: "Searchlight Pictures", type: "Limited", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=TrMGdrCJ5Ck" },
+{ date: "Dec 4", title: "Tender Loving Care", distributor: "Bleecker Street", type: "Limited", assetType: "TBD" },
+{ date: "Dec 11", title: "Clarissa", distributor: "Neon", type: "Limited", assetType: "TBD" },
+{ date: "Dec 18", title: "Avengers: Doomsday", distributor: "Walt Disney", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=irVNGjRFZGk" },
+{ date: "Dec 18", title: "Dune: Part Three", distributor: "Warner Bros.", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=NdvqHc56lE0" },
+{ date: "Dec 23", title: "The Angry Birds Movie 3", distributor: "Paramount", type: "Wide", assetType: "Trailer", trailerUrl: "https://youtu.be/a9DB_aUMzME", assetPublished: "2026-06-29" },
+{ date: "Dec 25", title: "Jumanji: Open World", distributor: "Sony Pictures", type: "Wide", assetType: "Trailer", trailerUrl: "https://www.youtube.com/watch?v=zhApeaHMvfs" },
+{ date: "Dec 25", title: "Werwulf", distributor: "Focus Features", type: "Wide", assetType: "Trailer", trailerUrl: "https://youtu.be/cmjpadVj-Vk" },
+{ date: "Dec 25", title: "Mr. Irrelevant: The John Tuggle Story", distributor: "Paramount", type: "Wide", assetType: "TBD" },
+{ date: "Dec 25", title: "The Debut", distributor: "A24", type: "Limited", assetType: "Trailer", trailerUrl: "https://youtu.be/clyzHmBx43E", assetPublished: "2026-06-23" },
+{ date: "Dec 25", title: "Coward", distributor: "Mubi", type: "Limited", assetType: "TBD" }
 ];
 function fmtMoney(n) {
 if (n === null || n === undefined) return String.fromCharCode(8212);
@@ -311,30 +464,31 @@ items.map(function (m, i) { return renderItem(m, 'b' + i); })
 function ChatterTicker(props) {
 const posts = props.posts;
 const isMobile = props.isMobile;
+const [paused, setPaused] = useState(false);
+const [reducedMotion, setReducedMotion] = useState(false);
+useEffect(function () {
+if (!window.matchMedia) return;
+const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+function sync() { setReducedMotion(mq.matches); }
+sync();
+if (mq.addEventListener) mq.addEventListener('change', sync); else mq.addListener(sync);
+return function () { if (mq.removeEventListener) mq.removeEventListener('change', sync); else mq.removeListener(sync); };
+}, []);
 if (!posts || posts.length === 0) return null;
-const butterfly = e('svg', { viewBox: '0 0 600 530', style: { width: isMobile ? 11 : 13, height: isMobile ? 10 : 12, flexShrink: 0 } },
-e('path', { fill: '#1185FE', d: 'M135 25C209 80 290 191 300 256c10-65 91-176 165-231 53-39 139-69 139 27 0 19-11 162-17 185-22 80-103 100-175 88 126 21 158 91 89 161-132 134-189-34-204-77-3-8-4-12-5-9-1-3-2 1-5 9-15 43-72 211-204 77-69-70-37-140 89-161-72 12-153-8-175-88C13 199 2 56 2 37 2-59 88-14 135 25z' })
-);
+const butterfly = e('svg', { viewBox: '0 0 600 530', style: { width: isMobile ? 11 : 13, height: isMobile ? 10 : 12, flexShrink: 0 } }, e('path', { fill: '#1185FE', d: 'M135 25C209 80 290 191 300 256c10-65 91-176 165-231 53-39 139-69 139 27 0 19-11 162-17 185-22 80-103 100-175 88 126 21 158 91 89 161-132 134-189-34-204-77-3-8-4-12-5-9-1-3-2 1-5 9-15 43-72 211-204 77-69-70-37-140 89-161-72 12-153-8-175-88C13 199 2 56 2 37 2-59 88-14 135 25z' }));
 const renderPost = function (p, key) {
 const author = p.author || {};
-const text = (p.record && p.record.text) || '';
-const stripped = stripTrailingNoise(text);
+const stripped = stripTrailingNoise((p.record && p.record.text) || '');
 const clean = stripped.length > 220 ? stripped.slice(0, 220) + '\u2026' : stripped;
-return e('span', { key: key, style: { display: 'inline-flex', alignItems: 'center', gap: isMobile ? 5 : 7, padding: isMobile ? '0 12px' : '0 18px' } },
-butterfly,
-e('span', { style: { color: C.textFaint, fontWeight: 700, fontSize: isMobile ? 9.5 : 10.5, whiteSpace: 'nowrap' } }, author.displayName || author.handle),
-e('span', { style: { color: C.textFaint, fontSize: isMobile ? 9.5 : 11 } }, '\u2022'),
-e('span', { style: { color: C.textMute, fontFamily: "'Readex Pro', sans-serif", fontWeight: 400, fontSize: 11.5, whiteSpace: 'nowrap', WebkitTextSizeAdjust: '100%', textSizeAdjust: '100%' } }, clean)
-);
+return e('button', { key: key, onClick: function () { props.onExpand(p); }, style: { display: 'inline-flex', alignItems: 'center', gap: isMobile ? 5 : 7, padding: isMobile ? '0 12px' : '0 18px', background: 'transparent', border: 0, cursor: 'pointer', color: 'inherit', textAlign: 'left' }, title: 'Expand post' }, butterfly, e('span', { style: { color: C.textFaint, fontWeight: 700, fontSize: isMobile ? 9.5 : 10.5, whiteSpace: 'nowrap' } }, author.displayName || author.handle), e('span', { style: { color: C.textFaint, fontSize: isMobile ? 9.5 : 11 } }, '\u2022'), e('span', { style: { color: C.textMute, fontFamily: "'Readex Pro', sans-serif", fontWeight: 400, fontSize: 11.5, whiteSpace: 'nowrap' } }, clean));
 };
 const duration = Math.max(90, posts.length * 14) + 's';
-return e('div', { style: { overflow: 'hidden', borderBottom: '1px solid ' + C.border, background: '#0A0E0C', whiteSpace: 'nowrap' } },
-e('div', { style: { display: 'inline-flex', animation: 'ticker ' + duration + ' linear infinite', padding: isMobile ? '5px 0' : '6px 0' } },
-posts.map(function (p, i) { return renderPost(p, 'a' + i); }),
-posts.map(function (p, i) { return renderPost(p, 'b' + i); })
-)
+const content = reducedMotion ? posts : posts.concat(posts);
+return e('div', { onMouseEnter: function () { setPaused(true); }, onMouseLeave: function () { setPaused(false); }, style: { overflowX: reducedMotion ? 'auto' : 'hidden', overflowY: 'hidden', borderBottom: '1px solid ' + C.border, background: '#0A0E0C', whiteSpace: 'nowrap' } },
+e('div', { className: 'boffo-motion', style: { display: 'inline-flex', minWidth: reducedMotion ? 'max-content' : undefined, animation: reducedMotion ? 'none' : 'ticker ' + duration + ' linear infinite', animationPlayState: paused ? 'paused' : 'running', padding: isMobile ? '5px 0' : '6px 0' } }, content.map(function (p, i) { return renderPost(p, (reducedMotion ? 'r' : 'm') + i); }))
 );
 }
+
 function WeekendFlag(props) {
 const w = props.weekend;
 const active = props.active;
@@ -571,7 +725,7 @@ e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems
 e('div', { style: { fontSize: 11, color: C.textMute, letterSpacing: 0.3, textTransform: 'uppercase' } }, 'Year-over-year pace'),
 e('div', { style: { display: 'flex', gap: 4 } },
 e('button', { onClick: function () { setYoyMode('lastYear'); }, style: { background: yoyMode === 'lastYear' ? C.emeraldDim : 'transparent', border: '1px solid ' + (yoyMode === 'lastYear' ? C.emerald : C.border), color: yoyMode === 'lastYear' ? C.emeraldBright : C.textMute, fontSize: 10.5, fontWeight: 700, padding: '5px 10px', borderRadius: 4, cursor: 'pointer', letterSpacing: 0.3 } }, 'VS LAST YEAR'),
-e('button', { onClick: function () { setYoyMode('tenYearAvg'); }, style: { background: yoyMode === 'tenYearAvg' ? C.emeraldDim : 'transparent', border: '1px solid ' + (yoyMode === 'tenYearAvg' ? C.emerald : C.border), color: yoyMode === 'tenYearAvg' ? C.emeraldBright : C.textMute, fontSize: 10.5, fontWeight: 700, padding: '5px 10px', borderRadius: 4, cursor: 'pointer', letterSpacing: 0.3 } }, '10-YR AVG')
+e('button', { onClick: function () { setYoyMode('tenYearAvg'); }, style: { background: yoyMode === 'tenYearAvg' ? C.emeraldDim : 'transparent', border: '1px solid ' + (yoyMode === 'tenYearAvg' ? C.emerald : C.border), color: yoyMode === 'tenYearAvg' ? C.emeraldBright : C.textMute, fontSize: 10.5, fontWeight: 700, padding: '5px 10px', borderRadius: 4, cursor: 'pointer', letterSpacing: 0.3 } }, 'VS 10-YR AVG')
 )
 ),
 e('div', { style: { display: 'flex', justifyContent: 'space-between', fontSize: 11.5, marginBottom: 5 } },
@@ -590,16 +744,44 @@ e('div', { style: { height: '100%', width: (compareVal / maxScale * 100) + '%', 
 e('div', { style: { marginTop: 14, fontSize: 11.5, color: C.textMute, lineHeight: 1.6 } }, 'The Odyssey confirmed $87.5M in week two (-30%) \u2014 better than Oppenheimer\'s own -44% second-weekend drop, now $286.9M domestic after 10 days. Toy Story 5 crossed $1B globally and $448M domestic. Spider-Man: Brand New Day opens Thursday July 30 previews, with Box Office Theory now projecting $212-249M \u2014 potentially 2026\'s biggest single-weekend domestic gross, achieved without any IMAX access.')
 );
 }
+function MarketComparisonBlock() {
+const rows = [
+{ label: 'Current weekend', sub: 'Jul 24-26, 2026', value: MARKET_COMPARISON.current, color: C.emeraldBright },
+{ label: 'Previous weekend', sub: 'Jul 17-19, 2026', value: MARKET_COMPARISON.previous, color: C.textMute },
+{ label: 'Same weekend last year', sub: 'Weekend 30, 2025', value: MARKET_COMPARISON.lastYear, color: C.magenta },
+{ label: '10-year average', sub: 'Weekend 30, 2016-2025', value: MARKET_COMPARISON.tenYearAvg, color: C.amber }
+];
+const max = Math.max.apply(null, rows.map(function (r) { return r.value; })) * 1.05;
+return e('div', { style: { marginTop: 26, paddingTop: 20, borderTop: '1px solid ' + C.border } },
+e('div', { style: { display: 'flex', justifyContent: 'space-between', gap: 10, alignItems: 'baseline', marginBottom: 14, flexWrap: 'wrap' } },
+e('div', null, e('div', { style: { fontSize: 11, color: C.textMute, letterSpacing: 0.3, textTransform: 'uppercase' } }, 'Weekend market pulse'), e('div', { style: { fontSize: 9.5, color: C.textFaint, marginTop: 3 } }, 'Overall domestic gross')),
+e('div', { style: { fontSize: 9, color: C.textFaint } }, MARKET_COMPARISON.source + ' \u00B7 as of ' + MARKET_COMPARISON.asOf)
+),
+rows.map(function (r) { const delta = Math.round((MARKET_COMPARISON.current - r.value) / r.value * 100); return e('div', { key: r.label, style: { marginBottom: 11 } },
+e('div', { style: { display: 'flex', justifyContent: 'space-between', gap: 10, alignItems: 'baseline', marginBottom: 4 } },
+e('div', null, e('span', { style: { color: r.label === 'Current weekend' ? C.text : C.textMute, fontSize: 11.5, fontWeight: r.label === 'Current weekend' ? 700 : 500 } }, r.label), e('span', { style: { color: C.textFaint, fontSize: 9.5, marginLeft: 7 } }, r.sub)),
+e('div', { style: { display: 'flex', gap: 7, alignItems: 'center' } }, e('span', { style: { color: r.color, fontWeight: 700, fontVariantNumeric: 'tabular-nums', fontSize: 11.5 } }, fmtMoney(r.value)), r.label !== 'Current weekend' ? e(ChangeBadge, { change: delta }) : null)
+),
+e('div', { style: { height: 10, borderRadius: 4, background: 'rgba(255,255,255,0.05)', overflow: 'hidden' } }, e('div', { style: { height: '100%', width: (r.value / max * 100) + '%', background: r.color, borderRadius: 4 } }))
+); })
+);
+}
+
 function Dashboard() {
 const [tab, setTab] = useState('top10');
 const [sortKey, setSortKey] = useState('gross');
 const [sortDir, setSortDir] = useState('desc');
 const [yoyMode, setYoyMode] = useState('lastYear');
 const [releaseFilter, setReleaseFilter] = useState('All');
+const [releaseSearch, setReleaseSearch] = useState('');
+const [releaseDistributor, setReleaseDistributor] = useState('All');
+const [releaseAssetFilter, setReleaseAssetFilter] = useState('All');
+const [playingRelease, setPlayingRelease] = useState(null);
+const [expandedPost, setExpandedPost] = useState(null);
 const [top10, setTop10] = useState(TOP10_INIT);
 const [tracking] = useState(TRACKING_INIT);
 const [viewport, setViewport] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
-const [drawerOpen, setDrawerOpen] = useState(false);
+const [collapsedDates, setCollapsedDates] = useState({});
 const [chatterPosts, setChatterPosts] = useState([]);
 const [chatterLoading, setChatterLoading] = useState(false);
 const [chatterError, setChatterError] = useState(false);
@@ -608,6 +790,11 @@ useEffect(function () {
 function handleResize() { setViewport(window.innerWidth); }
 window.addEventListener('resize', handleResize);
 return function () { window.removeEventListener('resize', handleResize); };
+}, []);
+useEffect(function () {
+function onKey(ev) { if (ev.key === 'Escape') { setPlayingRelease(null); setExpandedPost(null); } }
+window.addEventListener('keydown', onKey);
+return function () { window.removeEventListener('keydown', onKey); };
 }, []);
 useEffect(function () {
 if (chatterLoaded) return;
@@ -672,11 +859,6 @@ return arr;
 }, [sortKey, sortDir, top10]);
 const sumGross = useMemo(function () { return top10.reduce(function (a, m) { return a + m.gross; }, 0); }, [top10]);
 
-const filteredReleases = useMemo(function () {
-if (releaseFilter === 'All') return RELEASES;
-return RELEASES.filter(function (r) { return r.type === releaseFilter; });
-}, [releaseFilter]);
-
 const leadingProjection = useMemo(function () {
 if (!tracking || tracking.length === 0) return null;
 let best = null;
@@ -691,9 +873,9 @@ return { item: best, value: bestVal };
 const wrap = { background: C.bg, color: C.text, fontFamily: "'JetBrains Mono', monospace", width: '100%', boxSizing: 'border-box' };
 const sectionPad = { padding: isMobile ? '18px 14px' : '26px 30px' };
 const tabs = [
-{ id: 'top10', label: 'Weekend' },
-{ id: 'tracking', label: 'Projections' },
-{ id: 'calendar', label: 'Release Calendar' }
+{ id: 'top10', label: 'Weekend', icon: 'movie' },
+{ id: 'tracking', label: 'Projections', icon: 'radar' },
+{ id: 'calendar', label: 'Release Calendar', icon: 'calendar_today' }
 ];
 const liveData = leadingProjection ? {
 title: leadingProjection.item.title,
@@ -721,44 +903,10 @@ amountLabel: fmtMoney(PREVIOUS_WEEKEND_CHAMP.gross),
 subLabel: 'FINAL 3-DAY \u00B7 ' + PREVIOUS_WEEKEND_CHAMP.range
 };
 const header = e('div', { style: { borderBottom: '1px solid ' + C.border, padding: isMobile ? '16px 14px 0' : '22px 30px 0' } },
-e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' } },
 e('div', { style: { marginBottom: isMobile ? 12 : 16 } },
 e('div', { style: { fontSize: isMobile ? 32 : 42, fontWeight: 900, letterSpacing: 0.5, color: C.text, fontFamily: "'Poppins', sans-serif", lineHeight: 1 } }, 'BOFFO'),
 e('div', { style: { fontSize: isMobile ? 10 : 11.5, color: C.textFaint, letterSpacing: 1.2, textTransform: 'uppercase', marginTop: 2 } }, 'Box Office Brief'),
 e('div', { style: { fontSize: isMobile ? 9 : 10, color: C.textFaint, letterSpacing: 0.4, marginTop: 3, fontVariantNumeric: 'tabular-nums' } }, 'Updated ' + LAST_UPDATED)
-),
-e('button', {
-onClick: function () { setDrawerOpen(!drawerOpen); },
-style: {
-background: 'none', border: 'none', cursor: 'pointer',
-padding: '6px', marginTop: 2, display: 'flex', flexDirection: 'column', gap: 5, alignItems: 'center', justifyContent: 'center'
-}
-},
-[0, 1, 2].map(function (k) { return e('span', { key: k, style: { width: 26, height: 3, background: drawerOpen ? C.emerald : C.text } }); })
-)
-),
-drawerOpen ? e('div', {
-onClick: function () { setDrawerOpen(false); },
-style: { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.75)', zIndex: 200 }
-}) : null,
-e('div', {
-style: {
-position: 'fixed', top: 70, right: isMobile ? 14 : 30, zIndex: 201,
-display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-end',
-transform: drawerOpen ? 'translateX(0)' : 'translateX(120%)',
-opacity: drawerOpen ? 1 : 0,
-transition: 'transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease'
-}
-},
-WEEKENDS.map(function (w) {
-return e(WeekendFlag, {
-key: w.id, weekend: w, active: w.tab ? tab === w.tab : false,
-onClick: function () {
-if (w.tab) { setTab(w.tab); setDrawerOpen(false); }
-else if (w.externalUrl) { window.open(w.externalUrl, '_blank'); setDrawerOpen(false); }
-}
-});
-})
 ),
 e('div', { style: { marginTop: 12, border: '1px solid ' + C.borderStrong, borderRadius: 10, padding: isMobile ? '4px 10px' : '4px 16px' } },
 liveData ? e(HeroRow, { kind: 'live', live: liveData, isMobile: isMobile }) : null,
@@ -775,9 +923,10 @@ background: 'none', border: 'none', flexShrink: 0,
 borderBottom: tab === t.id ? '2px solid ' + tabColor : '2px solid transparent',
 color: tab === t.id ? C.text : C.textMute,
 fontSize: isMobile ? 11.5 : 12.5, fontWeight: tab === t.id ? 700 : 500,
-padding: isMobile ? '10px 10px 10px' : '10px 13px 11px', cursor: 'pointer', letterSpacing: 0.2, whiteSpace: 'nowrap'
+padding: isMobile ? '10px 10px 10px' : '10px 13px 11px', cursor: 'pointer', letterSpacing: 0.2, whiteSpace: 'nowrap',
+display: 'inline-flex', alignItems: 'center', gap: 6
 }
-}, t.label);
+}, e(MaterialIcon, { name: t.icon, size: isMobile ? 16 : 17, style: { color: tab === t.id ? tabColor : C.textFaint } }), t.label);
 })
 )
 );
@@ -845,7 +994,8 @@ e('span', { style: { fontSize: 9, color: C.textFaint, fontVariantNumeric: 'tabul
 )
 );
 }),
-e(YoyBlock, { yoyMode: yoyMode, setYoyMode: setYoyMode })
+e(YoyBlock, { yoyMode: yoyMode, setYoyMode: setYoyMode }),
+e(MarketComparisonBlock)
 );
 } else {
 const cols = isTablet
@@ -890,7 +1040,8 @@ showTotal ? e('div', { style: { textAlign: 'right', color: C.textFaint, fontVari
 e('div', { style: { textAlign: 'right', color: m.global ? C.emerald : C.textFaint, fontVariantNumeric: 'tabular-nums', fontWeight: m.global ? 600 : 400 } }, fmtMoney(m.global))
 );
 }),
-e(YoyBlock, { yoyMode: yoyMode, setYoyMode: setYoyMode })
+e(YoyBlock, { yoyMode: yoyMode, setYoyMode: setYoyMode }),
+e(MarketComparisonBlock)
 );
 }
 }
@@ -899,16 +1050,19 @@ body = e('div', { style: sectionPad },
 e('div', { style: { fontSize: 11, color: C.textFaint, marginBottom: 18 } }, 'Tracking for the upcoming weekend, ' + TRACKING_WEEKEND),
 tracking.map(function (t, i) {
 const lo = t.range[0], hi = t.range[1];
-const rangeSpan = hi - lo;
-const pad = Math.max(rangeSpan * 0.35, rangeSpan * 0.15 + 1);
-const windowLo = Math.max(0, lo - pad);
-const windowHi = hi + pad;
-const windowSpan = windowHi - windowLo;
-const loPct = pct(lo - windowLo, windowSpan);
-const hiPct = pct(hi - windowLo, windowSpan);
-const actualPct = t.actual !== null ? pct(t.actual - windowLo, windowSpan) : null;
-const actualAboveRange = t.actual !== null && (t.actual < lo || t.actual > hi);
-const actualScaleColor = t.actual === null ? C.amber : (t.actual < lo ? C.red : (t.actual > hi ? C.green : (t.actual < lo + rangeSpan * 0.4 ? C.red : (t.actual < lo + rangeSpan * 0.7 ? C.amber : C.green))));
+const rangeSpan = Math.max(1, hi - lo);
+const fallbackPad = Math.max(rangeSpan * 0.35, rangeSpan * 0.15 + 1);
+const suppliedScale = Array.isArray(t.scale) && t.scale.length === 2 ? t.scale : null;
+const rulerLo = suppliedScale ? suppliedScale[0] : Math.max(0, lo - fallbackPad);
+const rulerHi = suppliedScale ? suppliedScale[1] : hi + fallbackPad;
+const rulerSpan = Math.max(1, rulerHi - rulerLo);
+const scalePct = function (value) { return Math.max(0, Math.min(100, ((value - rulerLo) / rulerSpan) * 100)); };
+const loPct = scalePct(lo);
+const hiPct = scalePct(hi);
+const currentEstimate = t.currentEstimate !== undefined && t.currentEstimate !== null ? t.currentEstimate : t.actual;
+const estimatePct = currentEstimate !== null && currentEstimate !== undefined ? scalePct(currentEstimate) : null;
+const estimateOutsideRange = currentEstimate !== null && currentEstimate !== undefined && (currentEstimate < lo || currentEstimate > hi);
+const estimateScaleColor = currentEstimate === null || currentEstimate === undefined ? C.amber : (currentEstimate < lo ? C.red : (currentEstimate > hi ? C.green : (currentEstimate < lo + rangeSpan * 0.4 ? C.red : (currentEstimate < lo + rangeSpan * 0.7 ? C.amber : C.green))));
 return e('div', { key: i, style: { marginBottom: 22, paddingBottom: 18, borderBottom: i < tracking.length - 1 ? '1px solid ' + C.border : 'none' } },
 e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8, flexWrap: 'wrap', gap: 8 } },
 e('div', { style: { display: 'flex', alignItems: 'center', gap: 8 } },
@@ -924,18 +1078,20 @@ e(MomentumBadge, { level: t.momentum })
 e(QuorumStat, { data: t.quorum }),
 e(CriticAudienceStat, { data: t.criticAudience }),
 e(TrendsStat, { data: t.trends }),
-actualPct !== null ? e('div', { style: { display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, marginBottom: 2 } },
-e('span', { style: { fontSize: 9.5, fontWeight: 800, letterSpacing: 0.4, color: actualScaleColor, textTransform: 'uppercase' } }, 'Tracking now'),
-e('span', { style: { fontSize: 15, fontWeight: 700, color: actualScaleColor, fontVariantNumeric: 'tabular-nums' } }, (actualAboveRange ? '~' : '') + fmtMoney(t.actual))
+estimatePct !== null ? e('div', { style: { display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, marginBottom: 2 } },
+e('span', { style: { fontSize: 9.5, fontWeight: 800, letterSpacing: 0.4, color: estimateScaleColor, textTransform: 'uppercase' } }, 'Current estimate'),
+e('span', { style: { fontSize: 15, fontWeight: 700, color: estimateScaleColor, fontVariantNumeric: 'tabular-nums' } }, (estimateOutsideRange ? '~' : '') + fmtMoney(currentEstimate))
 ) : null,
-e('div', { style: { position: 'relative', height: 30, margin: '14px 0 16px' } },
-e('div', { style: { position: 'absolute', left: 0, right: 0, top: 13, height: 4, background: 'rgba(255,255,255,0.05)', borderRadius: 2 } }),
-e('div', { style: { position: 'absolute', left: loPct + '%', width: Math.max(hiPct - loPct, 1) + '%', top: 13, height: 4, background: 'linear-gradient(90deg, ' + C.red + ', ' + C.amber + ', ' + C.green + ')', borderRadius: 2 } }),
-e('div', { style: { position: 'absolute', left: loPct + '%', top: 6, width: 1, height: 18, background: C.textFaint } }),
-e('div', { style: { position: 'absolute', left: hiPct + '%', top: 6, width: 1, height: 18, background: C.textFaint } }),
-actualPct !== null ? e('div', { style: { position: 'absolute', left: Math.max(0, Math.min(100, actualPct)) + '%', top: 0, width: 2, height: 30, background: actualScaleColor } }) : null,
-e('div', { style: { position: 'absolute', left: loPct + '%', top: 24, fontSize: 10, color: C.textFaint, fontVariantNumeric: 'tabular-nums', transform: 'translateX(0%)' } }, fmtMoney(lo)),
-e('div', { style: { position: 'absolute', left: hiPct + '%', top: 24, fontSize: 10, color: C.textFaint, fontVariantNumeric: 'tabular-nums', transform: 'translateX(-100%)' } }, fmtMoney(hi))
+e('div', { style: { position: 'relative', height: 48, margin: '14px 0 16px' } },
+e('div', { style: { position: 'absolute', left: 0, right: 0, top: 18, height: 4, background: 'rgba(255,255,255,0.05)', borderRadius: 2 } }),
+e('div', { style: { position: 'absolute', left: loPct + '%', width: Math.max(hiPct - loPct, 1) + '%', top: 18, height: 4, background: 'linear-gradient(90deg, ' + C.red + ', ' + C.amber + ', ' + C.green + ')', borderRadius: 2 } }),
+e('div', { style: { position: 'absolute', left: loPct + '%', top: 11, width: 1, height: 18, background: C.textFaint } }),
+e('div', { style: { position: 'absolute', left: hiPct + '%', top: 11, width: 1, height: 18, background: C.textFaint } }),
+estimatePct !== null ? e('div', { style: { position: 'absolute', left: estimatePct + '%', top: 5, width: 2, height: 28, background: estimateScaleColor, boxShadow: '0 0 0 1px rgba(10,14,12,0.55)' } }) : null,
+e('div', { style: { position: 'absolute', left: loPct + '%', top: 0, fontSize: 9.5, color: C.textMute, fontVariantNumeric: 'tabular-nums', transform: 'translateX(0%)' } }, fmtMoney(lo)),
+e('div', { style: { position: 'absolute', left: hiPct + '%', top: 0, fontSize: 9.5, color: C.textMute, fontVariantNumeric: 'tabular-nums', transform: 'translateX(-100%)' } }, fmtMoney(hi)),
+e('div', { style: { position: 'absolute', left: 0, top: 34, fontSize: 9, color: C.textFaint, fontVariantNumeric: 'tabular-nums' } }, fmtMoney(rulerLo) + ' comp low'),
+e('div', { style: { position: 'absolute', right: 0, top: 34, fontSize: 9, color: C.textFaint, fontVariantNumeric: 'tabular-nums', textAlign: 'right' } }, fmtMoney(rulerHi) + ' comp high')
 ),
 e('div', { style: { fontSize: 12, color: C.textMute, lineHeight: 1.6, marginTop: 14 } }, t.note)
 );
@@ -943,75 +1099,79 @@ e('div', { style: { fontSize: 12, color: C.textMute, lineHeight: 1.6, marginTop:
 );
 }
 else if (tab === 'calendar') {
-const filterOptions = [
-{ id: 'All', label: 'All Releases' },
-{ id: 'Limited', label: 'Limited' },
-{ id: 'Wide', label: 'Wide' }
-];
-body = e('div', { style: sectionPad },
-e('div', { style: { display: 'flex', gap: 5, marginBottom: 16, overflowX: 'auto', paddingBottom: 2 } },
-filterOptions.map(function (option) {
-const active = releaseFilter === option.id;
-return e('button', {
-key: option.id,
-onClick: function () { setReleaseFilter(option.id); },
-style: {
-background: active ? C.magentaDim : 'transparent',
-border: '1px solid ' + (active ? C.magenta : C.border),
-color: active ? C.magenta : C.textMute,
-fontSize: isMobile ? 10 : 10.5, fontWeight: 800, letterSpacing: 0.35,
-padding: isMobile ? '6px 9px' : '6px 11px', borderRadius: 4,
-cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0
-}
-}, option.label);
-})
-),
-filteredReleases.map(function (r, i) {
-const indent = isMobile ? 0 : 70;
-return e('div', { key: r.date + '-' + r.title + '-' + r.type, style: { padding: '10px 0', borderBottom: '1px solid ' + C.border } },
+const distributorChoices = ['All'].concat(Array.from(new Set(RELEASES.map(function (r) { return r.distributor; }))).sort());
+const normalizedSearch = releaseSearch.trim().toLowerCase();
+const filteredReleases = RELEASES.filter(function (r) {
+const typeMatch = releaseFilter === 'All' || r.type === releaseFilter;
+const distMatch = releaseDistributor === 'All' || r.distributor === releaseDistributor;
+const assetType = r.assetType || (r.trailerUrl ? 'Trailer' : 'TBD');
+const assetMatch = releaseAssetFilter === 'All' || assetType === releaseAssetFilter;
+const searchMatch = !normalizedSearch || r.title.toLowerCase().indexOf(normalizedSearch) > -1 || r.distributor.toLowerCase().indexOf(normalizedSearch) > -1;
+return typeMatch && distMatch && assetMatch && searchMatch;
+});
+const grouped = [];
+filteredReleases.forEach(function (r) { let g = grouped[grouped.length - 1]; if (!g || g.date !== r.date) { g = { date: r.date, items: [] }; grouped.push(g); } g.items.push(r); });
+const filterButton = function (label, active, onClick) { return e('button', { key: label, onClick: onClick, style: { background: active ? C.magentaDim : 'transparent', border: '1px solid ' + (active ? C.magenta : C.border), color: active ? C.magenta : C.textMute, fontSize: 9.5, fontWeight: 800, padding: '6px 9px', borderRadius: 4, cursor: 'pointer', textTransform: 'uppercase', letterSpacing: 0.35 } }, label); };
+const typeBadge = function (r) { return e('span', { style: { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minWidth: 76, height: 24, fontSize: isMobile ? 9 : 9.5, fontWeight: 800, letterSpacing: 0.4, textTransform: 'uppercase', padding: '0 8px', borderRadius: 3, background: r.type === 'Wide' ? C.emeraldDim : 'rgba(31,184,184,0.16)', color: r.type === 'Wide' ? C.emeraldBright : C.teal, justifySelf: 'start' } }, r.type); };
+const renderRelease = function (r) {
+const assetType = r.assetType || (r.trailerUrl ? 'Trailer' : 'TBD');
+const titleBlock = e('div', { style: { minWidth: 0 } },
+e('div', { style: { fontWeight: 400, fontFamily: "'Readex Pro', sans-serif", overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: isMobile ? 'normal' : 'nowrap', fontSize: isMobile ? 13 : 12.5 } }, r.title)
+);
+return e('div', { key: r.date + r.title + r.type, style: { padding: isMobile ? '10px 0' : '9px 0', borderBottom: '1px solid ' + C.border } },
 isMobile ? e('div', null,
-e('div', { style: { display: 'flex', alignItems: 'baseline', gap: 8 } },
-e('span', { style: { color: C.magenta, fontWeight: 700, fontVariantNumeric: 'tabular-nums', fontSize: 11 } }, r.date),
-e('span', { style: { fontWeight: 400, fontFamily: "'Readex Pro', sans-serif", fontSize: 13, flex: 1, minWidth: 0 } }, r.title),
-r.momentum ? e(MomentumBadge, { level: r.momentum }) : null
-),
-e('div', { style: { display: 'flex', alignItems: 'center', gap: 8, marginTop: 5, flexWrap: 'wrap' } },
-e(TrailerButton, { url: r.trailerUrl, isMobile: true }),
-e(DistBadge, { name: r.distributor, onChange: function () {} }),
-e('span', { style: { fontSize: 9, fontWeight: 800, letterSpacing: 0.3, textTransform: 'uppercase', padding: '2px 6px', borderRadius: 3, background: r.type === 'Wide' ? C.emeraldDim : 'rgba(62,156,156,0.18)', color: r.type === 'Wide' ? C.emeraldBright : C.teal } }, r.type)
+titleBlock,
+e('div', { style: { display: 'flex', alignItems: 'center', gap: 7, marginTop: 7, flexWrap: 'wrap' } },
+e(AssetButton, { item: r, isMobile: true, onPlay: setPlayingRelease }),
+e(DistBadge, { name: r.distributor, uniform: true }),
+typeBadge(r)
 )
-) : e('div', { style: { display: 'grid', gridTemplateColumns: '62px minmax(0, 1fr) 78px 80px 64px', columnGap: 10, alignItems: 'center', fontSize: 12.5 } },
-e('div', { style: { color: C.magenta, fontWeight: 700, fontVariantNumeric: 'tabular-nums', fontSize: 11.5 } }, r.date),
-e('div', { style: { display: 'flex', alignItems: 'center', gap: 8 } },
-e('span', { style: { fontWeight: 400, fontFamily: "'Readex Pro', sans-serif" } }, r.title),
-r.momentum ? e(MomentumBadge, { level: r.momentum }) : null
+) : e('div', { style: { display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 92px 84px 68px', columnGap: 10, alignItems: 'center', fontSize: 12.5 } },
+titleBlock,
+e(AssetButton, { item: r, isMobile: false, onPlay: setPlayingRelease }),
+e(DistBadge, { name: r.distributor, uniform: true }),
+typeBadge(r)
+)
+);
+};
+body = e('div', { style: sectionPad },
+e('div', { style: { border: '1px solid ' + C.border, borderRadius: 8, padding: isMobile ? 10 : 12, marginBottom: 20, background: 'rgba(255,255,255,0.015)' } },
+e('div', { style: { display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(180px,1fr) 190px', gap: 8, marginBottom: 9 } },
+e('input', { value: releaseSearch, onChange: function (ev) { setReleaseSearch(ev.target.value); }, placeholder: 'Search title or distributor\u2026', 'aria-label': 'Search releases', style: { width: '100%', background: '#0D120F', border: '1px solid ' + C.borderStrong, color: C.text, borderRadius: 5, padding: '8px 10px', fontSize: 11 } }),
+e('select', { value: releaseDistributor, onChange: function (ev) { setReleaseDistributor(ev.target.value); }, 'aria-label': 'Filter by distributor', style: { width: '100%', background: '#0D120F', border: '1px solid ' + C.borderStrong, color: C.text, borderRadius: 5, padding: '8px 10px', fontSize: 10.5 } }, distributorChoices.map(function (d) { return e('option', { key: d, value: d }, d === 'All' ? 'All Distributors' : d); }))
 ),
-e(TrailerButton, { url: r.trailerUrl, isMobile: false }),
-e(DistBadge, { name: r.distributor, onChange: function () {} }),
-e('div', null,
-e('span', { style: { fontSize: 9.5, fontWeight: 800, letterSpacing: 0.4, textTransform: 'uppercase', padding: '2px 7px', borderRadius: 3, background: r.type === 'Wide' ? C.emeraldDim : 'rgba(62,156,156,0.18)', color: r.type === 'Wide' ? C.emeraldBright : C.teal } }, r.type)
+e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 9, flexWrap: 'wrap' } },
+e('div', { style: { display: 'flex', gap: 5, flexWrap: 'wrap' } }, ['All','Limited','Wide'].map(function (f) { return filterButton(f === 'All' ? 'All Releases' : f, releaseFilter === f, function () { setReleaseFilter(f); }); })),
+e('div', { style: { display: 'flex', gap: 5, flexWrap: 'wrap' } }, ['All','TBD','Teaser','Trailer'].map(function (f) { return filterButton(f === 'All' ? 'All Assets' : f, releaseAssetFilter === f, function () { setReleaseAssetFilter(f); }); })),
+e('div', { style: { fontSize: 9.5, color: C.textFaint, marginLeft: 'auto' } }, filteredReleases.length + ' of ' + RELEASES.length)
 )
 ),
-r.tracking ? e('div', { style: { display: 'flex', alignItems: 'center', gap: 6, marginTop: 6, marginLeft: indent, flexWrap: 'wrap' } },
-e('span', { style: { fontSize: 9.5, fontWeight: 800, letterSpacing: 0.4, color: C.textFaint, textTransform: 'uppercase' } }, 'Tracking'),
-e('span', { style: { fontSize: 11.5, fontWeight: 700, color: C.magenta, fontVariantNumeric: 'tabular-nums' } }, fmtMoney(r.tracking[0]) + '\u2013' + fmtMoney(r.tracking[1])),
-e('span', { style: { fontSize: 10.5, color: C.textFaint } }, 'opening weekend')
-) : null,
-r.quorum ? e('div', { style: { marginLeft: indent } }, e(QuorumStat, { data: r.quorum })) : null,
-r.criticAudience ? e('div', { style: { marginLeft: indent } }, e(CriticAudienceStat, { data: r.criticAudience })) : null
+grouped.length === 0 ? e('div', { style: { color: C.textMute, textAlign: 'center', padding: '40px 10px' } }, 'No releases match these filters.') : grouped.map(function (group) {
+const isCollapsed = !!collapsedDates[group.date];
+return e('section', { key: group.date, style: { marginBottom: 22 } },
+e('button', { onClick: function () { setCollapsedDates(function (current) { return Object.assign({}, current, { [group.date]: !current[group.date] }); }); }, 'aria-expanded': !isCollapsed, style: { width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10, padding: '8px 0 7px', border: 0, borderBottom: '1px solid ' + C.magenta + '66', marginBottom: 1, position: 'sticky', top: 52, zIndex: 5, background: C.bg, cursor: 'pointer', textAlign: 'left', color: 'inherit' } },
+e('div', { style: { display: 'flex', alignItems: 'center', gap: 7 } },
+e('span', { className: 'boffo-motion', style: { color: C.magenta, fontSize: 9, transform: isCollapsed ? 'rotate(0deg)' : 'rotate(90deg)', transition: 'transform 0.16s ease', display: 'inline-block' } }, '▶'),
+e('span', { style: { color: C.magenta, fontSize: isMobile ? 13 : 14, fontWeight: 900, letterSpacing: 0.5, textTransform: 'uppercase' } }, group.date)
+),
+e('span', { style: { color: C.textFaint, fontSize: 9.5, textTransform: 'uppercase', fontWeight: 800 } }, group.items.length + (group.items.length === 1 ? ' release' : ' releases'))
+),
+isCollapsed ? null : group.items.map(renderRelease)
 );
 })
 );
 }
 const footer = e('div', { style: { padding: isMobile ? '12px 14px 18px' : '14px 30px 22px', fontSize: 10.5, color: C.textFaint, borderTop: '1px solid ' + C.border, lineHeight: 1.6 } },
-'Sources: The Numbers, Box Office Mojo, Box Office Pro, Deadline, Variety, Screen International, FanBolt'
+'Sources: The Numbers, Box Office Mojo, Box Office Pro, Deadline, Variety, Screen International, FanBolt · Boffo v0.3.1 prototype'
 );
 return e('div', { style: wrap },
 e('div', { style: { position: 'sticky', top: 0, zIndex: 100, boxShadow: '0 6px 16px rgba(0,0,0,0.45)' } },
 e(Ticker, { items: top10 }),
-e(ChatterTicker, { posts: chatterPosts, isMobile: isMobile })
+e(ChatterTicker, { posts: chatterPosts, isMobile: isMobile, onExpand: setExpandedPost })
 ),
-e('div', { style: { maxWidth: 900, margin: '0 auto' } }, header, body, footer)
+e('div', { style: { maxWidth: 900, margin: '0 auto' } }, header, body, footer),
+e(TrailerModal, { item: playingRelease, onClose: function () { setPlayingRelease(null); }, isMobile: isMobile }),
+e(ChatterModal, { post: expandedPost, onClose: function () { setExpandedPost(null); }, isMobile: isMobile })
 );
 }
 const root = ReactDOM.createRoot(document.getElementById('boffo-root'));
