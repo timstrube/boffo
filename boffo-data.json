@@ -1,8 +1,8 @@
 {
   "version": "5.0",
-  "updatedAt": "2026-07-30T17:40:59.606Z",
+  "updatedAt": "2026-07-30T18:08:53.425Z",
   "settings": {
-    "lastUpdatedLabel": "Jul 30, 2026 · 10:40 AM PT / 1:40 PM ET",
+    "lastUpdatedLabel": "Jul 30, 2026 · 11:08 AM PT / 2:08 PM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
     "trackingWeekend": "Jul 31-Aug 2",
@@ -38,42 +38,42 @@
     "title": "Year-over-year pace",
     "thisYearLabel": "2026",
     "lastYearLabel": "2025",
-    "tenYearLabel": "10-yr avg",
+    "tenYearLabel": "10-yr Avg",
     "thisYear": 145957596,
     "lastYear": 122000000,
     "tenYearAvg": 105000000,
-    "note": "The Odyssey confirmed $87.5M in week two (-30%) — better than Oppenheimer's own -44% second-weekend drop, now $286.9M domestic after 10 days. Toy Story 5 crossed $1B globally and $448M domestic. Spider-Man: Brand New Day opens Thursday July 30 previews, with Box Office Theory now projecting $212-249M — potentially 2026's biggest single-weekend domestic gross, achieved without any IMAX access."
+    "note": "The Odyssey confirmed $90M in week two (-27%) — better than Oppenheimer's own -44% second-weekend drop, now $304.1M domestic after 10 days and $666.7M globally, tracking toward $1B by frame 5 or 6. Toy Story 5 crossed $1.025B globally. Spider-Man: Brand New Day opens this weekend with Thursday noon previews underway, tracking for $195-250M domestic — potentially 2026's biggest single-weekend gross."
   },
   "marketPulse": {
-    "title": "Weekend market pulse",
-    "subtitle": "Overall domestic gross",
+    "title": "Weekend Market Pulse",
+    "subtitle": "Overall Domestic Gross",
     "source": "Box Office Mojo",
     "asOf": "Jul 29, 2026",
     "rows": [
       {
         "key": "current",
-        "label": "Current weekend",
+        "label": "Latest Weekend",
         "sub": "Jul 24-26, 2026",
         "value": 146570303,
         "color": "#3FE08A"
       },
       {
         "key": "previous",
-        "label": "Previous weekend",
+        "label": "Previous Weekend",
         "sub": "Jul 17-19, 2026",
         "value": 188271704,
         "color": "#8A968F"
       },
       {
         "key": "lastYear",
-        "label": "Same weekend last year",
+        "label": "Same Weekend Last Year",
         "sub": "Weekend 30, 2025",
         "value": 185393168,
         "color": "#E0479E"
       },
       {
         "key": "tenYearAvg",
-        "label": "10-year average",
+        "label": "10-year Average",
         "sub": "Weekend 30, 2016-2025",
         "value": 151296400,
         "color": "#F0A833"
@@ -120,8 +120,8 @@
       "change": -27,
       "theaters": 3942,
       "avg": 22837,
-      "total": 289394310,
-      "global": 490000000,
+      "total": 304100000,
+      "global": 666700000,
       "distributor": "Universal"
     },
     {
@@ -133,8 +133,8 @@
       "change": -41,
       "theaters": 4015,
       "avg": 2650,
-      "total": 102609900,
-      "global": 190000000,
+      "total": 104000000,
+      "global": 230970000,
       "distributor": "Walt Disney"
     },
     {
@@ -160,7 +160,7 @@
       "theaters": 3375,
       "avg": 3011,
       "total": 448716909,
-      "global": 1000000000,
+      "global": 1025000000,
       "distributor": "Walt Disney"
     },
     {
@@ -252,8 +252,8 @@
       "rtCritic": 92,
       "metacritic": 70,
       "rangeLow": 195000000,
-      "rangeHigh": 249000000,
-      "analysis": "Opens Thursday previews tonight (7/30) with Wednesday Prime member preview already underway. Reviews dropped July 28: 92% RT / 70 Metacritic — Marvel’s best RT score in five years. The Wrap called it a franchise highlight, while Variety dissented on the length and episodic structure. Tracking currently spans $195M to $249M from approximately 4,300 theaters. North American presales are pacing near No Way Home. Spider-Man also receives IMAX access in China, Japan, and Korea, supporting a major global launch.",
+      "rangeHigh": 250000000,
+      "analysis": "Thursday noon previews now underway across ~4,000 North American screens. Studio (Sony/NRG) is projecting $195M from 4,300 theaters; Box Office Pro's forecast is $230-250M with a $274M optimistic ceiling. 92% RT / 70 Metacritic. North American presales at $80M, matching No Way Home's pre-opening pace. Brand New Day accounts for 49% of this weekend's showtimes as of Wednesday. Spider-Man gets IMAX in China, Japan, and Korea where The Odyssey's exclusive doesn't apply, supporting a global opening projected at $465M-$800M depending on the model — though the wide spread reflects genuine uncertainty at these historic scales. Only nine films have ever opened above $200M domestic; Box Office Pro calls this forecast 'an extreme outlier in the post-pandemic domestic box office.'",
       "rulerLow": 150000000,
       "rulerHigh": 300000000,
       "currentEstimate": null
@@ -793,9 +793,9 @@
       "title": "Wicker",
       "distributor": "Black Bear",
       "type": "Limited",
-      "assetType": "TBD",
-      "trailerUrl": null,
-      "assetPublished": null
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=HP0BWBWn14I",
+      "assetPublished": "2026-07-30"
     },
     {
       "date": "Nov 6",
@@ -1055,18 +1055,18 @@
     },
     {
       "name": "Apple",
-      "code": "APL",
+      "code": "APPLE",
       "color": "#E6EDE8"
     },
     {
       "name": "Black Bear",
       "code": "BBR",
-      "color": "#D88FC9"
+      "color": "#ceb122"
     },
     {
       "name": "Bleecker Street",
       "code": "BLK",
-      "color": "#9AA3AC"
+      "color": "#ee111c"
     },
     {
       "name": "Disney",
@@ -1085,7 +1085,7 @@
     },
     {
       "name": "Focus Features",
-      "code": "FOC",
+      "code": "FOCUS",
       "color": "#1FB8B8"
     },
     {
@@ -1145,12 +1145,12 @@
     },
     {
       "name": "Shudder",
-      "code": "SHUD",
+      "code": "SHUDDER",
       "color": "#F0473D"
     },
     {
       "name": "Sony Pictures",
-      "code": "SNY",
+      "code": "SONY",
       "color": "#9AA3AC"
     },
     {
@@ -1160,7 +1160,7 @@
     },
     {
       "name": "Strand Releasing",
-      "code": "STRD",
+      "code": "STRAND",
       "color": "#9AA3AC"
     },
     {
@@ -1195,7 +1195,7 @@
     },
     {
       "name": "Well Go USA",
-      "code": "WGU",
+      "code": "WELL GO",
       "color": "#F0A833"
     }
   ],
