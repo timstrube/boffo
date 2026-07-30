@@ -1,14 +1,14 @@
 {
-  "version": "4.1",
-  "updatedAt": "2026-07-30T17:15:56.962Z",
+  "version": "5.0",
+  "updatedAt": "2026-07-30T17:40:59.606Z",
   "settings": {
-    "lastUpdatedLabel": "Jul 30, 2026 · 10:15 AM PT / 1:15 PM ET",
+    "lastUpdatedLabel": "Jul 30, 2026 · 10:40 AM PT / 1:40 PM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
     "trackingWeekend": "Jul 31-Aug 2",
     "top10IsFinal": true,
     "footerSourceNote": "The Numbers, Box Office Mojo, Box Office Pro, Deadline, Variety, Screen International, FanBolt",
-    "footerVersion": "Boffo Tracker v0.4",
+    "footerVersion": "Boffo v0.5",
     "editorialNote": "",
     "lastWeekendRange": "Jul 24-26"
   },
@@ -45,35 +45,35 @@
     "note": "The Odyssey confirmed $87.5M in week two (-30%) — better than Oppenheimer's own -44% second-weekend drop, now $286.9M domestic after 10 days. Toy Story 5 crossed $1B globally and $448M domestic. Spider-Man: Brand New Day opens Thursday July 30 previews, with Box Office Theory now projecting $212-249M — potentially 2026's biggest single-weekend domestic gross, achieved without any IMAX access."
   },
   "marketPulse": {
-    "title": "Weekend Market Pulse",
+    "title": "Weekend market pulse",
     "subtitle": "Overall domestic gross",
     "source": "Box Office Mojo",
     "asOf": "Jul 29, 2026",
     "rows": [
       {
         "key": "current",
-        "label": "Latest Weekend",
+        "label": "Current weekend",
         "sub": "Jul 24-26, 2026",
         "value": 146570303,
         "color": "#3FE08A"
       },
       {
         "key": "previous",
-        "label": "Previous Weekend",
+        "label": "Previous weekend",
         "sub": "Jul 17-19, 2026",
         "value": 188271704,
         "color": "#8A968F"
       },
       {
         "key": "lastYear",
-        "label": "Same Weekend Last Year",
+        "label": "Same weekend last year",
         "sub": "Weekend 30, 2025",
         "value": 185393168,
         "color": "#E0479E"
       },
       {
         "key": "tenYearAvg",
-        "label": "10-Year Average",
+        "label": "10-year average",
         "sub": "Weekend 30, 2016-2025",
         "value": 151296400,
         "color": "#F0A833"
@@ -326,7 +326,7 @@
       "distributor": "A24",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=k1MVnzd2aVc",
+      "trailerUrl": "https://youtu.be/k1MVnzd2aVc",
       "assetPublished": "2026-05-06"
     },
     {
@@ -793,9 +793,9 @@
       "title": "Wicker",
       "distributor": "Black Bear",
       "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=HP0BWBWn14I",
-      "assetPublished": "2026-07-30"
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Nov 6",
@@ -1031,5 +1031,195 @@
       "trailerUrl": null,
       "assetPublished": null
     }
-  ]
+  ],
+  "distributors": [
+    {
+      "name": "20th Century Studios",
+      "code": "20C",
+      "color": "#5C8FF0"
+    },
+    {
+      "name": "A24",
+      "code": "A24",
+      "color": "#15C56B"
+    },
+    {
+      "name": "Amazon MGM",
+      "code": "MGM",
+      "color": "#F0913D"
+    },
+    {
+      "name": "Angel Studios",
+      "code": "ANG",
+      "color": "#F0A833"
+    },
+    {
+      "name": "Apple",
+      "code": "APL",
+      "color": "#E6EDE8"
+    },
+    {
+      "name": "Black Bear",
+      "code": "BBR",
+      "color": "#D88FC9"
+    },
+    {
+      "name": "Bleecker Street",
+      "code": "BLK",
+      "color": "#9AA3AC"
+    },
+    {
+      "name": "Disney",
+      "code": "DIS",
+      "color": "#5C8FF0"
+    },
+    {
+      "name": "Fathom Entertainment",
+      "code": "FTH",
+      "color": "#9AA3AC"
+    },
+    {
+      "name": "Film Movement",
+      "code": "FLMT",
+      "color": "#9AA3AC"
+    },
+    {
+      "name": "Focus Features",
+      "code": "FOC",
+      "color": "#1FB8B8"
+    },
+    {
+      "name": "IFC Films",
+      "code": "IFC",
+      "color": "#9AA3AC"
+    },
+    {
+      "name": "Ketchup Entertainment",
+      "code": "KET",
+      "color": "#F0473D"
+    },
+    {
+      "name": "Lionsgate",
+      "code": "LGF",
+      "color": "#B0A8D8"
+    },
+    {
+      "name": "Magnolia Pictures",
+      "code": "MAG",
+      "color": "#D88FC9"
+    },
+    {
+      "name": "Mubi",
+      "code": "MUBI",
+      "color": "#E6EDE8"
+    },
+    {
+      "name": "Neon",
+      "code": "NEON",
+      "color": "#F0473D"
+    },
+    {
+      "name": "Oscilloscope",
+      "code": "OSC",
+      "color": "#9AA3AC"
+    },
+    {
+      "name": "Paramount",
+      "code": "PAR",
+      "color": "#5C8FF0"
+    },
+    {
+      "name": "Roadside Attractions",
+      "code": "RSA",
+      "color": "#D88FC9"
+    },
+    {
+      "name": "Row K",
+      "code": "ROW K",
+      "color": "#9AA3AC"
+    },
+    {
+      "name": "Searchlight Pictures",
+      "code": "SRL",
+      "color": "#5C8FF0"
+    },
+    {
+      "name": "Shudder",
+      "code": "SHUD",
+      "color": "#F0473D"
+    },
+    {
+      "name": "Sony Pictures",
+      "code": "SNY",
+      "color": "#9AA3AC"
+    },
+    {
+      "name": "Sony Pictures Classics",
+      "code": "SPC",
+      "color": "#B0A8D8"
+    },
+    {
+      "name": "Strand Releasing",
+      "code": "STRD",
+      "color": "#9AA3AC"
+    },
+    {
+      "name": "Sumerian",
+      "code": "SUM",
+      "color": "#B0A8D8"
+    },
+    {
+      "name": "Trafalgar",
+      "code": "TRF",
+      "color": "#9AA3AC"
+    },
+    {
+      "name": "Universal",
+      "code": "UNI",
+      "color": "#1FB8B8"
+    },
+    {
+      "name": "Vertical Entertainment",
+      "code": "VERT",
+      "color": "#9AA3AC"
+    },
+    {
+      "name": "Walt Disney",
+      "code": "DIS",
+      "color": "#5C8FF0"
+    },
+    {
+      "name": "Warner Bros.",
+      "code": "WB",
+      "color": "#F0A833"
+    },
+    {
+      "name": "Well Go USA",
+      "code": "WGU",
+      "color": "#F0A833"
+    }
+  ],
+  "history": {
+    "currentWeekendRange": "Jul 24-26",
+    "currentLeader": {
+      "title": "The Odyssey",
+      "distributor": "Universal",
+      "theaters": 3942,
+      "avg": 22837,
+      "gross": 90022510,
+      "range": "Jul 24-26"
+    },
+    "previousLeader": {
+      "title": "The Odyssey",
+      "distributor": "Universal",
+      "theaters": 3919,
+      "avg": null,
+      "gross": null,
+      "range": "Jul 17-19",
+      "extra": "$31,514 avg",
+      "amountLabel": "$123.5M",
+      "subLabel": "FINAL 3-DAY · Jul 17-19",
+      "tagLabel": "PREVIOUS"
+    }
+  }
 }

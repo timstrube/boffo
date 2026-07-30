@@ -76,17 +76,18 @@ let BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 
 let BOFFO_SETTINGS = {
   lastWeekendRange: 'Jul 24-26', weekendHeadingPrefix: 'Weekend of', trackingIntro: 'Tracking for the upcoming weekend',
   footerSourceNote: 'The Numbers, Box Office Mojo, Box Office Pro, Deadline, Variety, Screen International, FanBolt',
-  footerVersion: 'Boffo v0.4 · JSON Phase 1'
+  footerVersion: 'Boffo v0.5 · Phase 2 Preview'
 };
 let HERO_CONFIG = {
   latest: { mode: 'auto' },
-  previous: { mode: 'manual', title: 'The Odyssey', distributor: 'Universal', theaters: 3919, extra: '$31,514 avg', amountLabel: '$123.5M', subLabel: 'FINAL 3-DAY · Jul 17-19', tagLabel: 'PREVIOUS' }
+  previous: { mode: 'auto', title: 'The Odyssey', distributor: 'Universal', theaters: 3919, extra: '$31,514 avg', amountLabel: '$123.5M', subLabel: 'FINAL 3-DAY · Jul 17-19', tagLabel: 'PREVIOUS' }
 };
+let HISTORY_CONFIG = { currentWeekendRange: BOFFO_SETTINGS.lastWeekendRange, currentLeader: null, previousLeader: null };
 let TICKER_CONFIG = {
   top10: { enabled: true, breakingMode: false, pillText: 'WKND ACTUALS', pillSubtext: '7/24-7/26', pillColor: '#3FE08A', breakingColor: '#F0473D', durationSeconds: 38 },
   bluesky: { enabled: true, accounts: BLUESKY_ACCOUNTS, perAccountLimit: 6, maxPosts: 20, postsNoReplies: true, preserveLinks: true, blockedWords: ['fuck','shit','nsfw'] }
 };
-const DIST_OPTIONS = [
+let DIST_OPTIONS = [
 "Universal",
 "Focus Features",
 "Paramount",
@@ -121,7 +122,7 @@ const DIST_OPTIONS = [
 "Sumerian",
 "Apple"
 ];
-const DIST_COLOR = {
+let DIST_COLOR = {
 "Universal": "#1FB8B8",
 "Focus Features": "#1FB8B8",
 "Paramount": "#5C8FF0",
@@ -168,7 +169,7 @@ verticalAlign: 'middle', flexShrink: 0
 }, props.style || {})
 }, props.name);
 }
-const DIST_CODE = {
+let DIST_CODE = {
 "Universal": "UNI",
 "Focus Features": "FOC",
 "Paramount": "PAR",
@@ -206,7 +207,7 @@ const DIST_CODE = {
 function DistBadge(props) {
 const name = props.name;
 const color = DIST_COLOR[name] || '#8A8E96';
-const code = DIST_CODE[name] || name.slice(0,3).toUpperCase();
+const code = DIST_CODE[name] || (name ? name.slice(0,3).toUpperCase() : '—');
 return e('span', {
 style: {
 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
@@ -863,7 +864,8 @@ return { title: leader.title || cfg.title, distributor: leader.distributor || cf
 }
 function resolvePreviousHero() {
 const cfg = HERO_CONFIG.previous || {};
-if (cfg.mode === 'autoTop10' || cfg.mode === 'auto') { const leader = top10[0] || {}; return { title: leader.title, distributor: leader.distributor, theaters: leader.theaters, extra: leader.avg ? fmtFull(leader.avg) + ' avg' : null, amountLabel: leader.gross ? fmtMoney(leader.gross) : null, subLabel: 'FINAL 3-DAY \u00B7 ' + BOFFO_SETTINGS.lastWeekendRange, tagLabel: cfg.tagLabel || 'PREVIOUS' }; }
+if (cfg.mode === 'autoTop10') { const leader = top10[0] || {}; return { title: leader.title, distributor: leader.distributor, theaters: leader.theaters, extra: leader.avg ? fmtFull(leader.avg) + ' avg' : null, amountLabel: leader.gross ? fmtMoney(leader.gross) : null, subLabel: 'FINAL 3-DAY \u00B7 ' + BOFFO_SETTINGS.lastWeekendRange, tagLabel: cfg.tagLabel || 'PREVIOUS' }; }
+if (cfg.mode === 'auto') { const leader = HISTORY_CONFIG.previousLeader || {}; if (leader.title) return { title: leader.title, distributor: leader.distributor, theaters: leader.theaters || 0, extra: leader.extra || (leader.avg ? fmtFull(leader.avg) + ' avg' : null), amountLabel: leader.amountLabel || (leader.gross ? fmtMoney(leader.gross) : null), subLabel: leader.subLabel || ('FINAL 3-DAY \u00B7 ' + (leader.range || '')), tagLabel: leader.tagLabel || cfg.tagLabel || 'PREVIOUS' }; }
 return cfg;
 }
 const liveData = resolveLatestHero();
@@ -1151,6 +1153,8 @@ LAST_UPDATED = settings.lastUpdatedLabel || LAST_UPDATED;
 TOP10_IS_FINAL = settings.top10IsFinal !== false;
 TRACKING_WEEKEND = settings.trackingWeekend || TRACKING_WEEKEND;
 HERO_CONFIG = Object.assign({}, HERO_CONFIG, data.hero || {});
+HISTORY_CONFIG = Object.assign({}, HISTORY_CONFIG, data.history || {});
+if (Array.isArray(data.distributors) && data.distributors.length) { DIST_OPTIONS = data.distributors.map(function (d) { return d.name; }).filter(Boolean).sort(function (a,b) { return a.localeCompare(b); }); DIST_COLOR = {}; DIST_CODE = {}; data.distributors.forEach(function (d) { if (!d || !d.name) return; DIST_COLOR[d.name] = d.color || '#8A8E96'; DIST_CODE[d.name] = d.code || d.name.slice(0,3).toUpperCase(); }); }
 YOY = Object.assign({}, YOY, data.yoy || {});
 MARKET_COMPARISON = data.marketPulse || data.marketComparison || MARKET_COMPARISON;
 TICKER_CONFIG = Object.assign({}, TICKER_CONFIG, data.tickers || {});
@@ -1176,7 +1180,9 @@ window.__BOFFO_DATA_SOURCE__ = 'embedded-fallback';
 }
 }
 const root = ReactDOM.createRoot(document.getElementById('boffo-root'));
-loadCanonicalBoffoData().then(function () { root.render(e(Dashboard)); });
+function renderBoffo() { root.render(e(Dashboard)); }
+window.addEventListener('message', function (event) { if (!event.data || event.data.type !== 'boffo-preview-data') return; applyBoffoData(event.data.data); window.__BOFFO_DATA_SOURCE__ = 'data-studio-preview'; renderBoffo(); window.parent.postMessage({ type: 'boffo-preview-rendered' }, '*'); });
+if (new URLSearchParams(window.location.search).get('preview') === '1') { renderBoffo(); window.parent.postMessage({ type: 'boffo-preview-ready' }, '*'); } else { loadCanonicalBoffoData().then(renderBoffo); }
 (function () {
 function reportHeight() {
 const el = document.getElementById('boffo-root');
