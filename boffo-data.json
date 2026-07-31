@@ -1,8 +1,8 @@
 {
   "version": "5.0",
-  "updatedAt": "2026-07-30T18:23:14.763Z",
+  "updatedAt": "2026-07-31T13:43:47.318Z",
   "settings": {
-    "lastUpdatedLabel": "Jul 30, 2026 · 11:23 AM PT / 2:23 PM ET",
+    "lastUpdatedLabel": "Jul 31, 2026 · 6:43 AM PT / 9:43 AM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
     "trackingWeekend": "Jul 31-Aug 2",
@@ -42,7 +42,7 @@
     "thisYear": 145957596,
     "lastYear": 122000000,
     "tenYearAvg": 105000000,
-    "note": "The Odyssey confirmed $90M in week two (-27%) — better than Oppenheimer's own -44% second-weekend drop, now $304.1M domestic after 10 days and $666.7M globally, tracking toward $1B by frame 5 or 6. Toy Story 5 crossed $1.025B globally. Spider-Man: Brand New Day opens this weekend with Thursday noon previews underway, tracking for $195-250M domestic — potentially 2026's biggest single-weekend gross."
+    "note": "The Odyssey confirmed $90M in week two (-27%) — better than Oppenheimer's own -44% second-weekend drop, now $304.1M domestic after 10 days and $666.7M globally, tracking toward $1B by frame 5 or 6. Toy Story 5 crossed $1.025B globally. Spider-Man: Brand New Day confirmed a record-shattering $75M Thursday preview haul (topping Endgame's $60M all-time mark) and is now tracking for $345M+ domestic — a potential run at Endgame's $365.1M all-time opening-weekend record."
   },
   "marketPulse": {
     "title": "Weekend Market Pulse",
@@ -249,13 +249,13 @@
       "theaters": 4300,
       "confidence": "high",
       "momentum": "rising",
-      "rtCritic": 92,
+      "rtCritic": 90,
       "metacritic": 70,
-      "rangeLow": 195000000,
-      "rangeHigh": 250000000,
-      "analysis": "Thursday noon previews now underway across ~4,000 North American screens. Studio (Sony/NRG) is projecting $195M from 4,300 theaters; Box Office Pro's forecast is $230-250M with a $274M optimistic ceiling. 92% RT / 70 Metacritic. North American presales at $80M, matching No Way Home's pre-opening pace. Brand New Day accounts for 49% of this weekend's showtimes as of Wednesday. Spider-Man gets IMAX in China, Japan, and Korea where The Odyssey's exclusive doesn't apply, supporting a global opening projected at $465M-$800M depending on the model — though the wide spread reflects genuine uncertainty at these historic scales. Only nine films have ever opened above $200M domestic; Box Office Pro calls this forecast 'an extreme outlier in the post-pandemic domestic box office.'",
-      "rulerLow": 150000000,
-      "rulerHigh": 300000000,
+      "rangeLow": 300000000,
+      "rangeHigh": 365000000,
+      "analysis": "Thursday previews (including Wednesday night early shows) confirmed at $75M, shattering Avengers: Endgame's all-time preview record of $60M and blowing past No Way Home's $50M. That pace has trackers now pointing to a $345M+ opening weekend, with some outlets floating a real shot at beating Endgame's all-time domestic-opening record of $365.1M. 90% RT / 70 Metacritic, with an early A CinemaScore. Brand New Day accounts for 49% of this weekend's showtimes as of Wednesday. Spider-Man gets IMAX overseas where The Odyssey's domestic exclusive doesn't apply, supporting a global opening now estimated near $800M+ by Sunday. Official Friday numbers land later today and should sharpen this range considerably.",
+      "rulerLow": 250000000,
+      "rulerHigh": 400000000,
       "currentEstimate": null
     },
     {
@@ -326,7 +326,7 @@
       "distributor": "A24",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://youtu.be/k1MVnzd2aVc",
+      "trailerUrl": "https://www.youtube.com/watch?v=k1MVnzd2aVc",
       "assetPublished": "2026-05-06"
     },
     {
@@ -389,7 +389,7 @@
       "distributor": "Focus Features",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://youtu.be/phU3eSBFOXA",
+      "trailerUrl": "https://www.youtube.com/watch?v=phU3eSBFOXA",
       "assetPublished": null
     },
     {
