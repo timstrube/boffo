@@ -1,8 +1,8 @@
 {
   "version": "5.0",
-  "updatedAt": "2026-07-31T13:43:47.318Z",
+  "updatedAt": "2026-07-31T15:33:25.420Z",
   "settings": {
-    "lastUpdatedLabel": "Jul 31, 2026 · 6:43 AM PT / 9:43 AM ET",
+    "lastUpdatedLabel": "Jul 31, 2026 · 8:33 AM PT / 11:33 AM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
     "trackingWeekend": "Jul 31-Aug 2",
@@ -246,7 +246,7 @@
     {
       "title": "Spider-Man: Brand New Day",
       "distributor": "Sony Pictures",
-      "theaters": 4300,
+      "theaters": 4487,
       "confidence": "high",
       "momentum": "rising",
       "rtCritic": 90,
@@ -1030,6 +1030,42 @@
       "assetType": "TBD",
       "trailerUrl": null,
       "assetPublished": null
+    },
+    {
+      "date": "Dec 25",
+      "title": "A Place in Hell",
+      "distributor": "Paramount",
+      "type": "Limited",
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
+    },
+    {
+      "date": "Jan 15, 2027",
+      "title": "The Beekeeper 2",
+      "distributor": "Amazon MGM",
+      "type": "Wide",
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
+    },
+    {
+      "date": "Jan 15, 2027",
+      "title": "Children of Blood and Bone",
+      "distributor": "Paramount",
+      "type": "Wide",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=HnWvg90lQt8",
+      "assetPublished": "2026-07-28"
+    },
+    {
+      "date": "Jan 22, 2027",
+      "title": "Air Bud Returns",
+      "distributor": "Cineverse",
+      "type": "Wide",
+      "assetType": "Teaser",
+      "trailerUrl": "https://www.youtube.com/watch?v=I46hFjWKGA4",
+      "assetPublished": "2026-07-27"
     }
   ],
   "distributors": [
@@ -1067,6 +1103,11 @@
       "name": "Bleecker Street",
       "code": "BLK",
       "color": "#ee111c"
+    },
+    {
+      "name": "Cineverse",
+      "code": "CNVRS",
+      "color": "#178771"
     },
     {
       "name": "Disney",
