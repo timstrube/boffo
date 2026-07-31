@@ -1,8 +1,8 @@
 {
   "version": "5.0",
-  "updatedAt": "2026-07-31T15:33:25.420Z",
+  "updatedAt": "2026-07-31T15:44:13.485Z",
   "settings": {
-    "lastUpdatedLabel": "Jul 31, 2026 · 8:33 AM PT / 11:33 AM ET",
+    "lastUpdatedLabel": "Jul 31, 2026 · 8:44 AM PT / 11:44 AM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
     "trackingWeekend": "Jul 31-Aug 2",
@@ -1066,6 +1066,15 @@
       "assetType": "Teaser",
       "trailerUrl": "https://www.youtube.com/watch?v=I46hFjWKGA4",
       "assetPublished": "2026-07-27"
+    },
+    {
+      "date": "Mar 5, 2027",
+      "title": "The Thomas Crown Affair",
+      "distributor": "Amazon MGM",
+      "type": "Wide",
+      "assetType": "Teaser",
+      "trailerUrl": "https://www.youtube.com/watch?v=gnm4HgIAVmU",
+      "assetPublished": "2026-07-29"
     }
   ],
   "distributors": [
