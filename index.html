@@ -248,7 +248,6 @@ const item = props.item;
 const isMobile = props.isMobile;
 const assetType = item.assetType || (item.trailerUrl ? 'Trailer' : 'TBD');
 const available = assetType !== 'TBD' && !!item.trailerUrl;
-const recent = available && isRecentAsset(item.assetPublished);
 const color = assetType === 'Teaser' ? C.amber : C.magenta;
 const bg = assetType === 'Teaser' ? 'rgba(240,168,51,0.14)' : C.magentaDim;
 const baseStyle = {
@@ -259,11 +258,8 @@ fontFamily: "'JetBrains Mono', monospace", fontSize: isMobile ? 9 : 9.5,
 fontWeight: 800, letterSpacing: 0.35, textTransform: 'uppercase', whiteSpace: 'nowrap', flexShrink: 0
 };
 if (!available) return e('span', { style: Object.assign({}, baseStyle, { background: 'rgba(255,255,255,0.025)', border: '1px solid ' + C.border, color: C.textFaint }), title: 'No official teaser or trailer has been posted yet', 'aria-disabled': 'true' }, 'TBD');
-return e('span', { style: { display: 'inline-flex', alignItems: 'center', gap: 5, flexShrink: 0 } },
-e('button', { onClick: function () { props.onPlay(item); }, style: Object.assign({}, baseStyle, { background: bg, border: '1px solid ' + color + '88', color: color, cursor: 'pointer' }), title: 'Play inside Boffo', 'aria-label': 'Play ' + assetType + ' for ' + item.title },
+return e('button', { onClick: function () { props.onPlay(item); }, style: Object.assign({}, baseStyle, { background: bg, border: '1px solid ' + color + '88', color: color, cursor: 'pointer' }), title: 'Play inside Boffo', 'aria-label': 'Play ' + assetType + ' for ' + item.title },
 e('span', { style: { fontSize: 8, position: 'relative', top: -0.25 } }, '\u25B6'), assetType
-),
-recent ? e(MaterialIcon, { name: 'stars_2', filled: true, size: 18, title: 'New in the last 3 days', style: { color: C.amber, filter: 'drop-shadow(0 0 4px rgba(240,168,51,0.28))' } }) : null
 );
 }
 function ModalShell(props) {
@@ -1083,8 +1079,10 @@ const filterButton = function (label, active, onClick) { return e('button', { ke
 const typeBadge = function (r) { return e('span', { style: { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minWidth: 76, height: 24, fontSize: isMobile ? 9 : 9.5, fontWeight: 800, letterSpacing: 0.4, textTransform: 'uppercase', padding: '0 8px', borderRadius: 3, background: r.type === 'Wide' ? C.emeraldDim : 'rgba(31,184,184,0.16)', color: r.type === 'Wide' ? C.emeraldBright : C.teal, justifySelf: 'start' } }, r.type); };
 const renderRelease = function (r) {
 const assetType = r.assetType || (r.trailerUrl ? 'Trailer' : 'TBD');
-const titleBlock = e('div', { style: { minWidth: 0 } },
-e('div', { style: { fontWeight: 400, fontFamily: "'Readex Pro', sans-serif", overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: isMobile ? 'normal' : 'nowrap', fontSize: isMobile ? 13 : 12.5 } }, r.title)
+const recent = assetType !== 'TBD' && !!r.trailerUrl && isRecentAsset(r.assetPublished);
+const titleBlock = e('div', { style: { display: 'flex', alignItems: 'center', gap: 6, minWidth: 0 } },
+e('span', { style: { minWidth: 0, fontWeight: 400, fontFamily: "'Readex Pro', sans-serif", overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: isMobile ? 'normal' : 'nowrap', fontSize: isMobile ? 13 : 12.5 } }, r.title),
+recent ? e(MaterialIcon, { name: 'stars_2', filled: true, size: isMobile ? 17 : 18, title: 'New asset in the last 3 days', style: { color: C.amber, flexShrink: 0, filter: 'drop-shadow(0 0 4px rgba(240,168,51,0.28))' } }) : null
 );
 return e('div', { key: r.date + r.title + r.type, style: { padding: isMobile ? '10px 0' : '9px 0', borderBottom: '1px solid ' + C.border } },
 isMobile ? e('div', null,
