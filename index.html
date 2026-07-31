@@ -39,6 +39,14 @@ html::-webkit-scrollbar-corner, body::-webkit-scrollbar-corner, #boffo-root::-we
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } .boffo-motion { animation: none !important; transition: none !important; } }
 .w-embed, .w-embed-youtubevideo, .w-iframe { background: #0A0E0C !important; margin: 0 !important; }
+.bsky-embed-wrap { padding: 18px 18px 8px; min-height: 150px; }
+.bsky-embed-wrap .bluesky-embed { margin: 0 auto !important; width: 100% !important; max-width: 580px !important; }
+.bsky-fallback { margin: 0; padding: 18px; border: 1px solid rgba(17,133,254,.38); border-radius: 10px; background: rgba(17,133,254,.055); color: #E6EDE8; font-family: 'Readex Pro', sans-serif; font-size: 15px; line-height: 1.65; }
+.bsky-fallback-author { display: flex; align-items: center; gap: 7px; margin-top: 15px; padding-top: 12px; border-top: 1px solid rgba(230,237,232,.10); font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8A968F; }
+.bsky-link { color: #59A9FF; text-decoration: underline; text-decoration-color: rgba(89,169,255,.45); text-underline-offset: 2px; transition: color .16s ease, text-decoration-color .16s ease, background .16s ease; border-radius: 3px; }
+.bsky-link:hover, .bsky-link:focus-visible { color: #8DC5FF; text-decoration-color: #8DC5FF; background: rgba(17,133,254,.12); outline: none; }
+.bsky-open-link { display: inline-flex; align-items: center; gap: 5px; color: #59A9FF; border: 1px solid rgba(89,169,255,.35); border-radius: 4px; padding: 6px 9px; font-size: 10px; font-weight: 800; text-decoration: none; transition: color .16s ease, border-color .16s ease, background .16s ease; }
+.bsky-open-link:hover, .bsky-open-link:focus-visible { color: #A7D3FF; border-color: #59A9FF; background: rgba(17,133,254,.12); outline: none; }
 </style>
 <div id="boffo-root"></div>
 <script>
@@ -269,7 +277,7 @@ e('div', { style: { width: '100%', maxWidth: props.maxWidth || 880, maxHeight: '
 e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, padding: '12px 14px', borderBottom: '1px solid ' + C.border } },
 e('div', { style: { minWidth: 0 } },
 e('div', { style: { fontSize: 10, color: props.accent || C.magenta, fontWeight: 900, letterSpacing: 0.8, textTransform: 'uppercase' } }, props.kicker || ''),
-e('div', { style: { fontFamily: "'Readex Pro', sans-serif", fontSize: props.isMobile ? 14 : 17, color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' } }, props.title || '')
+e('div', { style: { fontFamily: "'Readex Pro', sans-serif", fontSize: props.isMobile ? 14 : 17, color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginTop: props.titleSpacing || 0 } }, props.title || '')
 ),
 e('button', { onClick: props.onClose, style: { background: 'transparent', border: '1px solid ' + C.border, color: C.textMute, borderRadius: 5, width: 30, height: 30, cursor: 'pointer', fontSize: 17 } }, '\u00D7')
 ), props.children)
@@ -289,18 +297,69 @@ e('a', { href: item.trailerUrl, target: '_blank', rel: 'noopener noreferrer', st
 )
 );
 }
+function BlueskyLogo(props) {
+const size = props && props.size ? props.size : 15;
+return e('svg', { viewBox: '0 0 600 530', width: size, height: Math.round(size * 0.883), 'aria-hidden': 'true', focusable: 'false', style: { display: 'block', flexShrink: 0 } },
+e('path', { fill: '#1185FE', d: 'M135 25C209 80 290 191 300 256c10-65 91-176 165-231 53-39 139-69 139 27 0 19-11 162-17 185-22 80-103 100-175 88 126 21 158 91 89 161-132 134-189-34-204-77-3-8-4-12-5-9-1-3-2 1-5 9-15 43-72 211-204 77-69-70-37-140 89-161-72 12-153-8-175-88C13 199 2 56 2 37 2-59 88-14 135 25z' })
+);
+}
+function linkifyPostText(text) {
+const pattern = /((?:https?:\/\/|www\.)[^\s<]+)/gi;
+const parts = String(text || '').split(pattern);
+return parts.map(function (part, i) {
+if (!pattern.test(part)) { pattern.lastIndex = 0; return part; }
+pattern.lastIndex = 0;
+const href = /^www\./i.test(part) ? 'https://' + part : part;
+return e('a', { key: 'link-' + i, href: href, target: '_blank', rel: 'noopener noreferrer', className: 'bsky-link', onClick: function (ev) { ev.stopPropagation(); } }, part);
+});
+}
+function BlueskyPostEmbed(props) {
+const post = props.post;
+const author = post.author || {};
+const rawText = (post.record && post.record.text) || '';
+const createdAt = post.record && post.record.createdAt ? new Date(post.record.createdAt) : null;
+useEffect(function () {
+if (!post.uri) return;
+const oldScript = document.getElementById('boffo-bluesky-embed-script');
+if (oldScript) oldScript.remove();
+const script = document.createElement('script');
+script.id = 'boffo-bluesky-embed-script';
+script.async = true;
+script.charset = 'utf-8';
+script.src = 'https://embed.bsky.app/static/embed.js?v=' + Date.now();
+document.body.appendChild(script);
+return function () { if (script.parentNode) script.parentNode.removeChild(script); };
+}, [post.uri]);
+return e('div', { className: 'bsky-embed-wrap' },
+e('blockquote', {
+className: 'bluesky-embed',
+'data-bluesky-uri': post.uri,
+'data-bluesky-cid': post.cid || undefined,
+'data-bluesky-embed-color-mode': 'dark'
+},
+e('div', { className: 'bsky-fallback' },
+e('div', { style: { whiteSpace: 'pre-wrap' } }, linkifyPostText(rawText)),
+e('div', { className: 'bsky-fallback-author' },
+e(BlueskyLogo, { size: 14 }),
+e('span', null, author.displayName || author.handle || 'Bluesky'),
+author.handle ? e('a', { href: 'https://bsky.app/profile/' + author.handle, target: '_blank', rel: 'noopener noreferrer', className: 'bsky-link' }, '@' + author.handle) : null,
+createdAt && !isNaN(createdAt.getTime()) ? e('span', { style: { marginLeft: 'auto', color: C.textFaint } }, createdAt.toLocaleString()) : null
+)
+)
+)
+);
+}
 function ChatterModal(props) {
 const post = props.post;
 if (!post) return null;
 const author = post.author || {};
-const rawText = (post.record && post.record.text) || '';
-const text = TICKER_CONFIG.bluesky && TICKER_CONFIG.bluesky.preserveLinks ? rawText.trim() : stripTrailingNoise(rawText);
 const uri = post.uri || '';
 const rkey = uri.split('/').pop();
 const postUrl = author.handle && rkey ? 'https://bsky.app/profile/' + author.handle + '/post/' + rkey : null;
-return e(ModalShell, { open: true, onClose: props.onClose, isMobile: props.isMobile, title: author.displayName || author.handle || 'Box Office Chatter', kicker: author.handle ? '@' + author.handle : 'Bluesky', accent: '#1185FE', maxWidth: 620 },
-e('div', { style: { padding: props.isMobile ? 16 : 22, fontFamily: "'Readex Pro', sans-serif", fontSize: props.isMobile ? 14 : 16, color: C.text, lineHeight: 1.65, whiteSpace: 'pre-wrap' } }, text),
-postUrl ? e('div', { style: { padding: '0 14px 14px', textAlign: 'right' } }, e('a', { href: postUrl, target: '_blank', rel: 'noopener noreferrer', style: { color: '#59A9FF', fontSize: 10, fontWeight: 800, textDecoration: 'none' } }, 'Open post \u2197')) : null
+const kicker = e('span', { style: { display: 'inline-flex', alignItems: 'center', gap: 6 } }, e(BlueskyLogo, { size: 14 }), author.handle ? '@' + author.handle : 'Bluesky');
+return e(ModalShell, { open: true, onClose: props.onClose, isMobile: props.isMobile, title: author.displayName || 'Bluesky post', kicker: kicker, accent: '#1185FE', maxWidth: 650, titleSpacing: 5 },
+e(BlueskyPostEmbed, { post: post }),
+postUrl ? e('div', { style: { padding: '2px 18px 18px', textAlign: 'right' } }, e('a', { href: postUrl, target: '_blank', rel: 'noopener noreferrer', className: 'bsky-open-link' }, 'Open post ', '\u2197')) : null
 );
 }
 
