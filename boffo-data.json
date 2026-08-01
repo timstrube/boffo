@@ -1,8 +1,8 @@
 {
-  "version": "5.2",
-  "updatedAt": "2026-08-01T18:28:59.009Z",
+  "version": "5.3",
+  "updatedAt": "2026-08-01T21:15:51.317Z",
   "settings": {
-    "lastUpdatedLabel": "Aug 1, 2026 · 11:28 AM PT / 2:28 PM ET",
+    "lastUpdatedLabel": "Aug 1, 2026 · 2:15 PM PT / 5:15 PM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
     "trackingWeekend": "Jul 31-Aug 2",
@@ -1250,7 +1250,9 @@
       "theaters": 3942,
       "avg": 22837,
       "gross": 90022510,
-      "range": "Jul 24-26"
+      "range": "Jul 24-26",
+      "source": "weekend",
+      "status": "final"
     },
     "previousLeader": {
       "title": "The Odyssey",
