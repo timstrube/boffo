@@ -1,8 +1,8 @@
 {
   "version": "5.0",
-  "updatedAt": "2026-07-31T15:44:13.485Z",
+  "updatedAt": "2026-08-01T01:21:21.593Z",
   "settings": {
-    "lastUpdatedLabel": "Jul 31, 2026 · 8:44 AM PT / 11:44 AM ET",
+    "lastUpdatedLabel": "Jul 31, 2026 · 6:21 PM PT / 9:21 PM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
     "trackingWeekend": "Jul 31-Aug 2",
@@ -42,7 +42,7 @@
     "thisYear": 145957596,
     "lastYear": 122000000,
     "tenYearAvg": 105000000,
-    "note": "The Odyssey confirmed $90M in week two (-27%) — better than Oppenheimer's own -44% second-weekend drop, now $304.1M domestic after 10 days and $666.7M globally, tracking toward $1B by frame 5 or 6. Toy Story 5 crossed $1.025B globally. Spider-Man: Brand New Day confirmed a record-shattering $75M Thursday preview haul (topping Endgame's $60M all-time mark) and is now tracking for $345M+ domestic — a potential run at Endgame's $365.1M all-time opening-weekend record."
+    "note": "The Odyssey confirmed $90M in week two (-27%) — better than Oppenheimer's own -44% second-weekend drop, now $304.1M domestic after 10 days and $666.7M globally, tracking toward $1B by frame 5 or 6. Toy Story 5 crossed $1.025B globally. Spider-Man: Brand New Day posted an all-time single-day domestic record Friday ($167M-$173M with previews, beating Endgame's $157.4M) and is now tracking north of $330M for the three-day weekend — the second-biggest domestic opening ever, with an outside shot at Endgame's all-time weekend record of $357.1M."
   },
   "marketPulse": {
     "title": "Weekend Market Pulse",
@@ -251,11 +251,11 @@
       "momentum": "rising",
       "rtCritic": 90,
       "metacritic": 70,
-      "rangeLow": 300000000,
-      "rangeHigh": 365000000,
-      "analysis": "Thursday previews (including Wednesday night early shows) confirmed at $75M, shattering Avengers: Endgame's all-time preview record of $60M and blowing past No Way Home's $50M. That pace has trackers now pointing to a $345M+ opening weekend, with some outlets floating a real shot at beating Endgame's all-time domestic-opening record of $365.1M. 90% RT / 70 Metacritic, with an early A CinemaScore. Brand New Day accounts for 49% of this weekend's showtimes as of Wednesday. Spider-Man gets IMAX overseas where The Odyssey's domestic exclusive doesn't apply, supporting a global opening now estimated near $800M+ by Sunday. Official Friday numbers land later today and should sharpen this range considerably.",
+      "rangeLow": 325000000,
+      "rangeHigh": 355000000,
+      "analysis": "Confirmed: Friday (including previews) landed at $167M-$173M, an all-time single-day domestic record that buries Endgame's previous $157.4M mark. Deadline now has the three-day estimate north of $330M, which would be the second-biggest domestic opening ever, comfortably clear of No Way Home's $260.1M — with an outside shot at Endgame's all-time weekend record of $357.1M. CinemaScore came in at A; RT sits at 90% critic / 98% audience, tying the MCU's best-ever audience score. Brand New Day accounts for 49% of this weekend's showtimes. Global is running well ahead of the pre-release $465M estimate, which is now being called conservative — China alone posted its biggest superhero opening day in seven years. Saturday's actuals should confirm whether the Endgame record is in reach.",
       "rulerLow": 250000000,
-      "rulerHigh": 400000000,
+      "rulerHigh": 390000000,
       "currentEstimate": null
     },
     {
@@ -265,7 +265,7 @@
       "confidence": "high",
       "momentum": "stable",
       "rtCritic": 98,
-      "metacritic": null,
+      "metacritic": 88,
       "rangeLow": 40000000,
       "rangeHigh": 55000000,
       "analysis": "Third and final IMAX-exclusive weekend before Spider-Man takes over those auditoriums. The confirmed $90M second weekend held better than comparable prestige tentpoles and brought the film to roughly $289.4M domestic and $490M global. The IMAX handoff should create the steepest decline of the run, while strong prestige word-of-mouth supports general-auditorium attendance.",
