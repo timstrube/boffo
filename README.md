@@ -1,6 +1,6 @@
 # 🍿 Boffo
 
-A weekly box office tracker dashboard built for Sequence Creative, embedded on sequencela.com.
+A weekly box office tracker dashboard designed and built by Tim Strube at [Sequence Creative](https://www.sequencela.com).
 
 ## What it is
 
@@ -22,14 +22,13 @@ Boffo is made up of three pieces that deploy together:
 
 Updating Boffo weekly means editing data in the Data Studio, validating it, previewing it, then exporting and redeploying the updated JSON file alongside the two HTML files.
 
-The dashboard is hosted for free on GitHub Pages, and the Sequence Creative website embeds it in an iframe so it looks native to the site.
+The dashboard is hosted for free on GitHub Pages.
 
 ## The weekly rhythm
 
 - **Sunday**: Weekend estimates go in, ticker flags them as fresh/breaking
-- **Monday–Wednesday**: Estimates get swapped for confirmed actuals; still flagged as fresh
-- **Thursday**: Data is considered settled — the ticker calms down and drops the "breaking" treatment until the next Sunday's estimates
-- **Midweek**: The three tabs rotate forward — this weekend's Top 10 becomes "Last Weekend," projections become "This Weekend," and a new set of projections is drafted for "Next Weekend"
+- **Monday**: Estimates get swapped for confirmed actuals; still flagged as fresh
+- **Tuesday**: Data is considered settled — the ticker calms down and drops the "breaking" treatment until the next Sunday's estimates
 
 ## Maintenance
 
