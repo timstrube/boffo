@@ -1,4 +1,4 @@
-# Boffo
+# 🍿 Boffo
 
 A weekly box office tracker dashboard built for Sequence Creative, embedded on sequencela.com.
 
