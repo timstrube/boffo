@@ -1,8 +1,8 @@
 {
-  "version": "5.0",
-  "updatedAt": "2026-08-01T16:57:18.695Z",
+  "version": "5.2",
+  "updatedAt": "2026-08-01T18:16:31.796Z",
   "settings": {
-    "lastUpdatedLabel": "Aug 1, 2026 · 9:57 AM PT / 12:57 PM ET",
+    "lastUpdatedLabel": "Aug 1, 2026 · 11:16 AM PT / 2:16 PM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
     "trackingWeekend": "Jul 31-Aug 2",
@@ -88,7 +88,13 @@
       "pillSubtext": "7/24-7/26",
       "pillColor": "#3FE08A",
       "breakingColor": "#F0473D",
-      "durationSeconds": 38
+      "durationSeconds": 38,
+      "elements": [
+        {
+          "id": "top10-core",
+          "type": "top10"
+        }
+      ]
     },
     "bluesky": {
       "enabled": true,
@@ -97,7 +103,8 @@
         "scottmendelson.bsky.social",
         "giteshpandya.bsky.social",
         "boxofficepro.bsky.social",
-        "boxofficereport.bsky.social"
+        "boxofficereport.bsky.social",
+        "ercboxoffice.bsky.social"
       ],
       "perAccountLimit": 6,
       "maxPosts": 20,
@@ -256,7 +263,9 @@
       "analysis": "Friday is confirmed at $168M (including the $72M in previews), the all-time opening-day record, beating Endgame's $157.4M. Backing out previews, Brand New Day's pure Friday of ~$96M nearly matched Endgame's own pure Friday of $97.4M. Sony's official guidance has the 3-day weekend at $325M (still the second-best domestic opening ever), but rival trackers see it as high as $350-358M, which would beat Endgame's all-time record of $357.1M. The gap comes down to Sunday: if Saturday clears $105M, Brand New Day has a real shot at the record; most models see a $342M-ish path (flat $95M Saturday, -16% Sunday to $80M). CinemaScore A; RT 90% critic / 98% audience (Verified Hot), tying the MCU's best-ever audience score. PLF screens are running 24% of the weekend gross. Monday's official numbers will settle it.",
       "rulerLow": 250000000,
       "rulerHigh": 390000000,
-      "currentEstimate": null
+      "currentEstimate": null,
+      "estimateColorMode": "gradient",
+      "estimateColor": "#5C8FF0"
     },
     {
       "title": "The Odyssey",
@@ -271,28 +280,12 @@
       "analysis": "Friday landed at $14.5M as Brand New Day takes over, its steepest single-day drop of the run, which was expected as the IMAX exclusivity handoff took effect. Deadline now has the third weekend settling around $51-52M, a -43% frame that's still Nolan's best third-weekend result since The Dark Knight's $42.6M. That puts domestic around $395M-$400M by Sunday night and roughly $707M worldwide. Holding up well relative to comparable prestige tentpoles given the direct competition.",
       "rulerLow": 20000000,
       "rulerHigh": 80000000,
-      "currentEstimate": null
+      "currentEstimate": null,
+      "estimateColorMode": "gradient",
+      "estimateColor": "#5C8FF0"
     }
   ],
   "releases": [
-    {
-      "date": "Jul 31",
-      "title": "I Want Your Sex",
-      "distributor": "Magnolia Pictures",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=kjkTmTmC1iA",
-      "assetPublished": null
-    },
-    {
-      "date": "Jul 31",
-      "title": "Nightborn",
-      "distributor": "Shudder",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=pvx1TCbiRLQ",
-      "assetPublished": null
-    },
     {
       "date": "Aug 7",
       "title": "One Night Only",
@@ -1270,6 +1263,18 @@
       "amountLabel": "$123.5M",
       "subLabel": "FINAL 3-DAY · Jul 17-19",
       "tagLabel": "PREVIOUS"
+    }
+  },
+  "partnerships": {
+    "header": {
+      "enabled": false,
+      "leadText": "Made possible thanks to",
+      "logoDataUrl": null,
+      "logoName": "",
+      "logoColor": "#8A968F",
+      "logoWidth": 96,
+      "logoHeight": 24,
+      "linkUrl": ""
     }
   }
 }
