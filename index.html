@@ -89,7 +89,7 @@ let BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 
 let BOFFO_SETTINGS = {
   lastWeekendRange: 'Jul 24-26', weekendHeadingPrefix: 'Weekend of', trackingIntro: 'Tracking for the upcoming weekend',
   footerSourceNote: 'The Numbers, Box Office Mojo, Box Office Pro, Deadline, Variety, Screen International, FanBolt',
-  footerVersion: 'Boffo v0.5.7'
+  footerVersion: 'Boffo v0.5.8'
 };
 let HERO_CONFIG = {
   latest: { mode: 'auto' },
@@ -1056,17 +1056,6 @@ return arr;
 }, [sortKey, sortDir, top10]);
 const sumGross = useMemo(function () { return top10.reduce(function (a, m) { return a + m.gross; }, 0); }, [top10]);
 
-const leadingProjection = useMemo(function () {
-if (!tracking || tracking.length === 0) return null;
-let best = null;
-let bestVal = -1;
-tracking.forEach(function (t) {
-if (t.actual === null || t.actual === undefined) return;
-if (t.actual > bestVal) { bestVal = t.actual; best = t; }
-});
-if (!best) return null;
-return { item: best, value: bestVal };
-}, [tracking]);
 const wrap = { background: C.bg, color: C.text, fontFamily: "'JetBrains Mono', monospace", width: '100%', boxSizing: 'border-box' };
 const sectionPad = { padding: isMobile ? '18px 14px' : '26px 30px' };
 const tabs = [
@@ -1074,18 +1063,35 @@ const tabs = [
 { id: 'tracking', label: 'Projections', icon: 'radar' },
 { id: 'calendar', label: 'Release Calendar', icon: 'calendar_today' }
 ];
+function heroDataFromSnapshot(leader, fallbackTag) {
+if (!leader || !leader.title) return null;
+const projected = leader.status === 'projected' || leader.source === 'projection';
+return {
+title: leader.title,
+distributor: leader.distributor || '',
+theaters: leader.theaters || 0,
+extra: leader.extra || (leader.avg ? fmtFull(leader.avg) + ' avg' : (projected ? 'Current estimate' : null)),
+amountLabel: leader.amountLabel || (leader.gross ? (projected ? '~' : '') + fmtMoney(leader.gross) : null),
+subLabel: leader.subLabel || ((projected ? 'PROJECTED U.S. 3-DAY' : 'FINAL 3-DAY') + ' · ' + (leader.range || '')),
+tagLabel: leader.tagLabel || fallbackTag
+};
+}
 function resolveLatestHero() {
 const cfg = HERO_CONFIG.latest || {};
 if (cfg.mode === 'manual') return cfg;
-if (leadingProjection) return { title: leadingProjection.item.title, distributor: leadingProjection.item.distributor, theaters: leadingProjection.item.theaters, extra: null, amountLabel: '~' + fmtMoney(leadingProjection.value), subLabel: 'PROJECTED 3-DAY \u00B7 ' + TRACKING_WEEKEND, tagLabel: cfg.tagLabel || 'LATEST' };
+const promoted = heroDataFromSnapshot(HISTORY_CONFIG.promotedLeader, cfg.tagLabel || 'LATEST');
+if (promoted) return promoted;
+const crowned = heroDataFromSnapshot(HISTORY_CONFIG.currentLeader, cfg.tagLabel || 'LATEST');
+if (crowned) return crowned;
 const leader = top10[0] || {};
-return { title: leader.title || cfg.title, distributor: leader.distributor || cfg.distributor, theaters: leader.theaters || cfg.theaters || 0, extra: leader.avg ? fmtFull(leader.avg) + ' avg' : cfg.extra, amountLabel: leader.gross ? fmtMoney(leader.gross) : cfg.amountLabel, subLabel: (TOP10_IS_FINAL ? 'FINAL 3-DAY' : 'WKD ESTIMATE') + ' \u00B7 ' + BOFFO_SETTINGS.lastWeekendRange, tagLabel: cfg.tagLabel || 'LATEST' };
+return { title: leader.title || cfg.title, distributor: leader.distributor || cfg.distributor, theaters: leader.theaters || cfg.theaters || 0, extra: leader.avg ? fmtFull(leader.avg) + ' avg' : cfg.extra, amountLabel: leader.gross ? fmtMoney(leader.gross) : cfg.amountLabel, subLabel: (TOP10_IS_FINAL ? 'FINAL 3-DAY' : 'WKD ESTIMATE') + ' · ' + BOFFO_SETTINGS.lastWeekendRange, tagLabel: cfg.tagLabel || 'LATEST' };
 }
 function resolvePreviousHero() {
 const cfg = HERO_CONFIG.previous || {};
-if (cfg.mode === 'autoTop10') { const leader = top10[0] || {}; return { title: leader.title, distributor: leader.distributor, theaters: leader.theaters, extra: leader.avg ? fmtFull(leader.avg) + ' avg' : null, amountLabel: leader.gross ? fmtMoney(leader.gross) : null, subLabel: 'FINAL 3-DAY \u00B7 ' + BOFFO_SETTINGS.lastWeekendRange, tagLabel: cfg.tagLabel || 'PREVIOUS' }; }
-if (cfg.mode === 'auto') { const leader = HISTORY_CONFIG.previousLeader || {}; if (leader.title) return { title: leader.title, distributor: leader.distributor, theaters: leader.theaters || 0, extra: leader.extra || (leader.avg ? fmtFull(leader.avg) + ' avg' : null), amountLabel: leader.amountLabel || (leader.gross ? fmtMoney(leader.gross) : null), subLabel: leader.subLabel || ('FINAL 3-DAY \u00B7 ' + (leader.range || '')), tagLabel: leader.tagLabel || cfg.tagLabel || 'PREVIOUS' }; }
-return cfg;
+if (cfg.mode === 'manual') return cfg;
+if (cfg.mode === 'autoTop10') { const leader = top10[0] || {}; return { title: leader.title, distributor: leader.distributor, theaters: leader.theaters, extra: leader.avg ? fmtFull(leader.avg) + ' avg' : null, amountLabel: leader.gross ? fmtMoney(leader.gross) : null, subLabel: 'FINAL 3-DAY · ' + BOFFO_SETTINGS.lastWeekendRange, tagLabel: cfg.tagLabel || 'PREVIOUS' }; }
+const source = HISTORY_CONFIG.promotedLeader && HISTORY_CONFIG.promotedLeader.title ? HISTORY_CONFIG.currentLeader : HISTORY_CONFIG.previousLeader;
+return heroDataFromSnapshot(source, cfg.tagLabel || 'PREVIOUS') || cfg;
 }
 const liveData = resolveLatestHero();
 const finalData = resolvePreviousHero();
@@ -1281,8 +1287,8 @@ e('div', { style: { position: 'absolute', left: hiPct + '%', top: 11, width: 1, 
 estimatePct !== null ? e('div', { style: { position: 'absolute', left: estimatePct + '%', top: 5, width: 2, height: 28, background: estimateScaleColor, boxShadow: '0 0 0 1px rgba(10,14,12,0.55)' } }) : null,
 e('div', { style: { position: 'absolute', left: loPct + '%', top: 0, fontSize: 9.5, color: C.textMute, fontVariantNumeric: 'tabular-nums', transform: 'translateX(0%)' } }, fmtMoney(lo)),
 e('div', { style: { position: 'absolute', left: hiPct + '%', top: 0, fontSize: 9.5, color: C.textMute, fontVariantNumeric: 'tabular-nums', transform: 'translateX(-100%)' } }, fmtMoney(hi)),
-e('div', { style: { position: 'absolute', left: 0, top: 34, fontSize: 9, color: C.textFaint, fontVariantNumeric: 'tabular-nums' } }, fmtMoney(rulerLo) + ' comp low'),
-e('div', { style: { position: 'absolute', right: 0, top: 34, fontSize: 9, color: C.textFaint, fontVariantNumeric: 'tabular-nums', textAlign: 'right' } }, fmtMoney(rulerHi) + ' comp high')
+e('div', { style: { position: 'absolute', left: 0, top: 34, fontSize: 9, color: C.textFaint, fontVariantNumeric: 'tabular-nums' } }, fmtMoney(rulerLo)),
+e('div', { style: { position: 'absolute', right: 0, top: 34, fontSize: 9, color: C.textFaint, fontVariantNumeric: 'tabular-nums', textAlign: 'right' } }, fmtMoney(rulerHi))
 ),
 e('div', { style: { fontSize: 12, color: C.textMute, lineHeight: 1.6, marginTop: 14 } }, t.note)
 );
@@ -1391,6 +1397,10 @@ BLUESKY_ACCOUNTS = TICKER_CONFIG.bluesky.accounts || BLUESKY_ACCOUNTS;
 if (Array.isArray(data.top10) && data.top10.length) TOP10_INIT = data.top10;
 if (Array.isArray(data.projections)) TRACKING_INIT = data.projections.map(normalizeProjectionRecord);
 if (Array.isArray(data.releases)) RELEASES = data.releases;
+const rankedLeaders = TOP10_INIT.slice().sort(function (a, b) { return (Number(a.rank) || 999) - (Number(b.rank) || 999); });
+const fallbackLeader = rankedLeaders[0] || {};
+if (!HISTORY_CONFIG.currentLeader || !HISTORY_CONFIG.currentLeader.title) HISTORY_CONFIG.currentLeader = { title: fallbackLeader.title || '', distributor: fallbackLeader.distributor || '', theaters: Number(fallbackLeader.theaters) || 0, avg: fallbackLeader.avg ?? null, gross: fallbackLeader.gross ?? null, range: BOFFO_SETTINGS.lastWeekendRange || '', source: 'weekend', status: TOP10_IS_FINAL ? 'final' : 'estimate' };
+if ((!HISTORY_CONFIG.previousLeader || !HISTORY_CONFIG.previousLeader.title) && HERO_CONFIG.previous) HISTORY_CONFIG.previousLeader = Object.assign({ source: 'weekend', status: 'final' }, HERO_CONFIG.previous);
 }
 function isCompleteBoffoData(data) {
 return !!(data && typeof data === 'object' && data.settings && Array.isArray(data.top10) && Array.isArray(data.projections) && Array.isArray(data.releases));
