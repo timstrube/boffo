@@ -89,7 +89,7 @@ let BLUESKY_ACCOUNTS = ['thenumbers.bsky.social', 'scottmendelson.bsky.social', 
 let BOFFO_SETTINGS = {
   lastWeekendRange: 'Jul 24-26', weekendHeadingPrefix: 'Weekend of', trackingIntro: 'Tracking for the upcoming weekend',
   footerSourceNote: 'The Numbers, Box Office Mojo, Box Office Pro, Deadline, Variety, Screen International, FanBolt',
-  footerVersion: 'Boffo v0.5.8'
+  footerVersion: 'Boffo v0.5.9'
 };
 let HERO_CONFIG = {
   latest: { mode: 'auto' },
@@ -97,7 +97,7 @@ let HERO_CONFIG = {
 };
 let HISTORY_CONFIG = { currentWeekendRange: BOFFO_SETTINGS.lastWeekendRange, currentLeader: null, previousLeader: null };
 let TICKER_CONFIG = {
-  top10: { enabled: true, breakingMode: false, pillText: 'WKND ACTUALS', pillSubtext: '7/24-7/26', pillColor: '#3FE08A', breakingColor: '#F0473D', durationSeconds: 38 },
+  top10: { enabled: true, breakingMode: false, pillText: 'WKND ACTUALS', pillSubtext: '7/24-7/26', pillColor: '#3FE08A', pillTextColor: '#0A0E0C', breakingColor: '#F0473D', durationSeconds: 38 },
   bluesky: { enabled: true, accounts: BLUESKY_ACCOUNTS, perAccountLimit: 6, maxPosts: 20, postsNoReplies: true, preserveLinks: true, blockedWords: ['fuck','shit','nsfw'] }
 };
 let PARTNERSHIP_CONFIG = { header: { enabled: false, leadText: 'Made possible thanks to', logoDataUrl: null, logoName: '', logoColor: '#8A968F', logoWidth: 96, logoHeight: 24, linkUrl: '' } };
@@ -592,11 +592,11 @@ const cfg = TICKER_CONFIG.top10 || {};
 if (cfg.enabled === false || !items || !items.length) return null;
 const elements = normalizeTopTickerElements(cfg);
 const pillColor = cfg.breakingMode ? (cfg.breakingColor || C.red) : (cfg.pillColor || C.green);
-const pillTextColor = '#0A0E0C';
+const pillTextColor = validHexColor(cfg.pillTextColor) ? cfg.pillTextColor : '#0A0E0C';
 const renderCoreTag = function (key) { return e('span', { key: key, style: { display: 'inline-flex', alignItems: 'center', gap: 8, padding: '0 18px' } },
-e('span', { style: { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minHeight: 20, background: pillColor, padding: '3px 9px', borderRadius: 3, lineHeight: 1 } },
-e('span', { style: { display: 'inline-flex', alignItems: 'center', lineHeight: 1, color: pillTextColor, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, (cfg.pillText || 'WKND ACTUALS') + ' '),
-e('span', { style: { display: 'inline-flex', alignItems: 'center', lineHeight: 1, color: 'rgba(10,14,12,0.62)', fontSize: 10.5, fontWeight: 700, letterSpacing: 0.4 } }, cfg.pillSubtext || '')
+e('span', { style: { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minHeight: 20, gap: 5, background: pillColor, padding: '3px 9px', borderRadius: 3, lineHeight: 1 } },
+e('span', { style: { display: 'inline-flex', alignItems: 'center', lineHeight: 1, color: pillTextColor, fontSize: 10.5, fontWeight: 800, letterSpacing: 0.6 } }, cfg.pillText || 'WKND ACTUALS'),
+e('span', { style: { display: 'inline-flex', alignItems: 'center', lineHeight: 1, color: pillTextColor, opacity: 0.62, fontSize: 10.5, fontWeight: 700, letterSpacing: 0.4 } }, cfg.pillSubtext || '')
 )); };
 const renderItem = function (m, key) {
 return e('span', { key: key, style: { display: 'inline-flex', alignItems: 'center', gap: 6, padding: '0 18px' } },
@@ -913,9 +913,9 @@ if (!rows.length) return null;
 const currentRow = rows.find(function (r) { return r.key === 'current'; }) || rows[0];
 const max = Math.max.apply(null, rows.map(function (r) { return Number(r.value) || 0; })) * 1.05 || 1;
 return e('div', { style: { marginTop: 26, paddingTop: 20, borderTop: '1px solid ' + C.border } },
-e('div', { style: { display: 'flex', justifyContent: 'space-between', gap: 10, alignItems: 'baseline', marginBottom: 14, flexWrap: 'wrap' } },
-e('div', null, e('div', { style: { fontSize: 11, color: C.textMute, letterSpacing: 0.3, textTransform: 'uppercase' } }, cfg.title || 'Weekend market pulse'), e('div', { style: { fontSize: 9.5, color: C.textFaint, marginTop: 3 } }, cfg.subtitle || 'Overall domestic gross')),
-e('div', { style: { fontSize: 9, color: C.textFaint } }, (cfg.source || '') + (cfg.asOf ? ' \u00B7 as of ' + cfg.asOf : ''))
+e('div', { style: { marginBottom: 14 } },
+e('div', { style: { fontSize: 11, color: C.textMute, letterSpacing: 0.3, textTransform: 'uppercase' } }, cfg.title || 'Weekend market pulse'),
+e('div', { style: { fontSize: 9.5, color: C.textFaint, marginTop: 3 } }, cfg.subtitle || 'Overall domestic gross')
 ),
 rows.map(function (r) { const delta = r.key === currentRow.key ? null : Math.round(((Number(currentRow.value)||0) - (Number(r.value)||0)) / (Number(r.value)||1) * 100); return e('div', { key: r.key || r.label, style: { marginBottom: 11 } },
 e('div', { style: { display: 'flex', justifyContent: 'space-between', gap: 10, alignItems: 'baseline', marginBottom: 4 } },
@@ -1081,17 +1081,14 @@ const cfg = HERO_CONFIG.latest || {};
 if (cfg.mode === 'manual') return cfg;
 const promoted = heroDataFromSnapshot(HISTORY_CONFIG.promotedLeader, cfg.tagLabel || 'LATEST');
 if (promoted) return promoted;
-const crowned = heroDataFromSnapshot(HISTORY_CONFIG.currentLeader, cfg.tagLabel || 'LATEST');
-if (crowned) return crowned;
-const leader = top10[0] || {};
-return { title: leader.title || cfg.title, distributor: leader.distributor || cfg.distributor, theaters: leader.theaters || cfg.theaters || 0, extra: leader.avg ? fmtFull(leader.avg) + ' avg' : cfg.extra, amountLabel: leader.gross ? fmtMoney(leader.gross) : cfg.amountLabel, subLabel: (TOP10_IS_FINAL ? 'FINAL 3-DAY' : 'WKD ESTIMATE') + ' · ' + BOFFO_SETTINGS.lastWeekendRange, tagLabel: cfg.tagLabel || 'LATEST' };
+const leader = (top10 || []).slice().sort(function (a, b) { return (Number(a.rank) || 999) - (Number(b.rank) || 999); })[0] || {};
+return { title: leader.title || cfg.title, distributor: leader.distributor || cfg.distributor, theaters: leader.theaters || cfg.theaters || 0, extra: leader.avg ? fmtFull(leader.avg) + ' avg' : cfg.extra, amountLabel: leader.gross ? fmtMoney(leader.gross) : cfg.amountLabel, subLabel: (TOP10_IS_FINAL ? 'FINAL 3-DAY' : 'WKND ESTIMATE') + ' · ' + BOFFO_SETTINGS.lastWeekendRange, tagLabel: cfg.tagLabel || 'LATEST' };
 }
 function resolvePreviousHero() {
 const cfg = HERO_CONFIG.previous || {};
 if (cfg.mode === 'manual') return cfg;
-if (cfg.mode === 'autoTop10') { const leader = top10[0] || {}; return { title: leader.title, distributor: leader.distributor, theaters: leader.theaters, extra: leader.avg ? fmtFull(leader.avg) + ' avg' : null, amountLabel: leader.gross ? fmtMoney(leader.gross) : null, subLabel: 'FINAL 3-DAY · ' + BOFFO_SETTINGS.lastWeekendRange, tagLabel: cfg.tagLabel || 'PREVIOUS' }; }
-const source = HISTORY_CONFIG.promotedLeader && HISTORY_CONFIG.promotedLeader.title ? HISTORY_CONFIG.currentLeader : HISTORY_CONFIG.previousLeader;
-return heroDataFromSnapshot(source, cfg.tagLabel || 'PREVIOUS') || cfg;
+if (cfg.mode === 'autoTop10') { const leader = top10[0] || {}; return { title: leader.title, distributor: leader.distributor, theaters: leader.theaters, extra: leader.avg ? fmtFull(leader.avg) + ' avg' : null, amountLabel: leader.gross ? fmtMoney(leader.gross) : null, subLabel: (TOP10_IS_FINAL ? 'FINAL 3-DAY' : 'WKND ESTIMATE') + ' · ' + BOFFO_SETTINGS.lastWeekendRange, tagLabel: cfg.tagLabel || 'PREVIOUS' }; }
+return heroDataFromSnapshot(HISTORY_CONFIG.previousLeader, cfg.tagLabel || 'PREVIOUS') || cfg;
 }
 const liveData = resolveLatestHero();
 const finalData = resolvePreviousHero();
@@ -1285,8 +1282,8 @@ e('div', { style: { position: 'absolute', left: loPct + '%', width: Math.max(hiP
 e('div', { style: { position: 'absolute', left: loPct + '%', top: 11, width: 1, height: 18, background: C.textFaint } }),
 e('div', { style: { position: 'absolute', left: hiPct + '%', top: 11, width: 1, height: 18, background: C.textFaint } }),
 estimatePct !== null ? e('div', { style: { position: 'absolute', left: estimatePct + '%', top: 5, width: 2, height: 28, background: estimateScaleColor, boxShadow: '0 0 0 1px rgba(10,14,12,0.55)' } }) : null,
-e('div', { style: { position: 'absolute', left: loPct + '%', top: 0, fontSize: 9.5, color: C.textMute, fontVariantNumeric: 'tabular-nums', transform: 'translateX(0%)' } }, fmtMoney(lo)),
-e('div', { style: { position: 'absolute', left: hiPct + '%', top: 0, fontSize: 9.5, color: C.textMute, fontVariantNumeric: 'tabular-nums', transform: 'translateX(-100%)' } }, fmtMoney(hi)),
+e('div', { style: { position: 'absolute', left: loPct + '%', top: 0, fontSize: 9.5, color: C.textMute, fontVariantNumeric: 'tabular-nums', transform: 'translateX(-50%)', whiteSpace: 'nowrap' } }, fmtMoney(lo)),
+e('div', { style: { position: 'absolute', left: hiPct + '%', top: 0, fontSize: 9.5, color: C.textMute, fontVariantNumeric: 'tabular-nums', transform: 'translateX(-50%)', whiteSpace: 'nowrap' } }, fmtMoney(hi)),
 e('div', { style: { position: 'absolute', left: 0, top: 34, fontSize: 9, color: C.textFaint, fontVariantNumeric: 'tabular-nums' } }, fmtMoney(rulerLo)),
 e('div', { style: { position: 'absolute', right: 0, top: 34, fontSize: 9, color: C.textFaint, fontVariantNumeric: 'tabular-nums', textAlign: 'right' } }, fmtMoney(rulerHi))
 ),
