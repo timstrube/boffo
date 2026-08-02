@@ -1,12 +1,12 @@
 {
   "version": "5.3",
-  "updatedAt": "2026-08-01T21:15:51.317Z",
+  "updatedAt": "2026-08-02T20:22:14.330Z",
   "settings": {
-    "lastUpdatedLabel": "Aug 1, 2026 · 2:15 PM PT / 5:15 PM ET",
+    "lastUpdatedLabel": "Aug 2, 2026 · 1:22 PM PT / 4:22 PM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
-    "trackingWeekend": "Jul 31-Aug 2",
-    "top10IsFinal": true,
+    "trackingWeekend": "Aug 7-9",
+    "top10IsFinal": false,
     "footerSourceNote": "The Numbers, Box Office Mojo, Box Office Pro, Deadline, Variety, Screen International, FanBolt",
     "footerVersion": "Boffo v0.5",
     "editorialNote": "",
@@ -14,23 +14,23 @@
   },
   "hero": {
     "latest": {
-      "mode": "auto",
+      "mode": "manual",
+      "title": "Spider-Man: Brand New Day",
+      "distributor": "Sony Pictures",
+      "theaters": 4487,
+      "extra": "$79,117 avg",
+      "amountLabel": "$355.0M",
+      "subLabel": "LATEST WKD ESTIMATE · Jul 31-Aug 2",
+      "tagLabel": "LATEST"
+    },
+    "previous": {
+      "mode": "manual",
       "title": "The Odyssey",
       "distributor": "Universal",
       "theaters": 3942,
       "extra": "$22,837 avg",
       "amountLabel": "$90.0M",
       "subLabel": "FINAL 3-DAY · Jul 24-26",
-      "tagLabel": "LATEST"
-    },
-    "previous": {
-      "mode": "auto",
-      "title": "The Odyssey",
-      "distributor": "Universal",
-      "theaters": 3919,
-      "extra": "$31,514 avg",
-      "amountLabel": "$123.5M",
-      "subLabel": "FINAL 3-DAY · Jul 17-19",
       "tagLabel": "PREVIOUS"
     }
   },
@@ -42,40 +42,40 @@
     "thisYear": 145957596,
     "lastYear": 122000000,
     "tenYearAvg": 105000000,
-    "note": "Spider-Man: Brand New Day's Friday is confirmed at $168M — the all-time opening-day record, beating Endgame's $157.4M. Sony's own guidance has the 3-day weekend at $325M (second-best domestic opening ever), but rival estimates run as high as $350-358M, which would top Endgame's all-time record of $357.1M; it comes down to Sunday. The Odyssey absorbed its steepest single-day drop of the run as the IMAX handoff took effect, but is still tracking to a $51-52M third weekend — Nolan's best third-weekend result since The Dark Knight — pushing domestic to roughly $395M-$400M. Toy Story 5 crossed $1.025B globally."
+    "note": "Spider-Man: Brand New Day's Sunday estimate landed at $355M, which would make it the second-biggest domestic opening ever, about ~$2M shy of Avengers: Endgame's all-time record of $357.1M. Global opening hit $927M ($572M international, including $121M from China), also the second-best global debut ever behind Endgame's $1.2B. The Odyssey slid to #2 with a $51M third weekend (-43%), pushing it to $395.5M domestic and roughly $800M worldwide. The combined weekend lifted the overall marketplace to an estimated $434M, an all-time record, up 262% from the same frame last year. If you listen closely, you can hear \"We are so back!\" echoing through the hills of Hollywood."
   },
   "marketPulse": {
     "title": "Weekend Market Pulse",
     "subtitle": "Overall Domestic Gross",
     "source": "Box Office Mojo",
-    "asOf": "Jul 29, 2026",
+    "asOf": "Aug 2, 2026",
     "rows": [
       {
         "key": "current",
         "label": "Latest Weekend",
-        "sub": "Jul 24-26, 2026",
-        "value": 146570303,
+        "sub": "Jul 31-Aug 2, 2026",
+        "value": 434000000,
         "color": "#3FE08A"
       },
       {
         "key": "previous",
         "label": "Previous Weekend",
-        "sub": "Jul 17-19, 2026",
-        "value": 188271704,
+        "sub": "Jul 24-26, 2026",
+        "value": 146570303,
         "color": "#8A968F"
       },
       {
         "key": "lastYear",
         "label": "Same Weekend Last Year",
-        "sub": "Weekend 30, 2025",
-        "value": 185393168,
+        "sub": "Weekend 31, 2025",
+        "value": 119907058,
         "color": "#E0479E"
       },
       {
         "key": "tenYearAvg",
-        "label": "10-year Average",
-        "sub": "Weekend 30, 2016-2025",
-        "value": 151296400,
+        "label": "10-Year Average",
+        "sub": "Weekend 31, 2016-2025",
+        "value": 124025057,
         "color": "#F0A833"
       }
     ]
@@ -83,9 +83,9 @@
   "tickers": {
     "top10": {
       "enabled": true,
-      "breakingMode": false,
-      "pillText": "WKND ACTUALS",
-      "pillSubtext": "7/24-7/26",
+      "breakingMode": true,
+      "pillText": "BREAKING: WKD ESTIMATES",
+      "pillSubtext": "7/31-8/2",
       "pillColor": "#3FE08A",
       "breakingColor": "#F0473D",
       "durationSeconds": 38,
@@ -120,132 +120,132 @@
   "top10": [
     {
       "rank": 1,
-      "prev": 1,
-      "weekendNum": 2,
-      "title": "The Odyssey",
-      "gross": 90022510,
-      "change": -27,
-      "theaters": 3942,
-      "avg": 22837,
-      "total": 304100000,
-      "global": 666700000,
-      "distributor": "Universal"
+      "prev": null,
+      "weekendNum": 1,
+      "title": "Spider-Man: Brand New Day",
+      "gross": 355000000,
+      "change": null,
+      "theaters": 4487,
+      "avg": 79117,
+      "total": 355000000,
+      "global": 927000000,
+      "distributor": "Sony Pictures"
     },
     {
       "rank": 2,
-      "prev": 2,
+      "prev": 1,
       "weekendNum": 3,
-      "title": "Moana",
-      "gross": 10640247,
-      "change": -41,
-      "theaters": 4015,
-      "avg": 2650,
-      "total": 104000000,
-      "global": 230970000,
-      "distributor": "Walt Disney"
+      "title": "The Odyssey",
+      "gross": 51000000,
+      "change": -43,
+      "theaters": 3861,
+      "avg": 13209,
+      "total": 395525000,
+      "global": 800000000,
+      "distributor": "Universal"
     },
     {
       "rank": 3,
-      "prev": null,
-      "weekendNum": 1,
+      "prev": 4,
+      "weekendNum": 7,
+      "title": "Toy Story 5",
+      "gross": 6300000,
+      "change": -38,
+      "theaters": 3035,
+      "avg": 2076,
+      "total": 461696126,
+      "global": 1050000000,
+      "distributor": "Walt Disney"
+    },
+    {
+      "rank": 4,
+      "prev": 5,
+      "weekendNum": 5,
+      "title": "Minions & Monsters",
+      "gross": 5800000,
+      "change": -41,
+      "theaters": 3023,
+      "avg": 1919,
+      "total": 168355000,
+      "global": 410000000,
+      "distributor": "Universal"
+    },
+    {
+      "rank": 5,
+      "prev": 2,
+      "weekendNum": 4,
+      "title": "Moana",
+      "gross": 5300000,
+      "change": -50,
+      "theaters": 3010,
+      "avg": 1761,
+      "total": 114783124,
+      "global": 241000000,
+      "distributor": "Walt Disney"
+    },
+    {
+      "rank": 6,
+      "prev": 3,
+      "weekendNum": 2,
       "title": "Hadestown: The Musical",
-      "gross": 10243319,
-      "change": null,
-      "theaters": 1949,
-      "avg": 5256,
-      "total": 10243319,
+      "gross": 2001239,
+      "change": -80,
+      "theaters": 1567,
+      "avg": 1277,
+      "total": 18202949,
       "global": null,
       "distributor": "Bleecker Street"
     },
     {
-      "rank": 4,
-      "prev": 3,
-      "weekendNum": 6,
-      "title": "Toy Story 5",
-      "gross": 10161251,
-      "change": -26,
-      "theaters": 3375,
-      "avg": 3011,
-      "total": 448716909,
-      "global": 1025000000,
-      "distributor": "Walt Disney"
-    },
-    {
-      "rank": 5,
-      "prev": 4,
-      "weekendNum": 4,
-      "title": "Minions & Monsters",
-      "gross": 9754525,
-      "change": -28,
-      "theaters": 3386,
-      "avg": 2881,
-      "total": 155542875,
-      "global": 400000000,
-      "distributor": "Universal"
-    },
-    {
-      "rank": 6,
-      "prev": 5,
-      "weekendNum": 3,
-      "title": "Evil Dead Burn",
-      "gross": 2802188,
-      "change": -41,
-      "theaters": 2385,
-      "avg": 1175,
-      "total": 29376642,
-      "global": 55000000,
-      "distributor": "Warner Bros."
-    },
-    {
       "rank": 7,
       "prev": 7,
-      "weekendNum": 5,
+      "weekendNum": 6,
       "title": "The Invite",
-      "gross": 2636269,
-      "change": -25,
-      "theaters": 2032,
-      "avg": 1297,
-      "total": 19815154,
+      "gross": 1244343,
+      "change": -53,
+      "theaters": 792,
+      "avg": 1571,
+      "total": 22776275,
       "global": null,
       "distributor": "A24"
     },
     {
       "rank": 8,
-      "prev": 6,
-      "weekendNum": 4,
+      "prev": null,
+      "weekendNum": 1,
+      "title": "I Want Your Sex",
+      "gross": 600000,
+      "change": null,
+      "theaters": 700,
+      "avg": 857,
+      "total": 600000,
+      "global": null,
+      "distributor": "Magnolia Pictures"
+    },
+    {
+      "rank": 9,
+      "prev": 8,
+      "weekendNum": 5,
       "title": "Young Washington",
-      "gross": 1904706,
-      "change": -47,
-      "theaters": 2029,
-      "avg": 939,
-      "total": 44875964,
+      "gross": 477727,
+      "change": -75,
+      "theaters": 623,
+      "avg": 767,
+      "total": 46417517,
       "global": null,
       "distributor": "Angel Studios"
     },
     {
-      "rank": 9,
-      "prev": null,
-      "weekendNum": 1,
-      "title": "Motor City",
-      "gross": 1693905,
-      "change": null,
-      "theaters": 1600,
-      "avg": 1059,
-      "total": 1693905,
-      "global": null,
-      "distributor": "IFC Films"
-    },
-    {
       "rank": 10,
-      "prev": 8,
-      "weekendNum": 10,
+      "prev": 10,
+      "weekendNum": 11,
       "title": "Obsession",
-      "gross": 1547465,
-      "change": -35,
-      "theaters": 1203,
-      "avg": 1286,
-      "total": 261411700,
-      "global": 403000000,
+      "gross": 470000,
+      "change": -70,
+      "theaters": 430,
+      "avg": 1093,
+      "total": 262775000,
+      "global": 404500000,
       "distributor": "Focus Features"
     }
   ],
@@ -254,38 +254,73 @@
       "title": "Spider-Man: Brand New Day",
       "distributor": "Sony Pictures",
       "theaters": 4487,
-      "confidence": "high",
-      "momentum": "rising",
+      "confidence": "medium",
+      "momentum": "stable",
       "rtCritic": 90,
       "metacritic": 70,
-      "rangeLow": 325000000,
-      "rangeHigh": 358000000,
-      "analysis": "Friday is confirmed at $168M (including the $72M in previews), the all-time opening-day record, beating Endgame's $157.4M. Backing out previews, Brand New Day's pure Friday of ~$96M nearly matched Endgame's own pure Friday of $97.4M. Sony's official guidance has the 3-day weekend at $325M (still the second-best domestic opening ever), but rival trackers see it as high as $350-358M, which would beat Endgame's all-time record of $357.1M. The gap comes down to Sunday: if Saturday clears $105M, Brand New Day has a real shot at the record; most models see a $342M-ish path (flat $95M Saturday, -16% Sunday to $80M). CinemaScore A; RT 90% critic / 98% audience (Verified Hot), tying the MCU's best-ever audience score. PLF screens are running 24% of the weekend gross. Monday's official numbers will settle it.",
-      "rulerLow": 250000000,
-      "rulerHigh": 390000000,
+      "rangeLow": 120000000,
+      "rangeHigh": 145000000,
+      "analysis": "Following its estimated $355M opening (second-biggest ever, about ~$2M off Endgame's all-time record), Brand New Day should comfortably lead again with no major new competition beyond two modest wide openers. This is an early modeled range, not yet backed by second-weekend-specific tracking: comparable MCU 'event' openers dropped 59% (Endgame, to $147.4M) to roughly 67% (No Way Home, to ~$85.5M) in weekend two. A similar 60-65% pullback puts Brand New Day around $125M-$140M, which would still be one of the biggest second weekends ever and keep it on a path toward $1B-plus worldwide. Expect sharper numbers once Thursday tracking firms up.",
+      "rulerLow": 80000000,
+      "rulerHigh": 200000000,
       "currentEstimate": null,
       "estimateColorMode": "gradient",
       "estimateColor": "#5C8FF0"
     },
     {
-      "title": "The Odyssey",
+      "title": "One Night Only",
       "distributor": "Universal",
-      "theaters": 3800,
-      "confidence": "high",
-      "momentum": "stable",
-      "rtCritic": 98,
-      "metacritic": 88,
-      "rangeLow": 48000000,
-      "rangeHigh": 53000000,
-      "analysis": "Friday landed at $14.5M as Brand New Day takes over, its steepest single-day drop of the run, which was expected as the IMAX exclusivity handoff took effect. Deadline now has the third weekend settling around $51-52M, a -43% frame that's still Nolan's best third-weekend result since The Dark Knight's $42.6M. That puts domestic around $395M-$400M by Sunday night and roughly $707M worldwide. Holding up well relative to comparable prestige tentpoles given the direct competition.",
-      "rulerLow": 45000000,
-      "rulerHigh": 55000000,
-      "currentEstimate": 51500000,
+      "theaters": 3000,
+      "confidence": "low",
+      "momentum": "rising",
+      "rtCritic": null,
+      "metacritic": null,
+      "rangeLow": 8000000,
+      "rangeHigh": 12000000,
+      "analysis": "Will Gluck's follow-up to Anyone But You (Monica Barbaro, Callum Turner) launches into roughly 3,000 theaters. Boxoffice Pro's long-range forecast has it opening between $8M-$12M, leaning on residual goodwill from Anyone But You's sleeper run to an $88.3M domestic total, though the rom-com ceiling has been modest lately (You, Me & Tuscany opened to $7.7M, The Roses to $6.2M). Landing in the shadow of Brand New Day's second weekend.",
+      "rulerLow": 5000000,
+      "rulerHigh": 15000000,
+      "currentEstimate": null,
+      "estimateColorMode": "gradient",
+      "estimateColor": "#5C8FF0"
+    },
+    {
+      "title": "Super Troopers 3",
+      "distributor": "Searchlight Pictures",
+      "theaters": 2700,
+      "confidence": "medium",
+      "momentum": "softening",
+      "rtCritic": null,
+      "metacritic": null,
+      "rangeLow": 6000000,
+      "rangeHigh": 10000000,
+      "analysis": "Broken Lizard's return after an eight-year gap opens in around 2,700 theaters. Boxoffice Pro isn't forecasting the upward trajectory Super Troopers 2 had ($15.1M open, $30.6M total); the comp they're citing is more Jackass: Best and Last ($8.4M open) than Scary Movie's recent $54.3M franchise-best. Also opening the same day: Mubi's limited-release Teenage Sex and Death at Camp Miasma and the new Eli Roth film Ice Cream Man (which is barely registering).",
+      "rulerLow": 3000000,
+      "rulerHigh": 16000000,
+      "currentEstimate": null,
       "estimateColorMode": "gradient",
       "estimateColor": "#5C8FF0"
     }
   ],
   "releases": [
+    {
+      "date": "Aug 7",
+      "title": "Cookie Queens",
+      "distributor": "Roadside Attractions",
+      "type": "Limited",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=i8VyUZLNoXE",
+      "assetPublished": null
+    },
+    {
+      "date": "Aug 7",
+      "title": "Ice Cream Man",
+      "distributor": "Iconic Events Releasing",
+      "type": "Limited",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=BjtVXWa3tWI",
+      "assetPublished": null
+    },
     {
       "date": "Aug 7",
       "title": "One Night Only",
@@ -323,21 +358,21 @@
       "assetPublished": "2026-05-06"
     },
     {
-      "date": "Aug 7",
-      "title": "Cookie Queens",
-      "distributor": "Roadside Attractions",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=i8VyUZLNoXE",
-      "assetPublished": null
-    },
-    {
       "date": "Aug 14",
       "title": "PAW Patrol: The Dino Movie",
       "distributor": "Paramount",
       "type": "Wide",
       "assetType": "Trailer",
       "trailerUrl": "https://www.youtube.com/watch?v=aHw4PuLCUIc",
+      "assetPublished": null
+    },
+    {
+      "date": "Aug 14",
+      "title": "SIX The Musical Live!",
+      "distributor": "Focus Features",
+      "type": "Limited",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=phU3eSBFOXA",
       "assetPublished": null
     },
     {
@@ -360,15 +395,6 @@
     },
     {
       "date": "Aug 14",
-      "title": "Union County",
-      "distributor": "Oscilloscope",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=uA6Fnr2VXkw",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 14",
       "title": "The Wrong Girls",
       "distributor": "Neon",
       "type": "Limited",
@@ -378,20 +404,20 @@
     },
     {
       "date": "Aug 14",
-      "title": "SIX The Musical Live!",
-      "distributor": "Focus Features",
+      "title": "Union County",
+      "distributor": "Oscilloscope",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=phU3eSBFOXA",
+      "trailerUrl": "https://www.youtube.com/watch?v=uA6Fnr2VXkw",
       "assetPublished": null
     },
     {
       "date": "Aug 21",
-      "title": "The Rivals of Amziah King",
-      "distributor": "Bleecker Street",
-      "type": "Wide",
+      "title": "Hot Spot",
+      "distributor": "Focus Features",
+      "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=GwSvAyaMGMo",
+      "trailerUrl": "https://www.youtube.com/watch?v=x54MPGBWXA8",
       "assetPublished": null
     },
     {
@@ -405,20 +431,20 @@
     },
     {
       "date": "Aug 21",
+      "title": "It Ends",
+      "distributor": "Neon",
+      "type": "Limited",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=zFszhQLMNXU",
+      "assetPublished": null
+    },
+    {
+      "date": "Aug 21",
       "title": "Mutiny",
       "distributor": "Lionsgate",
       "type": "Wide",
       "assetType": "Trailer",
       "trailerUrl": "https://www.youtube.com/watch?v=FKSdXH89jbo",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 21",
-      "title": "The Magic Faraway Tree",
-      "distributor": "Vertical Entertainment",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=npJuXZVbctw",
       "assetPublished": null
     },
     {
@@ -432,47 +458,20 @@
     },
     {
       "date": "Aug 21",
-      "title": "It Ends",
-      "distributor": "Neon",
+      "title": "The Magic Faraway Tree",
+      "distributor": "Vertical Entertainment",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=zFszhQLMNXU",
+      "trailerUrl": "https://www.youtube.com/watch?v=npJuXZVbctw",
       "assetPublished": null
     },
     {
       "date": "Aug 21",
-      "title": "Hot Spot",
-      "distributor": "Focus Features",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=x54MPGBWXA8",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 28",
-      "title": "Coyote vs. Acme",
-      "distributor": "Ketchup Entertainment",
+      "title": "The Rivals of Amziah King",
+      "distributor": "Bleecker Street",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=H-43VeYGiPM",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 28",
-      "title": "The Dog Stars",
-      "distributor": "Walt Disney",
-      "type": "Wide",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=cmzVY1goqwQ",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 28",
-      "title": "Cliffhanger",
-      "distributor": "Row K",
-      "type": "Limited",
-      "assetType": "TBD",
-      "trailerUrl": null,
+      "trailerUrl": "https://www.youtube.com/watch?v=GwSvAyaMGMo",
       "assetPublished": null
     },
     {
@@ -486,6 +485,15 @@
     },
     {
       "date": "Aug 28",
+      "title": "Cliffhanger",
+      "distributor": "Row K",
+      "type": "Limited",
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
+    },
+    {
+      "date": "Aug 28",
       "title": "Colony",
       "distributor": "Well Go USA",
       "type": "Limited",
@@ -495,20 +503,20 @@
     },
     {
       "date": "Aug 28",
+      "title": "Coyote vs. Acme",
+      "distributor": "Ketchup Entertainment",
+      "type": "Wide",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=H-43VeYGiPM",
+      "assetPublished": null
+    },
+    {
+      "date": "Aug 28",
       "title": "Finding Emily",
       "distributor": "Focus Features",
       "type": "Limited",
       "assetType": "Trailer",
       "trailerUrl": "https://www.youtube.com/watch?v=wc2UjmPzN8c",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 28",
-      "title": "The Sun Never Sets",
-      "distributor": "IFC Films",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=nTIfzXx8nJY",
       "assetPublished": null
     },
     {
@@ -530,6 +538,24 @@
       "assetPublished": null
     },
     {
+      "date": "Aug 28",
+      "title": "The Dog Stars",
+      "distributor": "Walt Disney",
+      "type": "Wide",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=cmzVY1goqwQ",
+      "assetPublished": null
+    },
+    {
+      "date": "Aug 28",
+      "title": "The Sun Never Sets",
+      "distributor": "IFC Films",
+      "type": "Limited",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=nTIfzXx8nJY",
+      "assetPublished": null
+    },
+    {
       "date": "Sep 4",
       "title": "By Any Means",
       "distributor": "Paramount",
@@ -540,20 +566,20 @@
     },
     {
       "date": "Sep 4",
-      "title": "Onslaught",
-      "distributor": "A24",
-      "type": "Wide",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=L24CYVpQ-LI",
-      "assetPublished": null
-    },
-    {
-      "date": "Sep 4",
       "title": "Dear You",
       "distributor": "Well Go USA",
       "type": "Limited",
       "assetType": "TBD",
       "trailerUrl": null,
+      "assetPublished": null
+    },
+    {
+      "date": "Sep 4",
+      "title": "Onslaught",
+      "distributor": "A24",
+      "type": "Wide",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=L24CYVpQ-LI",
       "assetPublished": null
     },
     {
@@ -567,20 +593,20 @@
     },
     {
       "date": "Sep 11",
-      "title": "The Uprising",
-      "distributor": "Focus Features",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=ZVkrhHebz1Q",
-      "assetPublished": null
-    },
-    {
-      "date": "Sep 11",
       "title": "Primetime",
       "distributor": "A24",
       "type": "Limited",
       "assetType": "Trailer",
       "trailerUrl": "https://www.youtube.com/watch?v=Yrfrf53ttYY",
+      "assetPublished": null
+    },
+    {
+      "date": "Sep 11",
+      "title": "The Uprising",
+      "distributor": "Focus Features",
+      "type": "Limited",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=ZVkrhHebz1Q",
       "assetPublished": null
     },
     {
@@ -603,6 +629,15 @@
     },
     {
       "date": "Sep 25",
+      "title": "Crawlers",
+      "distributor": "Roadside Attractions",
+      "type": "Limited",
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
+    },
+    {
+      "date": "Sep 25",
       "title": "Forgotten Island",
       "distributor": "Universal",
       "type": "Wide",
@@ -621,6 +656,15 @@
     },
     {
       "date": "Sep 25",
+      "title": "The Incomer",
+      "distributor": "Sumerian",
+      "type": "Limited",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=0gXMYWbppNM",
+      "assetPublished": null
+    },
+    {
+      "date": "Sep 25",
       "title": "Victorian Psycho",
       "distributor": "Bleecker Street",
       "type": "Limited",
@@ -629,21 +673,12 @@
       "assetPublished": null
     },
     {
-      "date": "Sep 25",
-      "title": "Crawlers",
-      "distributor": "Roadside Attractions",
-      "type": "Limited",
-      "assetType": "TBD",
-      "trailerUrl": null,
-      "assetPublished": null
-    },
-    {
-      "date": "Sep 25",
-      "title": "The Incomer",
-      "distributor": "Sumerian",
-      "type": "Limited",
+      "date": "Oct 2",
+      "title": "Digger",
+      "distributor": "Warner Bros.",
+      "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=0gXMYWbppNM",
+      "trailerUrl": "https://www.youtube.com/watch?v=qORTe1wW3Wg",
       "assetPublished": null
     },
     {
@@ -656,12 +691,21 @@
       "assetPublished": null
     },
     {
-      "date": "Oct 2",
-      "title": "Digger",
-      "distributor": "Warner Bros.",
-      "type": "Wide",
+      "date": "Oct 9",
+      "title": "Fjord",
+      "distributor": "Neon",
+      "type": "Limited",
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
+    },
+    {
+      "date": "Oct 9",
+      "title": "Misty Green",
+      "distributor": "A24",
+      "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=qORTe1wW3Wg",
+      "trailerUrl": "https://www.youtube.com/watch?v=ACaWuqeLpSk",
       "assetPublished": null
     },
     {
@@ -689,33 +733,6 @@
       "type": "Wide",
       "assetType": "Trailer",
       "trailerUrl": "https://www.youtube.com/watch?v=gM4LkaXwGuY",
-      "assetPublished": null
-    },
-    {
-      "date": "Oct 9",
-      "title": "Fjord",
-      "distributor": "Neon",
-      "type": "Limited",
-      "assetType": "TBD",
-      "trailerUrl": null,
-      "assetPublished": null
-    },
-    {
-      "date": "Oct 9",
-      "title": "Misty Green",
-      "distributor": "A24",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=ACaWuqeLpSk",
-      "assetPublished": null
-    },
-    {
-      "date": "Oct 16",
-      "title": "Street Fighter",
-      "distributor": "Paramount",
-      "type": "Wide",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=Xt4X4FvXk2A",
       "assetPublished": null
     },
     {
@@ -747,6 +764,15 @@
     },
     {
       "date": "Oct 16",
+      "title": "Street Fighter",
+      "distributor": "Paramount",
+      "type": "Wide",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=Xt4X4FvXk2A",
+      "assetPublished": null
+    },
+    {
+      "date": "Oct 16",
       "title": "Whalefall",
       "distributor": "Walt Disney",
       "type": "Wide",
@@ -756,20 +782,20 @@
     },
     {
       "date": "Oct 23",
-      "title": "Clayface",
-      "distributor": "Warner Bros.",
-      "type": "Wide",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=mo7-mJ6wKho",
-      "assetPublished": null
-    },
-    {
-      "date": "Oct 23",
       "title": "A Talent for Murder",
       "distributor": "Bleecker Street",
       "type": "Limited",
       "assetType": "TBD",
       "trailerUrl": null,
+      "assetPublished": null
+    },
+    {
+      "date": "Oct 23",
+      "title": "Clayface",
+      "distributor": "Warner Bros.",
+      "type": "Wide",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=mo7-mJ6wKho",
       "assetPublished": null
     },
     {
@@ -792,6 +818,15 @@
     },
     {
       "date": "Nov 6",
+      "title": "Club Kid",
+      "distributor": "A24",
+      "type": "Limited",
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
+    },
+    {
+      "date": "Nov 6",
       "title": "The Cat in the Hat",
       "distributor": "Warner Bros.",
       "type": "Wide",
@@ -806,15 +841,6 @@
       "type": "Limited",
       "assetType": "Trailer",
       "trailerUrl": "https://youtu.be/Haw_sznA5aQ",
-      "assetPublished": null
-    },
-    {
-      "date": "Nov 6",
-      "title": "Club Kid",
-      "distributor": "A24",
-      "type": "Limited",
-      "assetType": "TBD",
-      "trailerUrl": null,
       "assetPublished": null
     },
     {
@@ -846,11 +872,11 @@
     },
     {
       "date": "Nov 20",
-      "title": "The Hunger Games: Sunrise on the Reaping",
-      "distributor": "Lionsgate",
-      "type": "Wide",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=CINFIAohu4U",
+      "title": "Elsinore",
+      "distributor": "Focus Features",
+      "type": "Limited",
+      "assetType": "TBD",
+      "trailerUrl": null,
       "assetPublished": null
     },
     {
@@ -864,15 +890,6 @@
     },
     {
       "date": "Nov 20",
-      "title": "Minotaur",
-      "distributor": "Mubi",
-      "type": "Limited",
-      "assetType": "TBD",
-      "trailerUrl": null,
-      "assetPublished": null
-    },
-    {
-      "date": "Nov 20",
       "title": "Josephine",
       "distributor": "Sumerian",
       "type": "Limited",
@@ -882,11 +899,20 @@
     },
     {
       "date": "Nov 20",
-      "title": "Elsinore",
-      "distributor": "Focus Features",
+      "title": "Minotaur",
+      "distributor": "Mubi",
       "type": "Limited",
       "assetType": "TBD",
       "trailerUrl": null,
+      "assetPublished": null
+    },
+    {
+      "date": "Nov 20",
+      "title": "The Hunger Games: Sunrise on the Reaping",
+      "distributor": "Lionsgate",
+      "type": "Wide",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=CINFIAohu4U",
       "assetPublished": null
     },
     {
@@ -906,15 +932,6 @@
       "assetType": "Teaser",
       "trailerUrl": "https://youtu.be/mtC4sjABZNw",
       "assetPublished": "2026-06-16"
-    },
-    {
-      "date": "Dec 4",
-      "title": "Violent Night 2",
-      "distributor": "Universal",
-      "type": "Wide",
-      "assetType": "TBD",
-      "trailerUrl": null,
-      "assetPublished": null
     },
     {
       "date": "Dec 4",
@@ -939,6 +956,15 @@
       "title": "Tender Loving Care",
       "distributor": "Bleecker Street",
       "type": "Limited",
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
+    },
+    {
+      "date": "Dec 4",
+      "title": "Violent Night 2",
+      "distributor": "Universal",
+      "type": "Wide",
       "assetType": "TBD",
       "trailerUrl": null,
       "assetPublished": null
@@ -981,20 +1007,29 @@
     },
     {
       "date": "Dec 25",
+      "title": "A Place in Hell",
+      "distributor": "Paramount",
+      "type": "Limited",
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
+    },
+    {
+      "date": "Dec 25",
+      "title": "Coward",
+      "distributor": "Mubi",
+      "type": "Limited",
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
+    },
+    {
+      "date": "Dec 25",
       "title": "Jumanji: Open World",
       "distributor": "Sony Pictures",
       "type": "Wide",
       "assetType": "Trailer",
       "trailerUrl": "https://www.youtube.com/watch?v=zhApeaHMvfs",
-      "assetPublished": null
-    },
-    {
-      "date": "Dec 25",
-      "title": "Werwulf",
-      "distributor": "Focus Features",
-      "type": "Wide",
-      "assetType": "Trailer",
-      "trailerUrl": "https://youtu.be/cmjpadVj-Vk",
       "assetPublished": null
     },
     {
@@ -1017,29 +1052,11 @@
     },
     {
       "date": "Dec 25",
-      "title": "Coward",
-      "distributor": "Mubi",
-      "type": "Limited",
-      "assetType": "TBD",
-      "trailerUrl": null,
-      "assetPublished": null
-    },
-    {
-      "date": "Dec 25",
-      "title": "A Place in Hell",
-      "distributor": "Paramount",
-      "type": "Limited",
-      "assetType": "TBD",
-      "trailerUrl": null,
-      "assetPublished": null
-    },
-    {
-      "date": "Jan 15, 2027",
-      "title": "The Beekeeper 2",
-      "distributor": "Amazon MGM",
+      "title": "Werwulf",
+      "distributor": "Focus Features",
       "type": "Wide",
-      "assetType": "TBD",
-      "trailerUrl": null,
+      "assetType": "Trailer",
+      "trailerUrl": "https://youtu.be/cmjpadVj-Vk",
       "assetPublished": null
     },
     {
@@ -1050,6 +1067,15 @@
       "assetType": "Trailer",
       "trailerUrl": "https://www.youtube.com/watch?v=HnWvg90lQt8",
       "assetPublished": "2026-07-28"
+    },
+    {
+      "date": "Jan 15, 2027",
+      "title": "The Beekeeper 2",
+      "distributor": "Amazon MGM",
+      "type": "Wide",
+      "assetType": "TBD",
+      "trailerUrl": null,
+      "assetPublished": null
     },
     {
       "date": "Jan 22, 2027",
@@ -1130,6 +1156,11 @@
       "name": "Focus Features",
       "code": "FOCUS",
       "color": "#1FB8B8"
+    },
+    {
+      "name": "Iconic Events Releasing",
+      "code": "ICON",
+      "color": "#fdca12"
     },
     {
       "name": "IFC Films",
@@ -1245,27 +1276,26 @@
   "history": {
     "currentWeekendRange": "Jul 24-26",
     "currentLeader": {
-      "title": "The Odyssey",
-      "distributor": "Universal",
-      "theaters": 3942,
-      "avg": 22837,
-      "gross": 90022510,
+      "title": "Spider-Man: Brand New Day",
+      "distributor": "Sony Pictures",
+      "theaters": 4487,
+      "avg": 79117,
+      "gross": 355000000,
       "range": "Jul 24-26",
       "source": "weekend",
-      "status": "final"
+      "status": "estimate"
     },
     "previousLeader": {
-      "title": "The Odyssey",
-      "distributor": "Universal",
-      "theaters": 3919,
-      "avg": null,
-      "gross": null,
-      "range": "Jul 17-19",
-      "extra": "$31,514 avg",
-      "amountLabel": "$123.5M",
-      "subLabel": "FINAL 3-DAY · Jul 17-19",
-      "tagLabel": "PREVIOUS"
-    }
+      "title": "Spider-Man: Brand New Day",
+      "distributor": "Sony Pictures",
+      "theaters": 4487,
+      "avg": 79117,
+      "gross": 355000000,
+      "range": "Jul 31-Aug 2",
+      "source": "weekend",
+      "status": "estimate"
+    },
+    "promotedLeader": null
   },
   "partnerships": {
     "header": {
