@@ -1,8 +1,8 @@
 {
-  "version": "5.3",
-  "updatedAt": "2026-08-02T20:22:14.330Z",
+  "version": "5.4",
+  "updatedAt": "2026-08-02T23:02:31.575Z",
   "settings": {
-    "lastUpdatedLabel": "Aug 2, 2026 · 1:22 PM PT / 4:22 PM ET",
+    "lastUpdatedLabel": "Aug 2, 2026 · 4:02 PM PT / 7:02 PM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
     "trackingWeekend": "Aug 7-9",
@@ -10,7 +10,7 @@
     "footerSourceNote": "The Numbers, Box Office Mojo, Box Office Pro, Deadline, Variety, Screen International, FanBolt",
     "footerVersion": "Boffo v0.5",
     "editorialNote": "",
-    "lastWeekendRange": "Jul 24-26"
+    "lastWeekendRange": "Jul 31-Aug 2"
   },
   "hero": {
     "latest": {
@@ -94,7 +94,8 @@
           "id": "top10-core",
           "type": "top10"
         }
-      ]
+      ],
+      "pillTextColor": "#0A0E0C"
     },
     "bluesky": {
       "enabled": true,
@@ -305,6 +306,33 @@
   "releases": [
     {
       "date": "Aug 7",
+      "title": "Tony",
+      "distributor": "A24",
+      "type": "Limited",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=k1MVnzd2aVc",
+      "assetPublished": "2026-05-06"
+    },
+    {
+      "date": "Aug 7",
+      "title": "Super Troopers 3",
+      "distributor": "Searchlight Pictures",
+      "type": "Wide",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=cYFevn5frf0",
+      "assetPublished": null
+    },
+    {
+      "date": "Aug 7",
+      "title": "Teenage Sex and Death at Camp Miasma",
+      "distributor": "Mubi",
+      "type": "Limited",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=MA5NqUMEdbI",
+      "assetPublished": null
+    },
+    {
+      "date": "Aug 7",
       "title": "Cookie Queens",
       "distributor": "Roadside Attractions",
       "type": "Limited",
@@ -329,33 +357,6 @@
       "assetType": "Trailer",
       "trailerUrl": "https://www.youtube.com/watch?v=JRG244IfrRE",
       "assetPublished": null
-    },
-    {
-      "date": "Aug 7",
-      "title": "Super Troopers 3",
-      "distributor": "Searchlight Pictures",
-      "type": "Wide",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=cYFevn5frf0",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 7",
-      "title": "Teenage Sex and Death at Camp Miasma",
-      "distributor": "Mubi",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=MA5NqUMEdbI",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 7",
-      "title": "Tony",
-      "distributor": "A24",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=k1MVnzd2aVc",
-      "assetPublished": "2026-05-06"
     },
     {
       "date": "Aug 14",
@@ -1274,14 +1275,14 @@
     }
   ],
   "history": {
-    "currentWeekendRange": "Jul 24-26",
+    "currentWeekendRange": "Jul 31-Aug 2",
     "currentLeader": {
       "title": "Spider-Man: Brand New Day",
       "distributor": "Sony Pictures",
       "theaters": 4487,
       "avg": 79117,
       "gross": 355000000,
-      "range": "Jul 24-26",
+      "range": "Jul 31-Aug 2",
       "source": "weekend",
       "status": "estimate"
     },
@@ -1291,7 +1292,7 @@
       "theaters": 4487,
       "avg": 79117,
       "gross": 355000000,
-      "range": "Jul 31-Aug 2",
+      "range": "Jul 24-26",
       "source": "weekend",
       "status": "estimate"
     },
