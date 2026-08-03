@@ -1,12 +1,12 @@
 {
   "version": "5.4",
-  "updatedAt": "2026-08-02T23:02:31.575Z",
+  "updatedAt": "2026-08-03T20:41:11.734Z",
   "settings": {
-    "lastUpdatedLabel": "Aug 2, 2026 · 4:02 PM PT / 7:02 PM ET",
+    "lastUpdatedLabel": "Aug 3, 2026 · 1:41 PM PT / 4:41 PM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
     "trackingWeekend": "Aug 7-9",
-    "top10IsFinal": false,
+    "top10IsFinal": true,
     "footerSourceNote": "The Numbers, Box Office Mojo, Box Office Pro, Deadline, Variety, Screen International, FanBolt",
     "footerVersion": "Boffo v0.5",
     "editorialNote": "",
@@ -18,9 +18,9 @@
       "title": "Spider-Man: Brand New Day",
       "distributor": "Sony Pictures",
       "theaters": 4487,
-      "extra": "$79,117 avg",
-      "amountLabel": "$355.0M",
-      "subLabel": "LATEST WKD ESTIMATE · Jul 31-Aug 2",
+      "extra": "$80,252 avg",
+      "amountLabel": "$360.1M",
+      "subLabel": "FINAL 3-DAY · Jul 31-Aug 2",
       "tagLabel": "LATEST"
     },
     "previous": {
@@ -42,19 +42,19 @@
     "thisYear": 145957596,
     "lastYear": 122000000,
     "tenYearAvg": 105000000,
-    "note": "Spider-Man: Brand New Day's Sunday estimate landed at $355M, which would make it the second-biggest domestic opening ever, about ~$2M shy of Avengers: Endgame's all-time record of $357.1M. Global opening hit $927M ($572M international, including $121M from China), also the second-best global debut ever behind Endgame's $1.2B. The Odyssey slid to #2 with a $51M third weekend (-43%), pushing it to $395.5M domestic and roughly $800M worldwide. The combined weekend lifted the overall marketplace to an estimated $434M, an all-time record, up 262% from the same frame last year. If you listen closely, you can hear \"We are so back!\" echoing through the hills of Hollywood."
+    "note": "It's official: Spider-Man: Brand New Day's Monday actuals confirmed $360.1M — the new all-time domestic opening-weekend record, dethroning Avengers: Endgame's $357.1M mark from 2019 after seven years. Global landed at $932M (Endgame still holds the worldwide opening record at $1.22B). Brand New Day also grabbed the all-time single-day ($169.8M Friday w/ previews) and preview ($72M) records along the way. The Odyssey held at #2 with a final $51.0M third weekend, pushing it to $395.6M domestic and roughly $910M worldwide. Combined, the two delivered the biggest box-office weekend in history at an estimated $430M+ overall."
   },
   "marketPulse": {
     "title": "Weekend Market Pulse",
     "subtitle": "Overall Domestic Gross",
     "source": "Box Office Mojo",
-    "asOf": "Aug 2, 2026",
+    "asOf": "Aug 3, 2026",
     "rows": [
       {
         "key": "current",
         "label": "Latest Weekend",
         "sub": "Jul 31-Aug 2, 2026",
-        "value": 434000000,
+        "value": 435645646,
         "color": "#3FE08A"
       },
       {
@@ -84,12 +84,33 @@
     "top10": {
       "enabled": true,
       "breakingMode": true,
-      "pillText": "BREAKING: WKD ESTIMATES",
+      "pillText": "BREAKING: WKND ACTUALS",
       "pillSubtext": "7/31-8/2",
       "pillColor": "#3FE08A",
       "breakingColor": "#F0473D",
       "durationSeconds": 38,
       "elements": [
+        {
+          "id": "custom-msdovmh4-9bt5a",
+          "type": "custom",
+          "parts": [
+            {
+              "id": "pill-msdovmh5-mnmi",
+              "type": "pill",
+              "text": "NEW RECORD",
+              "subtext": "",
+              "color": "#F0A833",
+              "icon": "star"
+            },
+            {
+              "id": "text-msdovmh5-2ct5",
+              "type": "text",
+              "text": "Spiderman: Brand New Day dethrones Avengers: Endgame's all-time opening-weekend record with $360.1M haul",
+              "color": "#E6EDE8",
+              "linkUrl": ""
+            }
+          ]
+        },
         {
           "id": "top10-core",
           "type": "top10"
@@ -101,11 +122,11 @@
       "enabled": true,
       "accounts": [
         "thenumbers.bsky.social",
-        "scottmendelson.bsky.social",
-        "giteshpandya.bsky.social",
-        "boxofficepro.bsky.social",
         "boxofficereport.bsky.social",
-        "ercboxoffice.bsky.social"
+        "ercboxoffice.bsky.social",
+        "boxofficepro.bsky.social",
+        "scottmendelson.bsky.social",
+        "giteshpandya.bsky.social"
       ],
       "perAccountLimit": 6,
       "maxPosts": 20,
@@ -124,12 +145,12 @@
       "prev": null,
       "weekendNum": 1,
       "title": "Spider-Man: Brand New Day",
-      "gross": 355000000,
+      "gross": 360091572,
       "change": null,
       "theaters": 4487,
-      "avg": 79117,
-      "total": 355000000,
-      "global": 927000000,
+      "avg": 80252,
+      "total": 360091572,
+      "global": 932000000,
       "distributor": "Sony Pictures"
     },
     {
@@ -137,12 +158,12 @@
       "prev": 1,
       "weekendNum": 3,
       "title": "The Odyssey",
-      "gross": 51000000,
+      "gross": 51047820,
       "change": -43,
       "theaters": 3861,
-      "avg": 13209,
-      "total": 395525000,
-      "global": 800000000,
+      "avg": 13221,
+      "total": 395573235,
+      "global": 910000000,
       "distributor": "Universal"
     },
     {
@@ -163,11 +184,11 @@
       "prev": 5,
       "weekendNum": 5,
       "title": "Minions & Monsters",
-      "gross": 5800000,
-      "change": -41,
+      "gross": 6009270,
+      "change": -38,
       "theaters": 3023,
-      "avg": 1919,
-      "total": 168355000,
+      "avg": 1988,
+      "total": 168564635,
       "global": 410000000,
       "distributor": "Universal"
     },
@@ -189,11 +210,11 @@
       "prev": 3,
       "weekendNum": 2,
       "title": "Hadestown: The Musical",
-      "gross": 2001239,
+      "gross": 2032944,
       "change": -80,
       "theaters": 1567,
-      "avg": 1277,
-      "total": 18202949,
+      "avg": 1297,
+      "total": 18235741,
       "global": null,
       "distributor": "Bleecker Street"
     },
@@ -212,6 +233,19 @@
     },
     {
       "rank": 8,
+      "prev": 6,
+      "weekendNum": 4,
+      "title": "Evil Dead Burn",
+      "gross": 750761,
+      "change": -73,
+      "theaters": 642,
+      "avg": 1169,
+      "total": 31516406,
+      "global": null,
+      "distributor": "Warner Bros."
+    },
+    {
+      "rank": 9,
       "prev": null,
       "weekendNum": 1,
       "title": "I Want Your Sex",
@@ -224,30 +258,17 @@
       "distributor": "Magnolia Pictures"
     },
     {
-      "rank": 9,
+      "rank": 10,
       "prev": 8,
       "weekendNum": 5,
       "title": "Young Washington",
-      "gross": 477727,
-      "change": -75,
+      "gross": 505563,
+      "change": -73,
       "theaters": 623,
-      "avg": 767,
-      "total": 46417517,
+      "avg": 811,
+      "total": 46445353,
       "global": null,
       "distributor": "Angel Studios"
-    },
-    {
-      "rank": 10,
-      "prev": 10,
-      "weekendNum": 11,
-      "title": "Obsession",
-      "gross": 470000,
-      "change": -70,
-      "theaters": 430,
-      "avg": 1093,
-      "total": 262775000,
-      "global": 404500000,
-      "distributor": "Focus Features"
     }
   ],
   "projections": [
@@ -259,9 +280,9 @@
       "momentum": "stable",
       "rtCritic": 90,
       "metacritic": 70,
-      "rangeLow": 120000000,
-      "rangeHigh": 145000000,
-      "analysis": "Following its estimated $355M opening (second-biggest ever, about ~$2M off Endgame's all-time record), Brand New Day should comfortably lead again with no major new competition beyond two modest wide openers. This is an early modeled range, not yet backed by second-weekend-specific tracking: comparable MCU 'event' openers dropped 59% (Endgame, to $147.4M) to roughly 67% (No Way Home, to ~$85.5M) in weekend two. A similar 60-65% pullback puts Brand New Day around $125M-$140M, which would still be one of the biggest second weekends ever and keep it on a path toward $1B-plus worldwide. Expect sharper numbers once Thursday tracking firms up.",
+      "rangeLow": 126000000,
+      "rangeHigh": 144000000,
+      "analysis": "Following its confirmed $360.1M opening — the new all-time domestic opening-weekend record, beating Avengers: Endgame's $357.1M — Brand New Day should comfortably lead again with no major new competition beyond two modest wide openers. This is still an early modeled range, not yet backed by second-weekend-specific tracking: comparable MCU 'event' openers dropped 59% (Endgame, to $147.4M) to roughly 67% (No Way Home, to ~$85.5M) in weekend two. Applying that same 60-65% pullback to the confirmed $360.1M base puts Brand New Day around $126M-$144M, which would still be one of the biggest second weekends ever and keep it on a path toward $1B-plus worldwide. Expect sharper numbers once Thursday tracking firms up.",
       "rulerLow": 80000000,
       "rulerHigh": 200000000,
       "currentEstimate": null,
@@ -306,33 +327,6 @@
   "releases": [
     {
       "date": "Aug 7",
-      "title": "Tony",
-      "distributor": "A24",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=k1MVnzd2aVc",
-      "assetPublished": "2026-05-06"
-    },
-    {
-      "date": "Aug 7",
-      "title": "Super Troopers 3",
-      "distributor": "Searchlight Pictures",
-      "type": "Wide",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=cYFevn5frf0",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 7",
-      "title": "Teenage Sex and Death at Camp Miasma",
-      "distributor": "Mubi",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=MA5NqUMEdbI",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 7",
       "title": "Cookie Queens",
       "distributor": "Roadside Attractions",
       "type": "Limited",
@@ -357,6 +351,33 @@
       "assetType": "Trailer",
       "trailerUrl": "https://www.youtube.com/watch?v=JRG244IfrRE",
       "assetPublished": null
+    },
+    {
+      "date": "Aug 7",
+      "title": "Super Troopers 3",
+      "distributor": "Searchlight Pictures",
+      "type": "Wide",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=cYFevn5frf0",
+      "assetPublished": null
+    },
+    {
+      "date": "Aug 7",
+      "title": "Teenage Sex and Death at Camp Miasma",
+      "distributor": "Mubi",
+      "type": "Limited",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=MA5NqUMEdbI",
+      "assetPublished": null
+    },
+    {
+      "date": "Aug 7",
+      "title": "Tony",
+      "distributor": "A24",
+      "type": "Limited",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=k1MVnzd2aVc",
+      "assetPublished": "2026-05-06"
     },
     {
       "date": "Aug 14",
@@ -645,6 +666,15 @@
       "assetType": "Trailer",
       "trailerUrl": "https://www.youtube.com/watch?v=a8RHqN93qfo",
       "assetPublished": null
+    },
+    {
+      "date": "Sep 25",
+      "title": "Ha-Chan, Shake Your Booty!",
+      "distributor": "Sony Pictures Classics",
+      "type": "Limited",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=Ik4lJmXgR6U",
+      "assetPublished": "2026-07-29"
     },
     {
       "date": "Sep 25",
@@ -1280,21 +1310,21 @@
       "title": "Spider-Man: Brand New Day",
       "distributor": "Sony Pictures",
       "theaters": 4487,
-      "avg": 79117,
-      "gross": 355000000,
+      "avg": 80252,
+      "gross": 360091572,
       "range": "Jul 31-Aug 2",
       "source": "weekend",
-      "status": "estimate"
+      "status": "final"
     },
     "previousLeader": {
-      "title": "Spider-Man: Brand New Day",
-      "distributor": "Sony Pictures",
-      "theaters": 4487,
-      "avg": 79117,
-      "gross": 355000000,
+      "title": "The Odyssey",
+      "distributor": "Universal",
+      "theaters": 3942,
+      "avg": 22837,
+      "gross": 90022510,
       "range": "Jul 24-26",
       "source": "weekend",
-      "status": "estimate"
+      "status": "final"
     },
     "promotedLeader": null
   },
