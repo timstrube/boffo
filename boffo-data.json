@@ -1,8 +1,8 @@
 {
   "version": "5.4",
-  "updatedAt": "2026-08-04T14:08:00.380Z",
+  "updatedAt": "2026-08-04T16:08:23.745Z",
   "settings": {
-    "lastUpdatedLabel": "Aug 4, 2026 · 7:08 AM PT / 10:08 AM ET",
+    "lastUpdatedLabel": "Aug 4, 2026 · 9:08 AM PT / 12:08 PM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
     "trackingWeekend": "Aug 7-9",
@@ -327,6 +327,24 @@
   "releases": [
     {
       "date": "Aug 7",
+      "title": "Cookie Queens",
+      "distributor": "Roadside Attractions",
+      "type": "Limited",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=i8VyUZLNoXE",
+      "assetPublished": null
+    },
+    {
+      "date": "Aug 7",
+      "title": "Ice Cream Man",
+      "distributor": "Iconic Events Releasing",
+      "type": "Limited",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=BjtVXWa3tWI",
+      "assetPublished": null
+    },
+    {
+      "date": "Aug 7",
       "title": "One Night Only",
       "distributor": "Universal",
       "type": "Wide",
@@ -345,15 +363,6 @@
     },
     {
       "date": "Aug 7",
-      "title": "Tony",
-      "distributor": "A24",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=k1MVnzd2aVc",
-      "assetPublished": "2026-05-06"
-    },
-    {
-      "date": "Aug 7",
       "title": "Teenage Sex and Death at Camp Miasma",
       "distributor": "Mubi",
       "type": "Limited",
@@ -363,21 +372,12 @@
     },
     {
       "date": "Aug 7",
-      "title": "Cookie Queens",
-      "distributor": "Roadside Attractions",
+      "title": "Tony",
+      "distributor": "A24",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=i8VyUZLNoXE",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 7",
-      "title": "Ice Cream Man",
-      "distributor": "Iconic Events Releasing",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=BjtVXWa3tWI",
-      "assetPublished": null
+      "trailerUrl": "https://www.youtube.com/watch?v=k1MVnzd2aVc",
+      "assetPublished": "2026-05-06"
     },
     {
       "date": "Aug 14",
@@ -996,9 +996,9 @@
       "title": "Violent Night 2",
       "distributor": "Universal",
       "type": "Wide",
-      "assetType": "TBD",
-      "trailerUrl": null,
-      "assetPublished": null
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=FmM2giDwLAE",
+      "assetPublished": "2026-08-04"
     },
     {
       "date": "Dec 11",
