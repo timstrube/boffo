@@ -1,8 +1,8 @@
 {
   "version": "5.4",
-  "updatedAt": "2026-08-03T20:41:11.734Z",
+  "updatedAt": "2026-08-04T14:08:00.380Z",
   "settings": {
-    "lastUpdatedLabel": "Aug 3, 2026 · 1:41 PM PT / 4:41 PM ET",
+    "lastUpdatedLabel": "Aug 4, 2026 · 7:08 AM PT / 10:08 AM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
     "trackingWeekend": "Aug 7-9",
@@ -48,13 +48,13 @@
     "title": "Weekend Market Pulse",
     "subtitle": "Overall Domestic Gross",
     "source": "Box Office Mojo",
-    "asOf": "Aug 3, 2026",
+    "asOf": "Aug 4, 2026",
     "rows": [
       {
         "key": "current",
         "label": "Latest Weekend",
         "sub": "Jul 31-Aug 2, 2026",
-        "value": 435645646,
+        "value": 436562259,
         "color": "#3FE08A"
       },
       {
@@ -83,8 +83,8 @@
   "tickers": {
     "top10": {
       "enabled": true,
-      "breakingMode": true,
-      "pillText": "BREAKING: WKND ACTUALS",
+      "breakingMode": false,
+      "pillText": "WKND ACTUALS",
       "pillSubtext": "7/31-8/2",
       "pillColor": "#3FE08A",
       "breakingColor": "#F0473D",
@@ -105,7 +105,7 @@
             {
               "id": "text-msdovmh5-2ct5",
               "type": "text",
-              "text": "Spiderman: Brand New Day dethrones Avengers: Endgame's all-time opening-weekend record with $360.1M haul",
+              "text": "Spiderman: Brand New Day beats Avengers: Endgame's all-time opening-weekend record with $360.1M haul",
               "color": "#E6EDE8",
               "linkUrl": ""
             }
@@ -171,11 +171,11 @@
       "prev": 4,
       "weekendNum": 7,
       "title": "Toy Story 5",
-      "gross": 6300000,
-      "change": -38,
+      "gross": 6768503,
+      "change": -33,
       "theaters": 3035,
-      "avg": 2076,
-      "total": 461696126,
+      "avg": 2230,
+      "total": 462164629,
       "global": 1050000000,
       "distributor": "Walt Disney"
     },
@@ -197,11 +197,11 @@
       "prev": 2,
       "weekendNum": 4,
       "title": "Moana",
-      "gross": 5300000,
-      "change": -50,
+      "gross": 5609905,
+      "change": -47,
       "theaters": 3010,
-      "avg": 1761,
-      "total": 114783124,
+      "avg": 1864,
+      "total": 115093029,
       "global": 241000000,
       "distributor": "Walt Disney"
     },
@@ -249,11 +249,11 @@
       "prev": null,
       "weekendNum": 1,
       "title": "I Want Your Sex",
-      "gross": 600000,
+      "gross": 634877,
       "change": null,
-      "theaters": 700,
-      "avg": 857,
-      "total": 600000,
+      "theaters": 705,
+      "avg": 901,
+      "total": 634877,
       "global": null,
       "distributor": "Magnolia Pictures"
     },
@@ -327,24 +327,6 @@
   "releases": [
     {
       "date": "Aug 7",
-      "title": "Cookie Queens",
-      "distributor": "Roadside Attractions",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=i8VyUZLNoXE",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 7",
-      "title": "Ice Cream Man",
-      "distributor": "Iconic Events Releasing",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=BjtVXWa3tWI",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 7",
       "title": "One Night Only",
       "distributor": "Universal",
       "type": "Wide",
@@ -363,6 +345,15 @@
     },
     {
       "date": "Aug 7",
+      "title": "Tony",
+      "distributor": "A24",
+      "type": "Limited",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=k1MVnzd2aVc",
+      "assetPublished": "2026-05-06"
+    },
+    {
+      "date": "Aug 7",
       "title": "Teenage Sex and Death at Camp Miasma",
       "distributor": "Mubi",
       "type": "Limited",
@@ -372,12 +363,21 @@
     },
     {
       "date": "Aug 7",
-      "title": "Tony",
-      "distributor": "A24",
+      "title": "Cookie Queens",
+      "distributor": "Roadside Attractions",
       "type": "Limited",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=k1MVnzd2aVc",
-      "assetPublished": "2026-05-06"
+      "trailerUrl": "https://www.youtube.com/watch?v=i8VyUZLNoXE",
+      "assetPublished": null
+    },
+    {
+      "date": "Aug 7",
+      "title": "Ice Cream Man",
+      "distributor": "Iconic Events Releasing",
+      "type": "Limited",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=BjtVXWa3tWI",
+      "assetPublished": null
     },
     {
       "date": "Aug 14",
