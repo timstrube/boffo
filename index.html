@@ -33,6 +33,32 @@ html, body { margin: 0; padding: 0; background: var(--boffo-bg); -webkit-text-si
 #boffo-root, #boffo-root * { box-sizing: border-box; font-family: var(--boffo-font) !important; }
 #boffo-root .theme-font-preview { font-family: var(--theme-preview-font) !important; }
 #boffo-root .boffo-wordmark { font-family: "neue-haas-grotesk-display", sans-serif !important; }
+.boffo-sticky-tickers {
+background: var(--boffo-bg);
+isolation: isolate;
+overflow: visible;
+}
+.boffo-sticky-tickers::before {
+content: '';
+position: absolute;
+left: 0;
+right: 0;
+bottom: calc(100% - 1px);
+height: 96px;
+background: var(--boffo-bg);
+pointer-events: none;
+}
+@supports (-webkit-touch-callout: none) {
+.boffo-sticky-tickers {
+-webkit-transform: translate3d(0,0,0);
+transform: translate3d(0,0,0);
+-webkit-backface-visibility: hidden;
+backface-visibility: hidden;
+}
+.boffo-sticky-tickers::before {
+height: calc(96px + env(safe-area-inset-top, 0px));
+}
+}
 #boffo-root {
 font-family: var(--boffo-font);
 background: var(--boffo-bg);
@@ -1724,7 +1750,7 @@ const changeThemeButton = e('button', { onClick: function () { setThemeOpen(true
 const rightRail = e('div', { style: { minWidth: 0 } }, heroPanels, analyticsPanels, changeThemeButton
 );
 return e('div', { style: wrap },
-e('div', { ref: tickerStackRef, 'data-layout-region': 'tickers', style: { position: 'sticky', top: 0, zIndex: 100, borderBottom: '1px solid ' + C.borderStrong } },
+e('div', { ref: tickerStackRef, className: 'boffo-sticky-tickers', 'data-layout-region': 'tickers', style: { position: 'sticky', top: 0, zIndex: 100, borderBottom: '1px solid ' + C.borderStrong } },
 e(Ticker, { items: top10 }),
 e(ChatterTicker, { posts: chatterPosts, isMobile: isMobile, onExpand: setExpandedPost })
 ),
