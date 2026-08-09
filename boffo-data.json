@@ -1,8 +1,8 @@
 {
   "version": "5.4",
-  "updatedAt": "2026-08-06T16:23:58.931Z",
+  "updatedAt": "2026-08-09T00:01:58.316Z",
   "settings": {
-    "lastUpdatedLabel": "Aug 6, 2026 · 9:23 AM PT / 12:23 PM ET",
+    "lastUpdatedLabel": "Aug 8, 2026 · 5:01 PM PT / 8:01 PM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
     "trackingWeekend": "Aug 7-9",
@@ -90,27 +90,6 @@
       "breakingColor": "#F0473D",
       "durationSeconds": 38,
       "elements": [
-        {
-          "id": "custom-msdovmh4-9bt5a",
-          "type": "custom",
-          "parts": [
-            {
-              "id": "pill-msdovmh5-mnmi",
-              "type": "pill",
-              "text": "NEW RECORD",
-              "subtext": "",
-              "color": "#F0A833",
-              "icon": "star"
-            },
-            {
-              "id": "text-msdovmh5-2ct5",
-              "type": "text",
-              "text": "Spiderman: Brand New Day beats Avengers: Endgame's all-time opening-weekend record with $360.1M haul",
-              "color": "#E6EDE8",
-              "linkUrl": ""
-            }
-          ]
-        },
         {
           "id": "top10-core",
           "type": "top10"
@@ -280,105 +259,51 @@
       "momentum": "rising",
       "rtCritic": 90,
       "metacritic": 70,
-      "rangeLow": 142000000,
-      "rangeHigh": 160000000,
-      "analysis": "Thursday tracking has firmed up and it's bullish: Box Office Pro pegs weekend two at $150M-$160M (43% Showtime market share), while Box Office Theory's panel forecasts $142M-$160M. With essentially no direct competition and some IMAX capacity still in play alongside a 98% Rotten Tomatoes Popcornmeter score, Brand New Day has a real shot at beating Star Wars: The Force Awakens' all-time second-weekend record of $149.2M and Avengers: Endgame's $147.4M — both trackers note it's already essentially locked to top Avengers: Infinity War's $114.8M third-place mark. It also just posted the biggest Tuesday in box office history ($42M on Aug 4), pushing its domestic total to $449.15M and making it the #2 domestic performer of 2026 behind Toy Story 5's $463.35M.",
-      "rulerLow": 120000000,
-      "rulerHigh": 180000000,
-      "currentEstimate": null,
+      "rangeLow": 135000000,
+      "rangeHigh": 145000000,
+      "analysis": "Friday actuals are in: $43M, putting weekend two on pace for Deadline's evolving $135M-$143M estimate — a touch under Box Office Pro's pre-weekend $150M-$160M call but still the third-best domestic second weekend of all time, trailing only The Force Awakens ($149.2M) and Endgame ($147.4M) and clearing Infinity War's $114.8M third-place mark. That pushes the domestic cume from $510M heading into the weekend past $650M by Sunday, with worldwide already at $1.216B as of Friday. The bigger headline: at $510M+ domestic pre-weekend, Brand New Day has now passed Toy Story 5's running $470.8M total to become the outright #1 domestic release of 2026, not just #2.",
+      "rulerLow": 125000000,
+      "rulerHigh": 160000000,
+      "currentEstimate": 140000000,
       "estimateColorMode": "gradient",
       "estimateColor": "#5C8FF0"
     },
     {
       "title": "One Night Only",
       "distributor": "Universal",
-      "theaters": 3000,
-      "confidence": "low",
+      "theaters": 3012,
+      "confidence": "high",
       "momentum": "softening",
-      "rtCritic": null,
+      "rtCritic": 51,
       "metacritic": null,
-      "rangeLow": 3000000,
-      "rangeHigh": 10000000,
-      "analysis": "Let's just say this is anyone's guess: Box Office Pro's weekend preview still has it at $7M-$10M, leaning on residual goodwill from Will Gluck's Anyone But You ($88.3M domestic sleeper run), while Box Office Theory's panel has pulled its pinpoint down hard to a $3M-$5.5M range. Critical reaction was still embargoed as of Wednesday, which might read as a bad sign to those paying attention, and the rom-com ceiling has been soft lately (You, Me & Tuscany opened to $7.7M, The Roses to $6.2M). Landing in the shadow of Brand New Day's second weekend regardless.",
-      "rulerLow": 2000000,
-      "rulerHigh": 12000000,
-      "currentEstimate": null,
+      "rangeLow": 5500000,
+      "rangeHigh": 6500000,
+      "analysis": "Thursday previews landed soft at $750K, and Friday confirmed the trend: a $2.8M actual (third place, 3,012 theaters) has Deadline projecting a $6M weekend — landing between the two trackers' pre-weekend calls (Box Office Pro's $7M-$10M vs. Box Office Theory's $3M-$5.5M pinpoint) but much closer to Theory's read. Reviews came in mixed-to-soft at 51% on Rotten Tomatoes, consistent with the rom-com ceiling staying low this cycle (You, Me & Tuscany's $7.7M open, The Roses' $6.2M open). Lands well behind Brand New Day's second weekend, as expected.",
+      "rulerLow": 4000000,
+      "rulerHigh": 8000000,
+      "currentEstimate": 6000000,
       "estimateColorMode": "gradient",
       "estimateColor": "#5C8FF0"
     },
     {
       "title": "Super Troopers 3",
       "distributor": "Searchlight Pictures",
-      "theaters": 2700,
+      "theaters": 2760,
       "confidence": "high",
       "momentum": "softening",
-      "rtCritic": null,
+      "rtCritic": 33,
       "metacritic": null,
-      "rangeLow": 3000000,
-      "rangeHigh": 6500000,
-      "analysis": "Broken Lizard's return after an eight-year gap opens in around 2,700 theaters. Thursday tracking has come down from the long-range outlook: Box Office Theory's panel has it at $3M-$6.5M with a $3.5M pinpoint, expected to land outside the top five. That's well off Super Troopers 2's trajectory ($15.1M open, $30.6M total). The comp trackers are citing is more Jackass: Best and Last ($8.4M open) than Scary Movie's recent $54.3M franchise-best. Also opening the same day: Mubi's limited-release Teenage Sex and Death at Camp Miasma and Eli Roth's Ice Cream Man, which is tracking even lower ($750K-$1.5M).",
-      "rulerLow": 2000000,
-      "rulerHigh": 12000000,
-      "currentEstimate": null,
+      "rangeLow": 3700000,
+      "rangeHigh": 4200000,
+      "analysis": "Friday actuals confirm the pessimistic read: $1.7M from 2,760 theaters for a fourth-place finish, tracking to a $3.9M-$4M weekend per Deadline/Forbes — right at Box Office Theory's $3.5M pinpoint and well under Box Office Pro's original $6M-$9M long-range call. Reviews landed at 33% on Rotten Tomatoes, a new low for the franchise (below both Super Troopers' 37% and Super Troopers 2's 35%). That's a steep fall from Super Troopers 2's $15.1M opening ($30.6M total) — closer to Jackass: Best and Last's $8.4M-scale disappointment than any Scary Movie-style comeback. Ice Cream Man and Teenage Sex and Death at Camp Miasma also opened into the same crowded Friday.",
+      "rulerLow": 3000000,
+      "rulerHigh": 6000000,
+      "currentEstimate": 3900000,
       "estimateColorMode": "gradient",
       "estimateColor": "#5C8FF0"
     }
   ],
   "releases": [
-    {
-      "date": "Aug 7",
-      "title": "Cookie Queens",
-      "distributor": "Roadside Attractions",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=i8VyUZLNoXE",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 7",
-      "title": "Ice Cream Man",
-      "distributor": "Iconic Events Releasing",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=BjtVXWa3tWI",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 7",
-      "title": "One Night Only",
-      "distributor": "Universal",
-      "type": "Wide",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=JRG244IfrRE",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 7",
-      "title": "Super Troopers 3",
-      "distributor": "Searchlight Pictures",
-      "type": "Wide",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=cYFevn5frf0",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 7",
-      "title": "Teenage Sex and Death at Camp Miasma",
-      "distributor": "Mubi",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=MA5NqUMEdbI",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 7",
-      "title": "Tony",
-      "distributor": "A24",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=k1MVnzd2aVc",
-      "assetPublished": "2026-05-06"
-    },
     {
       "date": "Aug 14",
       "title": "PAW Patrol: The Dino Movie",
