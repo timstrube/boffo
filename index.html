@@ -29,7 +29,7 @@
 --boffo-accent: #FFA800;
 }
 html { overflow-y: scroll; scrollbar-gutter: stable; }
-html, body { margin: 0; padding: 0; background: var(--boffo-bg); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html, body { margin: 0; padding: 0; background: var(--boffo-bg); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; overscroll-behavior-y: none; }
 #boffo-root, #boffo-root * { box-sizing: border-box; font-family: var(--boffo-font) !important; }
 #boffo-root .theme-font-preview { font-family: var(--theme-preview-font) !important; }
 #boffo-root .boffo-wordmark { font-family: "neue-haas-grotesk-display", sans-serif !important; }
@@ -40,11 +40,11 @@ overflow: visible;
 }
 .boffo-sticky-tickers::before {
 content: '';
-position: absolute;
+position: fixed;
 left: 0;
 right: 0;
-bottom: calc(100% - 1px);
-height: 96px;
+top: -100vh;
+height: 100vh;
 background: var(--boffo-bg);
 pointer-events: none;
 }
@@ -54,9 +54,6 @@ pointer-events: none;
 transform: translate3d(0,0,0);
 -webkit-backface-visibility: hidden;
 backface-visibility: hidden;
-}
-.boffo-sticky-tickers::before {
-height: calc(96px + env(safe-area-inset-top, 0px));
 }
 }
 #boffo-root {
@@ -94,10 +91,6 @@ html::-webkit-scrollbar-corner, body::-webkit-scrollbar-corner, #boffo-root::-we
 .bsky-ticker-link { color:var(--boffo-accent); text-decoration:none; border-bottom:1px solid var(--boffo-border); transition:color .15s ease,border-color .15s ease,background .15s ease; border-radius:2px; padding:0 1px; }
 .bsky-ticker-link:hover,.bsky-ticker-link:focus-visible { color:var(--boffo-text); border-color:var(--boffo-text); background:var(--boffo-surface-subtle); outline:none; }
 .header-partner-link { text-decoration:none; color:inherit; border-radius:5px; }
-#boffo-root::before, #boffo-root::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:9990; }
-#boffo-root::before { background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.45) 2px, rgba(0,0,0,0.45) 3px); opacity:.09; }
-#boffo-root::after { opacity:.055; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-@media (prefers-reduced-motion: reduce) { #boffo-root::before, #boffo-root::after { display:none; } }
 .header-partner-link:hover .header-partner-text,.header-partner-link:focus-visible .header-partner-text { color:var(--boffo-text) !important; }
 .header-partner-link:focus-visible { outline:2px solid var(--boffo-accent); outline-offset:3px; }
 </style>
