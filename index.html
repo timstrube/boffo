@@ -33,7 +33,7 @@ html, body { margin: 0; padding: 0; background: var(--boffo-bg); -webkit-text-si
 #boffo-root, #boffo-root * { box-sizing: border-box; font-family: var(--boffo-font) !important; }
 #boffo-root .theme-font-preview { font-family: var(--theme-preview-font) !important; }
 #boffo-root .boffo-wordmark { font-family: "neue-haas-grotesk-display", sans-serif !important; }
-#boffo-root .boffo-movie-title { font-family: var(--boffo-movie-title-font, var(--boffo-font)) !important; font-weight: 500; }
+#boffo-root .boffo-movie-title { font-family: var(--boffo-movie-title-font, var(--boffo-font)) !important; font-weight: 700 !important; }
 .boffo-sticky-tickers {
 background: var(--boffo-bg);
 isolation: isolate;
@@ -464,7 +464,7 @@ e('div', { style: { width: '100%', maxWidth: props.maxWidth || 880, maxHeight: '
 e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, padding: '12px 14px', borderBottom: '1px solid ' + C.border } },
 e('div', { style: { minWidth: 0 } },
 e('div', { style: { fontSize: 10, color: props.accent || C.magenta, fontWeight: 900, letterSpacing: 0.8, textTransform: 'uppercase' } }, props.kicker || ''),
-e('div', { className: props.titleIsMovie ? 'boffo-movie-title' : undefined, style: { fontFamily: "'IBM Plex Mono', monospace", fontSize: props.titleIsMovie ? (props.isMobile ? 15.5 : 18.5) : (props.isMobile ? 14 : 17), color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginTop: props.titleSpacing || 0 } }, props.title || '')
+e('div', { className: props.titleIsMovie ? 'boffo-movie-title' : undefined, style: { fontFamily: "'IBM Plex Mono', monospace", fontSize: props.titleIsMovie ? (props.isMobile ? 16.5 : 19) : (props.isMobile ? 14 : 17), color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginTop: props.titleSpacing || 0 } }, props.title || '')
 ),
 e('button', { onClick: props.onClose, style: { background: 'transparent', border: '1px solid ' + C.border, color: C.textMute, borderRadius: 5, width: 30, height: 30, cursor: 'pointer', fontSize: 17 } }, '\u00D7')
 ), props.children)
@@ -992,7 +992,7 @@ live.tagLabel || (isLive ? 'LIVE' : 'PREVIOUS')
 ),
 e(DistBadge, { name: live.distributor })
 ),
-e('div', { className: 'boffo-movie-title', style: { fontFamily: "'IBM Plex Mono', monospace", fontSize: 15.5, fontWeight: 500, color: C.text, marginBottom: 12, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' } }, live.title),
+e('div', { className: 'boffo-movie-title', style: { fontFamily: "'IBM Plex Mono', monospace", fontSize: 16.5, fontWeight: 500, color: C.text, marginBottom: 12, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' } }, live.title),
 e('div', { style: { display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 14, flexWrap: 'wrap' } },
 isLive
 ? e(SlotAmount, { label: live.amountLabel, color: accent, fontSize: 30 })
@@ -1491,7 +1491,7 @@ sortedTop10.map(function (m) {
 return e('div', { key: m.rank, style: { padding: '12px 0', borderBottom: '1px solid ' + C.border } },
 e('div', { style: { display: 'flex', alignItems: 'baseline', gap: 8 } },
 e('div', { style: { fontWeight: 800, fontSize: 15, color: C.textMute, minWidth: 20 } }, m.rank),
-e('div', { className: 'boffo-movie-title', style: { flex: 1, fontWeight: 400, fontFamily: "'IBM Plex Mono', monospace", fontSize: 15 } }, m.title),
+e('div', { className: 'boffo-movie-title', style: { flex: 1, fontWeight: 400, fontFamily: "'IBM Plex Mono', monospace", fontSize: 16.5 } }, m.title),
 e('div', { style: { fontVariantNumeric: 'tabular-nums', fontWeight: 700, fontSize: 14 } }, fmtMoney(m.gross))
 ),
 e('div', { style: { display: 'flex', alignItems: 'center', gap: 7, marginTop: 5, marginLeft: 28 } },
@@ -1598,7 +1598,7 @@ const estimateScaleColor = (!themeIsMono() && t.estimateColorMode === 'custom' &
 return e('div', { key: i, style: { marginBottom: 16, padding: 16, border: '1px solid ' + C.border } },
 e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8, flexWrap: 'wrap', gap: 8 } },
 e('div', { style: { display: 'flex', alignItems: 'center', gap: 8 } },
-e('span', { className: 'boffo-movie-title', style: { fontSize: 15.5, fontWeight: 400, fontFamily: "'IBM Plex Mono', monospace" } }, t.title),
+e('span', { className: 'boffo-movie-title', style: { fontSize: 16.5, fontWeight: 400, fontFamily: "'IBM Plex Mono', monospace" } }, t.title),
 e(DistBadge, { name: t.distributor, onChange: function () {} }),
 e('span', { style: { fontSize: 11, color: C.textFaint } }, t.theaters.toLocaleString() + ' theaters')
 ),
@@ -1653,7 +1653,7 @@ const renderRelease = function (r) {
 const assetType = r.assetType || (r.trailerUrl ? 'Trailer' : 'TBD');
 const recent = assetType !== 'TBD' && !!r.trailerUrl && isRecentAsset(r.assetPublished);
 const titleBlock = e('div', { style: { display: 'flex', alignItems: 'center', gap: 6, minWidth: 0 } },
-e('span', { className: 'boffo-movie-title', style: { minWidth: 0, fontWeight: 400, fontFamily: "'IBM Plex Mono', monospace", overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: isMobile ? 'normal' : 'nowrap', fontSize: isMobile ? 14.5 : 14 } }, r.title),
+e('span', { className: 'boffo-movie-title', style: { minWidth: 0, fontWeight: 400, fontFamily: "'IBM Plex Mono', monospace", overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: isMobile ? 'normal' : 'nowrap', fontSize: isMobile ? 16 : 14.5 } }, r.title),
 recent ? e('span', { title: 'New asset in the last 3 days', style: { color: C.amber, flexShrink: 0, fontSize: 9, fontWeight: 800, letterSpacing: 0.4, border: '1px solid ' + C.amber, padding: '1px 4px' } }, 'NEW') : null
 );
 return e('div', { key: r.date + r.title + r.type, style: { padding: isMobile ? '10px 0' : '9px 0', borderBottom: '1px solid ' + C.border } },
