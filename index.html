@@ -33,6 +33,7 @@ html, body { margin: 0; padding: 0; background: var(--boffo-bg); -webkit-text-si
 #boffo-root, #boffo-root * { box-sizing: border-box; font-family: var(--boffo-font) !important; }
 #boffo-root .theme-font-preview { font-family: var(--theme-preview-font) !important; }
 #boffo-root .boffo-wordmark { font-family: "neue-haas-grotesk-display", sans-serif !important; }
+#boffo-root .boffo-movie-title { font-family: var(--boffo-movie-title-font, var(--boffo-font)) !important; font-weight: 500; }
 .boffo-sticky-tickers {
 background: var(--boffo-bg);
 isolation: isolate;
@@ -264,6 +265,7 @@ document.documentElement.style.setProperty('--boffo-mute', C.textMute);
 document.documentElement.style.setProperty('--boffo-faint', C.textFaint);
 document.documentElement.style.setProperty('--boffo-border', C.border);
 document.documentElement.style.setProperty('--boffo-accent', C.emerald);
+document.documentElement.style.setProperty('--boffo-movie-title-font', CURRENT_PALETTE === 'gold' ? '"neue-haas-grotesk-display", sans-serif' : (p.fontFamily || PALETTES.gold.fontFamily));
 }
 }
 // True for duo-tone themes that collapse all categorical data colors into one ink.
@@ -462,7 +464,7 @@ e('div', { style: { width: '100%', maxWidth: props.maxWidth || 880, maxHeight: '
 e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, padding: '12px 14px', borderBottom: '1px solid ' + C.border } },
 e('div', { style: { minWidth: 0 } },
 e('div', { style: { fontSize: 10, color: props.accent || C.magenta, fontWeight: 900, letterSpacing: 0.8, textTransform: 'uppercase' } }, props.kicker || ''),
-e('div', { style: { fontFamily: "'IBM Plex Mono', monospace", fontSize: props.isMobile ? 14 : 17, color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginTop: props.titleSpacing || 0 } }, props.title || '')
+e('div', { className: props.titleIsMovie ? 'boffo-movie-title' : undefined, style: { fontFamily: "'IBM Plex Mono', monospace", fontSize: props.isMobile ? 14 : 17, color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginTop: props.titleSpacing || 0 } }, props.title || '')
 ),
 e('button', { onClick: props.onClose, style: { background: 'transparent', border: '1px solid ' + C.border, color: C.textMute, borderRadius: 5, width: 30, height: 30, cursor: 'pointer', fontSize: 17 } }, '\u00D7')
 ), props.children)
@@ -472,7 +474,7 @@ function TrailerModal(props) {
 const item = props.item;
 if (!item) return null;
 const id = getYouTubeId(item.trailerUrl);
-return e(ModalShell, { open: true, onClose: props.onClose, isMobile: props.isMobile, title: item.title, kicker: (item.assetType || 'Trailer') + ' \u00B7 ' + item.distributor, accent: item.assetType === 'Teaser' ? C.amber : C.magenta },
+return e(ModalShell, { open: true, onClose: props.onClose, isMobile: props.isMobile, title: item.title, titleIsMovie: true, kicker: (item.assetType || 'Trailer') + ' \u00B7 ' + item.distributor, accent: item.assetType === 'Teaser' ? C.amber : C.magenta },
 id ? e('div', { style: { position: 'relative', paddingTop: '56.25%', background: '#000' } },
 e('iframe', { src: buildYouTubeEmbedUrl(item.trailerUrl), title: (item.assetType || 'Trailer') + ' for ' + item.title, allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share', allowFullScreen: true, referrerPolicy: 'strict-origin-when-cross-origin', loading: 'eager', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0 } })
 ) : e('div', { style: { padding: 24, color: C.textMute } }, 'This YouTube URL could not be embedded.'),
@@ -887,7 +889,7 @@ e('span', { style: { display: 'inline-flex', alignItems: 'center', lineHeight: 1
 const renderItem = function (m, key) {
 return e('span', { key: key, style: { display: 'inline-flex', alignItems: 'center', gap: 6, padding: '0 18px' } },
 e('span', { style: { background: C.surfaceStrong, color: C.textMute, fontSize: 9.5, fontWeight: 800, padding: '1px 6px', borderRadius: 0, fontVariantNumeric: 'tabular-nums' } }, '#' + m.rank),
-e('span', { style: { fontWeight: 400, fontFamily: "'IBM Plex Mono', monospace", color: C.text } }, m.title),
+e('span', { className: 'boffo-movie-title', style: { fontWeight: 400, fontFamily: "'IBM Plex Mono', monospace", color: C.text } }, m.title),
 e('span', { style: { color: C.textFaint } }, '\u2022'),
 e('span', { style: { color: C.emeraldBright, fontVariantNumeric: 'tabular-nums' } }, fmtMoney(m.gross)),
 m.change === null ? e('span', { style: { background: C.pillNeutralDim, color: C.pillNeutral, fontSize: 9, fontWeight: 800, padding: '1px 5px', borderRadius: 0 } }, 'NEW') : e(ChangeBadge, { change: m.change }),
@@ -977,21 +979,20 @@ const live = props.live;
 const kind = props.kind;
 const isLive = kind === 'live';
 const accent = isLive ? C.amber : C.textFaint;
-const symbol = titleToTicker(live.title);
+const tagColor = isLive ? C.green : C.textFaint;
 const fieldLabel = { fontSize: 9, fontWeight: 800, letterSpacing: 0.5, color: C.textFaint, textTransform: 'uppercase' };
 const fieldValue = { fontSize: 12.5, fontFamily: "'IBM Plex Mono', monospace", color: C.text, marginTop: 2, fontVariantNumeric: 'tabular-nums' };
 return e('div', { style: { padding: '14px 16px' } },
 e('div', { style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 9, gap: 8 } },
 e('div', { style: { display: 'flex', alignItems: 'center', gap: 9, minWidth: 0 } },
-e('span', { style: { fontFamily: "'IBM Plex Mono', monospace", fontSize: 21, fontWeight: 700, color: accent, letterSpacing: 0.5, flexShrink: 0 } }, symbol),
-e('span', { style: { display: 'inline-flex', alignItems: 'center', gap: 4, border: '1px solid ' + accent, color: accent, fontSize: 8.5, fontWeight: 800, letterSpacing: 0.5, padding: '2px 5px', textTransform: 'uppercase', flexShrink: 0 } },
+e('span', { style: { display: 'inline-flex', alignItems: 'center', gap: 4, border: '1px solid ' + tagColor, color: tagColor, fontSize: 8.5, fontWeight: 800, letterSpacing: 0.5, padding: '2px 5px', textTransform: 'uppercase', flexShrink: 0 } },
 isLive ? e('span', { style: { width: 5, height: 5, background: C.green, animation: 'pulse 1.6s ease-in-out infinite' } }) : null,
 live.tagLabel || (isLive ? 'LIVE' : 'PREVIOUS')
 )
 ),
 e(DistBadge, { name: live.distributor })
 ),
-e('div', { style: { fontFamily: "'IBM Plex Mono', monospace", fontSize: 14, fontWeight: 500, color: C.text, marginBottom: 12, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' } }, live.title),
+e('div', { className: 'boffo-movie-title', style: { fontFamily: "'IBM Plex Mono', monospace", fontSize: 14, fontWeight: 500, color: C.text, marginBottom: 12, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' } }, live.title),
 e('div', { style: { display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 14, flexWrap: 'wrap' } },
 isLive
 ? e(SlotAmount, { label: live.amountLabel, color: accent, fontSize: 30 })
@@ -1429,7 +1430,7 @@ const headerLead = e('header', { 'data-layout-region': 'title', style: { padding
 e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: isMobile ? 12 : 24, marginBottom: isMobile ? 12 : 16 } },
 e('div', { style: { minWidth: 0, flexShrink: 0 } },
 e('div', { style: { display: 'flex', alignItems: 'baseline', gap: 9, flexWrap: 'wrap' } },
-e('span', { className: 'boffo-wordmark', style: { fontSize: isMobile ? 28 : 36, fontWeight: 900, fontStyle: 'normal', letterSpacing: -0.3, color: C.text, fontFamily: '"neue-haas-grotesk-display", sans-serif', lineHeight: 1 } }, 'Boffo'),
+e('span', { className: 'boffo-wordmark', style: { fontSize: isMobile ? 34 : 36, fontWeight: 900, fontStyle: 'normal', letterSpacing: -0.3, color: C.text, fontFamily: '"neue-haas-grotesk-display", sans-serif', lineHeight: 1 } }, 'Boffo'),
 e('span', { style: { fontSize: isMobile ? 10.5 : 11.5, color: C.textMute, letterSpacing: 0.8, textTransform: 'uppercase', fontWeight: 500 } }, 'Box Office Tracker')
 ),
 e('div', { style: { fontSize: isMobile ? 9 : 10, color: C.textFaint, letterSpacing: 0.4, marginTop: 4, fontVariantNumeric: 'tabular-nums' } }, 'Updated ' + LAST_UPDATED)
@@ -1490,13 +1491,12 @@ sortedTop10.map(function (m) {
 return e('div', { key: m.rank, style: { padding: '12px 0', borderBottom: '1px solid ' + C.border } },
 e('div', { style: { display: 'flex', alignItems: 'baseline', gap: 8 } },
 e('div', { style: { fontWeight: 800, fontSize: 15, color: C.textMute, minWidth: 20 } }, m.rank),
-e('span', { style: { fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, fontWeight: 700, color: C.amber, flexShrink: 0 } }, titleToTicker(m.title)),
-e('div', { style: { flex: 1, fontWeight: 400, fontFamily: "'IBM Plex Mono', monospace", fontSize: 13.5 } }, m.title),
+e('div', { className: 'boffo-movie-title', style: { flex: 1, fontWeight: 400, fontFamily: "'IBM Plex Mono', monospace", fontSize: 13.5 } }, m.title),
 e('div', { style: { fontVariantNumeric: 'tabular-nums', fontWeight: 700, fontSize: 14 } }, fmtMoney(m.gross))
 ),
 e('div', { style: { display: 'flex', alignItems: 'center', gap: 7, marginTop: 5, marginLeft: 28 } },
 e(DistBadge, { name: m.distributor, onChange: function (d) { updateDistributor(m.rank, d); } }),
-e('span', { style: { fontSize: 10, color: C.textFaint } }, 'WKND ' + m.weekendNum),
+e('span', { style: { fontSize: 10, color: C.textFaint } }, 'WKND ' + (m.weekendNum || 1)),
 e(RankDelta, { rank: m.rank, prev: m.prev })
 ),
 e('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 6, marginTop: 8, marginLeft: 28, fontSize: 11 } },
@@ -1528,11 +1528,12 @@ e('span', { style: { fontSize: 9, color: C.textFaint, fontVariantNumeric: 'tabul
 );
 } else {
 const cols = isTablet
-? '24px 1fr 80px 64px 76px 70px'
-: '28px 1fr 88px 70px 75px 88px 80px 88px';
+? '24px 1fr 78px 60px 92px 66px'
+: '28px 1fr 86px 66px 72px 98px 78px 86px';
 const showTheaters = !isTablet;
 const showTotal = !isTablet;
 const cellL = { borderLeft: '1px solid ' + C.border, paddingLeft: 10 };
+const cellPad = { paddingLeft: 10 };
 body = e('div', { style: sectionPad },
 e('div', { style: { fontSize: 11, color: C.textMute, marginBottom: 14, letterSpacing: 0.2 } }, '[ ' + (BOFFO_SETTINGS.weekendHeadingPrefix || 'Weekend of') + ' ' + BOFFO_SETTINGS.lastWeekendRange + ' ]' + ' \u00B7 click a column to sort'),
 e('div', { style: { display: 'grid', gridTemplateColumns: cols, fontSize: 10.5, color: C.textFaint, paddingBottom: 8, borderBottom: '2px solid ' + C.borderStrong, textTransform: 'uppercase', letterSpacing: 0.4 } },
@@ -1548,14 +1549,13 @@ e('div', { style: cellL }, e(SortHeader, { col: 'global', label: 'Global', right
 sortedTop10.map(function (m) {
 return e('div', { key: m.rank, style: { display: 'grid', gridTemplateColumns: cols, alignItems: 'center', padding: '11px 0', borderBottom: '1px solid ' + C.border, fontSize: 13 } },
 e('div', { style: { fontWeight: 800, fontSize: 14, color: C.textMute } }, m.rank),
-e('div', { style: cellL },
+e('div', { style: cellPad },
 e('div', { style: { display: 'flex', alignItems: 'baseline', gap: 8 } },
-e('span', { style: { fontFamily: "'IBM Plex Mono', monospace", fontSize: 10.5, fontWeight: 700, color: C.amber, flexShrink: 0 } }, titleToTicker(m.title)),
-e('div', { style: { fontWeight: 400, fontFamily: "'IBM Plex Mono', monospace" } }, m.title)
+e('div', { className: 'boffo-movie-title', style: { fontWeight: 400, fontFamily: "'IBM Plex Mono', monospace" } }, m.title)
 ),
 e('div', { style: { display: 'flex', alignItems: 'center', gap: 7, marginTop: 4, flexWrap: 'wrap' } },
 e(DistBadge, { name: m.distributor, onChange: function (d) { updateDistributor(m.rank, d); } }),
-e('span', { style: { fontSize: 10.5, color: C.textFaint } }, 'WKND ' + m.weekendNum),
+e('span', { style: { fontSize: 10.5, color: C.textFaint } }, 'WKND ' + (m.weekendNum || 1)),
 e(RankDelta, { rank: m.rank, prev: m.prev })
 ),
 e('div', { style: { display: 'flex', alignItems: 'center', gap: 8, marginTop: 6 } },
@@ -1565,12 +1565,12 @@ e('div', { style: { height: '100%', width: (m.gross / sumGross * 100) + '%', bac
 e('span', { style: { fontSize: 9.5, color: C.textFaint, fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap' } }, Math.round(m.gross / sumGross * 100) + '% of top 10')
 )
 ),
-e('div', { style: Object.assign({}, cellL, { textAlign: 'right', fontVariantNumeric: 'tabular-nums', fontWeight: 600 }) }, fmtMoney(m.gross)),
-e('div', { style: Object.assign({}, cellL, { textAlign: 'right' }) }, e(ChangeBadge, { change: m.change })),
-showTheaters ? e('div', { style: Object.assign({}, cellL, { textAlign: 'right', color: C.textMute, fontVariantNumeric: 'tabular-nums' }) }, m.theaters.toLocaleString()) : null,
-e('div', { style: Object.assign({}, cellL, { textAlign: 'right', color: C.textMute, fontVariantNumeric: 'tabular-nums' }) }, fmtFull(m.avg)),
-showTotal ? e('div', { style: Object.assign({}, cellL, { textAlign: 'right', color: C.textFaint, fontVariantNumeric: 'tabular-nums' }) }, fmtMoney(m.total)) : null,
-e('div', { style: Object.assign({}, cellL, { textAlign: 'right', color: m.global ? C.emerald : C.textFaint, fontVariantNumeric: 'tabular-nums', fontWeight: m.global ? 600 : 400 }) }, fmtMoney(m.global))
+e('div', { style: Object.assign({}, cellPad, { textAlign: 'right', fontVariantNumeric: 'tabular-nums', fontWeight: 600 }) }, fmtMoney(m.gross)),
+e('div', { style: Object.assign({}, cellPad, { textAlign: 'right' }) }, e(ChangeBadge, { change: m.change })),
+showTheaters ? e('div', { style: Object.assign({}, cellPad, { textAlign: 'right', color: C.textMute, fontVariantNumeric: 'tabular-nums' }) }, m.theaters.toLocaleString()) : null,
+e('div', { style: Object.assign({}, cellPad, { textAlign: 'right', color: C.textMute, fontVariantNumeric: 'tabular-nums' }) }, fmtFull(m.avg)),
+showTotal ? e('div', { style: Object.assign({}, cellPad, { textAlign: 'right', color: C.textFaint, fontVariantNumeric: 'tabular-nums' }) }, fmtMoney(m.total)) : null,
+e('div', { style: Object.assign({}, cellPad, { textAlign: 'right', color: m.global ? C.emerald : C.textFaint, fontVariantNumeric: 'tabular-nums', fontWeight: m.global ? 600 : 400 }) }, fmtMoney(m.global))
 );
 })
 );
@@ -1598,8 +1598,7 @@ const estimateScaleColor = (!themeIsMono() && t.estimateColorMode === 'custom' &
 return e('div', { key: i, style: { marginBottom: 16, padding: 16, border: '1px solid ' + C.border } },
 e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8, flexWrap: 'wrap', gap: 8 } },
 e('div', { style: { display: 'flex', alignItems: 'center', gap: 8 } },
-e('span', { style: { fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, fontWeight: 700, color: C.amber } }, titleToTicker(t.title)),
-e('span', { style: { fontSize: 14, fontWeight: 400, fontFamily: "'IBM Plex Mono', monospace" } }, t.title),
+e('span', { className: 'boffo-movie-title', style: { fontSize: 14, fontWeight: 400, fontFamily: "'IBM Plex Mono', monospace" } }, t.title),
 e(DistBadge, { name: t.distributor, onChange: function () {} }),
 e('span', { style: { fontSize: 11, color: C.textFaint } }, t.theaters.toLocaleString() + ' theaters')
 ),
@@ -1654,7 +1653,7 @@ const renderRelease = function (r) {
 const assetType = r.assetType || (r.trailerUrl ? 'Trailer' : 'TBD');
 const recent = assetType !== 'TBD' && !!r.trailerUrl && isRecentAsset(r.assetPublished);
 const titleBlock = e('div', { style: { display: 'flex', alignItems: 'center', gap: 6, minWidth: 0 } },
-e('span', { style: { minWidth: 0, fontWeight: 400, fontFamily: "'IBM Plex Mono', monospace", overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: isMobile ? 'normal' : 'nowrap', fontSize: isMobile ? 13 : 12.5 } }, r.title),
+e('span', { className: 'boffo-movie-title', style: { minWidth: 0, fontWeight: 400, fontFamily: "'IBM Plex Mono', monospace", overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: isMobile ? 'normal' : 'nowrap', fontSize: isMobile ? 13 : 12.5 } }, r.title),
 recent ? e('span', { title: 'New asset in the last 3 days', style: { color: C.amber, flexShrink: 0, fontSize: 9, fontWeight: 800, letterSpacing: 0.4, border: '1px solid ' + C.amber, padding: '1px 4px' } }, 'NEW') : null
 );
 return e('div', { key: r.date + r.title + r.type, style: { padding: isMobile ? '10px 0' : '9px 0', borderBottom: '1px solid ' + C.border } },
@@ -1725,9 +1724,10 @@ const row = findMcRow(key);
 return { label: String(row.label || key).toUpperCase().slice(0, 9), value: Number(row.value) || 0, color: (!themeIsMono() && validHexColor(row.color)) ? row.color : undefined };
 }).filter(function (p) { return p.value; });
 const mcCaptionParts = [MARKET_COMPARISON && MARKET_COMPARISON.subtitle, MARKET_COMPARISON && MARKET_COMPARISON.source, MARKET_COMPARISON && MARKET_COMPARISON.asOf ? 'as of ' + MARKET_COMPARISON.asOf : null].filter(Boolean);
+const currentHeroPanel = liveData ? railPanel('Current #1', C.amber, e(QuotePanel, { kind: 'live', live: liveData }), 0) : null;
+const previousHeroPanel = finalData ? railPanel('Previous #1', C.textFaint, e(QuotePanel, { kind: 'final', live: finalData }), 1) : null;
 const heroPanels = e('section', { 'data-layout-region': 'heroes', 'aria-label': 'Weekend leaders', style: { display: 'grid', gridTemplateColumns: useSideRail || viewport < 760 ? '1fr' : 'repeat(2, minmax(0, 1fr))', gap: useSideRail ? 0 : 12, minWidth: 0, alignItems: 'stretch' } },
-liveData ? railPanel('Latest weekend', C.amber, e(QuotePanel, { kind: 'live', live: liveData }), 0) : null,
-finalData ? railPanel('Previous weekend', C.textFaint, e(QuotePanel, { kind: 'final', live: finalData }), 1) : null
+currentHeroPanel, previousHeroPanel
 );
 const analyticsPanels = e('section', { 'data-layout-region': 'analytics', 'aria-label': 'Market analysis' },
 mcPoints.length > 1 ? railPanel((MARKET_COMPARISON && MARKET_COMPARISON.title) || 'Weekend market pulse', C.teal, e('div', null,
@@ -1750,13 +1750,17 @@ e(ChatterTicker, { posts: chatterPosts, isMobile: isMobile, onExpand: setExpande
 e('div', { style: { maxWidth: 1440, margin: '0 auto', display: useSideRail ? 'grid' : 'block', gridTemplateColumns: useSideRail ? 'minmax(0,1fr) 340px' : undefined, gap: useSideRail ? 22 : 0, alignItems: 'start', padding: useSideRail ? '0 22px' : 0 } },
 e('main', { style: { minWidth: 0, maxWidth: '100%' } },
 headerLead,
-useSideRail ? null : e('div', { style: { padding: isMobile ? '0 14px 18px' : '0 30px 22px' } }, heroPanels),
+useSideRail ? null : e('div', { style: { padding: isMobile ? '0 14px 18px' : '0 30px 22px' } }, currentHeroPanel),
 tabNav,
 e('div', { 'data-layout-region': 'main-content' }, body)
 ),
 useSideRail ? e('aside', { 'aria-label': 'Weekend overview and market analysis', style: { paddingTop: 22, minWidth: 0 } }, rightRail) : null
 ),
-useSideRail ? null : e('aside', { 'aria-label': 'Market analysis', style: { maxWidth: 1440, margin: '0 auto', padding: isMobile ? '18px 14px 0' : '22px 30px 0' } }, analyticsPanels, changeThemeButton),
+useSideRail ? null : e('aside', { 'aria-label': 'Previous weekend and market analysis', style: { maxWidth: 1440, margin: '0 auto', padding: isMobile ? '18px 14px 0' : '22px 30px 0' } },
+tab === 'top10' ? previousHeroPanel : null,
+tab === 'top10' ? analyticsPanels : null,
+changeThemeButton
+),
 e('div', { style: { maxWidth: 1440, margin: '0 auto', padding: isMobile ? '0 14px' : '0 22px' } }, footer),
 e(TrailerModal, { item: playingRelease, onClose: function () { setPlayingRelease(null); }, isMobile: isMobile }),
 e(ChatterModal, { post: expandedPost, onClose: function () { setExpandedPost(null); }, isMobile: isMobile }),
