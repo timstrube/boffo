@@ -1,12 +1,12 @@
 {
   "version": "5.4",
-  "updatedAt": "2026-08-10T23:31:40.969Z",
+  "updatedAt": "2026-08-11T14:13:00.284Z",
   "settings": {
-    "lastUpdatedLabel": "Aug 10, 2026 · 4:31 PM PT / 7:31 PM ET",
+    "lastUpdatedLabel": "Aug 11, 2026 · 7:13 AM PT / 10:13 AM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
     "trackingWeekend": "Aug 14-16",
-    "top10IsFinal": false,
+    "top10IsFinal": true,
     "footerSourceNote": "The Numbers, Box Office Mojo, Box Office Pro, Deadline, Variety, Screen International, FanBolt",
     "footerVersion": "Boffo v0.5",
     "editorialNote": "",
@@ -42,7 +42,7 @@
     "thisYear": 205646922,
     "lastYear": 131243011,
     "tenYearAvg": 115761519,
-    "note": "Spider-Man: Brand New Day held #1 for a second-straight weekend, dropping 60% to an estimated $145M and pushing its 10-day domestic cume past $655M (worldwide north of $930M). That's the third-best domestic second weekend of all time, trailing only The Force Awakens ($149.2M) and Avengers: Endgame ($147.4M), and clearing Avengers: Infinity War's $114.8M third-place mark. The Odyssey slipped 38% to $31.5M in its fourth weekend, crossing $461M domestic and roughly $910M worldwide. Two new wide entries underwhelmed: Universal's One Night Only opened to an estimated $5.7M (3,012 theaters) and Searchlight's Super Troopers 3 debuted to $4.0M (2,760 theaters), both landing below their long-range Box Office Pro calls. With holdovers Toy Story 5, Minions & Monsters and Moana continuing to fade, the overall market is estimated at $205M-$210M for the frame — a steep comedown from the record $436M+ notched the prior weekend, but still running well ahead of both last year's comparable weekend ($131.2M) and the 10-year average for the slot ($115.8M)."
+    "note": "Spider-Man: Brand New Day held #1 for a second-straight weekend, dropping 60% to a confirmed $144.3M and pushing its 10-day domestic cume to $654.3M (worldwide north of $1.67 billion). That's the third-best domestic second weekend of all time, trailing only The Force Awakens ($149.2M) and Avengers: Endgame ($145.8M), and clearing Avengers: Infinity War's $112.5M third-place mark. The Odyssey slipped 38% to $31.7M in its fourth weekend, crossing $461M domestic and roughly $1.1 billion worldwide. Two new wide entries underwhelmed: Universal's One Night Only opened to $5.5M (3,012 theaters) and Searchlight's Super Troopers 3 debuted to $4.0M (2,760 theaters), both landing below their long-range Box Office Pro calls. With holdovers Toy Story 5, Minions & Monsters and Moana continuing to fade, the overall market landed at roughly $205.6M for the frame — a steep comedown from the record $436.6M notched the prior weekend, but still running well ahead of both last year's comparable weekend ($131.2M) and the 10-year average for the slot ($115.8M)."
   },
   "marketPulse": {
     "title": "Weekend Market Pulse",
@@ -83,7 +83,7 @@
   "tickers": {
     "top10": {
       "enabled": true,
-      "breakingMode": true,
+      "breakingMode": false,
       "pillText": "BREAKING: WKND ACTUALS",
       "pillSubtext": "8/7-8/9",
       "pillColor": "#3FE08A",
@@ -261,7 +261,7 @@
       "metacritic": null,
       "rangeLow": 25000000,
       "rangeHigh": 45000000,
-      "analysis": "The Quorum's tracking has swung hard in Oak Street's favor over the past month. Awareness climbed +14 and interest +8 across three straight reads, reversing an earlier slide and positioning it as one of two films (alongside Aug. 21's Insidious: Out of the Further) battling to be August's surprise breakout. Forecasts have widened as a result: Box Office Pro's original $25M–$35M long-range call has given way to a broader $25M–$45M spread elsewhere, with most predictions clustering in the low $30Ms. Comps run the gamut — Warner Bros.' original-IP high-water mark is Sinners' $48M open, while genre disappointments like Trap ($15.4M), Mickey 17 ($19M) and The Creator ($14M) mark the floor. Director David Robert Mitchell hasn't had a wide release since 2014's It Follows — an 11-year gap that tempers the Weapons ($43.5M open) comparison somewhat. Running in roughly 3,400 theaters, opposite PAW Patrol: The Dino Movie the same weekend.",
+      "analysis": "The Quorum's tracking has swung hard in Oak Street's favor over the past month, and the trend held through its third straight reading (Aug. 4): 32% awareness (+6) and 44% interest (+3), a third consecutive gain that's recovered 13 points of awareness in a month. The Quorum now frames it as one of two films (alongside Aug. 21's Insidious: Out of the Further, which leads on raw awareness/interest at 47%/48% but is losing ground week over week) battling to be August's surprise breakout. Forecasts have firmed up as a result: Box Office Pro's original $25M–$35M long-range call has given way to a broader spread elsewhere, with SlashFilm's most recent read (Aug. 10) narrowing to $30M–$45M and most predictions clustering in the low $30Ms. Comps run the gamut: Warner Bros.' original-IP high-water mark is Sinners' $48M open, while genre disappointments like Trap ($15.4M), Mickey 17 ($19M) and The Creator ($14M) mark the floor.",
       "rulerLow": 20000000,
       "rulerHigh": 48000000,
       "currentEstimate": null,
@@ -278,7 +278,7 @@
       "metacritic": null,
       "rangeLow": 15000000,
       "rangeHigh": 20000000,
-      "analysis": "Long-range calls from Box Office Pro ($15M–$20M) and other trackers (Deadline/Forbes converge around $14M–$19M) have held steady since forecasting began in late July, with roughly 3,200 theaters expected. Franchise history sets modest expectations: 2021's Paw Patrol: The Movie opened to $13.1M en route to a $40.1M domestic total, while 2023's Paw Patrol: The Mighty Movie bowed to $22.7M in September. Recent August/September family comps include The Wild Robot ($35.7M), The Bad Guys 2 ($21.9M) and Gabby's Dollhouse: The Movie ($13.6M). Going head-to-head the same day against Warner Bros.' The End of Oak Street — both effectively dinosaur movies — outlets are framing Aug. 14 as a family-vs-genre 'dino box office battle,' though PAW Patrol's built-in preschool audience should largely insulate it from direct competition with Oak Street's older-skewing pitch.",
+      "analysis": "Long-range calls from Box Office Pro ($15M–$20M) and other trackers (Deadline/Forbes converge around $14M–$19M) have held steady since forecasting began in late July and remain unchanged as of this week, with roughly 3,200 theaters expected. Franchise history sets modest expectations: 2021's Paw Patrol: The Movie opened to $13.1M en route to a $40.1M domestic total, while 2023's Paw Patrol: The Mighty Movie bowed to $22.7M in September. Recent August/September family comps include The Wild Robot ($35.7M), The Bad Guys 2 ($21.9M) and Gabby's Dollhouse: The Movie ($13.6M). Going head-to-head the same day against Warner Bros.' The End of Oak Street — both effectively dinosaur movies — outlets are framing Aug. 14 as a family-vs-genre ‘dino box office battle,’ though PAW Patrol's built-in preschool audience should largely insulate it from direct competition with Oak Street's older-skewing pitch.",
       "rulerLow": 12000000,
       "rulerHigh": 22000000,
       "currentEstimate": null,
@@ -295,7 +295,7 @@
       "metacritic": null,
       "rangeLow": 3000000,
       "rangeHigh": 5000000,
-      "analysis": "Angel's Cold War drama. Jeff Daniels as Reagan opposite Jared Harris' Gorbachev during the 1986 Reykjavik summit, with J.K. Simmons and Hope Davis. Carries a modest $3M–$5M long-range call from Box Office Pro, unchanged since tracking began. It's the only new wide entry that weekend not chasing a dinosaur; Angel's faith-and-family-adjacent audience (Sound of Freedom, Cabrini) gives it a built-in floor, though awards-adjacent political drama has a thinner theatrical track record than the studio's usual fare.",
+      "analysis": "Angel's Cold War drama. Jeff Daniels as Reagan opposite Jared Harris' Gorbachev during the 1986 Reykjavik summit, with J.K. Simmons and Hope Davis. Box Office Pro's long-range call remains $3M–$5M, unchanged since tracking began, and an independent read this week (Todd Thatcher, Aug. 9) landed right in that band at $4.5M. It's the only new wide entry that weekend not chasing a dinosaur; Angel's faith-and-family-adjacent audience (Sound of Freedom, Cabrini) gives it a built-in floor, though this could be lucky to take in a quarter of Young Washington's nearly $20M Angel Studios debut earlier this summer. Awards-adjacent political drama has a thinner theatrical track record than the studio's usual fare.",
       "rulerLow": 2000000,
       "rulerHigh": 6000000,
       "currentEstimate": null,
@@ -1252,7 +1252,7 @@
       "gross": 144254386,
       "range": "Aug 7-9",
       "source": "weekend",
-      "status": "estimate"
+      "status": "final"
     },
     "previousLeader": {
       "title": "Spider-Man: Brand New Day",
