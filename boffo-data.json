@@ -1,8 +1,8 @@
 {
   "version": "5.4",
-  "updatedAt": "2026-08-11T14:13:00.284Z",
+  "updatedAt": "2026-08-12T18:40:32.767Z",
   "settings": {
-    "lastUpdatedLabel": "Aug 11, 2026 · 7:13 AM PT / 10:13 AM ET",
+    "lastUpdatedLabel": "Aug 12, 2026 · 11:40 AM PT / 2:40 PM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
     "trackingWeekend": "Aug 14-16",
@@ -84,7 +84,7 @@
     "top10": {
       "enabled": true,
       "breakingMode": false,
-      "pillText": "BREAKING: WKND ACTUALS",
+      "pillText": "WKND ACTUALS",
       "pillSubtext": "8/7-8/9",
       "pillColor": "#3FE08A",
       "breakingColor": "#F0473D",
@@ -255,15 +255,15 @@
       "title": "The End of Oak Street",
       "distributor": "Warner Bros.",
       "theaters": 3400,
-      "confidence": "medium",
+      "confidence": "high",
       "momentum": "rising",
       "rtCritic": null,
       "metacritic": null,
-      "rangeLow": 25000000,
-      "rangeHigh": 45000000,
-      "analysis": "The Quorum's tracking has swung hard in Oak Street's favor over the past month, and the trend held through its third straight reading (Aug. 4): 32% awareness (+6) and 44% interest (+3), a third consecutive gain that's recovered 13 points of awareness in a month. The Quorum now frames it as one of two films (alongside Aug. 21's Insidious: Out of the Further, which leads on raw awareness/interest at 47%/48% but is losing ground week over week) battling to be August's surprise breakout. Forecasts have firmed up as a result: Box Office Pro's original $25M–$35M long-range call has given way to a broader spread elsewhere, with SlashFilm's most recent read (Aug. 10) narrowing to $30M–$45M and most predictions clustering in the low $30Ms. Comps run the gamut: Warner Bros.' original-IP high-water mark is Sinners' $48M open, while genre disappointments like Trap ($15.4M), Mickey 17 ($19M) and The Creator ($14M) mark the floor.",
-      "rulerLow": 20000000,
-      "rulerHigh": 48000000,
+      "rangeLow": 20000000,
+      "rangeHigh": 25000000,
+      "analysis": "Tracking has firmed up considerably heading into Thursday previews. Deadline's Aug. 11 weekend-3 preview pegs Oak Street for a $20M–$25M opening from 3,400 theaters, with Warner Bros.' own estimate a touch more conservative at $18M–$23M domestic. That's a notable comedown from Box Office Theory's $30M–$45M call earlier in the week and Box Office Pro's original $25M–$35M long-range read — trackers have converged toward the lower end as release week arrived. The wild card: Rotten Tomatoes unveiled an 85% certified-fresh score Wednesday, the best of any dinosaur-adjacent studio release in years, which could lift word-of-mouth and help the film hold better than a front-loaded genre title typically would. CinemaScore lands Friday night. Comps run the gamut: Warner Bros.' original-IP high-water mark is Sinners' $48M open, while genre disappointments like Trap ($15.4M), Mickey 17 ($19M) and The Creator ($14M) mark the floor — Oak Street is now tracking closer to that floor than the ceiling.",
+      "rulerLow": 18000000,
+      "rulerHigh": 28000000,
       "currentEstimate": null,
       "estimateColorMode": "gradient",
       "estimateColor": "#5C8FF0"
@@ -271,16 +271,16 @@
     {
       "title": "PAW Patrol: The Dino Movie",
       "distributor": "Paramount",
-      "theaters": 3200,
+      "theaters": 3500,
       "confidence": "medium",
-      "momentum": "stable",
+      "momentum": "rising",
       "rtCritic": null,
       "metacritic": null,
-      "rangeLow": 15000000,
-      "rangeHigh": 20000000,
-      "analysis": "Long-range calls from Box Office Pro ($15M–$20M) and other trackers (Deadline/Forbes converge around $14M–$19M) have held steady since forecasting began in late July and remain unchanged as of this week, with roughly 3,200 theaters expected. Franchise history sets modest expectations: 2021's Paw Patrol: The Movie opened to $13.1M en route to a $40.1M domestic total, while 2023's Paw Patrol: The Mighty Movie bowed to $22.7M in September. Recent August/September family comps include The Wild Robot ($35.7M), The Bad Guys 2 ($21.9M) and Gabby's Dollhouse: The Movie ($13.6M). Going head-to-head the same day against Warner Bros.' The End of Oak Street — both effectively dinosaur movies — outlets are framing Aug. 14 as a family-vs-genre ‘dino box office battle,’ though PAW Patrol's built-in preschool audience should largely insulate it from direct competition with Oak Street's older-skewing pitch.",
-      "rulerLow": 12000000,
-      "rulerHigh": 22000000,
+      "rangeLow": 18000000,
+      "rangeHigh": 22000000,
+      "analysis": "Deadline's Aug. 11 weekend-3 preview has Dino Movie 'aiming for $20 million' from an expanded 3,500 North American theaters (up from the 3,200 first projected), a step up from Box Office Pro's original $15M–$20M long-range call and Deadline/Forbes' earlier $14M–$19M convergence. Franchise history sets modest expectations: 2021's Paw Patrol: The Movie opened to $13.1M en route to a $40.1M domestic total, while 2023's Paw Patrol: The Mighty Movie bowed to $22.7M in September. Recent August/September family comps include The Wild Robot ($35.7M), The Bad Guys 2 ($21.9M) and Gabby's Dollhouse: The Movie ($13.6M). With Warner Bros.' The End of Oak Street, outlets are framing the weekend as a family-vs-genre 'dino box office battle,' though PAW Patrol's built-in preschool audience, plus pent-up demand since Minions & Monsters in early July, should largely insulate it from direct competition with Oak Street's older-skewing pitch.",
+      "rulerLow": 15000000,
+      "rulerHigh": 23000000,
       "currentEstimate": null,
       "estimateColorMode": "gradient",
       "estimateColor": "#5C8FF0"
@@ -315,6 +315,33 @@
     },
     {
       "date": "Aug 14",
+      "title": "PAW Patrol: The Dino Movie",
+      "distributor": "Paramount",
+      "type": "Wide",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=aHw4PuLCUIc",
+      "assetPublished": null
+    },
+    {
+      "date": "Aug 14",
+      "title": "The Brink of War",
+      "distributor": "Angel Studios",
+      "type": "Wide",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=a-T0TlMN-RE",
+      "assetPublished": null
+    },
+    {
+      "date": "Aug 14",
+      "title": "SIX The Musical Live!",
+      "distributor": "Focus Features",
+      "type": "Limited",
+      "assetType": "Trailer",
+      "trailerUrl": "https://www.youtube.com/watch?v=phU3eSBFOXA",
+      "assetPublished": null
+    },
+    {
+      "date": "Aug 14",
       "title": "The Rivals of Amziah King",
       "distributor": "Bleecker Street",
       "type": "Limited",
@@ -338,33 +365,6 @@
       "type": "Limited",
       "assetType": "Trailer",
       "trailerUrl": "https://www.youtube.com/watch?v=uA6Fnr2VXkw",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 14",
-      "title": "PAW Patrol: The Dino Movie",
-      "distributor": "Paramount",
-      "type": "Wide",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=aHw4PuLCUIc",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 14",
-      "title": "SIX The Musical Live!",
-      "distributor": "Focus Features",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=phU3eSBFOXA",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 14",
-      "title": "The Brink of War",
-      "distributor": "Angel Studios",
-      "type": "Wide",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=a-T0TlMN-RE",
       "assetPublished": null
     },
     {
@@ -661,8 +661,8 @@
       "distributor": "Amazon MGM",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=wbMNy_djxGk",
-      "assetPublished": null
+      "trailerUrl": "https://www.youtube.com/watch?v=xdPMKhjMSFs",
+      "assetPublished": "2026-08-11"
     },
     {
       "date": "Oct 9",
@@ -867,9 +867,9 @@
       "title": "Josephine",
       "distributor": "Sumerian",
       "type": "Limited",
-      "assetType": "TBD",
-      "trailerUrl": null,
-      "assetPublished": null
+      "assetType": "Teaser",
+      "trailerUrl": "https://www.youtube.com/watch?v=K32NPBLpqZI",
+      "assetPublished": "2026-08-11"
     },
     {
       "date": "Nov 20",
