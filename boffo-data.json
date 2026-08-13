@@ -1,8 +1,8 @@
 {
   "version": "5.4",
-  "updatedAt": "2026-08-12T18:40:32.767Z",
+  "updatedAt": "2026-08-13T15:10:00.555Z",
   "settings": {
-    "lastUpdatedLabel": "Aug 12, 2026 · 11:40 AM PT / 2:40 PM ET",
+    "lastUpdatedLabel": "Aug 13, 2026 · 8:10 AM PT / 11:10 AM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
     "trackingWeekend": "Aug 14-16",
@@ -10,7 +10,8 @@
     "footerSourceNote": "The Numbers, Box Office Mojo, Box Office Pro, Deadline, Variety, Screen International, FanBolt",
     "footerVersion": "Boffo v0.5",
     "editorialNote": "",
-    "lastWeekendRange": "Aug 7-9"
+    "lastWeekendRange": "Aug 7-9",
+    "richTextFormat": "html-v1"
   },
   "hero": {
     "latest": {
@@ -42,7 +43,8 @@
     "thisYear": 205646922,
     "lastYear": 131243011,
     "tenYearAvg": 115761519,
-    "note": "Spider-Man: Brand New Day held #1 for a second-straight weekend, dropping 60% to a confirmed $144.3M and pushing its 10-day domestic cume to $654.3M (worldwide north of $1.67 billion). That's the third-best domestic second weekend of all time, trailing only The Force Awakens ($149.2M) and Avengers: Endgame ($145.8M), and clearing Avengers: Infinity War's $112.5M third-place mark. The Odyssey slipped 38% to $31.7M in its fourth weekend, crossing $461M domestic and roughly $1.1 billion worldwide. Two new wide entries underwhelmed: Universal's One Night Only opened to $5.5M (3,012 theaters) and Searchlight's Super Troopers 3 debuted to $4.0M (2,760 theaters), both landing below their long-range Box Office Pro calls. With holdovers Toy Story 5, Minions & Monsters and Moana continuing to fade, the overall market landed at roughly $205.6M for the frame — a steep comedown from the record $436.6M notched the prior weekend, but still running well ahead of both last year's comparable weekend ($131.2M) and the 10-year average for the slot ($115.8M)."
+    "note": "Spider-Man: Brand New Day held #1 for a second-straight weekend, dropping 60% to a confirmed $144.3M and pushing its 10-day domestic cume to $654.3M (worldwide north of $1.67 billion). That's the third-best domestic second weekend of all time, trailing only The Force Awakens ($149.2M) and Avengers: Endgame ($145.8M), and clearing Avengers: Infinity War's $112.5M third-place mark. The Odyssey slipped 38% to $31.7M in its fourth weekend, crossing $461M domestic and roughly $1.1 billion worldwide. Two new wide entries underwhelmed: Universal's One Night Only opened to $5.5M (3,012 theaters) and Searchlight's Super Troopers 3 debuted to $4.0M (2,760 theaters), both landing below their long-range Box Office Pro calls. With holdovers Toy Story 5, Minions & Monsters and Moana continuing to fade, the overall market landed at roughly $205.6M for the frame — a steep comedown from the record $436.6M notched the prior weekend, but still running well ahead of both last year's comparable weekend ($131.2M) and the 10-year average for the slot ($115.8M).",
+    "noteHtml": null
   },
   "marketPulse": {
     "title": "Weekend Market Pulse",
@@ -257,16 +259,17 @@
       "theaters": 3400,
       "confidence": "high",
       "momentum": "rising",
-      "rtCritic": null,
+      "rtCritic": 85,
       "metacritic": null,
       "rangeLow": 20000000,
       "rangeHigh": 25000000,
-      "analysis": "Tracking has firmed up considerably heading into Thursday previews. Deadline's Aug. 11 weekend-3 preview pegs Oak Street for a $20M–$25M opening from 3,400 theaters, with Warner Bros.' own estimate a touch more conservative at $18M–$23M domestic. That's a notable comedown from Box Office Theory's $30M–$45M call earlier in the week and Box Office Pro's original $25M–$35M long-range read — trackers have converged toward the lower end as release week arrived. The wild card: Rotten Tomatoes unveiled an 85% certified-fresh score Wednesday, the best of any dinosaur-adjacent studio release in years, which could lift word-of-mouth and help the film hold better than a front-loaded genre title typically would. CinemaScore lands Friday night. Comps run the gamut: Warner Bros.' original-IP high-water mark is Sinners' $48M open, while genre disappointments like Trap ($15.4M), Mickey 17 ($19M) and The Creator ($14M) mark the floor — Oak Street is now tracking closer to that floor than the ceiling.",
+      "analysis": "Tracking has held steady into Thursday. Deadline's latest weekend-3 preview still has Oak Street at $20M–$25M from 3,400 theaters, with Warner Bros.' own studio estimate a touch more conservative at $18M–$23M domestic (plus $20M–$25M projected internationally). Box Office Theory's newest read converges in a similar zone at $20M–$31M — down from its bullish $30M–$45M call earlier in the summer, but still carrying a higher ceiling than Deadline/WB. The confirmed Rotten Tomatoes score landed Wednesday at a certified-fresh 85%, the best of any dinosaur-adjacent studio release in years, and could help the film hold better than a typical front-loaded genre title. CinemaScore lands Friday night with previews starting Thursday afternoon. Comps run the gamut: Warner Bros.' original-IP high-water mark is Sinners' $48M open, while genre disappointments like Trap ($15.4M), Mickey 17 ($19M) and The Creator ($14M) mark the floor — Oak Street remains tracking closer to that floor than the ceiling despite the reviews.",
       "rulerLow": 18000000,
-      "rulerHigh": 28000000,
+      "rulerHigh": 31000000,
       "currentEstimate": null,
       "estimateColorMode": "gradient",
-      "estimateColor": "#5C8FF0"
+      "estimateColor": "#5C8FF0",
+      "analysisHtml": "Tracking has held steady into Thursday. Deadline's latest weekend-3 preview still has Oak Street at $20M–$25M from 3,400 theaters, with Warner Bros.' own studio estimate a touch more conservative at $18M–$23M domestic (plus $20M–$25M projected internationally). Box Office Theory's newest read converges in a similar zone at $20M–$31M — down from its bullish $30M–$45M call earlier in the summer, but still carrying a higher ceiling than Deadline/WB. The confirmed Rotten Tomatoes score landed Wednesday at a certified-fresh 85%, the best of any dinosaur-adjacent studio release in years, and could help the film hold better than a typical front-loaded genre title. CinemaScore lands Friday night with previews starting Thursday afternoon. Comps run the gamut: Warner Bros.' original-IP high-water mark is Sinners' $48M open, while genre disappointments like Trap ($15.4M), Mickey 17 ($19M) and The Creator ($14M) mark the floor — Oak Street remains tracking closer to that floor than the ceiling despite the reviews."
     },
     {
       "title": "PAW Patrol: The Dino Movie",
@@ -274,33 +277,35 @@
       "theaters": 3500,
       "confidence": "medium",
       "momentum": "rising",
-      "rtCritic": null,
+      "rtCritic": 82,
       "metacritic": null,
-      "rangeLow": 18000000,
+      "rangeLow": 16000000,
       "rangeHigh": 22000000,
-      "analysis": "Deadline's Aug. 11 weekend-3 preview has Dino Movie 'aiming for $20 million' from an expanded 3,500 North American theaters (up from the 3,200 first projected), a step up from Box Office Pro's original $15M–$20M long-range call and Deadline/Forbes' earlier $14M–$19M convergence. Franchise history sets modest expectations: 2021's Paw Patrol: The Movie opened to $13.1M en route to a $40.1M domestic total, while 2023's Paw Patrol: The Mighty Movie bowed to $22.7M in September. Recent August/September family comps include The Wild Robot ($35.7M), The Bad Guys 2 ($21.9M) and Gabby's Dollhouse: The Movie ($13.6M). With Warner Bros.' The End of Oak Street, outlets are framing the weekend as a family-vs-genre 'dino box office battle,' though PAW Patrol's built-in preschool audience, plus pent-up demand since Minions & Monsters in early July, should largely insulate it from direct competition with Oak Street's older-skewing pitch.",
+      "analysis": "Paramount's own studio guidance (via THR, Aug. 12) now projects a domestic opening in the “mid-to-high teens” from more than 3,500 locations — a touch softer than the low-$20Ms Deadline had floated earlier in the week. Box Office Theory's independent read is more bullish, forecasting $20M–$28M, so the range here stays wide to reflect that split rather than resolve it. Rotten Tomatoes landed Wednesday at 82% from early reviews, a solid — if unspectacular — score for the franchise, with critics split between praising its heart/humor and knocking its consumerist undertones. Franchise history sets modest expectations: 2021's Paw Patrol: The Movie opened to $13.1M en route to a $40.1M domestic total, while 2023's Paw Patrol: The Mighty Movie bowed to $22.7M in September. Recent August/September family comps include The Wild Robot ($35.7M), The Bad Guys 2 ($21.9M) and Gabby's Dollhouse: The Movie ($13.6M). With Warner Bros.' The End of Oak Street, outlets are framing the weekend as a family-vs-genre ‘dino box office battle,’ though PAW Patrol's built-in preschool audience, plus pent-up demand since Minions & Monsters in early July, should largely insulate it from direct competition with Oak Street's older-skewing pitch.",
       "rulerLow": 15000000,
-      "rulerHigh": 23000000,
+      "rulerHigh": 28000000,
       "currentEstimate": null,
       "estimateColorMode": "gradient",
-      "estimateColor": "#5C8FF0"
+      "estimateColor": "#5C8FF0",
+      "analysisHtml": null
     },
     {
       "title": "The Brink of War",
       "distributor": "Angel Studios",
       "theaters": 2000,
       "confidence": "low",
-      "momentum": "stable",
+      "momentum": "cooling",
       "rtCritic": null,
       "metacritic": null,
-      "rangeLow": 3000000,
+      "rangeLow": 2000000,
       "rangeHigh": 5000000,
-      "analysis": "Angel's Cold War drama. Jeff Daniels as Reagan opposite Jared Harris' Gorbachev during the 1986 Reykjavik summit, with J.K. Simmons and Hope Davis. Box Office Pro's long-range call remains $3M–$5M, unchanged since tracking began, and an independent read this week (Todd Thatcher, Aug. 9) landed right in that band at $4.5M. It's the only new wide entry that weekend not chasing a dinosaur; Angel's faith-and-family-adjacent audience (Sound of Freedom, Cabrini) gives it a built-in floor, though this could be lucky to take in a quarter of Young Washington's nearly $20M Angel Studios debut earlier this summer. Awards-adjacent political drama has a thinner theatrical track record than the studio's usual fare.",
-      "rulerLow": 2000000,
+      "analysis": "Angel's Cold War drama — Jeff Daniels as Reagan opposite Jared Harris' Gorbachev during the 1986 Reykjavik summit, with J.K. Simmons and Hope Davis — is showing a split among trackers as release day arrives. Box Office Pro's long-range call remains unchanged at $3M–$5M, and independent forecaster Todd Thatcher (Aug. 9) landed within that band at $4.5M, but Box Office Theory's newest read (Aug. 12) is notably softer at $1.5M–$3.5M. Given that disagreement, the range here stays wide rather than picking a side. It's the only new wide entry this weekend not chasing a dinosaur; Angel's faith-and-family-adjacent audience (Sound of Freedom, Cabrini) gives it a built-in floor, though this could be lucky to take in a quarter of Young Washington's nearly $20M Angel Studios debut earlier this summer. Awards-adjacent political drama has a thinner theatrical track record than the studio's usual fare; no CinemaScore or Rotten Tomatoes data has surfaced yet.",
+      "rulerLow": 1500000,
       "rulerHigh": 6000000,
       "currentEstimate": null,
       "estimateColorMode": "gradient",
-      "estimateColor": "#5C8FF0"
+      "estimateColor": "#5C8FF0",
+      "analysisHtml": null
     }
   ],
   "releases": [
@@ -517,8 +522,8 @@
       "distributor": "Paramount",
       "type": "Wide",
       "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=ej8pjisr0Pc",
-      "assetPublished": null
+      "trailerUrl": "https://www.youtube.com/watch?v=fvnyrBnUx4E",
+      "assetPublished": "2026-08-12"
     },
     {
       "date": "Sep 4",
@@ -1248,11 +1253,15 @@
       "title": "Spider-Man: Brand New Day",
       "distributor": "Sony Pictures",
       "theaters": 4487,
-      "avg": 32149,
-      "gross": 144254386,
+      "avg": 32316,
+      "gross": 144200000,
       "range": "Aug 7-9",
-      "source": "weekend",
-      "status": "final"
+      "source": "manual",
+      "status": "final",
+      "extra": "$32,316 avg",
+      "amountLabel": "$144.2M",
+      "subLabel": "FINAL 3-DAY · Aug 7-9",
+      "tagLabel": "LATEST"
     },
     "previousLeader": {
       "title": "Spider-Man: Brand New Day",
