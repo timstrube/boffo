@@ -1247,11 +1247,13 @@ function rgb(hex) { return [parseInt(hex.slice(1,3),16), parseInt(hex.slice(3,5)
 const ar = rgb(a), br = rgb(b), clamp = Math.max(0, Math.min(1, t));
 return '#' + ar.map(function (value, i) { return Math.round(value + (br[i]-value)*clamp).toString(16).padStart(2,'0'); }).join('');
 }
-function estimateGradientColor(value, low, high) {
+function estimateBlockColor(value, low, high) {
 if (value < low) return C.pillNeg;
 if (value > high) return C.pillPos;
 const ratio = Math.max(0, Math.min(1, (value-low)/Math.max(1,high-low)));
-return ratio <= 0.5 ? mixHexColor(C.pillNeg, C.pillNeutral, ratio*2) : mixHexColor(C.pillNeutral, C.pillPos, (ratio-0.5)*2);
+if (ratio < 1 / 3) return C.pillNeg;
+if (ratio < 2 / 3) return C.pillNeutral;
+return C.pillPos;
 }
 
 function Dashboard() {
@@ -1593,7 +1595,7 @@ const hiPct = scalePct(hi);
 const currentEstimate = t.currentEstimate !== undefined && t.currentEstimate !== null ? t.currentEstimate : t.actual;
 const estimatePct = currentEstimate !== null && currentEstimate !== undefined ? scalePct(currentEstimate) : null;
 const estimateOutsideRange = currentEstimate !== null && currentEstimate !== undefined && (currentEstimate < lo || currentEstimate > hi);
-const automaticEstimateColor = currentEstimate === null || currentEstimate === undefined ? C.pillNeutral : estimateGradientColor(currentEstimate, lo, hi);
+const automaticEstimateColor = currentEstimate === null || currentEstimate === undefined ? C.pillNeutral : estimateBlockColor(currentEstimate, lo, hi);
 const estimateScaleColor = (!themeIsMono() && t.estimateColorMode === 'custom' && validHexColor(t.estimateColor)) ? t.estimateColor : automaticEstimateColor;
 return e('div', { key: i, style: { marginBottom: 16, padding: 16, border: '1px solid ' + C.border } },
 e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8, flexWrap: 'wrap', gap: 8 } },
@@ -1623,7 +1625,7 @@ return e('div', { key: 'seg' + segIndex, style: { position: 'absolute', left: (l
 }),
 e('div', { style: { position: 'absolute', left: loPct + '%', top: 11, width: 1, height: 18, background: C.textFaint } }),
 e('div', { style: { position: 'absolute', left: hiPct + '%', top: 11, width: 1, height: 18, background: C.textFaint } }),
-estimatePct !== null ? e('div', { style: { position: 'absolute', left: estimatePct + '%', top: 5, width: 2, height: 28, background: estimateScaleColor, border: '1px solid ' + C.bg } }) : null,
+estimatePct !== null ? e('div', { style: { position: 'absolute', left: estimatePct + '%', top: 5, width: 3, height: 28, background: estimateScaleColor, transform: 'translateX(-50%)', boxShadow: '0 0 0 1px ' + C.bg, zIndex: 2 } }) : null,
 e('div', { style: { position: 'absolute', left: loPct + '%', top: 0, fontSize: 9.5, color: C.textMute, fontVariantNumeric: 'tabular-nums', transform: 'translateX(-50%)', whiteSpace: 'nowrap' } }, fmtMoney(lo)),
 e('div', { style: { position: 'absolute', left: hiPct + '%', top: 0, fontSize: 9.5, color: C.textMute, fontVariantNumeric: 'tabular-nums', transform: 'translateX(-50%)', whiteSpace: 'nowrap' } }, fmtMoney(hi)),
 e('div', { style: { position: 'absolute', left: 0, top: 34, fontSize: 9, color: C.textFaint, fontVariantNumeric: 'tabular-nums' } }, fmtMoney(rulerLo)),
@@ -1768,7 +1770,7 @@ e(ThemeModal, { open: themeOpen, onClose: function () { setThemeOpen(false); }, 
 );
 }
 function normalizeProjectionRecord(p) {
-return { title: p.title || '', distributor: p.distributor || '', theaters: Number(p.theaters)||0, range: [Number(p.rangeLow ?? (p.range && p.range[0]))||0, Number(p.rangeHigh ?? (p.range && p.range[1]))||0], scale: [Number(p.rulerLow ?? (p.scale && p.scale[0]))||0, Number(p.rulerHigh ?? (p.scale && p.scale[1]))||0], currentEstimate: p.currentEstimate ?? p.actual ?? null, actual: p.currentEstimate ?? p.actual ?? null, estimateColorMode: p.estimateColorMode || 'gradient', estimateColor: p.estimateColor || '#4FC3F7', confidence: p.confidence || 'medium', momentum: p.momentum || 'stable', criticAudience: { rtCritic: p.rtCritic ?? (p.criticAudience && p.criticAudience.rtCritic) ?? null, rtAudience: null, metacritic: p.metacritic ?? (p.criticAudience && p.criticAudience.metacritic) ?? null, cinemaScore: null }, note: p.analysis ?? p.note ?? '' };
+return { title: p.title || '', distributor: p.distributor || '', theaters: Number(p.theaters)||0, range: [Number(p.rangeLow ?? (p.range && p.range[0]))||0, Number(p.rangeHigh ?? (p.range && p.range[1]))||0], scale: [Number(p.rulerLow ?? (p.scale && p.scale[0]))||0, Number(p.rulerHigh ?? (p.scale && p.scale[1]))||0], currentEstimate: p.currentEstimate ?? p.actual ?? null, actual: p.currentEstimate ?? p.actual ?? null, estimateColorMode: p.estimateColorMode === 'custom' ? 'custom' : 'blocks', estimateColor: p.estimateColor || '#4FC3F7', confidence: p.confidence || 'medium', momentum: p.momentum || 'stable', criticAudience: { rtCritic: p.rtCritic ?? (p.criticAudience && p.criticAudience.rtCritic) ?? null, rtAudience: null, metacritic: p.metacritic ?? (p.criticAudience && p.criticAudience.metacritic) ?? null, cinemaScore: null }, note: p.analysis ?? p.note ?? '' };
 }
 function applyBoffoData(data) {
 if (!data || typeof data !== 'object') return;
