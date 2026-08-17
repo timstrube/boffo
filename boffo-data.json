@@ -1,8 +1,8 @@
 {
   "version": "5.4",
-  "updatedAt": "2026-08-17T19:28:50.614Z",
+  "updatedAt": "2026-08-17T22:21:46.428Z",
   "settings": {
-    "lastUpdatedLabel": "Aug 17, 2026 · 12:28 PM PT / 3:28 PM ET",
+    "lastUpdatedLabel": "Aug 17, 2026 · 3:21 PM PT / 6:21 PM ET",
     "weekendHeadingPrefix": "Weekend of",
     "trackingIntro": "Tracking for the upcoming weekend",
     "trackingWeekend": "Aug 21-23",
@@ -126,11 +126,11 @@
       "prev": 1,
       "weekendNum": 3,
       "title": "Spider-Man: Brand New Day",
-      "gross": 71000000,
+      "gross": 70711990,
       "change": -51,
       "theaters": 4539,
-      "avg": 15642,
-      "total": 786832000,
+      "avg": 15579,
+      "total": 786543660,
       "global": 2022000000,
       "distributor": "Sony Pictures"
     },
@@ -139,11 +139,11 @@
       "prev": 2,
       "weekendNum": 5,
       "title": "The Odyssey",
-      "gross": 23200000,
-      "change": -27,
+      "gross": 23606885,
+      "change": -26,
       "theaters": 3217,
-      "avg": 7212,
-      "total": 504680000,
+      "avg": 7338,
+      "total": 505087255,
       "global": 1150000000,
       "distributor": "Universal"
     },
@@ -152,11 +152,11 @@
       "prev": null,
       "weekendNum": 1,
       "title": "The End of Oak Street",
-      "gross": 21000000,
+      "gross": 21010488,
       "change": null,
       "theaters": 3446,
-      "avg": 6094,
-      "total": 21000000,
+      "avg": 6097,
+      "total": 21010488,
       "global": 47000000,
       "distributor": "Warner Bros."
     },
@@ -165,11 +165,11 @@
       "prev": null,
       "weekendNum": 1,
       "title": "PAW Patrol: The Dino Movie",
-      "gross": 20500000,
+      "gross": 20254688,
       "change": null,
       "theaters": 3545,
-      "avg": 5783,
-      "total": 20500000,
+      "avg": 5714,
+      "total": 20254688,
       "global": 69000000,
       "distributor": "Paramount"
     },
@@ -191,11 +191,11 @@
       "prev": null,
       "weekendNum": 1,
       "title": "Six: The Musical Live!",
-      "gross": 3000000,
+      "gross": 3002305,
       "change": null,
       "theaters": 1462,
-      "avg": 2052,
-      "total": 3000000,
+      "avg": 2054,
+      "total": 3002305,
       "global": null,
       "distributor": "Focus Features"
     },
@@ -217,11 +217,11 @@
       "prev": 4,
       "weekendNum": 9,
       "title": "Toy Story 5",
-      "gross": 2300000,
-      "change": -45,
+      "gross": 2427314,
+      "change": -42,
       "theaters": 1925,
-      "avg": 1195,
-      "total": 475468651,
+      "avg": 1261,
+      "total": 475595965,
       "global": 1050000000,
       "distributor": "Disney"
     },
@@ -230,11 +230,11 @@
       "prev": 3,
       "weekendNum": 2,
       "title": "One Night Only",
-      "gross": 2000000,
+      "gross": 2003860,
       "change": -64,
       "theaters": 3012,
-      "avg": 664,
-      "total": 9860000,
+      "avg": 665,
+      "total": 9863925,
       "global": null,
       "distributor": "Universal"
     },
@@ -269,7 +269,7 @@
       "currentEstimate": null,
       "estimateColorMode": "gradient",
       "estimateColor": "#5C8FF0",
-      "analysisHtml": "Insidious: Out of the Further rotates into tracking as the clear frontrunner among next weekend&#39;s openers. Box Office Pro&#39;s long-range call has it at $25M–$35M, comping to 2018&#39;s Insidious: The Last Key ($29.5M) and 2023&#39;s The Red Door ($33M) on the high side, with a soft-tracking downside around Chapter 3&#39;s $22.6M. Box Office Theory&#39;s read (via SlashFilm) is tighter and a touch more conservative at $23M–$28M. Given that split, the range here stays wide rather than splitting the difference. The Quorum&#39;s latest eight-week chart (via Puck) has the film at 47% awareness/48% interest — second-highest among August titles — though both metrics have ticked down slightly over the last two reads. It&#39;ll be squaring off against Spider-Man: Brand New Day&#39;s fourth weekend (likely $25M–$30M on its own), so unseating Spidey for #1 is plausible on the high end of tracking but far from guaranteed. Reviews haven&#39;t embargoed yet. Theater count is a preliminary estimate pending confirmation."
+      "analysisHtml": "Insidious: Out of the Further rotates into tracking as the clear frontrunner among next weekend's openers. Box Office Pro's long-range call has it at $25M–$35M, comping to 2018's Insidious: The Last Key ($29.5M) and 2023's The Red Door ($33M) on the high side, with a soft-tracking downside around Chapter 3's $22.6M. Box Office Theory's read (via SlashFilm) is tighter and a touch more conservative at $23M–$28M. Given that split, the range here stays wide rather than splitting the difference. The Quorum's latest eight-week chart (via Puck) has the film at 47% awareness/48% interest — second-highest among August titles — though both metrics have ticked down slightly over the last two reads. It'll be squaring off against Spider-Man: Brand New Day's fourth weekend (likely $25M–$30M on its own), so unseating Spidey for #1 is plausible on the high end of tracking but far from guaranteed. Reviews haven't embargoed yet. Theater count is a preliminary estimate pending confirmation."
     },
     {
       "title": "Mutiny",
@@ -287,73 +287,10 @@
       "currentEstimate": null,
       "estimateColorMode": "gradient",
       "estimateColor": "#5C8FF0",
-      "analysisHtml": "Jason Statham and Lionsgate reunite for Mutiny, a modest counter-programmer rotating in for Aug 21-23. Box Office Pro's long-range forecast has it at $8M–$12M, squarely within Statham's typical $5M–$15M opening band (The Beekeeper $16.5M, A Working Man $15.5M on the high side; Shelter's recent $5.3M underperformance on the low side). Box Office Theory's take is a shade softer at $6M–$11M, so the range here is kept wide to reflect both reads rather than splitting them. Director Jean-François Richet's prior Lionsgate actioner Plane (also with a proven action lead) opened to $10.2M, a reasonable ceiling comp. No reviews yet. Theater count is a preliminary estimate pending confirmation."
+      "analysisHtml": "Jason Statham and Lionsgate reunite for Mutiny, a modest counter-programmer rotating in for Aug 21-23. Box Office Pro&#39;s long-range forecast has it at $8M–$12M, squarely within Statham&#39;s typical $5M–$15M opening band (The Beekeeper $16.5M, A Working Man $15.5M on the high side; Shelter&#39;s recent $5.3M underperformance on the low side). Box Office Theory&#39;s take is a shade softer at $6M–$11M, so the range here is kept wide to reflect both reads rather than splitting them. Director Jean-François Richet&#39;s prior Lionsgate actioner Plane (also with a proven action lead) opened to $10.2M, a reasonable ceiling comp. No reviews yet. Theater count is a preliminary estimate pending confirmation."
     }
   ],
   "releases": [
-    {
-      "date": "Aug 14",
-      "title": "The End of Oak Street",
-      "distributor": "Warner Bros.",
-      "type": "Wide",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=3oB9AxspVow",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 14",
-      "title": "PAW Patrol: The Dino Movie",
-      "distributor": "Paramount",
-      "type": "Wide",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=aHw4PuLCUIc",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 14",
-      "title": "The Brink of War",
-      "distributor": "Angel Studios",
-      "type": "Wide",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=a-T0TlMN-RE",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 14",
-      "title": "SIX The Musical Live!",
-      "distributor": "Focus Features",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=phU3eSBFOXA",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 14",
-      "title": "The Rivals of Amziah King",
-      "distributor": "Black Bear",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=GwSvAyaMGMo",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 14",
-      "title": "The Wrong Girls",
-      "distributor": "Neon",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=zrcg8YHSys8",
-      "assetPublished": null
-    },
-    {
-      "date": "Aug 14",
-      "title": "Union County",
-      "distributor": "Oscilloscope",
-      "type": "Limited",
-      "assetType": "Trailer",
-      "trailerUrl": "https://www.youtube.com/watch?v=uA6Fnr2VXkw",
-      "assetPublished": null
-    },
     {
       "date": "Aug 21",
       "title": "Hot Spot",
